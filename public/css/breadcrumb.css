@@ -1,0 +1,102 @@
+
+.s-breadcrumb {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    background-color: #1D1D1D;
+    margin-bottom: 50px;
+}
+/*.bg-breadcrumb {*/
+/*    background-image: url("/images/bg-breadcrumbs.png");*/
+/*    background-repeat: no-repeat;*/
+/*    !*background-size: 100%;*!*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*}*/
+.breadcrumb-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    /*padding-top: 30px;*/
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+span.page-link-dot {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #FFFFFF;
+    margin: auto 10px;
+}
+.breadcrumbs-item {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+.breadcrumbs-item a {
+    font-family: Gilroy-400;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+.breadcrumbs-item a.active,.breadcrumbs-item a:hover{
+    color: #6C6C6C !important;
+}
+.breadcrumbs-item a.active{
+    cursor: unset;
+}
+.breadcrumb-title {
+    font-family: Kharkiv-400;
+    font-size: 36px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    /*padding-top: 20px;*/
+}
+
+@media (max-width: 991.98px) {
+
+    .breadcrumb-title {
+        font-size: 28px;
+    }
+}
+@media (max-width: 767.98px) {
+    .breadcrumb-title {
+        font-size: 22px;
+    }
+    .breadcrumb-items {
+        padding-bottom: 15px;
+    }
+    .s-breadcrumb {
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 575.98px) {
+    .breadcrumb-items {
+        padding-bottom: 10px;
+    }
+    .breadcrumb-title {
+        font-size: 18px;
+    }
+    .breadcrumbs-item a {
+        font-size: 14px;
+    }
+    .s-breadcrumb {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 400.98px) {
+    .breadcrumb-items {
+        flex-wrap: wrap;
+    }
+    .breadcrumbs-item a {
+        font-size: 14px;
+    }
+}
