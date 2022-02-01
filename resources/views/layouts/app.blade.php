@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css?v=6')}}">
     <link rel="stylesheet" href="{{asset('css/loader.css?v=6')}}">
     <link rel="stylesheet" href="{{asset('css/main.css?v=6')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=6')}}">
 
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
@@ -57,6 +58,7 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.js?v=9')}}"></script>
     <script src="{{asset('/admin_asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
 
     <script>
         Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p, {}));

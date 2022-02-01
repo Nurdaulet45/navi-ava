@@ -458,7 +458,7 @@
                     <div class="info">
                         <div class="title">
                             <h4>Стать наставником</h4>
-                            <button class="btn-default">
+                            <button class="btn-default-shadow">
                                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -484,7 +484,7 @@
                     <div class="info">
                         <div class="title">
                             <h4>Стать учеником-менти</h4>
-                            <button class="btn-default">
+                            <button class="btn-default-shadow">
                                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -505,7 +505,7 @@
                     <div class="info">
                         <div class="title">
                             <h4>Стать консультантом</h4>
-                            <button class="btn-default">
+                            <button class="btn-default-shadow">
                                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -674,22 +674,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="review-card">
-                    <div class="review-card-header">
-                        <img src="{{ asset('images/user-icon.png') }}" alt="user icon">
-                        <div class="name">Вадим М</div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="review-card-body">
-                        <div class="text">
-                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые сложные
-                            задания. Буду и в дальнейшем обращаться за помощью
-                        </div>
-                        <a href="">
-                            Читать отзыв целиком
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -744,31 +728,80 @@
                         ПОдробнее
                     </a>
                 </div>
-                <div class="post-item">
-                    <img src="{{ asset('images/blog.png') }}" width="418" height="205" alt="blog">
-                    <div class="title">
-                        Изменения в правилах оформление заявки для учеников на наставничество
-                    </div>
-                    <p class="text">
-                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать правила сервиса ни в коем случае.
-                    </p>
-                    <a href="">
-                        ПОдробнее
-                    </a>
-                </div>
-                <div class="post-item">
-                    <img src="{{ asset('images/blog.png') }}" width="418" height="205" alt="blog">
-                    <div class="title">
-                        Изменения в правилах оформление заявки для учеников на наставничество
-                    </div>
-                    <p class="text">
-                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать правила сервиса ни в коем случае.
-                    </p>
-                    <a href="">
-                        ПОдробнее
-                    </a>
+            </div>
 
+        </div>
+    </section>
+    <section class="s-question-answers">
+        <div class="container">
+            <div class="title">
+                Вопрос-ответ
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="question-answers">
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            Для чего нужна платформа NAVI-AVA?
+
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            Как мне стать наставником-консультантом или платным консультантом?
+
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            Как мне найти наставника-консультанта?
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
         </div>
@@ -776,8 +809,11 @@
     <section class="s-questions">
         <div class="container">
             <div class="title">
-                Вопрос-ответ
+                Остались вопросы?
             </div>
+            <button class="btn-default-shadow medium-btn">
+                Напишите нам
+            </button>
         </div>
     </section>
 

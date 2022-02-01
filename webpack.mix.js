@@ -18,5 +18,6 @@ mix.webpackConfig({
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/assets/sass/header.scss', 'public/css')
     .sass('resources/assets/sass/main.scss', 'public/css')
+    .sass('resources/assets/sass/catalog.scss', 'public/css')
     .sass('resources/assets/sass/default.scss', 'public/css');
 
