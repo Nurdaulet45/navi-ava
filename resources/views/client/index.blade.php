@@ -1154,9 +1154,6 @@
                     <div class="spec-item btn-white-green">
                         Менеджмент и управление
                     </div>
-                    <div class="spec-item btn-white-green">
-                        Другое
-                    </div>
                 </div>
             </div>
         </div>

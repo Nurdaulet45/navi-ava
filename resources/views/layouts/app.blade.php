@@ -26,21 +26,21 @@
     <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('css/fonts.css?v=1')}}">
+    <link rel="stylesheet" href="{{asset('css/fonts.css?v=2')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/default.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=1')}}">
+    <link rel="stylesheet" href="{{asset('css/default.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/modal.css?v=2')}}">
 
-    <link rel="stylesheet" href="{{asset('css/style.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/catalog.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=1')}}">
-    <link rel="stylesheet" href="{{asset('css/blog.css?v=1')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css?v=2')}}">
     @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
