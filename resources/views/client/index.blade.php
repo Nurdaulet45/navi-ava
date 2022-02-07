@@ -1,4 +1,7 @@
 @extends('layouts/app')
+@section('custom_css')
+    <link rel="stylesheet" href="{{asset('css/swiper.css?v=1')}}">
+@endsection
 @section('content')
     <section class="s-start-growing">
         <div class="container">
@@ -63,6 +66,7 @@
     </section>
     <section class="s-mentors">
         <div class="container">
+
             <div class="head">
                 <h3 class="title">Наши наставники</h3>
                 <div class="default-tabs">
@@ -74,328 +78,863 @@
                     </div>
                 </div>
             </div>
-            <div class="default-mentor-cards">
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
+            <div class="swiper-items">
 
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper default-mentor-card-items">
+                        <div class="default-mentor-card 1 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
                             </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
                         </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
+                        <div class="default-mentor-card 2  swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+                        <div class="default-mentor-card 3 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+                        <div class="default-mentor-card 4 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="default-mentor-card 5 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="default-mentor-card 6 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                <div class="swiper-button-next slider-next-button">--}}
+                    {{--                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+                    {{--                        <path d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z" fill="#A9AEB2"/>--}}
+                    {{--                    </svg>--}}
+                    {{--                </div>--}}
+                    {{--                <div class="swiper-button-prev slider-prev-button">--}}
+                    {{--                    <svg width="24"  style="transform: rotate(180deg)"  height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+                    {{--                        <path d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z" fill="#A9AEB2"/>--}}
+                    {{--                    </svg>--}}
+                    {{--                </div>--}}
+                </div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next mySwiper-next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z"
+                                fill="#A9AEB2"/>
+                        </svg>
+                    </div>
+                    <div class="swiper-button-prev mySwiper-prev">
+                        <svg width="24" style="transform: rotate(180deg)" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z"
+                                fill="#A9AEB2"/>
+                        </svg>
                     </div>
                 </div>
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
-
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
-                            </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
-                        </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
-                    </div>
-                </div>
-
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
-
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
-                            </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
-                        </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </section>
     <section class="s-consultants">
         <div class="container">
             <h3 class="title">Консультанты</h3>
-            <div class="default-mentor-cards">
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
+{{--            <div class="default-mentor-cards">--}}
+{{--                <div class="default-mentor-card">--}}
+{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+{{--                    <div class="info">--}}
+{{--                        <div class="name">--}}
+{{--                            Вадим Ч--}}
+{{--                        </div>--}}
+{{--                        <div class="work">--}}
+{{--                            Разработчик — Яндекса--}}
+{{--                        </div>--}}
+{{--                        <div class="rate">--}}
+{{--                            <div class="stars">--}}
 
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#C5C4C3"/>--}}
+{{--                                </svg>--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Все отзывы (34)--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <button class="btn-white-green small-btn">--}}
+{{--                            Подобнее--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="default-mentor-card">--}}
+{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+{{--                    <div class="info">--}}
+{{--                        <div class="name">--}}
+{{--                            Вадим Ч--}}
+{{--                        </div>--}}
+{{--                        <div class="work">--}}
+{{--                            Разработчик — Яндекса--}}
+{{--                        </div>--}}
+{{--                        <div class="rate">--}}
+{{--                            <div class="stars">--}}
+
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#C5C4C3"/>--}}
+{{--                                </svg>--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Все отзывы (34)--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <button class="btn-white-green small-btn">--}}
+{{--                            Подобнее--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--                <div class="default-mentor-card">--}}
+{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+{{--                    <div class="info">--}}
+{{--                        <div class="name">--}}
+{{--                            Вадим Ч--}}
+{{--                        </div>--}}
+{{--                        <div class="work">--}}
+{{--                            Разработчик — Яндекса--}}
+{{--                        </div>--}}
+{{--                        <div class="rate">--}}
+{{--                            <div class="stars">--}}
+
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#E0C11A"/>--}}
+{{--                                </svg>--}}
+{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                    <path--}}
+{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+{{--                                        fill="#C5C4C3"/>--}}
+{{--                                </svg>--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Все отзывы (34)--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <button class="btn-white-green small-btn">--}}
+{{--                            Подобнее--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="swiper-items">
+
+                <div class="swiper mySwiper2">
+                    <div class="swiper-wrapper default-mentor-card-items">
+                        <div class="default-mentor-card 1 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
                             </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
                         </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
+                        <div class="default-mentor-card 2  swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+                        <div class="default-mentor-card 3 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+                        <div class="default-mentor-card 4 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="default-mentor-card 5 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="default-mentor-card 6 swiper-slide">
+                            <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
+                            <div class="info">
+                                <div class="name">
+                                    Вадим Ч
+                                </div>
+                                <div class="work">
+                                    Разработчик — Яндекса
+                                </div>
+                                <div class="rate">
+                                    <div class="stars">
+
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#E0C11A"/>
+                                        </svg>
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                                                fill="#C5C4C3"/>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Все отзывы (34)
+                                    </p>
+                                </div>
+                                <button class="btn-white-green small-btn">
+                                    Подобнее
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    {{--                <div class="swiper-button-next slider-next-button">--}}
+                    {{--                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+                    {{--                        <path d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z" fill="#A9AEB2"/>--}}
+                    {{--                    </svg>--}}
+                    {{--                </div>--}}
+                    {{--                <div class="swiper-button-prev slider-prev-button">--}}
+                    {{--                    <svg width="24"  style="transform: rotate(180deg)"  height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+                    {{--                        <path d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z" fill="#A9AEB2"/>--}}
+                    {{--                    </svg>--}}
+                    {{--                </div>--}}
                 </div>
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
-
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
-                            </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
-                        </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next mySwiper2-next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z"
+                                fill="#A9AEB2"/>
+                        </svg>
                     </div>
-                </div>
-
-                <div class="default-mentor-card">
-                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">
-                    <div class="info">
-                        <div class="name">
-                            Вадим Ч
-                        </div>
-                        <div class="work">
-                            Разработчик — Яндекса
-                        </div>
-                        <div class="rate">
-                            <div class="stars">
-
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#E0C11A"/>
-                                </svg>
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                                        fill="#C5C4C3"/>
-                                </svg>
-                            </div>
-                            <p>
-                                Все отзывы (34)
-                            </p>
-                        </div>
-                        <button class="btn-white-green small-btn">
-                            Подобнее
-                        </button>
+                    <div class="swiper-button-prev mySwiper2-prev">
+                        <svg width="24" style="transform: rotate(180deg)" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.7071 5.29289C11.3166 4.90237 10.6834 4.90237 10.2929 5.29289L4.2929 11.2929C4.1054 11.4804 4 11.7348 4 12C4 12.2652 4.1054 12.5196 4.2929 12.7071L10.2929 18.7071C10.6834 19.0976 11.3166 19.0976 11.7071 18.7071C12.0976 18.3166 12.0976 17.6834 11.7071 17.2929L7.4142 13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H7.4142L11.7071 6.70711C12.0976 6.31658 12.0976 5.68342 11.7071 5.29289Z"
+                                fill="#A9AEB2"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -634,7 +1173,8 @@
                     <div class="line"></div>
                     <div class="review-card-body">
                         <div class="text">
-                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые сложные
+                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые
+                            сложные
                             задания. Буду и в дальнейшем обращаться за помощью
                         </div>
                         <a href="">
@@ -650,7 +1190,8 @@
                     <div class="line"></div>
                     <div class="review-card-body">
                         <div class="text">
-                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые сложные
+                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые
+                            сложные
                             задания. Буду и в дальнейшем обращаться за помощью
                         </div>
                         <a href="">
@@ -666,7 +1207,8 @@
                     <div class="line"></div>
                     <div class="review-card-body">
                         <div class="text">
-                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые сложные
+                            Очень понравился наставник. Был в восторге как легко и просто можно разобрать даже самые
+                            сложные
                             задания. Буду и в дальнейшем обращаться за помощью
                         </div>
                         <a href="">
@@ -683,12 +1225,16 @@
                 <div class="title">
                     Блог
                 </div>
-                <button class="btn-white-green small-btn">
-                    Читать еще <svg width="16" style="margin-left: 12px;" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.2929 0.79289C8.6834 0.40237 9.3166 0.40237 9.7071 0.79289L15.7071 6.7929C15.8946 6.9804 16 7.2348 16 7.5C16 7.7652 15.8946 8.0196 15.7071 8.2071L9.7071 14.2071C9.3166 14.5976 8.6834 14.5976 8.2929 14.2071C7.9024 13.8166 7.9024 13.1834 8.2929 12.7929L12.5858 8.5H1C0.44772 8.5 0 8.0523 0 7.5C0 6.9477 0.44772 6.5 1 6.5H12.5858L8.2929 2.20711C7.9024 1.81658 7.9024 1.18342 8.2929 0.79289Z" fill="#05BCB9"/>
+                <a href="{{ route('blog') }}" class="btn-white-green small-btn">
+                    Читать еще
+                    <svg width="16" style="margin-left: 12px;" height="15" viewBox="0 0 16 15" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.2929 0.79289C8.6834 0.40237 9.3166 0.40237 9.7071 0.79289L15.7071 6.7929C15.8946 6.9804 16 7.2348 16 7.5C16 7.7652 15.8946 8.0196 15.7071 8.2071L9.7071 14.2071C9.3166 14.5976 8.6834 14.5976 8.2929 14.2071C7.9024 13.8166 7.9024 13.1834 8.2929 12.7929L12.5858 8.5H1C0.44772 8.5 0 8.0523 0 7.5C0 6.9477 0.44772 6.5 1 6.5H12.5858L8.2929 2.20711C7.9024 1.81658 7.9024 1.18342 8.2929 0.79289Z"
+                            fill="#05BCB9"/>
                     </svg>
 
-                </button>
+                </a>
             </div>
 
             <div class="post-items">
@@ -698,7 +1244,8 @@
                         Изменения в правилах оформление заявки для учеников на наставничество
                     </div>
                     <p class="text">
-                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать правила сервиса ни в коем случае.
+                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать
+                        правила сервиса ни в коем случае.
                     </p>
                     <a href="">
                         ПОдробнее
@@ -710,7 +1257,8 @@
                         Изменения в правилах оформление заявки для учеников на наставничество
                     </div>
                     <p class="text">
-                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать правила сервиса ни в коем случае.
+                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать
+                        правила сервиса ни в коем случае.
                     </p>
                     <a href="">
                         ПОдробнее
@@ -722,7 +1270,8 @@
                         Изменения в правилах оформление заявки для учеников на наставничество
                     </div>
                     <p class="text">
-                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать правила сервиса ни в коем случае.
+                        С 1 августа произойдуи изменения в оформление заявок. Прошу всех ознакомиться и не нарушать
+                        правила сервиса ни в коем случае.
                     </p>
                     <a href="">
                         ПОдробнее
@@ -744,18 +1293,26 @@
                             Для чего нужна платформа NAVI-AVA?
 
                             <div class="svg-block">
-                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
                                 </svg>
-                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
                                 </svg>
 
                             </div>
                         </div>
                         <div class="panel">
                             <div class="answer">
-                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
                             </div>
                         </div>
                     </div>
@@ -765,18 +1322,26 @@
                             Как мне стать наставником-консультантом или платным консультантом?
 
                             <div class="svg-block">
-                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
                                 </svg>
-                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
                                 </svg>
 
                             </div>
                         </div>
                         <div class="panel">
                             <div class="answer">
-                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
                             </div>
                         </div>
                     </div>
@@ -785,36 +1350,113 @@
                         <div class="accordion">
                             Как мне найти наставника-консультанта?
                             <div class="svg-block">
-                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
                                 </svg>
-                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z" fill="white"/>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
                                 </svg>
 
                             </div>
                         </div>
                         <div class="panel">
                             <div class="answer">
-                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA . Возможно некоторое время к вам не будет приходить заявки на Наставничество или консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </section>
-    <section class="s-questions">
-        <div class="container">
-            <div class="title">
-                Остались вопросы?
-            </div>
-            <button class="btn-default-shadow medium-btn">
-                Напишите нам
-            </button>
-        </div>
-    </section>
+    <style>
+        /*.swiper {*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*}*/
 
+        /*.swiper-slide {*/
+        /*    text-align: center;*/
+        /*    font-size: 18px;*/
+        /*    background: #fff;*/
+
+        /*    !* Center slide text vertically *!*/
+        /*    display: -webkit-box;*/
+        /*    display: -ms-flexbox;*/
+        /*    display: -webkit-flex;*/
+        /*    display: flex;*/
+        /*    -webkit-box-pack: center;*/
+        /*    -ms-flex-pack: center;*/
+        /*    -webkit-justify-content: center;*/
+        /*    justify-content: center;*/
+        /*    -webkit-box-align: center;*/
+        /*    -ms-flex-align: center;*/
+        /*    -webkit-align-items: center;*/
+        /*    align-items: center;*/
+        /*}*/
+
+        /*.swiper-slide img {*/
+        /*    display: block;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    object-fit: cover;*/
+        /*}*/
+    </style>
+    @include('client.components.sectionWriteToUs')
+
+@endsection
+@section('custom_js')
+    <script src="{{ asset('js/swiper.min.js') }}"></script>
+    <script>
+        // var swiper = new Swiper(".mySwiper", {
+        //     slidesPerView: 3,
+        //     spaceBetween: 30,
+        //     slidesPerGroup: 3,
+        //     loop: true,
+        //     loopFillGroupWithBlank: true,
+        //     pagination: {
+        //         el: ".swiper-pagination",
+        //         clickable: true,
+        //     },
+        //     navigation: {
+        //         nextEl: ".swiper-button-next",
+        //         prevEl: ".swiper-button-prev",
+        //     },
+        // });
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            freeMode: true,
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true,
+            // },
+            navigation: {
+                nextEl: ".mySwiper-next",
+                prevEl: ".mySwiper-prev",
+            },
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            freeMode: true,
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true,
+            // },
+            navigation: {
+                nextEl: ".mySwiper2-next",
+                prevEl: ".mySwiper2-prev",
+            },
+        });
+    </script>
 @endsection

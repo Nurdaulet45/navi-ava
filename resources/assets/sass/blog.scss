@@ -1,0 +1,205 @@
+.s-blog-page {
+    padding-top: 20px;
+
+    .blog-category-items {
+        display: flex;
+        flex-direction: row;
+        padding-top: 40px;
+        margin-bottom: 60px;
+        border-bottom: 0.5px solid #C3C8CC;
+
+        .blog-category-item {
+            font-family: Helvetica-400;
+            font-size: 17px;
+            line-height: 1.5;
+            color: #A5A7B0;
+            margin-right: 40px;
+            padding-bottom: 10px;
+            cursor: pointer;
+
+            &:hover {
+                //font-size: 18px;
+                color: #333333;
+                border-bottom: 1px solid #C3C8CC;
+
+            }
+        }
+
+        .active {
+            /* Black */
+            font-size: 18px;
+            color: #333333;
+            border-bottom: 1px solid #C3C8CC;
+
+        }
+    }
+
+    .blog-post-items {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        margin-top: 40px;
+
+        .blog-post-item {
+            flex: 0 0 32%;
+            margin: 1% 0;
+            margin-bottom: 30px;
+            max-width: 350px;
+            width: 350px;
+            //border: 1px solid #E5E6E9;
+            //box-sizing: border-box;
+            //border-radius: 6px;
+            //padding: 20px;
+            background: #FFFFFF;
+            border: 1px solid #E5E6E9;
+            box-sizing: border-box;
+            /* standart card shadow */
+
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+
+            .post-head {
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .post-body {
+                padding: 24px 25px 28px 24px;
+
+                .date {
+                    font-family: Helvetica-400;
+                    font-size: 14px;
+                    line-height: 1.3;
+                    font-feature-settings: 'pnum' on, 'lnum' on;
+                    color: #A5A7B0;
+                    margin-bottom: 10px;
+                }
+
+                .post-title {
+                    font-family: Helvetica-400;
+                    font-size: 20px;
+                    line-height: 1.2;
+                    color: #1DC0BD;
+                    margin-bottom: 8px;
+                }
+
+                .post-description {
+                    margin-top: 8px;
+                    font-family: Helvetica-400;
+                    font-size: 16px;
+                    line-height: 1.3;
+                    color: #65676E;
+                }
+            }
+
+        }
+
+        .blog-post-item:nth-child(3n-1) {
+            //margin-right: unset;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+    }
+
+    //.pagination {
+    //    .page-number {
+    //        border: 1px solid #1DC0BD;
+    //        background: transparent;
+    //    }
+    //}
+}
+
+.s-blog-item {
+    padding-top: 60px;
+
+    .post-description {
+        font-family: Helvetica-400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #65676E;
+    }
+
+    .image {
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+.s-about-service {
+    padding-top: 20px;
+    padding-bottom: 70px;
+    background-color: #f3f6ff;
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    .about-service {
+        display: flex;
+        align-items: flex-start;
+        .about-service-body {
+            background: #FFFFFF;
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            padding: 40px 44px 40px 43px;
+            margin-right: 30px;
+            width: 100%;
+
+            .about-service-title {
+                font-family: Exo2-700;
+                font-size: 24px;
+                line-height: 1.2;
+                color: #333333;
+                margin-bottom: 20px;
+            }
+
+            .about-service-description {
+                font-family: Helvetica-400;
+                font-size: 16px;
+                line-height: 1.5;
+                color: #65676E;
+            }
+        }
+
+        .about-service-sidebar {
+            background: #FFFFFF;
+            border-radius: 6px;
+            width: 306px;
+            min-width: 306px;
+
+            .about-service-sidebar-items {
+                display: flex;
+                flex-direction: column;
+
+                .about-service-sidebar-item {
+                    padding: 15px 20px;
+                    font-family: Helvetica-400;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    cursor: pointer;
+                    color: #333333;
+                    &:hover {
+                        color: #FFFFFF;
+                        background: #1DC0BD;
+                    }
+                }
+                .active{
+                    color: #FFFFFF;
+                    background: #1DC0BD;
+                }
+            }
+
+        }
+    }
+
+}

@@ -26,20 +26,22 @@
     <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('css/fonts.css?v=6')}}">
+    <link rel="stylesheet" href="{{asset('css/fonts.css?v=7')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/default.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=6')}}">
+    <link rel="stylesheet" href="{{asset('css/default.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/modal.css?v=7')}}">
 
-    <link rel="stylesheet" href="{{asset('css/style.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/catalog.css?v=6')}}">
-
+    <link rel="stylesheet" href="{{asset('css/style.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=7')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css?v=7')}}">
+    @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
 <body class="wrap d-flex flex-column min-vh-100">

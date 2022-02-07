@@ -165,6 +165,9 @@ section    .head {
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+
+
         }
     }
 
@@ -328,6 +331,7 @@ section    .head {
     .title {
         text-align: center;
         margin-bottom: 57px;
+        color: #FFFFFF;
     }
     .spec-group-items {
         display: flex;
@@ -403,9 +407,13 @@ section    .head {
     }
     .post-items {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        .post-item {
+            flex: 0 0 30%;
+            margin: 1% 2% 30px;
+            max-width: 350px;
+        }
         .post-item:last-child {
             margin-right: unset;
         }
@@ -435,7 +443,7 @@ section    .head {
 
     }
 }
-.s-questions {
+.s-write-to-us {
     background-image: url("/images/bg-questions.png");
     background-repeat: no-repeat;
     /*background-size: 100%;*/
@@ -462,4 +470,158 @@ section    .head {
             box-shadow: unset;
         }
     }
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+    .prev,  .next, .page-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 32px;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .prev {
+        margin-right: 20px;
+    }
+    .next {
+        margin-left: 20px;
+    }
+    .prev,  .next {
+        &:hover {
+            background: #1DC0BD;
+            svg path{
+                fill: #FFFFFF;
+
+            }
+
+        }
+
+    }
+    .page-numbers {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        .active {
+            background: #1DC0BD !important;
+            color: #FFFFFF !important;
+        }
+        .page-number {
+            border: 1px solid #1DC0BD;
+            background: transparent;
+            font-family: Helvetica-400;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #1DC0BD;
+            //background: #FFFFFF;
+            margin-right: 8px;
+            &:hover {
+                background: #1DC0BD;
+                color: #FFFFFF;
+            }
+        }
+        .page-number:last-child {
+            margin-right: unset;
+
+        }
+    }
+
+}
+.info-title {
+    font-family: Helvetica-400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #333333;
+}
+.info-description {
+    font-family: Helvetica-400;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #333333;
+}
+.skill-items {
+    display: flex;
+    flex-direction: row;
+    //overflow: hidden;
+    text-overflow: ellipsis;
+    flex-wrap: wrap;
+
+    .skill-item {
+        margin-bottom: 8px;
+        font-family: Helvetica-400;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #707378;
+        background: #FFEFD6;
+        border-radius: 2px;
+        padding: 4px 6px;
+        margin-right: 8px;
+        white-space: nowrap;
+    }
+
+}
+.work {
+    font-family: Helvetica-400;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #333333;
+}
+.city {
+    font-family: Helvetica-400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #A5A7B0;
+}
+.swiper-items {
+    position: relative;
+}
+.swiper-wrapper {
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+.swiper-button-next, .swiper-button-prev {
+    background: #05BCB9 !important;
+    box-shadow: 0px 20px 24px rgba(5, 188, 185, 0.3) !important;
+    transform: matrix(-1, 0, 0, 1, 0, 0) !important;
+    border-radius: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    svg path {
+        fill: #FFFFFF;
+    }
+
+    margin-top: unset !important;
+
+    &:after {
+        display: none;
+    }
+}
+.swiper-button-next {
+    right: -22px !important;
+}
+.swiper-button-prev {
+    left: -22px !important;
+}
+.swiper-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+.swiper-button-disabled {
+    background: #EEEEEE !important;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08) !important;
+    opacity: 1 !important;
+    svg path {
+        fill:#A9AEB2;
+    }
+
 }
