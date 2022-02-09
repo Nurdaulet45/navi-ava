@@ -1,10 +1,32 @@
 @extends('layouts.app')
 @section('content')
+    @component('client.components.breadcrumb', ['gray' => true])
+        @slot('title') Личный кабинет @endslot
+        @slot('parent')@endslot
+        @slot('active') Личный кабинет @endslot
+    @endcomponent
     <section class="s-cabinet">
+{{--        <div class="wrapper warning-verify-email">--}}
+{{--            <div class="container">--}}
+{{--                <div class="text">--}}
+
+{{--                    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                        <path d="M9.96116 2.16699C5.38783 2.16699 1.66699 5.90533 1.66699 10.5003C1.66699 15.0953 5.40533 18.8337 10.0003 18.8337C14.5953 18.8337 18.3337 15.0953 18.3337 10.5003C18.3337 5.90533 14.5778 2.16699 9.96116 2.16699ZM10.8337 14.667H9.16699V13.0003H10.8337V14.667ZM10.8337 11.3337H9.16699V6.33366H10.8337V11.3337Z" fill="#FF5500"/>--}}
+{{--                    </svg>--}}
+
+{{--                    Вам нужно активировать свой аккаунт (nastya222@mail.ru)--}}
+{{--                    <a>Изменить email</a>--}}
+
+{{--                </div>--}}
+{{--                <button class="btn-default btn-medium w-auto">--}}
+{{--                    Отправить письмо повторно--}}
+{{--                </button>--}}
+
+{{--            </div>--}}
+
+{{--        </div>--}}
         <div class="container">
-            <div class="title">
-                Личный кабинет
-            </div>
+
             <div class="wrapper">
                 <div class="cabinet-info">
                     <div class="mentor-block-user-name">
@@ -62,7 +84,9 @@
             <div class="profile-menu-items">
                 <div class="profile-menu-items__menu-item ">
                     <div class="title">О себе</div>
-                    <a href="">Перейти</a>
+                    <a href="{{ route('cabinet.about-me') }}">
+                        Перейти
+                    </a>
                     <div class="profile-menu-items__menu-item-counter">
                         <p>
                             Заполнено
@@ -78,7 +102,7 @@
                 </div>
                 <div class="profile-menu-items__menu-item bg-profile-card-spec">
                     <div class="title">Специализация</div>
-                    <a href="">Перейти</a>
+                    <a href="{{ route('cabinet.specialization') }}">Перейти</a>
                     <div class="profile-menu-items__menu-item-counter">
                         <p>
                             Заполнено
@@ -95,7 +119,7 @@
                 </div>
                 <div class="profile-menu-items__menu-item bg-profile-card-certificate">
                     <div class="title">Сертификаты, курсы</div>
-                    <a href="">Перейти</a>
+                    <a href="{{ route('cabinet.certifications') }}">Перейти</a>
                     <div class="profile-menu-items__menu-item-counter">
                         <p>
                             Заполнено
@@ -111,41 +135,14 @@
                 </div>
                 <div class="profile-menu-items__menu-item bg-profile-card-megaphone">
                     <div class="title">Отзывы</div>
-                    <a href="">Перейти</a>
+                    <a href="{{ route('cabinet.reviews') }}">Перейти</a>
                 </div>
                 <div class="profile-menu-items__menu-item bg-profile-card-calendar">
                     <div class="title">Наставничество</div>
-                    <a href="">Перейти</a>
+                    <a href="{{ route('cabinet.mentoring') }}">Перейти</a>
 
                 </div>
             </div>
-            {{--            <div class="containers">--}}
-            {{--                <div class=item></div>--}}
-            {{--                <div class=item></div>--}}
-            {{--                <div class=item></div>--}}
-            {{--                <div class=item></div>--}}
-            {{--                <div class=item></div>--}}
-            {{--            </div>--}}
-            {{--            <style>--}}
-            {{--                .containers {--}}
-            {{--                    display: flex;--}}
-            {{--                    flex-flow: row wrap;--}}
-            {{--                    justify-content: flex-start;--}}
-            {{--                }--}}
-
-            {{--                .item {--}}
-            {{--                    background-color: gray;--}}
-            {{--                    width: 100px;--}}
-            {{--                    height: 100px;--}}
-            {{--                    flex: 0 0 32%;--}}
-            {{--                    margin: 1% 0;--}}
-            {{--                }--}}
-
-            {{--                .item:nth-child(3n-1) {--}}
-            {{--                     margin-left: 2%;--}}
-            {{--                     margin-right: 2%;--}}
-            {{--                 }--}}
-            {{--            </style>--}}
         </div>
     </section>
     @include('client.components.sectionWriteToUs', ['gray' => true])

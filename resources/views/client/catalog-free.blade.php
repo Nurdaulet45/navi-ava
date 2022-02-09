@@ -1,10 +1,12 @@
 @extends('layouts/app')
 @section('content')
+    @component('client.components.breadcrumb')
+        @slot('title') Каталог консультантов @endslot
+        @slot('parent')@endslot
+        @slot('active') Каталог консультантов @endslot
+    @endcomponent
     <section class="s-catalog">
         <div class="container">
-            <div class="title">
-                Каталог консультантов
-            </div>
             <div class="wrapper">
                 <div class="filters">
                     <div class="accordion-block  filters__filter">
@@ -261,7 +263,7 @@
                         </div>
                     </div>
                     <div class="search-result__item-cards">
-                        <div class="search-result__item-card">
+                        <div class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -369,7 +371,7 @@
                                     <div class="btn-default-shadow small-btn">
                                         Связаться
                                     </div>
-                                    <div class="btn-white-green medium-btn">
+                                    <div class="btn-white-green w-auto">
                                         Добавить в избранное
                                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -382,7 +384,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="search-result__item-card">
+                        <div class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -490,7 +492,7 @@
                                     <div class="btn-default-shadow small-btn">
                                         Связаться
                                     </div>
-                                    <div class="btn-white-green medium-btn">
+                                    <div class="btn-white-green w-auto">
                                         Добавить в избранное
                                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -503,7 +505,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="search-result__item-card">
+                        <div class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -611,7 +613,7 @@
                                     <div class="btn-default-shadow small-btn">
                                         Связаться
                                     </div>
-                                    <div class="btn-white-green medium-btn">
+                                    <div class="btn-white-green w-auto">
                                         Добавить в избранное
                                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -628,7 +630,7 @@
                             <h4>Рекламное объявление</h4>
                             <a>Получите чек-лист по профессиям</a>
                         </div>
-                        <div class="search-result__item-card">
+                        <div class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -736,7 +738,7 @@
                                     <div class="btn-default-shadow small-btn">
                                         Связаться
                                     </div>
-                                    <div class="btn-white-green medium-btn">
+                                    <div class="btn-white-green w-auto">
                                         Добавить в избранное
                                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">

@@ -26,21 +26,21 @@
     <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('css/fonts.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/fonts.css?v=3')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/default.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/default.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/modal.css?v=3')}}">
 
-    <link rel="stylesheet" href="{{asset('css/style.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/catalog.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=2')}}">
-    <link rel="stylesheet" href="{{asset('css/blog.css?v=2')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=3')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css?v=3')}}">
     @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
@@ -50,10 +50,16 @@
     </div>
     <div class="flex-fill">
         @include('client.components.header')
+        <button class="btn btn-primary" onclick="openLoginLink()">
+            Login
+        </button>
+        <button class="btn btn-primary" onclick="openRegisterLink()">
+            Register
+        </button>
         @yield('content')
-{{--        @include('client.components.modalLogin')--}}
-{{--        @include('client.components.modalResetPassword')--}}
-{{--        @include('client.components.modalRegister')--}}
+        @include('client.components.modalLogin')
+        @include('client.components.modalResetPassword')
+        @include('client.components.modalRegister')
     </div>
     @include('client.components.footer')
 

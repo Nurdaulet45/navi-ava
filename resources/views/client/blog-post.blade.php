@@ -1,5 +1,11 @@
 @extends('layouts/app')
 @section('content')
+    @component('client.components.breadcrumb')
+        @slot('title') Блог пост @endslot
+        @slot('parent')@endslot
+        @slot('blog')@endslot
+        @slot('active') Блог пост @endslot
+    @endcomponent
     <section class="s-blog-item">
         <div class="container">
             <div class="post-description">

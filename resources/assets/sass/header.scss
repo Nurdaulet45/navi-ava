@@ -163,6 +163,7 @@ header.header {
         color: #333333;
         min-height: 20px;
         margin-left: 10px;
+        white-space: nowrap;
         &:hover {
             svg path {
                 fill: #1DC0BD;

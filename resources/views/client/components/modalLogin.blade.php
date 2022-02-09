@@ -3,44 +3,53 @@
         <div class="modal-content inner-modal">
             <div class="modal-header">
 
-                <h2 class="modal-title">{{ __('site.Login to your account') }}</h2>
+                <h2 class="welcome-text">
+                    Добро пожаловать
+                    <br>
+                    на NAVI-AVA.
+                    <span class="info">Пожалуйста, введите e-mail или логин и пароль.</span>
+                </h2>
                 <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                     <svg class="icon close-icon">
-                        <use xlink:href="{{asset('images/close-icon.svg#close-icon')}}"></use>
+                        <use xlink:href="{{asset('images/icon-close.svg#close-icon')}}"></use>
                     </svg>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="loginForm" class="modal-form" action="{{ route('login.ajax') }}">
+                <form id="loginForm" class="modal-form" action=" route('login.ajax') }}">
                     @csrf
 
                     <div class="form-input-block">
                         <input id="login_phone" name="phone"
-                               class="default-input modal-form-input" type="text"
-                               placeholder="+7 (700)-999-99-99">
+                               class="modal-form-input input-default w-100" type="text"
+                               placeholder="Логин">
                         <span class="invalid-feedback" role="alert" id="error-login-phone"></span>
                     </div>
                     <div class="form-input-block">
-                        <input id="login_password" name="password" class="default-input modal-form-input"
-                               type="password" placeholder="{{ __('site.Password') }}">
+                        <input id="login_password" name="password" class="modal-form-input input-default w-100"
+                               type="password" placeholder="Пароль">
                         <span class="invalid-feedback" role="alert" id="error-login-password"></span>
                     </div>
 
-                    <button type="submit" class="default-btn button-login">
-                        {{__('site.Login')}}
-                    </button>
-                </form>
 
                 <div class="modal-desc-block">
-                    <p class="desc-info">{{ __('site.Forgot your password') }}</p>
-                    <a onclick="openResetPasswordLink(this)" class="desc-info-link">{{ __('site.Restore password') }}</a>
+                    <div class="checkbox">
+                        <input class="default-checkbox-input" type="checkbox" id="color-1" name="color-2" value="red">
+                        <label for="color-1">Запомнить на этом компьютере</label>
+                    </div>
+                    <a onclick="openResetPasswordLink(this)" class="desc-info-link">Забыли пароль?</a>
                 </div>
-
+                    <button class="btn-default-shadow medium-btn w-100">
+                        Войти
+                    </button>
+                </form>
                 <hr class="modal-hr">
-
-                <div class="white-btn btn-register" onclick="openRegisterLink(this)">
-                    {{__('site.Sign up')}}
+                <div class="modal-desc-block justify-content-center">
+                    <p class="desc-info"> Вы здесь впервые?</p>
+                    <a onclick="openResetPasswordLink(this)" class="desc-info-link">Зарегистрироваться
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>

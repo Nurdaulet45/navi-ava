@@ -337,6 +337,9 @@ function openResetPassword(e) {
 
 function openRegister(e) {
     $('.modal').modal('hide')
+
+    $('.prev-register').css('display', 'block')
+    $('.only-register').css('display', 'none')
     setTimeout(() => {
         $('#registerPopup').modal('show');
     }, 500)
@@ -362,7 +365,12 @@ function openResetPasswordLink(e) {
     closeModal(e)
     openResetPassword();
 }
+function nextRegisterForm(e) {
+    $('.prev-register').css('display', 'none')
+    $('.only-register').css('transition', '0.3s eye')
+    $('.only-register').css('display', 'block')
 
+}
 function openEditUser(e) {
     $('#container-edituser').addClass('show');
 }

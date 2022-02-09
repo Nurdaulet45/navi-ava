@@ -1,10 +1,8 @@
 
 .s-breadcrumb {
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 40px;
 
-    background-color: #1D1D1D;
-    margin-bottom: 50px;
 }
 /*.bg-breadcrumb {*/
 /*    background-image: url("/images/bg-breadcrumbs.png");*/
@@ -24,13 +22,8 @@
     padding-bottom: 20px;
     flex-wrap: wrap;
 }
-span.page-link-dot {
-    width: 5px;
-    height: 5px;
-    display: inline-block;
-    border-radius: 50%;
-    background: #FFFFFF;
-    margin: auto 10px;
+.icon-right {
+    margin: auto 8px;
 }
 .breadcrumbs-item {
     display: flex;
@@ -38,25 +31,22 @@ span.page-link-dot {
     white-space: nowrap;
 }
 .breadcrumbs-item a {
-    font-family: Gilroy-400;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 1.2;
-    color: #FFFFFF;
+    font-family: Helvetica-400;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #333333;
 }
 .breadcrumbs-item a.active,.breadcrumbs-item a:hover{
-    color: #6C6C6C !important;
+    color: #A5A7B0 !important;
 }
 .breadcrumbs-item a.active{
     cursor: unset;
 }
 .breadcrumb-title {
-    font-family: Kharkiv-400;
-    font-size: 36px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    color: #FFFFFF;
+    font-family: Exo2-700;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #333333;
     /*padding-top: 20px;*/
 }
 

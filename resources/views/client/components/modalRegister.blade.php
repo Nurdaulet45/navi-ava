@@ -1,80 +1,98 @@
-<div class="modal fade" id="registerPopup" tabindex="-1" role="dialog" aria-labelledby="registerPopup" aria-hidden="true">
+<div class="modal fade" id="registerPopup" tabindex="-1" role="dialog" aria-labelledby="registerPopup"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content inner-modal">
             <div class="modal-header">
-                <h2 class="modal-title">{{__('site.Sign up')}}</h2>
+                <h2 class="modal-title">Регистрация</h2>
                 <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
                     <svg class="icon close-icon">
-                        <use xlink:href="{{asset('images/close-icon.svg#close-icon')}}"></use>
+                        <use xlink:href="{{asset('images/icon-close.svg#close-icon')}}"></use>
                     </svg>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('register.ajax') }}" method="post" id="registerForm" class="modal-form">
-                    @csrf
-                    <div class="form-input-block">
-                        <input name="register_full_name"
-                               id="register_full_name"
-                               class="default-input modal-form-input"
-                               type="text" placeholder="{{ __('site.Your name') }}">
+                <div class="prev-register">
 
-                        <span class="invalid-feedback" role="alert" id="error-register-full_name"></span>
-                    </div>
-
-                    <div class="form-input-block">
-                        <input name="register_phone"
-                               id="register_phone"
-                               class="default-input modal-form-input" type="text"
-                               placeholder="+7 (___) - ___ - __ - __">
-                        <span class="invalid-feedback" role="alert" id="error-register-phone"></span>
-                    </div>
-
-                    <div class="form-input-block">
-                        <input name="email"
-                               id="register_email"
-                               class="default-input modal-form-input" type="email" placeholder="Email">
-                        <span class="invalid-feedback" role="alert" id="error-register-email"></span>
-                    </div>
-
-                    <div class="form-input-block">
-                        <input name="password" class="default-input modal-form-input"
-                               id="register_password"
-                               type="password" placeholder="{{ __('site.Password') }}">
-                        <span class="invalid-feedback" role="alert" id="error-register-password"></span>
-                    </div>
-
-                    <div class="form-input-block">
-                        <input name="password_confirmation" class="default-input modal-form-input"
-                               id="register_password_confirm"
-                               type="password" placeholder="{{ __('site.Repeat the password') }}">
-                        <span class="invalid-feedback" role="alert" id="error-register-password_confirmation"></span>
-                    </div>
-
-                    <button type="submit" id="register-button" class="default-btn btn-register">
-                        {{__('site.Sign up')}}
-                    </button>
-                </form>
-
-                {{--        <div class="modal-desc-block">--}}
-                {{--            <input type="checkbox" class="" id="register-confirm-policy" name="happy" value="yes">--}}
-                {{--            <div class="desc-checked">Публичная офертаны қабылдаймын</div>--}}
-                {{--        </div>--}}
-                <div class="default-form-confirm modal-desc-block">
-                    <div class="d-flex align-items-center mb-10">
-                        <input type="checkbox" name="confirm_policy" onchange="enableDisableRegisterButton()"
-                               id="register_confirm_policy" checked="checked">
-                        <a class="confirm-policy-text" onclick="javascript:void(0)">
-                            {{ __('site.I accept a public offer') }}
+                    <div class="nav nav-tabs register-tabs">
+                        <a class="nav-link register-tab active" id="nav-mentor-tab" data-toggle="tab"
+                           href="#nav-mentor" role="tab"
+                           aria-controls="nav-mentor" aria-selected="true">
+                            Наставник
                         </a>
-
+                        <a class="nav-link register-tab" id="nav-child-tab" data-toggle="tab"
+                           href="#nav-child" role="tab"
+                           aria-controls="nav-child" aria-selected="false">
+                            Ученик
+                        </a>
+                        <a class="nav-link register-tab" id="nav-consult-tab" data-toggle="tab"
+                           href="#nav-consult" role="tab"
+                           aria-controls="nav-consult" aria-selected="false">
+                            Консультант
+                        </a>
+{{--                        <div class="register-tab active">--}}
+{{--                            Наставник--}}
+{{--                        </div>--}}
+{{--                        <div class="register-tab">--}}
+{{--                            Ученик--}}
+{{--                        </div>--}}
+{{--                        <div class="register-tab">--}}
+{{--                            Консультант--}}
+{{--                        </div>--}}
                     </div>
-                    <span class="invalid-feedback" role="alert" id="error-register-confirm_policy"></span>
+                    <form id="prevRegisterForm" class="modal-form" action=" route('login.ajax') }}">
+                        @csrf
+                        <div class="form-input-block">
+                            <input id="register_email" name="email"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Email">
+                            <span class="invalid-feedback" role="alert" id="error-login-phone"></span>
+                        </div>
+
+                        <button type="button" class="btn-default-shadow medium-btn w-100" onclick="nextRegisterForm()">
+                            Далее
+                        </button>
+                    </form>
+                </div>
+                <div class="only-register">
+                    <form id="registerForm" class="modal-form" action=" route('login.ajax') }}">
+                        @csrf
+                        <div class="form-input-block">
+                            <input id="login_phone" name="phone"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Логин">
+                            <span class="invalid-feedback" role="alert" id="error-login-phone"></span>
+                        </div>
+                        <div class="form-input-block">
+                            <input id="login_phone" name="phone"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Пароль">
+                            <span class="invalid-feedback" role="alert" id="error-login-phone"></span>
+                        </div>
+                        <button type="submit" class="btn-default-shadow medium-btn w-100 btn-register">
+                            Зарегистрироваться
+                        </button>
+                        <div class="modal-desc-block register-checkbox">
+                            <div class="checkbox">
+                                <input class="default-checkbox-input" type="checkbox" id="color-1" name="color-2" value="red">
+                                <label for="color-1">Нажимая на кнопку «Зарегистрироваться», я соглашаюсь с Правилами сайта и Пользовательской рассылкой</label>
+                            </div>
+                        </div>
+                        <div class="modal-desc-block register-checkbox">
+                            <div class="checkbox">
+                                <input class="default-checkbox-input" type="checkbox" id="color-1" name="color-2" value="red">
+                                <label for="color-1">Нажимая на кнопку «Зарегистрироваться»,я соглашаюсь c Пользовательским соглашением и Политикой конфиденциальности</label>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
                 <hr class="modal-hr">
-
-                <div class="white-btn btn-register" onclick="openLoginLink(this)">
-                    {{ __('site.Login') }}
+                <div class="modal-desc-block justify-content-start">
+                    <p class="desc-info">Уже есть аккаунт?</p>
+                    <a onclick="openLoginLink()" class="desc-info-link">Войти
+                    </a>
                 </div>
+
             </div>
 
         </div>

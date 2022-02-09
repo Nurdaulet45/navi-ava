@@ -49,14 +49,14 @@
             <div class="footer-block block-level">
                 <div class="menu-items">
                     <div class="title">Navi-Ava</div>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('catalog') }}">
                         Наставники
                     </a>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('catalog') }}">
                         Ученики-менти
                     </a>
 
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('catalog') }}">
                         Консультанты
                     </a>
                 </div>
@@ -67,10 +67,10 @@
             <div class="footer-block block-about">
                 <div class="menu-items">
                     <div class="title">О сервисе</div>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('aboutService') }}">
                         О проекте
                     </a>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('contacts') }}">
                         Контакты
                     </a>
                     <a class="menu-item">
@@ -87,11 +87,17 @@
                     <a class="menu-item">
                         Помощь
                     </a>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('support') }}">
                         Служба поддержки
                     </a>
-                    <a class="menu-item">
+                    <a class="menu-item" href="{{ route('serviceRules') }}">
                         Правила сервиса
+                    </a>
+                    <a class="menu-item" href="{{ route('termsUse') }}">
+                        Пользовательское соглашение
+                    </a>
+                    <a class="menu-item" href="{{ route('privacyPolicy') }}">
+                        Политика конфиденциальности
                     </a>
                 </div>
             </div>

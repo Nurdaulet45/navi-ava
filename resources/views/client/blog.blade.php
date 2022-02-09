@@ -1,18 +1,21 @@
 @extends('layouts/app')
 @section('content')
     <section class="s-blog-page">
+        @component('client.components.breadcrumb')
+            @slot('title') Блог @endslot
+            @slot('parent')@endslot
+            @slot('blog')@endslot
+            @slot('active') Блог @endslot
+        @endcomponent
         <div class="container">
-            <div class="title">
-                Каталог консультантов
-            </div>
-            <div class="blog-category-items">
-                <div class="blog-category-item">
+            <div class="category-tabs">
+                <div class="category-tab-item">
                     Все
                 </div>
-                <div class="blog-category-item">
+                <div class="category-tab-item">
                     Новости
                 </div>
-                <div class="blog-category-item active">
+                <div class="category-tab-item active">
                     Стати
                 </div>
             </div>
