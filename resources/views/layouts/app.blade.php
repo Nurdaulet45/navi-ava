@@ -50,12 +50,6 @@
     </div>
     <div class="flex-fill">
         @include('client.components.header')
-        <button class="btn btn-primary" onclick="openLoginLink()">
-            Login
-        </button>
-        <button class="btn btn-primary" onclick="openRegisterLink()">
-            Register
-        </button>
         @yield('content')
         @include('client.components.modalLogin')
         @include('client.components.modalResetPassword')
