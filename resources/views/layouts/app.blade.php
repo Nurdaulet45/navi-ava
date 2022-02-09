@@ -63,7 +63,7 @@
     <script src="{{asset('js/script.js')}}"></script>
 
     <script>
-        Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p, {}));
+        // Array.from(document.querySelectorAll('.plyr__video-embed')).map(p => new Plyr(p, {}));
         @if(session('success'))
         alertModal("{{session('success')}}")
         @endif
