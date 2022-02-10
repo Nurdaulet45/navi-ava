@@ -437,6 +437,9 @@ footer.footer {
                     color: #E5E6E9;
                     cursor: pointer;
                     margin-bottom: 12px;
+                    &:hover {
+                        color: #1DC0BD;
+                    }
                 }
 
                 .menu-item:last-child {
