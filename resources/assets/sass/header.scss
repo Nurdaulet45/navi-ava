@@ -223,7 +223,9 @@ header.header {
 
 .dropdown-cities {
     display: block;
-
+    .dropdown-cities-content {
+        min-width: 230px;
+    }
     &:hover .dropdown-cities-content {
         display: block;
     }
@@ -348,6 +350,9 @@ header.header {
         }
         .menu-item {
             margin-right: 44px;
+            &:hover {
+                color: #1DC0BD;
+            }
         }
         .menu-item:last-child {
             margin-right: unset;

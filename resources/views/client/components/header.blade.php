@@ -18,7 +18,7 @@
                     </span>
                     <div class="dropdown-content dropdown-cities-content">
                         <a href="#"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             Алматы
                         </a>
                         <a href="#"
@@ -86,7 +86,7 @@
                     </span>
                     <div class="dropdown-content dropdown-notification-content">
                         <a href="#"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             Скида до 20%
                         </a>
                         <div class="line"></div>
@@ -121,7 +121,7 @@
                     </span>
                     <div class="dropdown-content dropdown-user-content">
                         <a href="{{ route('cabinet') }}"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -131,7 +131,7 @@
                             Личные данные
                         </a>
                         <a href="{{ route('cabinet.specialization') }}"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -141,7 +141,7 @@
                             Специализация
                         </a>
                         <a href="{{ route('cabinet.certifications') }}"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -151,7 +151,7 @@
                             Сертификаты, курсы
                         </a>
                         <a href="{{ route('cabinet.reviews') }}"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -161,7 +161,7 @@
                             Отзывы
                         </a>
                         <a href="{{ route('cabinet.favorites') }}"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -171,7 +171,7 @@
                             Избранное
                         </a>
                         <a href="#"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
 
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +182,9 @@
                             Чат
                         </a>
                         <a href="{{ route('cabinet.changeMail') }}"
-                           class="dropdown-item-custom active">
+                           class="dropdown-item-custom ">
+{{--                        <a href="{{ route('cabinet.changeMail') }}"--}}
+{{--                           class="dropdown-item-custom active">--}}
 
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -194,7 +196,7 @@
                             Настройки
                         </a>
                         <a href="#"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'ru' ?  'active' : '' }}">
+                           class="dropdown-item-custom">
 
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +281,9 @@
                         </span>
                         <div class="dropdown-content dropdown-help-content">
                             <a href="{{ route('support') }}"
-                               class="dropdown-item-not-icon active ">
+                               class="dropdown-item-not-icon">
+{{--                            <a href="{{ route('support') }}"--}}
+{{--                               class="dropdown-item-not-icon active ">--}}
                                 Служба поддержки
                             </a>
                             <div class="line"></div>

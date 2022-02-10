@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,3 +88,18 @@ Route::get('/terms-use', function() {
 Route::get('/service-rules', function() {
     return view('client.service-rules');
 })->name('serviceRules');
+
+Route::prefix('ajax')->group(function () {
+    Route::post('login', [AuthController::class, 'loginAjax'])->name('login.ajax');
+    Route::post('reset-password-email', [AuthController::class, 'resetPasswordSendEmail'])->name('reset_password.ajax');
+    Route::post('register', [AuthController::class, 'registerAjax'])->name('register.ajax');
+});
+Route::prefix('password')->group(function () {
+    Route::get('reset/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
+    Route::post('reset', [AuthController::class, 'resetPasswordUpdate'])->name('password.update');
+});
+Route::get('lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('download-file', [DownloadController::class, 'downloadFile'])->name('downloadFile');

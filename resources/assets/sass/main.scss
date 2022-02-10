@@ -352,6 +352,7 @@ section .head {
             position: relative;
             width: 24%;
             margin-right: 20px;
+            cursor: pointer;
 
             img {
                 width: 100%;
@@ -371,6 +372,12 @@ section .head {
                 margin-right: auto;
                 left: 0;
                 right: 0;
+            }
+            &:hover {
+                margin-top: -10px;
+                box-sizing: border-box;
+                scroll-behavior: smooth;
+                transition: all 0.3s ease 0s;
             }
         }
 
