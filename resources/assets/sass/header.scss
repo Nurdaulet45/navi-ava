@@ -402,7 +402,14 @@ footer.footer {
                     justify-content: center;
                     cursor: pointer;
                     margin-right: 10px;
+                    transition: transform 0.1s ease-out;
+                    &:hover,
+                    &:focus {
+                        transform: scale(1.02);
+                    }
+
                 }
+
                 .social-item:last-child {
                     margin-right: unset;
 
@@ -466,6 +473,7 @@ footer.footer {
                 line-height: 1.5;
                 color: #FFFFFF;
                 margin-bottom: 4px;
+                white-space: nowrap;
             }
             .phone {
                 margin-top: 32px;
