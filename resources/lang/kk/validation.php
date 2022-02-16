@@ -254,6 +254,7 @@ return [
         'email' => 'E-Mail адрес',
         'first_name' => 'Аты',
         'last_name' => 'Фамилия',
+        'new_password' => 'Жаңа құпия сөз',
         'password' => 'Құпия сөз',
         'password_confirmation' => 'Құпия сөзді растау',
         'new_password_confirmation' => 'Жаңа құпия сөзді растау',
@@ -296,5 +297,9 @@ return [
         'file_3' => '3-ші материал',
         'Not Found' => 'Бет табылмады',
 //        'current_answer_number' => 'Дұрыс жауап',
+        'old_password' => 'Текущий пароль',
+        'certifications.*.name' => 'Название',
+        'certifications.*.description' => 'Описание',
+        'certifications.*.image' => 'Фото',
     ],
 ];

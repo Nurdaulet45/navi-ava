@@ -7,7 +7,7 @@
 * {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: Gilroy-400;
+    font-family: Helvetic-400;
     color: #65676E;
     /*transition: all 0.3s ease 0s;*/
 }
@@ -261,6 +261,7 @@ a:hover {
     color: #65676E !important;
     position: relative;
     padding-left: 36px;
+    cursor: pointer;
 }
 
 .input-default, .select-default {
@@ -515,7 +516,7 @@ a:hover {
 /*}*/
 .help-block {
     color: red;
-    font-family: Gilroy-400;
+    font-family: Helvetic-400;
     font-size: 18px;
     line-height: 1.2;
     margin-top: 10px;
@@ -560,6 +561,8 @@ a:hover {
     justify-content: center;
     color: #FFFFFF;
     border-radius: 5px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .btn-default svg path {
@@ -567,6 +570,7 @@ a:hover {
 }
 
 .btn-default:hover {
+    color: #FFFFFF;
     box-shadow: 0px 20px 24px rgba(27, 197, 194, 0.3);
 }
 
@@ -634,7 +638,22 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
+.btn-blue-white {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D6FFFE;
+    border-radius: 6px;
+    font-family: Helvetica-400;
+    font-size: 15px;
+    line-height: 17px;
+    color: #1DC0BD;
+}
 
+.btn-blue-white:hover, .btn-blue-white:focus {
+    color: #FFFFFF;
+    background: #05BCB9;
+}
 .btn-white-blue:hover, .btn-white-blue:focus {
     color: #FFFFFF;
     background: #325EFB;
@@ -1097,9 +1116,19 @@ section .title {
 .bg-white {
     background-color: #FFFFFF !important;
 }
-
+.cl-white {
+    color: #FFFFFF !important;
+}
 .btn-text-normal {
     font-family: Helvetica-400;
     font-size: 16px;
     line-height: 1.5;
+}
+.swal2-warning .swal2-icon-content {
+    color: #f8bb86 !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

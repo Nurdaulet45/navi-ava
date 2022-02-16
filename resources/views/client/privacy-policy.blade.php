@@ -14,7 +14,6 @@
                 <div class="about-service-body">
                     <div class="about-service-title">
                         Политика конфиденциальности сервиса NAVI-AVA
-
                     </div>
                     <div class="about-service-description">
                         Мы, ТОО”NAVI-AVA”, зарегистрированная г.Алматы, мкр.Нур Алатау, ул. Мамыр 2а, БИН 210700023631

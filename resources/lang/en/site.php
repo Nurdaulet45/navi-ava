@@ -34,6 +34,7 @@ return [
     'Restore password' => 'Restore password',
     'Reset password' => 'Password recovery',
     'Go to the link below to reset your password' => 'Go to the link below to reset your password',
+    'Follow the link below to verify your email' => 'Follow the link below to verify your email',
     'Sign up' => 'Sign up',
     'Login to your account' => 'Login to your account',
     'Share your feedback' => 'Share your feedback',
@@ -134,4 +135,18 @@ return [
     'My Certificates' => 'My Certificates',
     'Certificate not found' => 'Certificate not found',
     'Questions not added' => 'Questions not added',
+
+
+
+
+
+
+
+
+    'Not filled' => 'Not filled',
+    'years old' => 'years old',
+    'Confirm email' => 'Confirm email',
+    'Check your email' => 'Check your email',
+    'Failed to send messages to the mail' => 'Failed to send messages to the mail',
+
 ];

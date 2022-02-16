@@ -218,7 +218,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -267,7 +267,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -316,7 +316,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -365,7 +365,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Frederico

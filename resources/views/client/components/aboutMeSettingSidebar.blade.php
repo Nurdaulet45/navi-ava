@@ -1,6 +1,6 @@
 <div class="about-me-setting-sidebar">
     <div class="sidebar-menu-items">
-        <div class="sidebar-menu-item active">
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.changeMail')) active @endif">
             <a href="{{ route('cabinet.changeMail') }}"
                class="link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="line"></div>
-        <div class="sidebar-menu-item">
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.changePassword')) active @endif">
 
             <a href="{{ route('cabinet.changePassword') }}"
                class="link">
@@ -27,7 +27,7 @@
             </a>
         </div>
         <div class="line"></div>
-        <div class="sidebar-menu-item">
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.settingNotification')) active @endif">
             <a href="{{ route('cabinet.settingNotification') }}"
                class="link">
 

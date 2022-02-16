@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth')->group(function () {
+    Route::get('cabinet/reviews', [UserController::class, 'getReviews']);
+    Route::get('cabinet/reviewed-reviews', [UserController::class, 'getReviewedReviews']);
+    Route::get('cabinet/about-me-reviews', [UserController::class, 'getAboutMeReviews']);
+    Route::get('cabinet/certifications', [UserController::class, 'getCertifications']);
+    Route::post('cabinet/certifications', [UserController::class, 'saveCertifications']);
+    Route::delete('cabinet/certifications/{id}', [UserController::class, 'deleteCertifications']);
+    Route::post('cabinet/reviews/reply', [UserController::class, 'saveReply']);
 });

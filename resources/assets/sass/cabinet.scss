@@ -227,6 +227,7 @@
         }
     }
 
+
 }
 
 .cabinet-sidebar {
@@ -360,7 +361,66 @@
         .favorites-mentors .btn-load-more {
             margin-top: 40px;
         }
+        .btn-add-certification {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            font-family: Helvetica-400;
+            svg {
+                margin-left: 14px;
+            }
+        }
+
+        .certification-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .mb-title {
+                font-family: Helvetica-400;
+                font-size: 18px;
+                line-height: 1.2;
+                color: #A5A7B0;
+                margin-bottom: 10px;
+            }
+            .certification-item {
+
+                background: #F5F5F5;
+                border-radius: 6px;
+                padding: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 30px;
+                .left {
+                    .name {
+                        font-family: Helvetica-400;
+                        font-size: 24px;
+                        line-height: 1.2;
+                        color: #333333;
+                        margin-bottom: 7px;
+                    }
+                    .description {
+                        font-family: Helvetica-400;
+                        font-size: 12px;
+                        line-height: 1.5;
+                        color: #65676E;
+                    }
+
+                }
+                .right {
+                    display: flex;
+                    flex-direction: column;
+                    gap:12px;
+                    a, button {
+                        height: 40px;
+                        font-size: 15px;
+                        line-height: 1.2;
+                    }
+                }
+            }
+        }
     }
+
 
     .about-me-form {
         padding: 40px 85px 80px 40px;
@@ -423,6 +483,11 @@
         .btn-default, button {
             font-family: Helvetica-400;
             font-size: 17px;
+            //color: #FFFFFF ;
+            cursor: pointer;
+        }
+        .service-price {
+            transition:all 0.3s ease 0s;
         }
 
         .form-group {
@@ -472,7 +537,7 @@
                     font-size: 18px;
                     line-height: 1.2;
                     letter-spacing: 0.02em;
-                    color: #E40904;
+                    color: #E40904 !important;
                     display: flex;
                     align-items: center;
 
@@ -483,16 +548,17 @@
                 margin-top: 40px;
             }
 
-            .warning-text, .warning-text span {
+            .warning-text, .warning-text a {
                 font-family: Helvetica-400;
                 font-size: 18px;
                 line-height: 1.2;
                 letter-spacing: 0.02em;
                 color: #333333;
+                cursor: pointer;
 
             }
 
-            .warning-text span {
+            .warning-text a {
                 color: #E40904;
             }
 
@@ -509,25 +575,7 @@
                 flex-direction: column;
             }
 
-            .btn-upload-file {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 36px;
-                width: 280px;
-                white-space: nowrap;
 
-
-                font-family: Helvetica-400;
-                font-size: 24px;
-                line-height: 1.5;
-                color: #1DC0BD;
-            }
-
-            .line {
-                margin-top: 40px;
-                margin-bottom: 30px;
-            }
 
 
             .switch-default-input {
@@ -596,6 +644,36 @@
                     margin-left: 60px;
                 }
             }
+        }
+        .btn-upload-file {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 280px;
+            white-space: nowrap;
+
+
+            font-family: Helvetica-400;
+            font-size: 24px;
+            line-height: 1.5;
+            color: #1DC0BD;
+            margin-bottom: 50px;
+            &:hover,&:focus {
+                background-color: #05BCB9;
+                color: #FFFFFF;
+                border-radius: 6px;
+                padding: 10px;
+
+                svg path {
+                    fill: #FFFFFF;
+                }
+            }
+        }
+
+        .line {
+            margin-top: 40px;
+            margin-bottom: 30px;
         }
         .change-email-notification {
             .text {
@@ -699,7 +777,12 @@
             margin-top: 45px;
         }
     }
-
+    .about-me-form-certifications {
+        margin-right: unset;
+    }
+    .about-right-certifications {
+        margin-left: 20px;
+    }
     .cabinet-sidebar {
         margin-top: 30px;
     }
@@ -730,23 +813,92 @@
             line-height: 1.5;
         }
     }
+}
+.alert-verify-email {
+    padding-top: 16px;
+    padding-bottom: 16px;
 
 
+    &__block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        .text {
+            font-family: Helvetica-400;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0px 12px;
+            a {
+                margin-left: 15px;
+                text-decoration-line: underline;
+                color: #1DC0BD;
+                white-space: nowrap;
+                cursor: pointer;
+                &:hover {
+                    color: #1DC0BD;
+                }
+            }
+        }
+    }
+    .btn-default {
+        font-family: Helvetica-400;
+        font-size: 18px;
+        line-height: 150%;
+    }
 
+}
 
+.alert-verify-email__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 40px;
+    .verify-email-success {
+        width: 167px;
+        height: 167px;
+    }
+    .title {
+        font-family: Helvetica-400;
+        font-size: 24px;
+        line-height: 130%;
+        text-align: center;
+        color: #333333;
+        margin-bottom: 20px;
+        width: 50%;
+    }
+    .btn-default {
+        font-family: Helvetica-400;
+        font-size: 18px;
+        line-height: 150%;
+    }
 }
 .warning-verify-email {
     background: #FFEFD6;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    .text {
-        font-family: Helvetica-400;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #FF5500;
-        margin: 0px 12px;
-        a {
 
+    .alert-verify-email__block {
+        .text {
+            color: #FF5500;
+        }
+    }
+}
+
+.success-verify-email {
+    background: #DDFDF2;
+
+    .alert-verify-email__block {
+        justify-content: center;
+        .text {
+            color: #0CBD82;
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 10px;
+                path {
+                    fill: #0CBD82
+                }
+            }
         }
     }
 }

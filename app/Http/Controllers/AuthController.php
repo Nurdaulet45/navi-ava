@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\CheckEmailRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
@@ -10,6 +11,7 @@ use App\Mail\ResetPassword;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -24,19 +26,35 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
         Auth::login($user);
-        return response()->json(['success' => true]);
+
+
+        return response()->json(['data' => [
+            'success' => true
+        ]]);
     }
 
     public function loginAjax(LoginRequest $request)
     {
-
-        if (Auth::attempt($request->only(['login', 'password']))) {
-            Auth::logoutOtherDevices($request->password);
-            return response()->json(['success' => true]);
+        if (Auth::attempt($request->only(['login', 'password']), $request->remember == true)) {
+            return response()->json(['data' => [
+                    'success' => true
+            ]]);
         }
         throw ValidationException::withMessages([
             'password' => [__('site.Login or password is incorrect')]
         ]);
+    }
+
+    public function checkEmailAjax(CheckEmailRequest $request)
+    {
+        if (User::emailBy($request->email)->exists()) {
+            throw ValidationException::withMessages([
+                'email' => ['Пользователь с таким email уже существует.']
+            ]);
+        }
+        return response()->json(['data' => [
+            'success' => true
+        ]]);
     }
 
     public function resetPassword($token)
@@ -47,7 +65,7 @@ class AuthController extends Controller
     public function resetPasswordUpdate(ResetPasswordUpdateRequest $request)
     {
         $token = $request->token;
-        $user = User::where('uuid', $token)->whereNotNull('uuid')->orWhere('uuid' , '<>', '')->first();
+        $user = User::where('uuid', $token)->whereNotNull('uuid')->orWhere('uuid', '<>', '')->first();
         if ($user) {
             $user->password = Hash::make($request->password);
             $user->uuid = null;
@@ -62,7 +80,7 @@ class AuthController extends Controller
     {
         $email = $request->email;
 
-        $user = User::where('email', $email)->firstOr(function () {
+        $user = User::emailBy($email)->firstOr(function () {
             throw ValidationException::withMessages([
                 'email' => [__('site.Email not found')]
             ]);
@@ -70,12 +88,33 @@ class AuthController extends Controller
 
         $user->uuid = Str::uuid();
         $user->save();
+        try {
+            Mail::to($user->email)->send(new ResetPassword($user->uuid));
 
-        Mail::to($user->email)->send(new ResetPassword($user->uuid));
+        } catch (\Exception $exception) {
+            throw ValidationException::withMessages([
+                'email' => [__('Не удалось отправить сообщения на почту')]
+            ]);
+        }
+
 
         return response()->json(['data' => [
-            'status' => true,
+            'success' => true,
         ]]);
+    }
+
+//    public function verifyEmail($token)
+    public function verifyEmail($token)
+    {
+        $user = User::where('email_verify_uuid', $token)->whereNotNull('email_verify_uuid')->orWhere('email_verify_uuid', '<>', '')->first();
+        if ($user) {
+            Auth::login($user);
+            $user->is_email_confirmed = true;
+            $user->email_verify_uuid = null;
+            $user->save();
+            return view('client.auth.verified-email');
+        }
+        return redirect()->route('index')->withErrors(['invalid_link' => __('site.The link is invalid')]);
     }
 
     public function logout()

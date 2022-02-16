@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,45 +27,36 @@ Route::get('/blog-post', function() {
     return view('client.blog-post');
 })->name('blog-post');
 
-Route::prefix('cabinet')->name('cabinet')->group(function () {
-    Route::get('/about-me', function() {
-        return view('client.cabinet.about-me');
-    })->name('.about-me');
+Route::get('/login', fn() => redirect()->route('index'))->name('login');
+Route::get('/register', fn() => redirect()->route('index'))->name('register');
 
-    Route::get('/specialization', function() {
-        return view('client.cabinet.specialization');
-    })->name('.specialization');
+Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(function () {
+    Route::get('/about-me', [UserController::class, 'aboutMe'])->name('.aboutMe');
+    Route::post('/about-me', [UserController::class, 'saveAboutMe'])->name('.saveAboutMe');
+    Route::get('/about-me/delete-prof-header-image', [UserController::class, 'deleteProfileHeaderImage'])->name('.deleteProfileHeaderImage');
+    Route::get('/about-me/delete-profile', [UserController::class, 'deleteProfile'])->name('.deleteProfile');
+    Route::post('/send-email-verify', [UserController::class, 'sendVerifyEmail'])->name('.sendVerifyEmail.ajax');
 
-    Route::get('/mentoring', function() {
-        return view('client.cabinet.mentoring');
-    })->name('.mentoring');
+    Route::get('/specialization', [UserController::class, 'specialization'])->name('.specialization');
+    Route::post('/specialization', [UserController::class, 'saveSpecialization'])->name('.saveSpecialization');
 
-    Route::get('/reviews', function() {
-        return view('client.cabinet.reviews');
-    })->name('.reviews');
 
-    Route::get('/favorites', function() {
-        return view('client.cabinet.favorites');
-    })->name('.favorites');
+    Route::get('/mentoring', [UserController::class, 'mentoring'])->name('.mentoring');
+    Route::post('/mentoring', [UserController::class, 'saveMentoring'])->name('.saveMentoring');
+    Route::get('/reviews', [UserController::class, 'reviews'])->name('.reviews');
+    Route::get('/favorites', [UserController::class, 'favorites'])->name('.favorites');
+    Route::get('/certifications', [UserController::class, 'certifications'])->name('.certifications');
+    Route::post('/certifications', [UserController::class, 'saveCertifications'])->name('.saveCertifications');
 
-    Route::get('/certifications', function() {
-        return view('client.cabinet.certifications');
-    })->name('.certifications');
 
-    Route::get('/change-mail', function() {
-        return view('client.cabinet.change-mail');
-    })->name('.changeMail');
-    Route::get('/change-password', function() {
-        return view('client.cabinet.change-password');
-    })->name('.changePassword');
+    Route::get('/change-mail', [UserController::class, 'changeMail'])->name('.changeMail');
+    Route::post('/change-mail', [UserController::class, 'saveChangeMail'])->name('.saveChangeMail');
+    Route::get('/change-password', [UserController::class, 'changePassword'])->name('.changePassword');
+    Route::post('/change-password', [UserController::class, 'saveChangePassword'])->name('.saveChangePassword');
+    Route::get('/setting-notification', [UserController::class, 'settingNotification'])->name('.settingNotification');
+    Route::post('/setting-notification', [UserController::class, 'saveSettingNotification'])->name('.saveSettingNotification');
 
-    Route::get('/setting-notification', function() {
-        return view('client.cabinet.setting-notification');
-    })->name('.settingNotification');
-
-    Route::get('/', function() {
-        return view('client.cabinet.index');
-    });
+    Route::get('/', [UserController::class, 'cabinet']);
 });
 
 
@@ -91,6 +84,7 @@ Route::get('/service-rules', function() {
 
 Route::prefix('ajax')->group(function () {
     Route::post('login', [AuthController::class, 'loginAjax'])->name('login.ajax');
+    Route::post('check-email', [AuthController::class, 'checkEmailAjax'])->name('check_email.ajax');
     Route::post('reset-password-email', [AuthController::class, 'resetPasswordSendEmail'])->name('reset_password.ajax');
     Route::post('register', [AuthController::class, 'registerAjax'])->name('register.ajax');
 });
@@ -98,6 +92,8 @@ Route::prefix('password')->group(function () {
     Route::get('reset/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
     Route::post('reset', [AuthController::class, 'resetPasswordUpdate'])->name('password.update');
 });
+Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
+
 Route::get('lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');

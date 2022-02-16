@@ -59,14 +59,14 @@
                                 <p class="name">
                                     Артём М,<span> Artyom-S</span>
                                 </p>
-                                <p class="position">
+                                <p class="work">
                                     Рекрутер
                                 </p>
                                 <p class="geo">
                                     Москва, Россия / GMT+03
                                 </p>
                             </div>
-                            <div class="status-price">
+                            <div class="status-price-block">
 
                                 <div class="status">
                                     Свободен
@@ -218,7 +218,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -267,7 +267,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -316,7 +316,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Оля К
@@ -365,7 +365,7 @@
                                 <div class="review-item">
                                     <div class="head">
                                         <div class="info">
-                                            <img src="{{ asset('images/user-review.png') }}" width="61" height="61" alt="user-review">
+                                            <img src="{{ asset('images/user-review-female.png') }}" width="61" height="61" alt="user-review">
                                             <div class="user">
                                                 <div class="name">
                                                     Frederico

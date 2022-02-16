@@ -162,6 +162,11 @@ return [
         'answer_3' => 'Answer C',
         'answer_4' => 'Answer D',
         'answer_5' => 'Answer Е',
+        'old_password' => 'Текущий пароль',
+        'new_password' => 'new password',
+        'certifications.*.name' => 'Название',
+        'certifications.*.description' => 'Описание',
+        'certifications.*.image' => 'Фото',
     ],
 
 ];

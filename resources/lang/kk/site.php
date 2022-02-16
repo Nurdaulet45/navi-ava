@@ -34,6 +34,7 @@ return [
     'Restore password' => 'Қалпына келтіру',
     'Reset password' => 'Құпия сөзді қалпына келтіру',
     'Go to the link below to reset your password' => 'Құпия сөзді қалпына келтіру үшін төмендегі сілтемеге өтіңіз',
+    'Follow the link below to verify your email' => 'Электрондық поштаңызды растау үшін төмендегі сілтемеге өтіңіз',
     'Sign up' => 'Тіркелу',
     'Login to your account' => 'Өз аккаунтыма кіру',
     'Share your feedback' => 'Өз пікіріңізді қалдырыңыз',
@@ -138,6 +139,17 @@ return [
     'Certificate not found' => 'Сертификат табылмады',
     'Questions not added' => 'Сұрақтар қосылмаған',
 
+
+
+
+
+
+
+    'Not filled' => 'Толтырылмаған',
+    'years old' => 'жаста',
+    'Confirm email' => 'Поштаны растау',
+    'Check your email' => 'Электрондық поштаңызды тексеріңіз',
+    'Failed to send messages to the mail' => 'Хатты поштаға жіберу мүмкін емес',
 
 
 

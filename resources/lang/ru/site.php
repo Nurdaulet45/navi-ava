@@ -36,6 +36,7 @@ return [
     'Sign up' => 'Зарегистрироваться',
     'Reset password' => 'Восстановление пароля',
     'Go to the link below to reset your password' => 'Перейдите по ссылке ниже, чтобы сбросить пароль',
+    'Follow the link below to verify your email' => 'Перейдите по ссылке ниже, чтобы подтвердить свой адрес электронной почты',
     'Login to your account' => 'Войти в свой аккаунт',
     'Share your feedback' => 'Делитесь своим отзывом',
     'My photo' => 'Мое фото',
@@ -143,10 +144,11 @@ return [
 
 
 
-
-
-
-
+    'Not filled' => 'Не заполнено',
+    'years old' => 'лет',
+    'Confirm email' => 'Подтвердить почту',
+    'Check your email' => 'Проверьте свою электронную почту',
+    'Failed to send messages to the mail' => 'Не удалось отправить сообщения на почту',
 
 
 

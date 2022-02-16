@@ -262,6 +262,7 @@ return [
         'first_name' => 'Имя',
         'last_name' => 'Фамилия',
         'password' => 'Пароль',
+        'new_password' => 'Новый пароль',
         'password_confirmation' => 'Подтверждение пароля',
         'new_password_confirmation' => 'Подтверждение нового пароля',
         'country' => 'Страна',
@@ -300,5 +301,9 @@ return [
         'file_1' => 'Материал 1',
         'file_2' => 'Материал 2',
         'file_3' => 'Материал 3',
+        'old_password' => 'Текущий пароль',
+        'certifications.*.name' => 'Название',
+        'certifications.*.description' => 'Описание',
+        'certifications.*.image' => 'Фото',
     ],
 ];

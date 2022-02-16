@@ -11,13 +11,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="resetPasswordForm" class="modal-form" action="route('reset_password.ajax') }}">
+                <form id="resetPasswordForm" class="modal-form" action="{{ route('reset_password.ajax') }}">
                     @csrf
 
                     <div class="form-input-block">
-                        <input id="reset_password_email" name="email"
+                        <input id="reset_password-email" name="email"
                                class="modal-form-input input-default w-100" type="email"
-                               placeholder="example@example.com">
+                               placeholder="example@example.com" required>
                         <span class="invalid-feedback" role="alert" id="error-reset_password-email"></span>
                     </div>
 

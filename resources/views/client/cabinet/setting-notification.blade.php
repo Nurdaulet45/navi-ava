@@ -12,33 +12,40 @@
                 <div class="about-me-form">
                     <div class="form-group change-email-notification">
                         <label for="">Почтовые уведомления</label>
-                        <div class="text">Все уведомления будут направляться по адресу anasnasya@mail.ru
-                            <a href="">Сменить адрес</a></div>
+                        <div class="text">Все уведомления будут направляться по адресу {{ auth()->user()->email }}
+                            <a href="{{ route('cabinet.changeMail') }}">Сменить адрес</a></div>
 
                     </div>
-                    <div class="form-group">
-                        <label for="">Звонки и уведомления</label>
-                        <div class="input-items">
-                            <div class="checkbox">
-                                <input class="default-checkbox-input" type="checkbox" id="color-1" name="color-2" value="red">
-                                <label for="color-1">Электронная почта</label>
-                            </div>
-                            <div class="checkbox">
-                                <input class="default-checkbox-input" type="checkbox" id="color-2" name="color-2" value="red">
-                                <label for="color-2">SMS</label>
+                    <form action="{{ route('cabinet.saveSettingNotification') }}" method='post'>
+                        @method('POST')
+                        @csrf
+                        <div class="form-group">
+                            <label for="">Звонки и уведомления</label>
+                            <div class="input-items">
+                                <div class="checkbox">
+                                    <input class="default-checkbox-input" type="checkbox" id="email-notification"
+                                           name="is_mail_notification_enabled"
+                                           @if(auth()->user()->is_mail_notification_enabled) checked @endif>
+                                    <label for="email-notification">Электронная почта</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input class="default-checkbox-input" type="checkbox" id="phone-notification"
+                                           name="is_phone_notification_enabled"
+                                           @if(auth()->user()->is_phone_notification_enabled) checked @endif>
+
+                                    <label for="phone-notification">SMS</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button class="btn-default small-btn w-100">
-                        Сохранить
-                    </button>
+                        <button class="btn-default small-btn w-100" type="submit">
+                            Сохранить
+                        </button>
+                    </form>
                 </div>
                 <div class="about-right">
 
                     @include('client.components.aboutMeSettingSidebar')
                 </div>
-
-
 
 
             </div>

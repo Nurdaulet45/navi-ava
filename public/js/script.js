@@ -8,37 +8,37 @@ function alertModal(text = '', timer = 1500) {
     })
 }
 
+function alertWarningModal(text = '') {
+    Swal.fire({
+        text: text ? text : 'Ошибка!',
+        padding: '2em',
+        icon: 'warning',
+        showConfirmButton: true,
+    })
+}
+
 
 function clearInvalidFeedback() {
     $(".invalid-feedback").css("display", 'none');
     $(".invalid-feedback").text("");
-}
-function enableDisableRegisterButton() {
-    let confirm_policy = document.getElementById(`register_confirm_policy`)
-    let form_button = document.getElementById(`register-button`)
-
-    console.log('confirm_policy', confirm_policy)
-    console.log('form_button', form_button)
-    if (confirm_policy.checked) {
-        return form_button.disabled = false
-    } else {
-        return form_button.disabled = true
-    }
 }
 
 $(function () {
     $("#registerForm").submit(function (e) {
         e.preventDefault();
 
-        let full_name = $('#register_full_name').val();
-        let confirm_policy = document.getElementById(`register_confirm_policy`).checked;
-        let email = $('#register_email').val();
-        let phone = $('#register_phone').val();
-        let password = $('#register_password').val();
-        let password_confirm = $('#register_password_confirm').val();
+        let login = $('#register-login').val();
+        let email = $('#register-email').val();
+        let password = $('#register-password').val();
+        let confirm_site_rules = $("input[name=confirm_site_rules").is(':checked');
+        let confirm_privacy_policy = $("input[name=confirm_privacy_policy").is(':checked');
+        let user_type = $("input[name=register-user_type").val();
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
         clearInvalidFeedback()
+        console.log('user_type', user_type)
+        console.log('confirm_site_rules', confirm_site_rules)
+        console.log('confirm_privacy_policy', confirm_privacy_policy)
 
         $.ajax({
             url: $(this).attr('action'),
@@ -46,15 +46,14 @@ $(function () {
             type: "POST",
             data: {
                 '_token': _token,
-                'full_name': full_name,
+                'login': login,
                 'email': email,
-                'phone': phone,
                 'password': password,
-                'password_confirmation': password_confirm,
-                'confirm_policy': confirm_policy,
+                'confirm_site_rules': confirm_site_rules,
+                'confirm_privacy_policy': confirm_privacy_policy,
+                'user_type': user_type,
             },
             success: function (res) {
-                $(document).find('#container-register').removeClass('show');
                 $(".loader").removeClass("loading");
                 alertModal('Вы успешно зарегистрировались!');
                 setTimeout(() => {
@@ -76,6 +75,42 @@ $(function () {
         });
 
     });
+    $("#prevRegisterForm").submit(function (e) {
+        e.preventDefault();
+
+        let email = $('#register-email').val();
+        let _token = $('meta[name="csrf-token"]').attr('content');
+        $(".loader").addClass("loading");
+        clearInvalidFeedback()
+
+        $.ajax({
+            url: $(this).attr('action'),
+            method: $(this).attr('method'),
+            type: "POST",
+            data: {
+                '_token': _token,
+                'email': email,
+            },
+            success: function (res) {
+                $(".loader").removeClass("loading");
+                if (res.data && res.data.success) {
+                    nextRegisterForm()
+                }
+            },
+            error: function (err) {
+                $(".loader").removeClass("loading");
+                let response_text = JSON.parse(err.responseText);
+                if (response_text.errors && typeof response_text.errors == 'object') {
+                    Object.entries(response_text.errors).forEach(([key, value]) => {
+                        $('#error-register-' + key).text(value[0]);
+                        $('#error-register-' + key).css('display', 'block');
+                    })
+                }
+            }
+        });
+
+    });
+
     $("#editUserForm").submit(function (e) {
         e.preventDefault();
 
@@ -187,9 +222,6 @@ $(function () {
             },
             success: function (res) {
                 closeModal(e)
-                // console.log('res', res)
-                // $('.modal').modal('hide')
-                // $(document).find('#container-register').removeClass('show');
                 $(".loader").removeClass("loading");
                 alertModal();
                 setTimeout(() => {
@@ -201,7 +233,6 @@ $(function () {
                 let response_text = JSON.parse(err.responseText);
                 if (response_text.errors && typeof response_text.errors == 'object') {
                     Object.entries(response_text.errors).forEach(([key, value]) => {
-                        console.log(key)
                         $('#error-edit-' + key).text(value[0]);
                         $('#error-edit-' + key).css('display', 'block');
                     })
@@ -210,23 +241,56 @@ $(function () {
         });
     });
 
-    $('#loginForm').submit(function (e) {
+    $('#sendVerifyEmailForm').submit(function (e) {
         e.preventDefault();
-        // $('span.error-text-login').text();
-
-        let phone = $('#login_phone').val();
-        let password = $('#login_password').val();
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
 
         clearInvalidFeedback()
 
-        console.log('phone', phone)
         $.ajax({
             url: $(this).attr('action'),
             type: "POST",
             data: {
-                'phone': phone,
+                '_token': _token
+            },
+            success: function (res) {
+                console.log(res.data, res.data.success)
+                $(".loader").removeClass("loading");
+                if (res.data && res.data.success) {
+                    alertModal(res.data.message, 3000);
+                }
+            },
+            error: function (err) {
+                $(".loader").removeClass("loading");
+
+                let response_text = JSON.parse(err.responseText);
+                if (response_text.errors && typeof response_text.errors == 'object') {
+                    Object.entries(response_text.errors).forEach(([key, value]) => {
+                        alertWarningModal(value[0])
+                        // $('#error-verify_email-' + key).text(value[0]);
+                        // $('#error-verify_email-' + key).css('display', 'block');
+                    })
+                }
+            }
+        });
+    });
+    $('#loginForm').submit(function (e) {
+        e.preventDefault();
+        let login = $('#login-login').val();
+        let password = $('#login-password').val();
+        let remember = $("input[name=remember]").is(':checked');
+        let _token = $('meta[name="csrf-token"]').attr('content');
+        $(".loader").addClass("loading");
+
+        clearInvalidFeedback()
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: "POST",
+            data: {
+                'login': login,
+                'remember': remember,
                 'password': password,
                 '_token': _token
             },
@@ -235,8 +299,6 @@ $(function () {
                 window.location.reload();
             },
             error: function (err) {
-                console.log('err', err)
-                console.log('err', err.response)
                 $(".loader").removeClass("loading");
 
                 let response_text = JSON.parse(err.responseText);
@@ -246,20 +308,13 @@ $(function () {
                         $('#error-login-' + key).css('display', 'block');
                     })
                 }
-
-                // $('#error-login-email').text(response_text.errors.email);
-                // $('#error-login-email').css('display','block');
-                // $('#error-login-password').text(response_text.errors.password);
-                // $('#error-login-password').css('display','block');
-                // let response_text = JSON.parse(err.responseText);
-                // $('#modal-app-form-error').text(response_text.errors.email);
             }
         });
     });
     $('#resetPasswordForm').submit(function (e) {
         e.preventDefault();
 
-        let email = $('#reset_password_email').val();
+        let email = $('#reset_password-email').val();
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
         clearInvalidFeedback()
@@ -276,7 +331,6 @@ $(function () {
                 alertModal('Проверьте свою электронную почту', 3000);
             },
             error: function (err) {
-                console.log('err', err)
                 $(".loader").removeClass("loading");
 
                 let response_text = JSON.parse(err.responseText);
@@ -289,8 +343,35 @@ $(function () {
             }
         });
     });
+
+    $( "#profile_is_service_payable" ).change(function() {
+        if ($('#profile_is_service_payable').is(':checked')) {
+            $('.service-price').css('display', 'block')
+        } else {
+            $('.service-price').css('display', 'none')
+        }
+    });
 });
 
+function previewImage(previewAttrId) {
+    if (event.target.files[0]) {
+        let re = /(\.jpg|\.jpeg|\.png|\.doc|\.docx|\.pdf|\.txt|\.xls|\.xlsx)$/i;
+
+        if (!re.exec(event.target.files[0].name)) {
+            alertWarningModal('Файл форматы қате')
+        } else {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+
+                $(`#${previewAttrId}`).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    } else {
+
+    }
+
+}
 
 $('#burger-btn').click(function (event) {
     burgerMenu();
@@ -310,7 +391,6 @@ function burgerMenu() {
 // });
 
 
-
 function openCommentReplyForm(comment_id) {
     $(`.comment-reply`).css('display', 'none')
     $(`.comment-reply-${comment_id}`).css('display', 'block')
@@ -320,6 +400,7 @@ function openCommentReplyForm(comment_id) {
     // console.log('e', e)
 
 }
+
 function openLogin(e) {
     $('.modal').modal('hide');
     setTimeout(() => {
@@ -361,16 +442,19 @@ function openLoginLink(e) {
     closeModal(e)
     openLogin();
 }
+
 function openResetPasswordLink(e) {
     closeModal(e)
     openResetPassword();
 }
+
 function nextRegisterForm(e) {
     $('.prev-register').css('display', 'none')
     $('.only-register').css('transition', '0.3s eye')
     $('.only-register').css('display', 'block')
 
 }
+
 function openEditUser(e) {
     $('#container-edituser').addClass('show');
 }
@@ -479,6 +563,7 @@ function upload_image_file(el) {
 }
 
 
+
 function change_file_input(el, number) {
     let file_n = ''
 
@@ -512,6 +597,7 @@ function change_file_input(el, number) {
         parent.find('.input_file_' + number + '_uploaded span.text').text(file_n)
     }
 }
+
 function deleteInputFile(el, num) {
     $('#input_file_' + num).val("")
     let parent = $(el).closest('form')

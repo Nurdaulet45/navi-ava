@@ -61,13 +61,13 @@
                     <div class="dropdown-content dropdown-lang-content">
                         <a href="#"
                            class="dropdown-item-custom active">
-                            <img src="{{ asset('images/flag-ru.svg') }}" alt="">
+                            <img src="{{ asset('images/flag-ru.svg') }}" alt="ru">
                             ru
                         </a>
                         <div class="line"></div>
                         <a href="#"
                            class="dropdown-item-custom">
-                            <img src="{{ asset('images/flag-kz.svg') }}" alt="">
+                            <img src="{{ asset('images/flag-kz.svg') }}" alt="kk">
                             kz
                         </a>
                     </div>
@@ -97,8 +97,7 @@
                     </div>
                 </div>
 
-
-{{--                @auth--}}
+                @auth
                     <div class="dropdown-menu dropdown-user">
                     <span class="dropdown-body">
                         <span class="user-info">
@@ -193,21 +192,24 @@
                                 </svg>
                                 Настройки
                             </a>
-                            <a href="#"
-                               class="dropdown-item-custom">
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                @method('POST')
 
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                          d="M11 20C11 19.4477 10.5523 19 10 19H5V5H10C10.5523 5 11 4.55228 11 4C11 3.44771 10.5523 3 10 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H10C10.5523 21 11 20.5523 11 20Z"
-                                          fill="#707378"/>
-                                    <path
-                                        d="M21.7136 12.7005C21.8063 12.6062 21.8764 12.498 21.9241 12.3828C21.9727 12.2657 21.9996 12.1375 22 12.003V12V11.997C21.9992 11.7421 21.9016 11.4874 21.7071 11.2929L17.7071 7.29289C17.3166 6.90237 16.6834 6.90237 16.2929 7.29289C15.9024 7.68342 15.9024 8.31658 16.2929 8.70711L18.5858 11H9C8.44771 11 8 11.4477 8 12C8 12.5523 8.44771 13 9 13H18.5858L16.2929 15.2929C15.9024 15.6834 15.9024 16.3166 16.2929 16.7071C16.6834 17.0976 17.3166 17.0976 17.7071 16.7071L21.7064 12.7078L21.7136 12.7005Z"
-                                        fill="#65676E"/>
-                                </svg>
+                                <button class="dropdown-item-custom p-0" type="submit">
 
-                                Выйти
-                            </a>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                              d="M11 20C11 19.4477 10.5523 19 10 19H5V5H10C10.5523 5 11 4.55228 11 4C11 3.44771 10.5523 3 10 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H10C10.5523 21 11 20.5523 11 20Z"
+                                              fill="#707378"/>
+                                        <path
+                                            d="M21.7136 12.7005C21.8063 12.6062 21.8764 12.498 21.9241 12.3828C21.9727 12.2657 21.9996 12.1375 22 12.003V12V11.997C21.9992 11.7421 21.9016 11.4874 21.7071 11.2929L17.7071 7.29289C17.3166 6.90237 16.6834 6.90237 16.2929 7.29289C15.9024 7.68342 15.9024 8.31658 16.2929 8.70711L18.5858 11H9C8.44771 11 8 11.4477 8 12C8 12.5523 8.44771 13 9 13H18.5858L16.2929 15.2929C15.9024 15.6834 15.9024 16.3166 16.2929 16.7071C16.6834 17.0976 17.3166 17.0976 17.7071 16.7071L21.7064 12.7078L21.7136 12.7005Z"
+                                            fill="#65676E"/>
+                                    </svg>
+                                    Выйти
+                                </button>
+                            </form>
                             <div class="line"></div>
                             <span class="user-info">
                             <span class="image">
@@ -238,11 +240,11 @@
                             {{--                        </span>--}}
                         </div>
                     </div>
-{{--                @else--}}
-{{--                    <button class=" btn-default small-btn btn-text-normal" onclick="openLoginLink()">--}}
-{{--                        Войти--}}
-{{--                    </button>--}}
-{{--                @endauth--}}
+                @else
+                    <button class=" btn-default small-btn btn-text-normal" onclick="openLoginLink()">
+                        Войти
+                    </button>
+                @endauth
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="about-me-sidebar">
     <div class="sidebar-menu-items">
-        <div class="sidebar-menu-item active">
-            <a href="{{ route('cabinet') }}"
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.aboutMe')) active @endif">
+            <a href="{{ route('cabinet.aboutMe') }}"
                class="link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -19,9 +19,8 @@
                 <p class="progress-percent">35%</p>
             </div>
         </div>
-        <div class="sidebar-menu-item">
-
-            <a href="#"
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.specialization')) active @endif">
+            <a href="{{ route('cabinet.specialization') }}"
                class="link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -39,8 +38,8 @@
                 <p class="progress-percent">35%</p>
             </div>
         </div>
-        <div class="sidebar-menu-item">
-            <a href="#"
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.certifications')) active @endif">
+            <a href="{{ route('cabinet.certifications') }}"
                class="link">
 
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +56,9 @@
             </div>
         </div>
         <div class="line"></div>
-        <div class="sidebar-menu-item ">
-            <a href="#"
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.mentoring')) active @endif">
+            <a href="{{ route('cabinet.mentoring') }}"
+
                class="link">
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 2.5C9.55228 2.5 10 2.94772 10 3.5V4.5H14V3.5C14 2.94772 14.4477 2.5 15 2.5C15.5523 2.5 16 2.94772 16 3.5V4.5H19C20.1046 4.5 21 5.39543 21 6.5V19.5C21 20.6046 20.1046 21.5 19 21.5H5C3.89543 21.5 3 20.6046 3 19.5V6.5C3 5.39543 3.89543 4.5 5 4.5H8V3.5C8 2.94772 8.44772 2.5 9 2.5ZM8 6.5H5V9.5H19V6.5H16V7.5C16 8.05228 15.5523 8.5 15 8.5C14.4477 8.5 14 8.05228 14 7.5V6.5H10V7.5C10 8.05228 9.55228 8.5 9 8.5C8.44772 8.5 8 8.05228 8 7.5V6.5ZM19 11.5H5V19.5H19V11.5Z" fill="#707378"/>
@@ -66,8 +66,8 @@
                 Наставничество
             </a>
         </div>
-        <div class="sidebar-menu-item">
-            <a href="#"
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.reviews')) active @endif">
+            <a href="{{ route('cabinet.reviews') }}"
                class="link">
 
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

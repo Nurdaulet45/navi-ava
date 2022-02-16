@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -11,13 +12,13 @@ class RegisterRequest extends FormRequest
         $rules =  [
             'login' => 'required|string|unique:users,login',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|min:4|string|confirmed',
-            'password_confirmation' => 'required|string|min:4|max:191|same:password',
-            'confirm_policy' => 'required|in:true,1',
+            'password' => 'required|min:4|string',
+            'confirm_site_rules' => 'required|in:true,1',
+            'confirm_privacy_policy' => 'required|in:true,1',
+            'user_type' => 'required|in:' . implode(',',User::DEFAULT_ROLES),
         ];
 
         if ($this->input('email')) {
-//            $rules['phone'] = 'required|string|min:18|max:18';
             $rules['email'] = 'required|string|email';
         }
         return $rules;

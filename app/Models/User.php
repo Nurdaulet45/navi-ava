@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -16,6 +18,9 @@ class User extends Authenticatable
 
     const LANGUAGES = ['ru', 'kk', 'en'];
     const DEFAULT_LANG = 'ru';
+    const DEFAULT_ROLES = ['consultant', 'mentor', 'student'];
+    const DEFAULT_GENDER = 'male';
+    const IMAGE_PATH = 'images/users/';
 
     /**
      * The attributes that are mass assignable.
@@ -37,15 +42,45 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    public function scopeEmailBy($query, $email)
+    {
+        return $query->where('email', $email);
+    }
+
+    public function scopeLeftJoinCountryName($query)
+    {
+        return $query->leftJoin('countries', 'countries.id', 'users.country_id')
+            ->selectRaw('users.*,countries.name as country_name');
+    }
+
+//    public function getFullNameAttribute()
+    public function getFirstNameAndLetterLastNameCustomAttribute()
+    {
+        return $this->first_name ? $this->first_name . ($this->last_name ? ' ' . substr($this->last_name, 0, 1) : '') : __('site.Not filled');
+    }
+
+    public function getCountryAddressCustomAttribute()
+    {
+        return $this->address ? $this->address . ($this->country_name ? ', ' . $this->country_name : '') : __('site.Not filled');
+    }
+
+    public function getAgeCustomAttribute()
+    {
+        return $this->birthday ? Carbon::parse($this->birthday)->diff(Carbon::now())->y : '';
+    }
+
+    public function getSpecializationTextCustomAttribute()
+    {
+        return $this->specialization_text ? Str::ucfirst($this->specialization_text) : __('site.Not filled');
+    }
+
     protected $casts = [
+        'skills' => 'array',
+        'gender' => 'boolean',
         'is_accept_students' => 'boolean',
         'is_payable_service' => 'boolean',
         'is_mail_notification_enabled' => 'boolean',
         'is_phone_notification_enabled' => 'boolean',
+        'is_email_confirmed' => 'boolean',
     ];
 }

@@ -61,6 +61,14 @@
     line-height: 1.2;
     color: #333333;
 }
+.inner-modal h3.title {
+    font-family: Helvetica-600;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+    color: #333333;
+}
+
 .modal-header .welcome-text {
     font-family: Exo2-700;
     font-size: 28px;
@@ -93,37 +101,45 @@ form.modal-form {
     flex-direction: row;
     border-radius: 4px 0px 0px 4px;
     margin-bottom: 24px;
+    border: none !important;
 }
-.register-tabs .register-tab{
-    width: 33.3%;
+input.register-tab {
+    position: absolute;
+    left: -99999em;
+    top: -99999em;
+}
+input.register-tab + label {
+    cursor: pointer;
     background-color: #FFFFFF;
     border: 1px solid #D6FFFE;
     box-sizing: border-box;
-
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 14px 20px;
-
     font-family: Helvetica-400;
     font-size: 17px;
     line-height: 1.5;
     color: #1DC0BD;
-    cursor: pointer;
-
+    width: 33.3%;
+    position: relative;
 }
-.register-tabs .register-tab:hover {
+input.register-tab + label :hover {
     background: #D6FFFE;
     color: #333333;
     border-color: #D6FFFE !important;
-
 }
-.register-tabs .active{
+
+input.register-tab:checked + label {
+    /*box-shadow: 0 3px 0 -1px #fff,*/
+    /*inset 0 5px 0 -1px #13CD4A;*/
     background: #D6FFFE !important;
     color: #333333 !important;
     border-color: #D6FFFE !important;
     border-radius: 0 !important;
+    z-index: 1;
 }
+
 .only-register {
     display: none;
 }
