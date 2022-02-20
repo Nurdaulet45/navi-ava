@@ -28,13 +28,13 @@
                                            @if(auth()->user()->is_mail_notification_enabled) checked @endif>
                                     <label for="email-notification">Электронная почта</label>
                                 </div>
-                                <div class="checkbox">
-                                    <input class="default-checkbox-input" type="checkbox" id="phone-notification"
-                                           name="is_phone_notification_enabled"
-                                           @if(auth()->user()->is_phone_notification_enabled) checked @endif>
+{{--                                <div class="checkbox">--}}
+{{--                                    <input class="default-checkbox-input" type="checkbox" id="phone-notification"--}}
+{{--                                           name="is_phone_notification_enabled"--}}
+{{--                                           @if(auth()->user()->is_phone_notification_enabled) checked @endif>--}}
 
-                                    <label for="phone-notification">SMS</label>
-                                </div>
+{{--                                    <label for="phone-notification">SMS</label>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <button class="btn-default small-btn w-100" type="submit">

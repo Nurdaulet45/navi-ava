@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,11 +28,13 @@ Route::get('/blog', function() {
 Route::get('/blog-post', function() {
     return view('client.blog-post');
 })->name('blog-post');
+Route::get('/blog-post', [BlogController::class, 'show'])->name('blog-post');
 
 Route::get('/login', fn() => redirect()->route('index'))->name('login');
 Route::get('/register', fn() => redirect()->route('index'))->name('register');
 
 Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(function () {
+    Route::get('/session-login-as', [UserController::class, 'sessionLoginAs'])->name('.sessionLoginAs');
     Route::get('/about-me', [UserController::class, 'aboutMe'])->name('.aboutMe');
     Route::post('/about-me', [UserController::class, 'saveAboutMe'])->name('.saveAboutMe');
     Route::get('/about-me/delete-prof-header-image', [UserController::class, 'deleteProfileHeaderImage'])->name('.deleteProfileHeaderImage');
@@ -68,9 +72,11 @@ Route::get('/about-service', function() {
 Route::get('/contacts', function() {
     return view('client.contacts');
 })->name('contacts');
-Route::get('/support', function() {
-    return view('client.support');
-})->name('support');
+Route::prefix('support')->name('support')->group(function () {
+
+    Route::get('/', [SupportController::class, 'index']);
+    Route::post('/question', [SupportController::class, 'storeQuestion'])->name('.storeQuestion');
+});
 
 Route::get('/privacy-policy', function() {
     return view('client.privacy-policy');

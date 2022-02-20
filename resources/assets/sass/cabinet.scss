@@ -27,6 +27,7 @@
             .mentor-block-user-name {
                 width: 100%;
                 padding: 30px 30px 0;
+                align-items: flex-start;
 
                 .base-info {
                     display: flex;
@@ -305,6 +306,12 @@
 .mini-profile-progressbar {
     display: flex;
     align-items: center;
+    .progress-percent{
+        font-family: Helvetica-400;
+        font-size: 16px;
+        color: #90949A;
+    }
+
 
     .profile-progressbar {
         width: 28px;
@@ -644,6 +651,14 @@
                     margin-left: 60px;
                 }
             }
+            .buttons {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                button, a {
+                    height: 56px;
+                }
+            }
         }
         .btn-upload-file {
             display: flex;
@@ -764,6 +779,7 @@
             }
         }
         .category-tabs {
+            padding-top: 11px;
             margin-bottom: 36px;
         }
         .review-items {

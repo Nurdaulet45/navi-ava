@@ -15,6 +15,9 @@
 .flex-fill {
     background: #FFFFFF;
 }
+.b-none {
+    border: none !important;
+}
 /*.success {*/
 /*    color: #4AAF30 !important;*/
 /*}*/
@@ -967,12 +970,12 @@ a:hover {
     padding-left: 11px;
     padding-right: 21px;
     cursor: pointer;
-}
-
-.default-tabs__default-tab:hover {
-    color: #1DC0BD;
-    border-bottom: 4px solid;
-    padding-bottom: 3px;
+    &:hover {
+        color: #1DC0BD;
+        border-bottom: 4px solid;
+        padding-bottom: 3px;
+        border-color: #99e7e6;
+    }
 }
 
 .default-tabs__default-tab:first-child {
@@ -984,8 +987,9 @@ a:hover {
 }
 
 .default-tabs__active {
-    color: #05BCB9;
+    color: #05BCB9 !important;
     border-bottom: 4px solid;
+    border-color: #05BCB9 !important;
     padding-bottom: 3px;
 }
 
@@ -1131,4 +1135,10 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.status-bg-red  {
+    background: #FF4B55 !important;
+}
+.btn-scroll-smooth {
+    scroll-behavior: smooth;
 }

@@ -21,7 +21,7 @@ section .head {
     //background-size: contain;
     width: 100%;
     padding-top: 200px;
-    padding-bottom: 220px;
+    padding-bottom: 185px;
     background-image: url("/images/banner-start-growing.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,6 +34,11 @@ section .head {
         line-height: 1.1;
         color: #333333;
         margin-bottom: 60px;
+        span {
+            font-family: Exo2-700;
+            font-size: 30px;
+            color: #333333;
+        }
     }
 
     .buttons {
@@ -117,7 +122,7 @@ section .head {
 
                 .name {
                     font-family: Helvetica-400;
-                    font-style: normal;
+                    font-style: italic;
                     font-weight: normal;
                     font-size: 20px;
                     line-height: 1.5;
@@ -229,9 +234,7 @@ section .head {
         align-items: center;
         justify-content: center;
 
-        button:first-child {
-            margin-right: 20px;
-        }
+        gap: 20px;
     }
 }
 
@@ -858,6 +861,10 @@ section .head {
     border-radius: 6px;
     padding: 36px 38px 40px;
     margin-bottom: 16px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 4px 12px rgb(27 197 194 / 30%);
+    }
 
     .left {
         width: 92px;

@@ -1,4 +1,6 @@
-<section class="s-breadcrumb @if(isset($gray) && $gray) bg-gray @else bg-white @endif" >
+<section class="s-breadcrumb @if(isset($gray) && $gray) bg-gray @else bg-white @endif @if(isset($classes)) {{$classes}} @endif"
+         @if(isset($style)) style="{{ $style}}" @endif
+         id="breadcrumbs">
     <div class="container">
         <div class="breadcrumb-items">
             @if(isset($parent))
@@ -42,12 +44,14 @@
                     </a>
                 </div>
             @endif
-
         </div>
         @if(isset($title))
+            <div class="breadcrumb-body">
+
             <h2 class="breadcrumb-title">
                 {{$title}}
             </h2>
+            </div>
         @endif
     </div>
 </section>

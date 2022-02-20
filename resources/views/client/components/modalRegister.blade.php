@@ -45,10 +45,22 @@
                     <form id="registerForm" class="modal-form" action="{{ route('register.ajax') }}">
                         @csrf
                         <div class="form-input-block">
-                            <input id="register-login" name="login"
+                            <input id="register-first_name" name="first_name"
                                    class="modal-form-input input-default w-100" type="text"
-                                   placeholder="Логин" required>
-                            <span class="invalid-feedback" role="alert" id="error-register-login"></span>
+                                   placeholder="Имя" required>
+                            <span class="invalid-feedback" role="alert" id="error-register-first_name"></span>
+                        </div>
+                        <div class="form-input-block">
+                            <input id="register-last_name" name="last_name"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Фамилия" required>
+                            <span class="invalid-feedback" role="alert" id="error-register-last_name"></span>
+                        </div>
+                        <div class="form-input-block">
+                            <input id="register-phone" name="phone"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Телефон" required>
+                            <span class="invalid-feedback" role="alert" id="error-register-phone"></span>
                         </div>
                         <div class="form-input-block">
                             <input id="register-password" name="password"
@@ -56,6 +68,13 @@
                                    placeholder="Пароль" required>
                             <span class="invalid-feedback" role="alert" id="error-register-password"></span>
                         </div>
+                        <div class="form-input-block">
+                            <input id="register-password_confirmation" name="password_confirmation"
+                                   class="modal-form-input input-default w-100" type="text"
+                                   placeholder="Повторите пароль" required>
+                            <span class="invalid-feedback" role="alert" id="error-register-password_confirmation"></span>
+                        </div>
+                        <span class="invalid-feedback" role="alert" id="error-register-user_type"></span>
                         <button type="submit" class="btn-default-shadow medium-btn w-100 btn-register">
                             Зарегистрироваться
                         </button>

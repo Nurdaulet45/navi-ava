@@ -167,6 +167,7 @@ return [
         'certifications.*.name' => 'Название',
         'certifications.*.description' => 'Описание',
         'certifications.*.image' => 'Фото',
+        'user_type' => 'Тип пользователя',
     ],
 
 ];

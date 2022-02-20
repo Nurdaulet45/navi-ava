@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -20,7 +21,10 @@ class User extends Authenticatable
     const DEFAULT_LANG = 'ru';
     const DEFAULT_ROLES = ['consultant', 'mentor', 'student'];
     const DEFAULT_GENDER = 'male';
+    const DEFAULT_ROLE = 'male';
     const IMAGE_PATH = 'images/users/';
+    const DEFAULT_FEMALE_IMAGE = '/images/user-review-female.png';
+    const DEFAULT_MALE_IMAGE = '/images/user-review-male.png';
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +32,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'login',
+        'first_name',
+        'last_name',
+        'phone',
         'email',
         'password',
     ];
@@ -53,7 +59,6 @@ class User extends Authenticatable
             ->selectRaw('users.*,countries.name as country_name');
     }
 
-//    public function getFullNameAttribute()
     public function getFirstNameAndLetterLastNameCustomAttribute()
     {
         return $this->first_name ? $this->first_name . ($this->last_name ? ' ' . substr($this->last_name, 0, 1) : '') : __('site.Not filled');
@@ -73,12 +78,16 @@ class User extends Authenticatable
     {
         return $this->specialization_text ? Str::ucfirst($this->specialization_text) : __('site.Not filled');
     }
+    public function getAvatarImageAttribute()
+    {
+        return $this->avatar ? 'storage/' .User::IMAGE_PATH . $this->avatar : 'images/user-icon.png';
+    }
 
     protected $casts = [
         'skills' => 'array',
         'gender' => 'boolean',
         'is_accept_students' => 'boolean',
-        'is_payable_service' => 'boolean',
+        'is_service_payable' => 'boolean',
         'is_mail_notification_enabled' => 'boolean',
         'is_phone_notification_enabled' => 'boolean',
         'is_email_confirmed' => 'boolean',

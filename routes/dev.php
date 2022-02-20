@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::prefix('commands')->group(function() {
     Route::get('optimize-clear', function () {
         \Illuminate\Support\Facades\Artisan::call('optimize:clear');
@@ -12,4 +11,13 @@ Route::prefix('commands')->group(function() {
         \Illuminate\Support\Facades\Artisan::call('storage:link');
         dd('ok');
     });
+});
+
+Route::get('/', function () {
+    $user = \App\Models\User::first();
+    $user->getRoleNames();
+
+    return view('welcome');
+
+//    dd($users);
 });

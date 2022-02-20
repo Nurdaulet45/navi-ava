@@ -5,11 +5,14 @@
 @section('content')
     <section class="s-start-growing">
         <div class="container">
-            <h2>Найди наставника - начни расти</h2>
+            <h2>Стань наставником – начни расти <br><span>Хочешь научится сам – научи другого</span></h2>
             <div class="buttons">
-                <button class="btn-white-blue large-btn">Найти наставника</button>
-                <button class=" btn-default medium-btn">Найти ученика-менти</button>
-                <button class="btn-default medium-btn">Найти консультанта</button>
+                <button class="btn-default medium-btn">Наставники</button>
+                <button class="btn-default medium-btn">Консультанты</button>
+                <button class="btn-default medium-btn">Ученики</button>
+                {{--                <button class="btn-white-blue large-btn">Найти наставника</button>--}}
+                {{--                <button class=" btn-default medium-btn">Найти ученика-менти</button>--}}
+                {{--                <button class="btn-default medium-btn">Найти консультанта</button>--}}
             </div>
         </div>
     </section>
@@ -21,7 +24,7 @@
                          alt="{{ env('APP_NAME') }}">
                 </div>
                 <p>
-                    NAVI-AVA - это платформа для для развития и роста, поиска специалистов своего дела. Вы можете
+                    NAVI-AVA - это платформа для развития и роста, поиска специалистов своего дела. Вы можете
                     делиться знаниями, стать Наставниками или найти Наставников, Консультантов. 98% успешных людей имели
                     Наставников. Мы собираем Наставников, Консультантов любой профессии, специальности, должности из
                     любой сферы и отрасли.
@@ -36,7 +39,7 @@
                 <div class="famous-people-card">
                     <img src="{{ asset('images/child-mentor.png') }}" width="420" height="377" alt="Mentor">
                     <div class="info">
-                        <p class="name">Стив Джобс</p>
+                        <p class="name">«Стив Джобс»</p>
                         Наставник это лучший инструмент для тех, кто хочет добиться большего. Он покажет вам кратчайший
                         путь для достижения ваших целей, поделится своим опытом и своими ошибками.
                     </div>
@@ -44,7 +47,7 @@
                 <div class="famous-people-card">
                     <img src="{{ asset('images/child-mentor2.png') }}" width="420" height="377" alt="Mentor">
                     <div class="info">
-                        <p class="name">Марк Цекерберг</p>
+                        <p class="name">«Марк Цукерберг»</p>
                         <div class="small-text">
                             Марк Цукерберг. ниже текст: Сейчас настало время тотального обмена информацией между
                             конкретными людьми. Человек не может усовершенствоваться, если не помогает
@@ -56,7 +59,7 @@
                 <div class="famous-people-card">
                     <img src="{{ asset('images/child-mentor3.png') }}" width="420" height="377" alt="Mentor">
                     <div class="info">
-                        <p class="name">Илон Маск</p>
+                        <p class="name">«Илон Маск»</p>
                         Илон Маск. ниже текст: Первый шаг- определить , что это возможно, сама возможность обязательно
                         появится, даже если все шансы против вас , вы все равно должны это делать.
                     </div>
@@ -71,7 +74,7 @@
                 <h3 class="title">Наши наставники</h3>
                 <div class="default-tabs">
                     <div class="default-tabs__default-tab default-tabs__active">
-                        Наставники-консультанты
+                        Наставники
                     </div>
                     <div class="default-tabs__default-tab">
                         Платные наставники
@@ -430,166 +433,166 @@
     </section>
     <section class="s-consultants">
         <div class="container">
-            <h3 class="title">Консультанты</h3>
-{{--            <div class="default-mentor-cards">--}}
-{{--                <div class="default-mentor-card">--}}
-{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
-{{--                    <div class="info">--}}
-{{--                        <div class="name">--}}
-{{--                            Вадим Ч--}}
-{{--                        </div>--}}
-{{--                        <div class="work">--}}
-{{--                            Разработчик — Яндекса--}}
-{{--                        </div>--}}
-{{--                        <div class="rate">--}}
-{{--                            <div class="stars">--}}
+            <h3 class="title">Наши консультанты</h3>
+            {{--            <div class="default-mentor-cards">--}}
+            {{--                <div class="default-mentor-card">--}}
+            {{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+            {{--                    <div class="info">--}}
+            {{--                        <div class="name">--}}
+            {{--                            Вадим Ч--}}
+            {{--                        </div>--}}
+            {{--                        <div class="work">--}}
+            {{--                            Разработчик — Яндекса--}}
+            {{--                        </div>--}}
+            {{--                        <div class="rate">--}}
+            {{--                            <div class="stars">--}}
 
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#C5C4C3"/>--}}
-{{--                                </svg>--}}
-{{--                            </div>--}}
-{{--                            <p>--}}
-{{--                                Все отзывы (34)--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                        <button class="btn-white-green small-btn">--}}
-{{--                            Подобнее--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="default-mentor-card">--}}
-{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
-{{--                    <div class="info">--}}
-{{--                        <div class="name">--}}
-{{--                            Вадим Ч--}}
-{{--                        </div>--}}
-{{--                        <div class="work">--}}
-{{--                            Разработчик — Яндекса--}}
-{{--                        </div>--}}
-{{--                        <div class="rate">--}}
-{{--                            <div class="stars">--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#C5C4C3"/>--}}
+            {{--                                </svg>--}}
+            {{--                            </div>--}}
+            {{--                            <p>--}}
+            {{--                                Все отзывы (34)--}}
+            {{--                            </p>--}}
+            {{--                        </div>--}}
+            {{--                        <button class="btn-white-green small-btn">--}}
+            {{--                            Подобнее--}}
+            {{--                        </button>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--                <div class="default-mentor-card">--}}
+            {{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+            {{--                    <div class="info">--}}
+            {{--                        <div class="name">--}}
+            {{--                            Вадим Ч--}}
+            {{--                        </div>--}}
+            {{--                        <div class="work">--}}
+            {{--                            Разработчик — Яндекса--}}
+            {{--                        </div>--}}
+            {{--                        <div class="rate">--}}
+            {{--                            <div class="stars">--}}
 
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#C5C4C3"/>--}}
-{{--                                </svg>--}}
-{{--                            </div>--}}
-{{--                            <p>--}}
-{{--                                Все отзывы (34)--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                        <button class="btn-white-green small-btn">--}}
-{{--                            Подобнее--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#C5C4C3"/>--}}
+            {{--                                </svg>--}}
+            {{--                            </div>--}}
+            {{--                            <p>--}}
+            {{--                                Все отзывы (34)--}}
+            {{--                            </p>--}}
+            {{--                        </div>--}}
+            {{--                        <button class="btn-white-green small-btn">--}}
+            {{--                            Подобнее--}}
+            {{--                        </button>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
 
-{{--                <div class="default-mentor-card">--}}
-{{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
-{{--                    <div class="info">--}}
-{{--                        <div class="name">--}}
-{{--                            Вадим Ч--}}
-{{--                        </div>--}}
-{{--                        <div class="work">--}}
-{{--                            Разработчик — Яндекса--}}
-{{--                        </div>--}}
-{{--                        <div class="rate">--}}
-{{--                            <div class="stars">--}}
+            {{--                <div class="default-mentor-card">--}}
+            {{--                    <img src="{{ asset('images/mentor.png') }}" width="360" height="239" alt="">--}}
+            {{--                    <div class="info">--}}
+            {{--                        <div class="name">--}}
+            {{--                            Вадим Ч--}}
+            {{--                        </div>--}}
+            {{--                        <div class="work">--}}
+            {{--                            Разработчик — Яндекса--}}
+            {{--                        </div>--}}
+            {{--                        <div class="rate">--}}
+            {{--                            <div class="stars">--}}
 
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#E0C11A"/>--}}
-{{--                                </svg>--}}
-{{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
-{{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-{{--                                    <path--}}
-{{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
-{{--                                        fill="#C5C4C3"/>--}}
-{{--                                </svg>--}}
-{{--                            </div>--}}
-{{--                            <p>--}}
-{{--                                Все отзывы (34)--}}
-{{--                            </p>--}}
-{{--                        </div>--}}
-{{--                        <button class="btn-white-green small-btn">--}}
-{{--                            Подобнее--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#E0C11A"/>--}}
+            {{--                                </svg>--}}
+            {{--                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"--}}
+            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
+            {{--                                    <path--}}
+            {{--                                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"--}}
+            {{--                                        fill="#C5C4C3"/>--}}
+            {{--                                </svg>--}}
+            {{--                            </div>--}}
+            {{--                            <p>--}}
+            {{--                                Все отзывы (34)--}}
+            {{--                            </p>--}}
+            {{--                        </div>--}}
+            {{--                        <button class="btn-white-green small-btn">--}}
+            {{--                            Подобнее--}}
+            {{--                        </button>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
             <div class="swiper-items">
 
                 <div class="swiper mySwiper2">
@@ -950,40 +953,77 @@
                     Наставникам
                 </div>
                 <div class="default-tabs__default-tab">
-                    Ученикам-менти
-                </div>
-                <div class="default-tabs__default-tab">
                     Консультантам
                 </div>
-            </div>
-            <div class="work-steps">
-                <div class="step-item step-1">
-                    <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
-                    <p>Выберите наставника</p>
+                <div class="default-tabs__default-tab">
+                    Ученикам
                 </div>
-                <div class="rb-arrow">
-                    <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
-                </div>
-                <div class="step-item step-2">
-                    <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
-                    <p>Спишитесь, познакомьтесь с учеником</p>
-                </div>
-                <div class="rt-arrow">
-                    <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
 
-                </div>
-                <div class="step-item step-3">
-                    <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
-                    <p>Консультируйтесь, общайтесь, развивайтесь</p>
-                </div>
             </div>
+            @auth
+                <div class="work-steps">
+                    <div class="step-item step-1">
+                        <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                        <p>{{\App\Services\SessionRoleService::textByRole('Выберите ученика','Выберите ученика','Выберите наставника/консультанта')}}</p>
+                    </div>
+                    <div class="rb-arrow">
+                        <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                    </div>
+                    <div class="step-item step-2">
+                        <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                        <p>
+                        {{\App\Services\SessionRoleService::textByRole(
+                                                 'Спишитесь, познакомьтесь с учеником',
+                                                 'Спишитесь, познакомьтесь с учеником',
+                                                 'Спишитесь с наставником/консультантом')}}</p>
+                    </div>
+                    <div class="rt-arrow">
+                        <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                    </div>
+                    <div class="step-item step-3">
+                        <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                        <p>
+                            {{\App\Services\SessionRoleService::textByRole(
+                                                    'Обучайте, общайтесь, развивайте',
+                                                    'Консультируйте, общайтесь, развивайте',
+                                                    'Консультируйтесь, общайтесь, развивайтесь')
+                                                    }}
+                        </p>
+                    </div>
+                </div>
+            @else
+                <div class="work-steps">
+                    <div class="step-item step-1">
+                        <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                        <p>Выберите наставника</p>
+                    </div>
+                    <div class="rb-arrow">
+                        <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                    </div>
+                    <div class="step-item step-2">
+                        <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                        <p>Спишитесь, познакомьтесь с учеником</p>
+                    </div>
+                    <div class="rt-arrow">
+                        <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+
+                    </div>
+                    <div class="step-item step-3">
+                        <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                        <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                    </div>
+                </div>
+            @endif
+
             <div class="buttons">
-                <button class="btn-default medium-large-btn">
+                <a href="{{ route('aboutService') }}" class="btn-default medium-large-btn">
                     О сервисе
-                </button>
-                <button class="btn-default medium-large-btn">
-                    Зарегистрироваться
-                </button>
+                </a>
+                @guest
+                    <button onclick="openRegister()" class="btn-default medium-large-btn">
+                        Зарегистрироваться
+                    </button>
+                @endguest
             </div>
         </div>
     </section>
@@ -1022,27 +1062,6 @@
                     </div>
                     <div class="info">
                         <div class="title">
-                            <h4>Стать учеником-менти</h4>
-                            <button class="btn-default-shadow">
-                                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6.19535 0.528604C6.45568 0.268257 6.87781 0.268257 7.13815 0.528604L11.1381 4.52861C11.2631 4.65361 11.3334 4.82321 11.3334 5.00001C11.3334 5.17681 11.2631 5.34641 11.1381 5.47141L7.13815 9.47141C6.87781 9.73174 6.45568 9.73174 6.19535 9.47141C5.93501 9.21108 5.93501 8.78894 6.19535 8.52861L9.05728 5.66668H1.33341C0.965228 5.66668 0.666748 5.36821 0.666748 5.00001C0.666748 4.63181 0.965228 4.33334 1.33341 4.33334H9.05728L6.19535 1.47142C5.93501 1.21106 5.93501 0.788957 6.19535 0.528604Z"
-                                        fill="white"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <ul>
-                            <li>Повторение - мать учения. Обучая других людей, прокачиваешься сам.</li>
-                            <li>Прекрасная возможность попробовать себя в роли наставника.</li>
-                            <li>Твой выбор, который делает жизнь других лучше.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="become-info-item become-info-item-consultant">
-                    <div class="info">
-                        <div class="title">
                             <h4>Стать консультантом</h4>
                             <button class="btn-default-shadow">
                                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
@@ -1054,9 +1073,30 @@
                             </button>
                         </div>
                         <ul>
-                            <li>Повторение - мать учения. Обучая других людей, прокачиваешься сам.</li>
-                            <li>Прекрасная возможность попробовать себя в роли наставника.</li>
-                            <li>Твой выбор, который делает жизнь других лучше.</li>
+                            <li>Зарабатывай на своих знаниях. </li>
+                            <li>Продвигай возможности с помощью специальных инструментов.</li>
+                            <li>Расширяй возможности с помощью специальных инструментов.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="become-info-item become-info-item-consultant">
+                    <div class="info">
+                        <div class="title">
+                            <h4>Стать учеником</h4>
+                            <button class="btn-default-shadow">
+                                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.19535 0.528604C6.45568 0.268257 6.87781 0.268257 7.13815 0.528604L11.1381 4.52861C11.2631 4.65361 11.3334 4.82321 11.3334 5.00001C11.3334 5.17681 11.2631 5.34641 11.1381 5.47141L7.13815 9.47141C6.87781 9.73174 6.45568 9.73174 6.19535 9.47141C5.93501 9.21108 5.93501 8.78894 6.19535 8.52861L9.05728 5.66668H1.33341C0.965228 5.66668 0.666748 5.36821 0.666748 5.00001C0.666748 4.63181 0.965228 4.33334 1.33341 4.33334H9.05728L6.19535 1.47142C5.93501 1.21106 5.93501 0.788957 6.19535 0.528604Z"
+                                        fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <ul>
+                            <li>Знания ещё никогда не были так доступны каждому человеку.</li>
+                            <li>Выбирай любую профессию, отрасль, о которой давно мечтал. </li>
+                            <li>Гибкие фильтры, которые помогают подобрать то, что нужно именно тебе.</li>
                         </ul>
                     </div>
                     <div class="image">
@@ -1070,7 +1110,7 @@
     <section class="s-spec">
         <div class="container">
             <div class="title">
-                Выберите специализацию, чтобы найти своего наставника-консультанта
+                Выберите специализацию, чтобы найти своего «наставника/консультанта/ученика»
             </div>
             <div class="spec-group-items">
                 <div class="spec-group-item">
@@ -1094,31 +1134,31 @@
             <div class="spec-group-items-spec">
 
                 <div class="spec-items">
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Экономика
                     </div>
 
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Искусство и культура
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Менеджмент и управление
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Другое
                     </div>
                 </div>
                 <div class="spec-items">
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Психология
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         СМИ и издательство
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Торговая отрасль
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Сельское хозяйство
                     </div>
 
@@ -1126,39 +1166,39 @@
                 <div class="spec-items">
 
 
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Маркетинг, реклама и PR
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Спорт
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Строительство
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Искусство и культура
                     </div>
 
                 </div>
                 <div class="spec-items">
 
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Спорт
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Строительство
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Искусство и культура
                     </div>
-                    <div class="spec-item btn-white-green">
+                    <div class="spec-item btn-white-green" onclick="openWhoLooking()">
                         Менеджмент и управление
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="s-reviews">
+    <section class="s-reviews" id="s-reviews">
         <div class="container">
             <div class="title">Отзывы учеников</div>
             <div class="review-items">
@@ -1370,6 +1410,87 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            Как мне стать наставником-консультантом или платным консультантом?
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            Я не нашел наставника-консультанта?
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-block">
+                        <div class="accordion">
+                            У меня есть идеи. Куда писать?
+                            <div class="svg-block">
+                                <svg class="icon arrow-down-icon plus" width="20" height="21" viewBox="0 0 20 21"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.5V20.5H11V11.5H20V9.5H11V0.5H9V9.5H0V11.5H9Z" fill="#05BCB9"/>
+                                </svg>
+                                <svg class="icon arrow-down-icon minus" width="20" height="3" viewBox="0 0 20 3"
+                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H20V2.5H0V0.5Z"
+                                          fill="white"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="answer">
+                                Для этого вам нужно зарегистрироваться и заполнить ваш профиль на платформе NAVI-AVA .
+                                Возможно некоторое время к вам не будет приходить заявки на Наставничество или
+                                консультирование. Не спешите с выводами , так как сервис новый и мало кто еще знает про
+                                платформу NAVI-AVA , может немного затянуться этот вопрос. Но здесь у нас есть другая
+                                функция, где вы сами можете найти и подобрать себе учеников/менти вашу сторону.
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -1409,9 +1530,11 @@
         /*}*/
     </style>
     @include('client.components.sectionWriteToUs')
+    @include('client.components.modalWhoLooking')
 
 @endsection
 @section('custom_js')
+
     <script src="{{ asset('js/swiper.min.js') }}"></script>
     <script>
         // var swiper = new Swiper(".mySwiper", {

@@ -70,6 +70,10 @@
         alertWarningModal("{{$message}}")
         @enderror
     </script>
+{{--    <script src="{{asset('js/maskinput.js') }}"></script>--}}
+{{--    <script>--}}
+{{--        $('#register-phone').mask("+7 (999) 999 99 99");--}}
+{{--    </script>--}}
 
     @yield('custom_js')
 </body>

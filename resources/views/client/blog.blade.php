@@ -4,7 +4,6 @@
         @component('client.components.breadcrumb')
             @slot('title') Блог @endslot
             @slot('parent')@endslot
-            @slot('blog')@endslot
             @slot('active') Блог @endslot
         @endcomponent
         <div class="container">
@@ -16,7 +15,7 @@
                     Новости
                 </div>
                 <div class="category-tab-item active">
-                    Стати
+                    Статьи
                 </div>
             </div>
             <div class="blog-post-items">

@@ -69,7 +69,7 @@
                                         <span class="filter-input-checkbox">
                                             <input type="checkbox" value="almaty" name="almaty"
                                                    id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Доставим из другого города </span>
+                                            <span class="filter-input-checkbox-text">Алматы </span>
                                         </span>
                                     </label>
                                 </div>
@@ -78,7 +78,7 @@
                                         <span class="filter-input-checkbox">
                                             <input type="checkbox" value="almaty" name="almaty"
                                                    id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Доставим из другого города </span>
+                                            <span class="filter-input-checkbox-text">Актау</span>
                                         </span>
                                     </label>
                                 </div>
@@ -87,7 +87,7 @@
                                         <span class="filter-input-checkbox">
                                             <input type="checkbox" value="almaty" name="almaty"
                                                    id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Доставим из другого города </span>
+                                            <span class="filter-input-checkbox-text">Астана </span>
                                         </span>
                                     </label>
                                 </div>
@@ -214,7 +214,7 @@
                         <div class="panel">
                             <div class="filters__filter-items">
                                 <div class="filters__filter-item">
-                                    Бесплатный
+                                    Все
                                 </div>
                                 <div class="filters__filter-item">
                                     От 1
@@ -226,7 +226,7 @@
                                     От 20
                                 </div>
                                 <div class="filters__filter-item">
-                                    От 100
+                                    От 50
                                 </div>
                             </div>
                         </div>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="search-result__item-cards">
-                        <div class="mentor-info-card">
+                        <a class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -383,8 +383,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mentor-info-card">
+                        </a>
+                        <a class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -504,8 +504,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mentor-info-card">
+                        </a>
+                        <a class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -625,12 +625,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <div class="catalog-ad-card">
                             <h4>Рекламное объявление</h4>
                             <a>Получите чек-лист по профессиям</a>
                         </div>
-                        <div class="mentor-info-card">
+                        <a class="mentor-info-card">
                             <div class="left">
                                 <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                      alt="user icon">
@@ -750,7 +750,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                     </div>
                     <button class="btn-white-green large-btn w-100 btn-load-more">

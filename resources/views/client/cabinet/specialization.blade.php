@@ -13,16 +13,18 @@
                 <form class="about-me-form" action="{{ route('cabinet.saveSpecialization') }}" method="POST">
                     @method('POST')
                     @csrf
-                    <div class="form-group">
-                        <label>
-                            Ваша специальность
-                        </label>
-                        <input type="text" class="form-control input-default"
-                               placeholder="Введите вашу специальность"
-                               name="specialization_text"
-                               value="{{ old('specialization_text') ?: auth()->user()->specialization_text  }}"
-                        >
-                    </div>
+                    @if(!\App\Services\SessionRoleService::isStudent())
+                        <div class="form-group">
+                            <label>
+                                Ваша специальность
+                            </label>
+                            <input type="text" class="form-control input-default"
+                                   placeholder="Введите вашу специальность"
+                                   name="specialization_text"
+                                   value="{{ old('specialization_text') ?: auth()->user()->specialization_text  }}"
+                            >
+                        </div>
+                    @endif
                     <div class="form-group ">
                         <label for="">Сферы деятельности
                             <div class="dropdown-menu dropdown-spec-info">
@@ -105,7 +107,8 @@
                         <span class="info">Заполните до 10 ключевых слов / навыков</span>
 
                         <div id="app">
-                            <cabinet-skills-input-component :skills_items="{{json_encode(old('skills') ?: auth()->user()->skills)}}"/>
+                            <cabinet-skills-input-component
+                                :skills_items="{{json_encode(old('skills') ?: auth()->user()->skills)}}"/>
                         </div>
                     </div>
 

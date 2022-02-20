@@ -16,29 +16,40 @@ function alertWarningModal(text = '') {
         showConfirmButton: true,
     })
 }
-
-
 function clearInvalidFeedback() {
     $(".invalid-feedback").css("display", 'none');
     $(".invalid-feedback").text("");
 }
+function testFunction(e, url){
+    if($(e.target).hasClass('favorites')) {
+        // add to favorite
+        // window.location.href = url
+    }else if($(e.target).hasClass('contact')) {
+        // window.location contacts начать диалог
+        window.location.href = url
+    } else{
+        // window.location contacts начать диалог
+        window.location.href = url
+    }
+}
 
 $(function () {
+
     $("#registerForm").submit(function (e) {
         e.preventDefault();
 
-        let login = $('#register-login').val();
+        let first_name = $('#register-first_name').val();
+        let last_name = $('#register-last_name').val();
         let email = $('#register-email').val();
+        let phone = $('#register-phone').val();
         let password = $('#register-password').val();
-        let confirm_site_rules = $("input[name=confirm_site_rules").is(':checked');
-        let confirm_privacy_policy = $("input[name=confirm_privacy_policy").is(':checked');
-        let user_type = $("input[name=register-user_type").val();
+        let password_confirmation = $('#register-password_confirmation').val();
+        let confirm_site_rules = $("input[name=confirm_site_rules]").is(':checked');
+        let confirm_privacy_policy = $("input[name=confirm_privacy_policy]").is(':checked');
+        let user_type = $("input[name=register-user_type]:checked").val();
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
         clearInvalidFeedback()
-        console.log('user_type', user_type)
-        console.log('confirm_site_rules', confirm_site_rules)
-        console.log('confirm_privacy_policy', confirm_privacy_policy)
 
         $.ajax({
             url: $(this).attr('action'),
@@ -46,9 +57,12 @@ $(function () {
             type: "POST",
             data: {
                 '_token': _token,
-                'login': login,
+                'first_name': first_name,
+                'last_name': last_name,
                 'email': email,
+                'phone': phone,
                 'password': password,
+                'password_confirmation': password_confirmation,
                 'confirm_site_rules': confirm_site_rules,
                 'confirm_privacy_policy': confirm_privacy_policy,
                 'user_type': user_type,
@@ -59,8 +73,6 @@ $(function () {
                 setTimeout(() => {
                     window.location.reload()
                 }, 1500)
-
-
             },
             error: function (err) {
                 $(".loader").removeClass("loading");
@@ -73,7 +85,6 @@ $(function () {
                 }
             }
         });
-
     });
     $("#prevRegisterForm").submit(function (e) {
         e.preventDefault();
@@ -108,7 +119,6 @@ $(function () {
                 }
             }
         });
-
     });
 
     $("#editUserForm").submit(function (e) {
@@ -277,7 +287,7 @@ $(function () {
     });
     $('#loginForm').submit(function (e) {
         e.preventDefault();
-        let login = $('#login-login').val();
+        let email_or_phone = $('#login-email_or_phone').val();
         let password = $('#login-password').val();
         let remember = $("input[name=remember]").is(':checked');
         let _token = $('meta[name="csrf-token"]').attr('content');
@@ -289,14 +299,16 @@ $(function () {
             url: $(this).attr('action'),
             type: "POST",
             data: {
-                'login': login,
+                'email_or_phone': email_or_phone,
                 'remember': remember,
                 'password': password,
                 '_token': _token
             },
             success: function (res) {
                 $(".loader").removeClass("loading");
-                window.location.reload();
+                if (res.data && res.data.success) {
+                    window.location.reload();
+                }
             },
             error: function (err) {
                 $(".loader").removeClass("loading");
@@ -390,21 +402,17 @@ function burgerMenu() {
 //     centeredSlides: true,
 // });
 
-
-function openCommentReplyForm(comment_id) {
-    $(`.comment-reply`).css('display', 'none')
-    $(`.comment-reply-${comment_id}`).css('display', 'block')
-    $(`.answer-comment-reply`).css('display', 'block')
-    $(`.answer-comment-reply-${comment_id}`).css('display', 'none')
-    // console.log('comment_id', comment_id)
-    // console.log('e', e)
-
-}
-
 function openLogin(e) {
     $('.modal').modal('hide');
     setTimeout(() => {
         $('#loginPopup').modal('show');
+    }, 500)
+}
+
+function openWhoLooking(e) {
+    $('.modal').modal('hide');
+    setTimeout(() => {
+        $('#whoLookingPopup').modal('show');
     }, 500)
 }
 
@@ -484,33 +492,6 @@ for (let i = 0; i < accordions.length; i++) {
         }
     });
 }
-
-let accordionsHeader = document.getElementsByClassName("accordion-header");
-for (let i = 0; i < accordionsHeader.length; i++) {
-    accordionsHeader[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-    });
-}
-
-let accordionsQuestionHeader = document.getElementsByClassName("question-header");
-for (let i = 0; i < accordionsQuestionHeader.length; i++) {
-    accordionsQuestionHeader[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-    });
-}
-
 
 function change_file_input(el, number) {
     let file_n = ''

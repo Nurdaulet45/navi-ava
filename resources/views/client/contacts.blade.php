@@ -32,7 +32,7 @@
                     </svg>
                     <div class="description">Почта</div>
                     <div class="name">
-                        support@navi-ava.net
+                        info@navi-ava.com
                     </div>
                 </div>
             </div>

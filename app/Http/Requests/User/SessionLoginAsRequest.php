@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\User;
 
+use App\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class SessionLoginAsRequest extends FormRequest
 {
 
     /**
@@ -15,8 +16,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email_or_phone' => 'required',
-            'password' => 'required|string'
+            'role' => 'required|in:' . implode(',',Role::DEFAULT_ROLES),
         ];
     }
 }

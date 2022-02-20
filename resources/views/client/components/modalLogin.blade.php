@@ -22,10 +22,10 @@
                     @csrf
 
                     <div class="form-input-block">
-                        <input id="login-login" name="login"
+                        <input id="login-email_or_phone" name="email_or_phone"
                                class="modal-form-input input-default w-100" type="text"
-                               placeholder="Логин" required>
-                        <span class="invalid-feedback" role="alert" id="error-login-login"></span>
+                               placeholder="Email или номер телефона" required>
+                        <span class="invalid-feedback" role="alert" id="error-login-email_or_phone"></span>
                     </div>
                     <div class="form-input-block">
                         <input id="login-password" name="password" class="modal-form-input input-default w-100"

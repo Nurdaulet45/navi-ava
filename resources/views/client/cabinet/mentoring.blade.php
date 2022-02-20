@@ -1,10 +1,10 @@
 @extends('layouts/app')
 @section('content')
     @component('client.components.breadcrumb', ['gray' => true])
-        @slot('title') Наставничество @endslot
+        @slot('title')  {{\App\Services\SessionRoleService::textByRole('Наставничество','Консультирование','Тип услуги не определен')}} @endslot
         @slot('parent')@endslot
         @slot('cabinet')@endslot
-        @slot('active') Наставничество @endslot
+        @slot('active')  {{\App\Services\SessionRoleService::textByRole('Наставничество','Консультирование','Тип услуги не определено')}} @endslot
     @endcomponent
     <section class="s-about-me-page">
         <div class="container">
@@ -15,12 +15,15 @@
                     <div class="form-group sex-form-group">
                         <label for="">Мой статус на платформе</label>
                         <div class="input-items">
-                            <label class="label-default-radio">Принимаю учеников-менти
+                            <label class="label-default-radio">
+
+                                {{ \App\Services\SessionRoleService::textByRole('Принимаю учеников','Консультирую','Готов к обучению') }}
                                 <input type="radio" name="is_accept_students" value="true"
                                        @if(auth()->user()->is_accept_students) checked @endif>
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="label-default-radio">Не принимаю учеников-менти
+                            <label class="label-default-radio">
+                                {{ \App\Services\SessionRoleService::textByRole('Не принимаю учеников','Не консультирую','Не готов к обучению') }}
                                 <input type="radio" name="is_accept_students" value="false"
                                        @if(!auth()->user()->is_accept_students) checked @endif>
                                 <span class="checkmark"></span>
@@ -32,13 +35,13 @@
                     </div>
                     <div class="form-group">
                         <label for="">
-                            Вид наставничества
+                            Вид {{ \App\Services\SessionRoleService::textByRole('наставничества','консультирование','услуги не опеделен') }}
                         </label>
 
                         <label class="switch-default-input">
                             <input type="checkbox" id="profile_is_service_payable" name="is_service_payable"
                                    @if((old('is_service_payable') && old('is_service_payable') == 'on')
- || auth()->user()->is_service_payable) checked @endif>>
+                                    || auth()->user()->is_service_payable) checked @endif>>
                             <span class="slider round"></span>
                             <span class="text">
                                 Платный

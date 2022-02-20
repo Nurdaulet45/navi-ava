@@ -32,6 +32,7 @@ header.header {
                 line-height: 1.2;
                 letter-spacing: -0.01em;
                 color: #333333;
+                white-space: nowrap;
             }
         }
     }
@@ -205,7 +206,7 @@ header.header {
         color: #1DC0BD;
     }
     .dropdown-item-custom:last-child {
-        margin-bottom: 0px;
+        margin-bottom: 0px !important;
         //margin-bottom: 40px;
     }
     form {
@@ -224,8 +225,10 @@ header.header {
 .dropdown-cities {
     display: block;
     .dropdown-cities-content {
-        min-width: 230px;
+        min-width: 165px;
+        left: -21%;
     }
+
     &:hover .dropdown-cities-content {
         display: block;
     }
@@ -246,9 +249,15 @@ header.header {
 
 .dropdown-notification {
     display: block;
-
-    &:hover .dropdown-notification-content {
-        display: block;
+    &:hover {
+        .dropdown-body {
+            svg path{
+                fill: #1DC0BD;
+            }
+        }
+        .dropdown-notification-content {
+            display: block;
+        }
     }
 }
 
@@ -302,12 +311,34 @@ header.header {
 
     &:hover .dropdown-user-content {
         display: block;
+        .active-user {
+            span.name {
+                color: #1DC0BD;
+            }
+        }
+        .user-info:hover {
+            span.name {
+                color: #1DC0BD;
+            }
+        }
     }
 }
 
 .dropdown-lang {
     display: block;
 
+    .dropdown-lang-content {
+        min-width: 92px;
+        padding: 11px 10px;
+        .dropdown-item-custom {
+            margin-bottom: 10px;
+            line-height: 0;
+        }
+       .line {
+            margin-top: 10px;
+            margin-bottom: 11px;
+        }
+    }
     &:hover .dropdown-lang-content {
         display: block;
     }
@@ -444,6 +475,7 @@ footer.footer {
                     color: #E5E6E9;
                     cursor: pointer;
                     margin-bottom: 12px;
+                    white-space: nowrap;
                     &:hover {
                         color: #1DC0BD;
                     }

@@ -1,30 +1,43 @@
-<section class="s-support">
+<section class="s-support" id="s-support">
     <div class="container">
-        <div class="write-to-support">
+        <div class="write-to-support" >
             <div class="left">
                 <h2>Напишите нам, если у вас есть вопросы</h2>
             </div>
             <div class="right">
-                <div class="support-form">
+                <form class="support-form" action="{{ route('support.storeQuestion') }}" method="POST">
+                    @method('POST')
+                    @csrf
+
                     <div class="form-group input-items">
-                        <input type="text" class="form-control input-default" placeholder="Email">
-                        <input type="text" class="form-control input-default" placeholder="Телефон">
+                        <input type="text" name="email" class="form-control input-default" placeholder="Email">
+                        <input type="text" name="phone" id="phone" class="form-control input-default" placeholder="Телефон">
                     </div>
+                    @error('email')
+                    <p class="help-block mb-2">{{ $message }}</p>
+                    @enderror
+                    @error('phone')
+                    <p class="help-block mb-2">{{ $message }}</p>
+                    @enderror
                     <div class="form-group">
-                        <textarea name="" class="form-control textarea-default w-100"
+                        <textarea name="text" class="form-control textarea-default w-100"
                                   placeholder="Ваше сообщение"
                                   cols="30" rows="5"></textarea>
+
+                        @error('text')
+                        <p class="help-block mb-2">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="buttons">
                         <div class="info-text">
-                            Нажимая кнопку «Отправить», я лаю согласие на обработку персональных данных
+                            Нажимая кнопку «Отправить», я даю согласие на обработку персональных данных
                         </div>
-                        <button class="btn-default medium-btn">
+                        <button type="submit" class="btn-default medium-btn">
                             Отправить
                         </button>
                     </div>
 
-                </div>
+                </form>
             </div>
         </div>
     </div>

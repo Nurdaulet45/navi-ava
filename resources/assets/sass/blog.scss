@@ -89,15 +89,13 @@
         color: #65676E;
     }
 
-    .image {
         img {
             width: 100%;
             height: auto;
-        }
 
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
 }
 
 .s-about-service {
@@ -169,6 +167,24 @@
                 }
             }
 
+        }
+    }
+
+}
+.blog-breadcrumb{
+    height: 380px;
+    background: white no-repeat center;
+    background-size: 100% auto;
+    //background-size: cover;
+    .breadcrumb-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .breadcrumb-title {
+            text-align: center;
+            margin-top: 10%;
+            width: 50%;
         }
     }
 

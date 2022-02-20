@@ -6,16 +6,21 @@ use App\Http\Requests\User\AboutMeRequest;
 use App\Http\Requests\User\ChangeMailRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\MentoringSaveRequest;
+use App\Http\Requests\User\SessionLoginAsRequest;
 use App\Http\Requests\User\SpecializationSaveRequest;
 use App\Mail\EmailVerify;
 use App\Models\Country;
+use App\Models\Role;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Services\AcceptByUserRole;
 use App\Services\FileService;
+use App\Services\SessionRoleService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -24,8 +29,14 @@ class UserController extends Controller
 {
     public function cabinet()
     {
-        $user = User::leftJoinCountryName()->with('roles')->findOrFail(auth()->user()->id);
+        $user = User::leftJoinCountryName()->findOrFail(auth()->user()->id);
         return view('client.cabinet.index', compact('user'));
+    }
+
+    public function sessionLoginAs(SessionLoginAsRequest $request)
+    {
+        Session::put('role', $request->role);
+        return redirect()->back()->withSuccess('Вы вошли как ' . mb_strtolower(SessionRoleService::roleName($request->role)));
     }
 
     public function aboutMe()
@@ -165,7 +176,7 @@ class UserController extends Controller
     public function saveSpecialization(SpecializationSaveRequest $request)
     {
         $user = \auth()->user();
-        $user->specialization_text = $request->specialization_text;
+        $user->specialization_text = $request->specialization_text ?: $user->specialization_text;
         $user->specialization_id = $request->specialization_id;
         $user->skills = $request->input('skills', []);
         $user->save();
@@ -174,11 +185,13 @@ class UserController extends Controller
 
     public function mentoring()
     {
+        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         return view('client.cabinet.mentoring');
     }
 
     public function saveMentoring(MentoringSaveRequest $request)
     {
+        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         $user = auth()->user();
         $user->is_accept_students = $request->is_accept_students == 'true';
         $user->is_service_payable = $request->has('is_service_payable');
@@ -193,7 +206,7 @@ class UserController extends Controller
         $user->full_name = $user->firstNameAndLetterLastNameCustom;
         $user->avatar = $user->avatar
             ? Storage::url(User::IMAGE_PATH . $user->avatar)
-            : ($user->gender ? '/images/user-review-male.png' : '/images/user-review-female.png');
+            : ($user->gender ? User::DEFAULT_MALE_IMAGE : User::DEFAULT_FEMALE_IMAGE);
         return view('client.cabinet.reviews', compact('user'));
     }
 
@@ -204,11 +217,13 @@ class UserController extends Controller
 
     public function certifications()
     {
+        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         return view('client.cabinet.certifications');
     }
 
     public function saveCertifications()
     {
+        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         return redirect()->back()->withSuccess('Успешно изменен');
     }
 

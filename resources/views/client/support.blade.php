@@ -8,3 +8,9 @@
     @include('client.components.sectionWriteToUsSupport')
 
 @endsection
+@section('custom_js')
+    <script src="{{asset('js/maskinput.js') }}"></script>
+    <script>
+        $('#phone').mask("+7 (999) 999 99 99");
+    </script>
+    @endsection

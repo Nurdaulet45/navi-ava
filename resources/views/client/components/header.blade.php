@@ -4,7 +4,7 @@
             <div class="start">
                 <a href="{{ route('index') }}" class="logo">
                     <img src="{{ asset('images/logo.png') }}" width="154" height="20" alt="{{ env('APP_NAME') }}">
-                    <div class="text">Специалисты своего дела</div>
+                    <div class="text">Начни создавать историю</div>
                 </a>
                 <div class="dropdown-menu dropdown-cities">
                     <span class="dropdown-body">
@@ -61,15 +61,21 @@
                     <div class="dropdown-content dropdown-lang-content">
                         <a href="#"
                            class="dropdown-item-custom active">
-                            <img src="{{ asset('images/flag-ru.svg') }}" alt="ru">
-                            ru
+                            <img src="{{ asset('images/ru-icon.png') }}" alt="ru">
+                            RU
                         </a>
                         <div class="line"></div>
                         <a href="#"
                            class="dropdown-item-custom">
-                            <img src="{{ asset('images/flag-kz.svg') }}" alt="kk">
-                            kz
+                            <img src="{{ asset('images/kz-icon.png') }}" alt="kk">
+                            KZ
                         </a>
+{{--                        <div class="line"></div>--}}
+{{--                        <a href="#"--}}
+{{--                           class="dropdown-item-custom">--}}
+{{--                            <img src="{{ asset('images/en-icon.png') }}" alt="kk">--}}
+{{--                            EN--}}
+{{--                        </a>--}}
                     </div>
                 </div>
             </div>
@@ -101,15 +107,16 @@
                     <div class="dropdown-menu dropdown-user">
                     <span class="dropdown-body">
                         <span class="user-info">
-                            <span class="image">
-                                <img src="{{ asset('images/user-icon.png') }}" width="36" height="36" alt="user-icon">
+                            <span class="image @if(auth()->user()->avatar) b-none @endif">
+                                <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
+                                     alt="user-icon">
                             </span>
                             <span class="info">
                                 <span class="name">
-                                    Анастасия М
+                                   {{auth()->user()->firstNameAndLetterLastNameCustom}}
                                 </span>
                                 <span class="level">
-                                    Наставник
+                                    {{ \App\Services\SessionRoleService::getSessionRoleName() }}
                                 </span>
                             </span>
                         </span>
@@ -132,7 +139,7 @@
                                 Личные данные
                             </a>
                             <a href="{{ route('cabinet.specialization') }}"
-                                class="dropdown-item-custom @if(request()->routeIs('cabinet.specialization')) active @endif ">
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.specialization')) active @endif ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -141,18 +148,20 @@
                                 </svg>
                                 Специализация
                             </a>
-                            <a href="{{ route('cabinet.certifications') }}"
-                                class="dropdown-item-custom @if(request()->routeIs('cabinet.certifications')) active @endif ">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M6 10.5994V4C5.44772 4 5 3.55228 5 3C5 2.44772 5.44772 2 6 2H18C18.5523 2 19 2.44772 19 3C19 3.55228 18.5523 4 18 4V10.5994C18.9318 11.6201 19.4321 12.6341 19.6987 13.4338C19.8447 13.8719 19.9199 14.2435 19.9587 14.5148C19.9781 14.6506 19.9884 14.7615 19.9939 14.8436C19.9966 14.8847 19.9981 14.9186 19.999 14.9448L19.9996 14.9682L19.9998 14.9783L20 14.9907V14.9957V14.9979V14.999C20 14.999 19.9954 14.8677 20 15C20 15.5523 19.5523 16 19 16H13V21C13 21.5523 12.5523 22 12 22C11.4477 22 11 21.5523 11 21V16H5C4.44772 16 4 15.5523 4 15C4 14.5 4 14.999 4 14.999V14.9979L4.00001 14.9957L4.00004 14.9907L4.00019 14.9783C4.00033 14.9691 4.00059 14.9579 4.00101 14.9448C4.00185 14.9186 4.00338 14.8847 4.00612 14.8436C4.01159 14.7615 4.02191 14.6506 4.0413 14.5148C4.08006 14.2435 4.15528 13.8719 4.30132 13.4338C4.56788 12.6341 5.06824 11.6201 6 10.5994ZM16 4H8V11C8 11.2652 7.89464 11.5196 7.70711 11.7071C6.86009 12.5541 6.43577 13.3854 6.22128 14H17.7787C17.5642 13.3854 17.1399 12.5541 16.2929 11.7071C16.1054 11.5196 16 11.2652 16 11V4Z"
-                                        fill="#707378"/>
-                                </svg>
-                                Сертификаты, курсы
-                            </a>
+                            @if(!\App\Services\SessionRoleService::isStudent())
+                                <a href="{{ route('cabinet.certifications') }}"
+                                   class="dropdown-item-custom @if(request()->routeIs('cabinet.certifications')) active @endif ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M6 10.5994V4C5.44772 4 5 3.55228 5 3C5 2.44772 5.44772 2 6 2H18C18.5523 2 19 2.44772 19 3C19 3.55228 18.5523 4 18 4V10.5994C18.9318 11.6201 19.4321 12.6341 19.6987 13.4338C19.8447 13.8719 19.9199 14.2435 19.9587 14.5148C19.9781 14.6506 19.9884 14.7615 19.9939 14.8436C19.9966 14.8847 19.9981 14.9186 19.999 14.9448L19.9996 14.9682L19.9998 14.9783L20 14.9907V14.9957V14.9979V14.999C20 14.999 19.9954 14.8677 20 15C20 15.5523 19.5523 16 19 16H13V21C13 21.5523 12.5523 22 12 22C11.4477 22 11 21.5523 11 21V16H5C4.44772 16 4 15.5523 4 15C4 14.5 4 14.999 4 14.999V14.9979L4.00001 14.9957L4.00004 14.9907L4.00019 14.9783C4.00033 14.9691 4.00059 14.9579 4.00101 14.9448C4.00185 14.9186 4.00338 14.8847 4.00612 14.8436C4.01159 14.7615 4.02191 14.6506 4.0413 14.5148C4.08006 14.2435 4.15528 13.8719 4.30132 13.4338C4.56788 12.6341 5.06824 11.6201 6 10.5994ZM16 4H8V11C8 11.2652 7.89464 11.5196 7.70711 11.7071C6.86009 12.5541 6.43577 13.3854 6.22128 14H17.7787C17.5642 13.3854 17.1399 12.5541 16.2929 11.7071C16.1054 11.5196 16 11.2652 16 11V4Z"
+                                            fill="#707378"/>
+                                    </svg>
+                                    Сертификаты, курсы
+                                </a>
+                            @endif
                             <a href="{{ route('cabinet.reviews') }}"
-                                class="dropdown-item-custom @if(request()->routeIs('cabinet.reviews')) active @endif ">
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.reviews')) active @endif ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -162,7 +171,7 @@
                                 Отзывы
                             </a>
                             <a href="{{ route('cabinet.favorites') }}"
-                                class="dropdown-item-custom @if(request()->routeIs('cabinet.favorites')) active @endif ">
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.favorites')) active @endif ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -171,7 +180,7 @@
                                 </svg>
                                 Избранное
                             </a>
-                            <a href="#"
+                            <a onclick="javascript:void(0)"
                                class="dropdown-item-custom">
 
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -183,7 +192,7 @@
                                 Чат
                             </a>
                             <a href="{{ route('cabinet.changeMail') }}"
-                                class="dropdown-item-custom @if(request()->routeIs('cabinet.changeMail')) active @endif ">
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.changeMail')) active @endif ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -210,20 +219,44 @@
                                     Выйти
                                 </button>
                             </form>
-                            <div class="line"></div>
-                            <span class="user-info">
-                            <span class="image">
-                                <img src="{{ asset('images/user-icon.png') }}" width="36" height="36" alt="user-icon">
-                            </span>
-                            <span class="info">
-                                <span class="name">
-                                    Анастасия М
-                                </span>
-                                <span class="level">
-                                    Наставник
-                                </span>
-                            </span>
-                        </span>
+                            @foreach(auth()->user()->getRoleNames() as $role)
+                                @if(in_array($role, \App\Models\Role::DEFAULT_ROLES))
+                                    <div class="line"></div>
+                                    @if(\App\Services\SessionRoleService::isSessionHasRole($role))
+                                    <span class="user-info active-user">
+                                         <span class="image @if(auth()->user()->avatar) b-none @endif">
+                                            <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
+                                                 alt="user-icon">
+                                        </span>
+                                        <span class="info">
+                                            <span class="name">
+                                               Вы вошли как {{  mb_strtolower(\App\Services\SessionRoleService::roleName($role)) }}
+                                            </span>
+                                            <span class="level">
+                                           {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                            </span>
+                                        </span>
+                                    </span>
+                                    @else
+                                        <a class="user-info" href="{{ route('cabinet.sessionLoginAs', ['role' => $role]) }}">
+                                         <span class="image @if(auth()->user()->avatar) b-none @endif">
+                                            <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
+                                                 alt="user-icon">
+                                        </span>
+                                        <span class="info">
+                                            <span class="name">
+                                                    Войти как {{  mb_strtolower(\App\Services\SessionRoleService::roleName($role)) }}
+                                            </span>
+
+                                            <span class="level">
+                                           {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                            </span>
+                                        </span>
+                                    </a>
+                                    @endif
+                                @endif
+                            @endforeach
+
                             {{--                        <div class="line"></div>--}}
                             {{--                        <span class="user-info">--}}
                             {{--                            <span class="image">--}}
@@ -269,11 +302,11 @@
             <div class="end">
                 <div class="menu-items">
                     <a href="{{ route('aboutService') }}"
-                        class="menu-item @if(request()->routeIs('aboutService')) active @endif ">
+                       class="menu-item @if(request()->routeIs('aboutService')) active @endif ">
                         О сервисе
                     </a>
                     <a href="{{ route('blog') }}"
-                        class="menu-item @if(request()->routeIs('blog.*')) active @endif ">
+                       class="menu-item @if(request()->routeIs('blog.*')) active @endif ">
                         Блог
                     </a>
                     <div class="menu-item dropdown-menu dropdown-help">
@@ -292,18 +325,18 @@
                                 Служба поддержки
                             </a>
                             <div class="line"></div>
-                            <a  href="{{ route('serviceRules') }}"
-                                class="dropdown-item-not-icon @if(request()->routeIs('serviceRules')) active @endif ">
+                            <a href="{{ route('serviceRules') }}"
+                               class="dropdown-item-not-icon @if(request()->routeIs('serviceRules')) active @endif ">
                                 Правила сервиса
                             </a>
                             <div class="line"></div>
                             <a href="{{ route('termsUse') }}"
                                class="dropdown-item-not-icon @if(request()->routeIs('termsUse')) active @endif ">
-                            Пользовательское соглашение
+                                Пользовательское соглашение
                             </a>
                             <div class="line"></div>
                             <a href="{{ route('privacyPolicy') }}"
-                                class="dropdown-item-not-icon @if(request()->routeIs('privacyPolicy')) active @endif ">
+                               class="dropdown-item-not-icon @if(request()->routeIs('privacyPolicy')) active @endif ">
                                 Политика конфиденциальности
                             </a>
                         </div>

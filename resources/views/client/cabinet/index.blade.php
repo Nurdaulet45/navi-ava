@@ -18,7 +18,8 @@
                             <a href="{{ route('cabinet.changeMail') }}">Изменить email</a>
 
                         </div>
-                        <form id="sendVerifyEmailForm" method="post" action="{{ route('cabinet.sendVerifyEmail.ajax') }}">
+                        <form id="sendVerifyEmailForm" method="post"
+                              action="{{ route('cabinet.sendVerifyEmail.ajax') }}">
                             @method('POST')
                             @csrf
 
@@ -56,24 +57,30 @@
                                     <p class="city">
                                         {{ $user->countryAddressCustom }}
                                     </p>
-                                    <p class="work">
-                                        {{ $user->specializationTextCustom }}
-                                    </p>
+                                    @if(!\App\Services\SessionRoleService::isStudent())
+                                        <p class="work">
+                                            {{ $user->specializationTextCustom }}
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="status-price-block">
+                            <div class="status-price-block @if(!$user->is_accept_students)status-bg-red @endif" >
                                 Статус
                                 <div class="mentor">
-                                    Наставник
-                                    <br>
-                                    <div class="status">
-                                        Свободен
+                                    {{ \App\Services\SessionRoleService::textByRole('Наставник', 'Консультант', 'Ученик-менти') }}
+                                    @if(!\App\Services\SessionRoleService::isStudent())
+                                        <br>
+                                        <div class="status">
+                                            {{ $user->is_accept_students ? 'Свободен' : 'Занят' }}
+                                        </div>
+                                    @endif
+                                </div>
+                                @if(!\App\Services\SessionRoleService::isStudent())
+                                    <div class="price">
+                                        {{ $user->is_service_payable ?  "$user->service_price ₽ / час" : 'Бесплатная'}}
                                     </div>
-                                </div>
-                                <div class="price">
-                                    3000 ₽ / час
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="line"></div>
@@ -132,31 +139,35 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-menu-items__menu-item bg-profile-card-certificate">
-                        <div class="title">Сертификаты, курсы</div>
-                        <a href="{{ route('cabinet.certifications') }}">Перейти</a>
-                        <div class="profile-menu-items__menu-item-counter">
-                            <p>
-                                Заполнено
-                            </p>
-                            <div class="mini-profile-progressbar">
-                                <div class="profile-progressbar">
-                                    <div class="middle-circle"></div>
-                                    <div class="progress-spinner"></div>
+                    @if(!\App\Services\SessionRoleService::isStudent())
+                        <div class="profile-menu-items__menu-item bg-profile-card-certificate">
+                            <div class="title">Сертификаты, курсы</div>
+                            <a href="{{ route('cabinet.certifications') }}">Перейти</a>
+                            <div class="profile-menu-items__menu-item-counter">
+                                <p>
+                                    Заполнено
+                                </p>
+                                <div class="mini-profile-progressbar">
+                                    <div class="profile-progressbar">
+                                        <div class="middle-circle"></div>
+                                        <div class="progress-spinner"></div>
+                                    </div>
+                                    <p class="progress-percent">35%</p>
                                 </div>
-                                <p class="progress-percent">35%</p>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="profile-menu-items__menu-item bg-profile-card-megaphone">
                         <div class="title">Отзывы</div>
                         <a href="{{ route('cabinet.reviews') }}">Перейти</a>
                     </div>
-                    <div class="profile-menu-items__menu-item bg-profile-card-calendar">
-                        <div class="title">Наставничество</div>
-                        <a href="{{ route('cabinet.mentoring') }}">Перейти</a>
-
-                    </div>
+                    @if(!\App\Services\SessionRoleService::isStudent())
+                        <div class="profile-menu-items__menu-item bg-profile-card-calendar">
+                            <div
+                                class="title">{{ \App\Services\SessionRoleService::textByRole('Наставничество', 'Консультирование', 'Услуга не определен') }} </div>
+                            <a href="{{ route('cabinet.mentoring') }}">Перейти</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

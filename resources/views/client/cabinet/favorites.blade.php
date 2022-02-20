@@ -11,7 +11,7 @@
                 <div class="about-me">
                     <div class="favorites-mentors">
                         <div class="favorites-mentor cards">
-                            <div class="mentor-info-card">
+                            <a class="mentor-info-card">
                                 <div class="left">
                                     <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                          alt="user icon">
@@ -65,6 +65,9 @@
                                         <p class="name">
                                             Артём М,<span> Artyom-S</span>
                                         </p>
+                                        <div class="status">
+                                            Свободен
+                                        </div>
                                     </div>
                                     <div class="work">
                                         Разработчик - Яндекса
@@ -135,8 +138,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mentor-info-card">
+                            </a>
+                            <a class="mentor-info-card">
                                 <div class="left">
                                     <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                          alt="user icon">
@@ -190,6 +193,9 @@
                                         <p class="name">
                                             Артём М,<span> Artyom-S</span>
                                         </p>
+                                        <div class="status">
+                                            Свободен
+                                        </div>
                                     </div>
                                     <div class="work">
                                         Разработчик - Яндекса
@@ -259,8 +265,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mentor-info-card">
+                            </a>
+                            <a class="mentor-info-card">
                                 <div class="left">
                                     <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                          alt="user icon">
@@ -314,6 +320,9 @@
                                         <p class="name">
                                             Артём М,<span> Artyom-S</span>
                                         </p>
+                                        <div class="status">
+                                            Свободен
+                                        </div>
                                     </div>
                                     <div class="work">
                                         Разработчик - Яндекса
@@ -383,12 +392,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <div class="catalog-ad-card">
                                 <h4>Рекламное объявление</h4>
                                 <a>Получите чек-лист по профессиям</a>
                             </div>
-                            <div class="mentor-info-card">
+                            <a class="mentor-info-card">
                                 <div class="left">
                                     <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                          alt="user icon">
@@ -442,6 +451,9 @@
                                         <p class="name">
                                             Артём М,<span> Artyom-S</span>
                                         </p>
+                                        <div class="status">
+                                            Свободен
+                                        </div>
                                     </div>
                                     <div class="work">
                                         Разработчик - Яндекса
@@ -510,8 +522,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mentor-info-card">
+                            </a>
+                            <a class="mentor-info-card">
                                 <div class="left">
                                     <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
                                          alt="user icon">
@@ -565,6 +577,9 @@
                                         <p class="name">
                                             Артём М,<span> Artyom-S</span>
                                         </p>
+                                        <div class="status">
+                                            Свободен
+                                        </div>
                                     </div>
                                     <div class="work">
                                         Разработчик - Яндекса
@@ -633,7 +648,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <button class="btn-white-green large-btn w-100 btn-load-more">
                             Показать еще

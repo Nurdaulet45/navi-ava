@@ -408,10 +408,10 @@
                          aria-labelledby="nav-who-consult-know-tab">
                         <div class="about-service-body">
                             <div class="about-service-title">
-                                Что важно знать наставнику-консультанту
+                                Что важно знать наставнику и консультанту
                             </div>
                             <div class="about-service-description">
-                                Что важно знать наставнику — консультанту NAVI-AVA?
+                                Что важно знать наставнику и консультанту NAVI-AVA?
                                 <br>
                                 <br>
                                 Для наставника-консультанта важно
@@ -882,12 +882,12 @@
                            href="#nav-about-project" role="tab" aria-controls="nav-about-project" aria-selected="true">
                             О проекте
                         </a>
-                        <a class="nav-link about-service-sidebar-item " id="nav-who-know_paid_consult-tab"
-                           data-toggle="tab"
-                           href="#nav-who-know_paid_consult-tab" role="tab"
-                           aria-controls="nav-who-know_paid_consult-tab" aria-selected="false">
-                            Что важно знать платному консультанту
-                        </a>
+{{--                        <a class="nav-link about-service-sidebar-item " id="nav-who-know_paid_consult-tab"--}}
+{{--                           data-toggle="tab"--}}
+{{--                           href="#nav-who-know_paid_consult-tab" role="tab"--}}
+{{--                           aria-controls="nav-who-know_paid_consult-tab" aria-selected="false">--}}
+{{--                            Что важно знать платному консультанту--}}
+{{--                        </a>--}}
                         <a class="nav-link about-service-sidebar-item" id="nav-who-child-know-tab" data-toggle="tab"
                            href="#nav-who-child-know-tab" role="tab" aria-controls="nav-who-child-know-tab"
                            aria-selected="false">
@@ -897,7 +897,7 @@
                         <a class="nav-link about-service-sidebar-item" id="nav-who-consult-know-tab" data-toggle="tab"
                            href="#nav-who-consult-know-tab" role="tab" aria-controls="nav-who-consult-know-tab"
                            aria-selected="false">
-                            Что важно знать наставнику-консультанту
+                            Что важно знать наставнику и консультанту
                         </a>
                         <a class="nav-link about-service-sidebar-item" id="nav-who-interesting-tab" data-toggle="tab"
                            href="#nav-who-interesting" role="tab" aria-controls="nav-who-interesting"
@@ -914,11 +914,11 @@
                            aria-selected="false">
                             Наставники/Консультанты NAVI-AVA
                         </a>
-                        <a class="nav-link about-service-sidebar-item" id="nav-who-mentor-know-tab" data-toggle="tab"
-                           href="#nav-who-mentor-know-tab" role="tab" aria-controls="nav-who-mentor-know-tab"
-                           aria-selected="false">
-                            Что важно знать наставнику NAVI-AVA?
-                        </a>
+{{--                        <a class="nav-link about-service-sidebar-item" id="nav-who-mentor-know-tab" data-toggle="tab"--}}
+{{--                           href="#nav-who-mentor-know-tab" role="tab" aria-controls="nav-who-mentor-know-tab"--}}
+{{--                           aria-selected="false">--}}
+{{--                            Что важно знать наставнику NAVI-AVA?--}}
+{{--                        </a>--}}
                     </div>
                 </div>
             </div>

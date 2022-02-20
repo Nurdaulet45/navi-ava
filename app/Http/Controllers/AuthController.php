@@ -8,25 +8,37 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Auth\ResetPasswordUpdateRequest;
 use App\Mail\ResetPassword;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
     public function registerAjax(RegisterRequest $request)
     {
+//        dd(in_array($request->user_type, Role::DEFAULT_ROLES), $request->user_type);
+
+        $rand =
+
         $user = User::create([
-            'login' => $request->login,
             'email' => $request->email,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password)
         ]);
-        Auth::login($user);
 
+        $user->syncRoles([$request->user_type ?: Role::DEFAULT_ROLE]);
+        $user->default_role = $request->user_type ?: Role::DEFAULT_ROLE;
+        $user->save();
+
+        Auth::login($user);
 
         return response()->json(['data' => [
             'success' => true
@@ -35,14 +47,27 @@ class AuthController extends Controller
 
     public function loginAjax(LoginRequest $request)
     {
-        if (Auth::attempt($request->only(['login', 'password']), $request->remember == true)) {
-            return response()->json(['data' => [
-                    'success' => true
-            ]]);
+        $user = User::where('email', $request->email_or_phone)->orWhere('phone', $request->email_or_phone)->withTrashed()->firstOr(function () {
+            throw ValidationException::withMessages([
+                'email_or_phone' => [__('Email или номер телефона не найден')]
+            ]);
+        });
+
+
+        if (!Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'password' => [__('site.Login or password is incorrect')]
+            ]);
         }
-        throw ValidationException::withMessages([
-            'password' => [__('site.Login or password is incorrect')]
-        ]);
+        Auth::login($user);
+//        if(!empty( $user->default_role)) {
+//            $user->roles()->first();
+//        }
+        return response()->json(['data' => [
+            'success' => true,
+            'is_trashed' => false
+        ]]);
+
     }
 
     public function checkEmailAjax(CheckEmailRequest $request)
@@ -96,14 +121,11 @@ class AuthController extends Controller
                 'email' => [__('Не удалось отправить сообщения на почту')]
             ]);
         }
-
-
         return response()->json(['data' => [
             'success' => true,
         ]]);
     }
 
-//    public function verifyEmail($token)
     public function verifyEmail($token)
     {
         $user = User::where('email_verify_uuid', $token)->whereNotNull('email_verify_uuid')->orWhere('email_verify_uuid', '<>', '')->first();
