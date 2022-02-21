@@ -57,15 +57,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Логин</label>
-                        <input type="text" class="form-control input-default" placeholder="Логин"
-                               name="login"
-                               value="{{ old('login') ?: $user->login }}">
-                        @error('login')
-                        <p class="help-block ">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="">Как вас зовут?</label>
                         <div class="inputs">
                             <input type="text" class="form-control input-default" placeholder="Имя"

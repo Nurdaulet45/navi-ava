@@ -49,7 +49,6 @@ class UserController extends Controller
     public function saveAboutMe(AboutMeRequest $request)
     {
         $user = auth()->user();
-        $user->login = $request->login;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->skills_description = $request->skills_description;

@@ -9,11 +9,9 @@ class AboutMeRequest extends FormRequest
 
     public function rules()
     {
-        $rules = [
-            'login' => 'required|string|unique:users,login,' . auth()->user()->id
-        ];
+        $rules = [];
         if ($this->input('phone')) {
-            $rules['phone'] = 'min:18|max:18';
+            $rules['phone'] = 'min:18|max:18|unique:users,login,' . auth()->user()->id;
         }
         return $rules;
     }
