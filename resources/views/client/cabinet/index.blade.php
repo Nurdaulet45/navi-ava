@@ -47,7 +47,7 @@
                         <div class="mentor-block-user-name">
                             <div class="base-info">
                                 <div class="user-image">
-                                    <img src="{{ asset('images/user-icon.png') }}" alt="user-icon">
+                                    <img src="{{  asset(auth()->user()->avatarImage)  }}" alt="user-icon">
                                 </div>
                                 <div class="user-info">
                                     <p class="name">
