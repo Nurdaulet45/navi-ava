@@ -26,21 +26,21 @@
     <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('css/fonts.css?v=4')}}">
+    <link rel="stylesheet" href="{{asset('css/fonts.css?v=5')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/default.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=4')}}">
+    <link rel="stylesheet" href="{{asset('css/default.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/modal.css?v=5')}}">
 
-    <link rel="stylesheet" href="{{asset('css/style.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/catalog.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=4')}}">
-    <link rel="stylesheet" href="{{asset('css/blog.css?v=4')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css?v=5')}}">
     @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
@@ -60,7 +60,7 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.js?v=9')}}"></script>
     <script src="{{asset('/admin_asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/script.js?v=4')}}"></script>
+    <script src="{{asset('js/script.js?v=5')}}"></script>
 
     <script>
         @if(session('success'))
