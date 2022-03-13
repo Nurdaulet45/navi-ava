@@ -13,7 +13,7 @@
                 <form class="about-me-form" action="{{ route('cabinet.saveSpecialization') }}" method="POST">
                     @method('POST')
                     @csrf
-                    @if(!\App\Services\SessionRoleService::isStudent())
+{{--                    @if(!\App\Services\SessionRoleService::isStudent())--}}
                         <div class="form-group">
                             <label>
                                 Ваша специальность
@@ -21,10 +21,9 @@
                             <input type="text" class="form-control input-default"
                                    placeholder="Введите вашу специальность"
                                    name="specialization_text"
-                                   value="{{ old('specialization_text') ?: auth()->user()->specialization_text  }}"
-                            >
+                                   value="{{ old('specialization_text') ?: $userInformation->specialization_text  }}">
                         </div>
-                    @endif
+{{--                    @endif--}}
                     <div class="form-group ">
                         <label for="">Сферы деятельности
                             <div class="dropdown-menu dropdown-spec-info">
@@ -53,23 +52,12 @@
                             </div>
                         </label>
                         <div class="spec-items">
-
                             <div class="input-items">
-                                @foreach($leftBlockSpecializations as $specialization)
+                                @foreach($specializations as $specialization)
                                     <label class="label-default-radio">
                                         {{ $specialization->name }}
                                         <input type="radio" name="specialization_id" value="{{ $specialization->id }}"
-                                               @if((old('specialization_id') ?: auth()->user()->specialization_id) == $specialization->id) checked @endif>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                @endforeach
-                            </div>
-                            <div class="input-items">
-                                @foreach($rightBlockSpecializations as $specialization)
-                                    <label class="label-default-radio">
-                                        {{ $specialization->name }}
-                                        <input type="radio" name="specialization_id" value="{{ $specialization->id }}"
-                                               @if(auth()->user()->specialization_id == $specialization->id ) checked @endif>
+                                               @if((old('specialization_id') ?: $userInformation->specialization_id) == $specialization->id) checked @endif>
                                         <span class="checkmark"></span>
                                     </label>
                                 @endforeach
@@ -108,7 +96,7 @@
 
                         <div id="app">
                             <cabinet-skills-input-component
-                                :skills_items="{{json_encode(old('skills') ?: auth()->user()->skills)}}"/>
+                                :skills_items="{{json_encode(old('skills') ?: json_decode($userInformation->skills))}}"/>
                         </div>
                     </div>
 
@@ -117,11 +105,9 @@
                     </button>
                 </form>
                 <div class="about-right">
-
                     @include('client.components.aboutMeSidebar')
                     @include('client.components.cabinetSidebar')
                 </div>
-
 
             </div>
         </div>

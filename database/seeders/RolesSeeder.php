@@ -16,21 +16,29 @@ class RolesSeeder extends Seeder
     {
         $data = [
             [
+                'name' => 'admin',
+                'description' => 'Админ',
+            ],
+            [
+                'name' => 'student',
+                'description' => 'Ученик',
+            ],
+            [
                 'name' => 'mentor',
                 'description' => 'Наставник',
             ],
             [
-                'name' => 'admin',
-                'description' => 'Админ',
+                'name' => 'paid_mentor',
+                'description' => 'Платный наставник',
             ],
             [
                 'name' => 'consultant',
                 'description' => 'Консультант',
             ],
             [
-                'name' => 'student',
-                'description' => 'Ученик',
-            ]
+                'name' => 'paid_consultant',
+                'description' => 'Платный консультант',
+            ],
         ];
         DB::table('roles')->insert($data);
     }

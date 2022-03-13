@@ -14,9 +14,9 @@
             <div class="mini-profile-progressbar">
                 <div class="profile-progressbar">
                     <div class="middle-circle"></div>
-                    <div class="progress-spinner"></div>
+                    <div class="progress-spinner" style="background: conic-gradient(#6e8dfc {{$user->roleAboutProcent()}}%, #dde4ff {{$user->roleAboutProcent() + 10}}%);"></div>
                 </div>
-                <p class="progress-percent">35%</p>
+                <p class="progress-percent">{{$user->roleAboutProcent()}}%</p>
             </div>
         </div>
         <div class="sidebar-menu-item @if(request()->routeIs('cabinet.specialization')) active @endif">
@@ -33,48 +33,45 @@
             <div class="mini-profile-progressbar">
                 <div class="profile-progressbar">
                     <div class="middle-circle"></div>
-                    <div class="progress-spinner"></div>
+                    <div class="progress-spinner" style="background: conic-gradient(#6e8dfc {{$user->roleSpecializationsProcent()}}%, #dde4ff {{$user->roleSpecializationsProcent() + 10}}%);"></div>
                 </div>
-                <p class="progress-percent">35%</p>
+                <p class="progress-percent">{{ $user->roleSpecializationsProcent() }}%</p>
             </div>
         </div>
-        @if(!\App\Services\SessionRoleService::isStudent())
-            <div class="sidebar-menu-item @if(request()->routeIs('cabinet.certifications')) active @endif">
-                <a href="{{ route('cabinet.certifications') }}"
-                   class="link">
-
-                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M6 11.0994V4.5C5.44772 4.5 5 4.05228 5 3.5C5 2.94772 5.44772 2.5 6 2.5H18C18.5523 2.5 19 2.94772 19 3.5C19 4.05228 18.5523 4.5 18 4.5V11.0994C18.9318 12.1201 19.4321 13.1341 19.6987 13.9338C19.8447 14.3719 19.9199 14.7435 19.9587 15.0148C19.9781 15.1506 19.9884 15.2615 19.9939 15.3436C19.9966 15.3847 19.9981 15.4186 19.999 15.4448L19.9996 15.4682L19.9998 15.4783L20 15.4907V15.4957V15.4979V15.499C20 15.499 19.9954 15.3677 20 15.5C20 16.0523 19.5523 16.5 19 16.5H13V21.5C13 22.0523 12.5523 22.5 12 22.5C11.4477 22.5 11 22.0523 11 21.5V16.5H5C4.44772 16.5 4 16.0523 4 15.5C4 15 4 15.499 4 15.499V15.4979L4.00001 15.4957L4.00004 15.4907L4.00019 15.4783C4.00033 15.4691 4.00059 15.4579 4.00101 15.4448C4.00185 15.4186 4.00338 15.3847 4.00612 15.3436C4.01159 15.2615 4.02191 15.1506 4.0413 15.0148C4.08006 14.7435 4.15528 14.3719 4.30132 13.9338C4.56788 13.1341 5.06824 12.1201 6 11.0994ZM16 4.5H8V11.5C8 11.7652 7.89464 12.0196 7.70711 12.2071C6.86009 13.0541 6.43577 13.8854 6.22128 14.5H17.7787C17.5642 13.8854 17.1399 13.0541 16.2929 12.2071C16.1054 12.0196 16 11.7652 16 11.5V4.5Z"
-                            fill="#707378"/>
-                    </svg>
-                    Дипломы, сертификаты
-                </a>
-                <div class="mini-profile-progressbar">
-                    <div class="profile-progressbar">
-                        <div class="middle-circle"></div>
-                        <div class="progress-spinner"></div>
-                    </div>
-                    <p class="progress-percent">35%</p>
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.certifications')) active @endif">
+            <a href="{{ route('cabinet.certifications') }}"
+               class="link">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6 11.0994V4.5C5.44772 4.5 5 4.05228 5 3.5C5 2.94772 5.44772 2.5 6 2.5H18C18.5523 2.5 19 2.94772 19 3.5C19 4.05228 18.5523 4.5 18 4.5V11.0994C18.9318 12.1201 19.4321 13.1341 19.6987 13.9338C19.8447 14.3719 19.9199 14.7435 19.9587 15.0148C19.9781 15.1506 19.9884 15.2615 19.9939 15.3436C19.9966 15.3847 19.9981 15.4186 19.999 15.4448L19.9996 15.4682L19.9998 15.4783L20 15.4907V15.4957V15.4979V15.499C20 15.499 19.9954 15.3677 20 15.5C20 16.0523 19.5523 16.5 19 16.5H13V21.5C13 22.0523 12.5523 22.5 12 22.5C11.4477 22.5 11 22.0523 11 21.5V16.5H5C4.44772 16.5 4 16.0523 4 15.5C4 15 4 15.499 4 15.499V15.4979L4.00001 15.4957L4.00004 15.4907L4.00019 15.4783C4.00033 15.4691 4.00059 15.4579 4.00101 15.4448C4.00185 15.4186 4.00338 15.3847 4.00612 15.3436C4.01159 15.2615 4.02191 15.1506 4.0413 15.0148C4.08006 14.7435 4.15528 14.3719 4.30132 13.9338C4.56788 13.1341 5.06824 12.1201 6 11.0994ZM16 4.5H8V11.5C8 11.7652 7.89464 12.0196 7.70711 12.2071C6.86009 13.0541 6.43577 13.8854 6.22128 14.5H17.7787C17.5642 13.8854 17.1399 13.0541 16.2929 12.2071C16.1054 12.0196 16 11.7652 16 11.5V4.5Z"
+                        fill="#707378"/>
+                </svg>
+                Дипломы, сертификаты
+            </a>
+            <div class="mini-profile-progressbar">
+                <div class="profile-progressbar">
+                    <div class="middle-circle"></div>
+                    <div class="progress-spinner" style="background: conic-gradient(#6e8dfc {{$user->roleCertificatesProcent()}}%, #dde4ff {{$user->roleCertificatesProcent() + 10}}%);"></div>
                 </div>
+                <p class="progress-percent">{{$user->roleCertificatesProcent()}}%</p>
             </div>
-            <div class="line"></div>
-            <div class="sidebar-menu-item @if(request()->routeIs('cabinet.mentoring')) active @endif">
-                <a href="{{ route('cabinet.mentoring') }}"
-                   class="link">
-                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M9 2.5C9.55228 2.5 10 2.94772 10 3.5V4.5H14V3.5C14 2.94772 14.4477 2.5 15 2.5C15.5523 2.5 16 2.94772 16 3.5V4.5H19C20.1046 4.5 21 5.39543 21 6.5V19.5C21 20.6046 20.1046 21.5 19 21.5H5C3.89543 21.5 3 20.6046 3 19.5V6.5C3 5.39543 3.89543 4.5 5 4.5H8V3.5C8 2.94772 8.44772 2.5 9 2.5ZM8 6.5H5V9.5H19V6.5H16V7.5C16 8.05228 15.5523 8.5 15 8.5C14.4477 8.5 14 8.05228 14 7.5V6.5H10V7.5C10 8.05228 9.55228 8.5 9 8.5C8.44772 8.5 8 8.05228 8 7.5V6.5ZM19 11.5H5V19.5H19V11.5Z"
-                            fill="#707378"/>
-                    </svg>
-                    {{ \App\Services\SessionRoleService::textByRole('Наставничества','Консультирование','услуга не опеделен') }}
-                </a>
-            </div>
-        @endif
+        </div>
+        <div class="line"></div>
+        <div class="sidebar-menu-item @if(request()->routeIs('cabinet.mentoring')) active @endif">
+            <a href="{{ route('cabinet.mentoring') }}"
+               class="link">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9 2.5C9.55228 2.5 10 2.94772 10 3.5V4.5H14V3.5C14 2.94772 14.4477 2.5 15 2.5C15.5523 2.5 16 2.94772 16 3.5V4.5H19C20.1046 4.5 21 5.39543 21 6.5V19.5C21 20.6046 20.1046 21.5 19 21.5H5C3.89543 21.5 3 20.6046 3 19.5V6.5C3 5.39543 3.89543 4.5 5 4.5H8V3.5C8 2.94772 8.44772 2.5 9 2.5ZM8 6.5H5V9.5H19V6.5H16V7.5C16 8.05228 15.5523 8.5 15 8.5C14.4477 8.5 14 8.05228 14 7.5V6.5H10V7.5C10 8.05228 9.55228 8.5 9 8.5C8.44772 8.5 8 8.05228 8 7.5V6.5ZM19 11.5H5V19.5H19V11.5Z"
+                        fill="#707378"/>
+                </svg>
+                {{SessionRoleService::textByRole('Наставничества','Консультирование','Обучение','услуга не опеделен') }}
+            </a>
+        </div>
+
         <div class="sidebar-menu-item @if(request()->routeIs('cabinet.reviews')) active @endif">
             <a href="{{ route('cabinet.reviews') }}"
                class="link">
-
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path

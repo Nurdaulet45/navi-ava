@@ -12,6 +12,5 @@
                 Напишите нам
             </a>
             @endif
-
     </div>
 </section>

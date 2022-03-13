@@ -23,7 +23,6 @@ class FileService
         }
         $fileName = $file->getClientOriginalName();
 
-
         if (Storage::disk('public')->exists($path . "/$fileName")) {
             $fileName = explode('.', $fileName);
             $extension = array_pop($fileName);

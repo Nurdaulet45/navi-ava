@@ -14,7 +14,6 @@
                     <cabinet-reviews-component :auth_user="{{$user}}"/>
                 </div>
                 <div class="about-right">
-
                     @include('client.components.aboutMeSidebar')
                     @include('client.components.cabinetSidebar')
                 </div>

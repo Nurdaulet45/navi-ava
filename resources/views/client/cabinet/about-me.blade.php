@@ -9,7 +9,8 @@
     <section class="s-about-me-page">
         <div class="container">
             <div class="about-me">
-                <form class="about-me-form" href="{{ route('cabinet.saveAboutMe') }}" method="post" enctype="multipart/form-data">
+                <form class="about-me-form" href="{{ route('cabinet.saveAboutMe') }}" method="post"
+                      enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <div class="form-group photo-form-group">
@@ -19,12 +20,8 @@
                         <div class="photo">
                             <img id="preview-avatar-before-upload"
                                  class="user-profile-image"
-                                 src="{{ $user->avatar
-                                                    ? Illuminate\Support\Facades\Storage::url(\App\Models\User::IMAGE_PATH.$user->avatar)
-                                                    : asset('images/user-profile-icon.png') }}"
+                                 src="{{ $user->avatarImage }}"
                                  alt="user avatar">
-                            {{--                            <img class="user-profile-image" src="{{ asset('images/user-profile-icon.png') }}"--}}
-                            {{--                                 alt="user-profile">--}}
                             <div class="buttons">
                                 <label for="avatar" class="btn-default small-btn cl-white">
                                     Загрузить фото
@@ -84,7 +81,7 @@
                                 @endforeach
                             </select>
                             <input type="text" class="form-control input-default"
-                                   value="{{ old('address') ?: $user->address ?: '' }}"
+                                   value="{{ old('address') ?: $user->address }}"
                                    name="address"
                                    placeholder="Адрес (населенный пункт, город,район)">
                         </div>
@@ -146,8 +143,9 @@
                                 </div>
                             </div>
                         </label>
-                        <textarea name="skills_description" class="form-control textarea-default" id="" cols="30" rows="6"
-                                  placeholder="С какими навыками можете помочь?">{{ old('skills_description') ?: $user->skills_description }}</textarea>
+                        <textarea name="skills_description" class="form-control textarea-default" id="" cols="30"
+                                  rows="6"
+                                  placeholder="С какими навыками можете помочь?">{{ old('skills_description') ?: $userInformation->skills_description }}</textarea>
                         @error('skills_description')
                         <p class="help-block ">{{ $message }}</p>
                         @enderror
@@ -176,7 +174,7 @@
                             </div>
                         </label>
                         <textarea name="about_me" class="form-control textarea-default" id="" cols="30" rows="6"
-                                  placeholder="Напишите что-нибудь о себе">{{ old('about_me') ?: $user->about_me }}</textarea>
+                                  placeholder="Напишите что-нибудь о себе">{{ old('about_me') ?: $userInformation->about_me }}</textarea>
                         @error('about_me')
                         <p class="help-block ">{{ $message }}</p>
                         @enderror
@@ -187,8 +185,7 @@
                                value="{{ old('phone') ?: $user->phone }}"
                                id="phone"
                                name="phone"
-                               placeholder="+7 (___) - ___ - __ - __">
-
+                               placeholder="Телефон">
                         @error('phone')
                         <p class="help-block ">{{ $message }}</p>
                         @enderror
@@ -232,9 +229,10 @@
                                    onchange="previewImage('preview-profile_header-before-upload')" id="profile_header">
                         </div>
                         @error('profile_header_image')
-                            <p class="help-block ">{{ $message }}</p>
+                        <p class="help-block ">{{ $message }}</p>
                         @enderror
-                        <p class="warning-text"> Вы можете <a href="{{ route('cabinet.deleteProfile') }}">удалить свой профиль</a></p>
+                        <p class="warning-text"> Вы можете <a href="{{ route('cabinet.deleteProfile') }}">удалить свой
+                                профиль</a></p>
                     </div>
                     <button class="btn-default small-btn w-100">
                         Сохранить
@@ -242,7 +240,8 @@
                     @if(session('success'))
                         <div class="success-info-btn large-btn">
 
-                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M10 2.5C5.58172 2.5 2 6.08172 2 10.5C2 14.9183 5.58172 18.5 10 18.5C14.4183 18.5 18 14.9183 18 10.5C18 6.08172 14.4183 2.5 10 2.5ZM0 10.5C0 4.97715 4.47715 0.5 10 0.5C15.5228 0.5 20 4.97715 20 10.5C20 16.0228 15.5228 20.5 10 20.5C4.47715 20.5 0 16.0228 0 10.5ZM14.6644 7.25259C15.0771 7.61951 15.1143 8.25158 14.7474 8.6644L9.4141 14.6644C9.2243 14.8779 8.9523 15 8.6667 15C8.381 15 8.109 14.8779 7.91926 14.6644L5.25259 11.6644C4.88567 11.2516 4.92285 10.6195 5.33564 10.2526C5.74842 9.8857 6.38049 9.9229 6.74741 10.3356L8.6667 12.4948L13.2526 7.33564C13.6195 6.92285 14.2516 6.88567 14.6644 7.25259Z"
                                     fill="#0CBD82"/>
@@ -254,7 +253,6 @@
 
                 </form>
                 <div class="about-right">
-
                     @include('client.components.aboutMeSidebar')
                     @include('client.components.cabinetSidebar')
                 </div>
@@ -267,9 +265,3 @@
 
 @endsection
 
-@section('custom_js')
-    <script src="{{asset('js/maskinput.js') }}"></script>
-    <script>
-        $('#phone').mask("+7 (999) 999 99 99");
-    </script>
-@endsection

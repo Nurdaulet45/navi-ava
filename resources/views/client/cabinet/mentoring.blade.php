@@ -1,10 +1,10 @@
 @extends('layouts/app')
 @section('content')
     @component('client.components.breadcrumb', ['gray' => true])
-        @slot('title')  {{\App\Services\SessionRoleService::textByRole('Наставничество','Консультирование','Тип услуги не определен')}} @endslot
+        @slot('title')  {{SessionRoleService::textByRole('Наставничество','Консультирование','Обучение','Тип услуги не определен')}} @endslot
         @slot('parent')@endslot
         @slot('cabinet')@endslot
-        @slot('active')  {{\App\Services\SessionRoleService::textByRole('Наставничество','Консультирование','Тип услуги не определено')}} @endslot
+        @slot('active')  {{SessionRoleService::textByRole('Наставничество','Консультирование','Обучение','Тип услуги не определено')}} @endslot
     @endcomponent
     <section class="s-about-me-page">
         <div class="container">
@@ -16,61 +16,41 @@
                         <label for="">Мой статус на платформе</label>
                         <div class="input-items">
                             <label class="label-default-radio">
-
-                                {{ \App\Services\SessionRoleService::textByRole('Принимаю учеников','Консультирую','Готов к обучению') }}
-                                <input type="radio" name="is_accept_students" value="true"
-                                       @if(auth()->user()->is_accept_students) checked @endif>
+                                {{ SessionRoleService::textByRole('Принимаю учеников','Консультирую','Готов к обучению') }}
+                                <input type="radio" name="user_status" value="true"
+                                       @if($userInformation->user_status) checked @endif>
                                 <span class="checkmark"></span>
                             </label>
                             <label class="label-default-radio">
-                                {{ \App\Services\SessionRoleService::textByRole('Не принимаю учеников','Не консультирую','Не готов к обучению') }}
-                                <input type="radio" name="is_accept_students" value="false"
-                                       @if(!auth()->user()->is_accept_students) checked @endif>
+                                {{ SessionRoleService::textByRole('Не принимаю учеников','Не консультирую','Не готов к обучению') }}
+                                <input type="radio" name="user_status" value="false"
+                                       @if(!$userInformation->user_status) checked @endif>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        @error('is_accept_students')
+                        @error('user_status')
                         <p class="help-block ">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="">
-                            Вид {{ \App\Services\SessionRoleService::textByRole('наставничества','консультирование','услуги не опеделен') }}
-                        </label>
 
-                        <label class="switch-default-input">
-                            <input type="checkbox" id="profile_is_service_payable" name="is_service_payable"
-                                   @if((old('is_service_payable') && old('is_service_payable') == 'on')
-                                    || auth()->user()->is_service_payable) checked @endif>>
-                            <span class="slider round"></span>
-                            <span class="text">
-                                Платный
-                            </span>
-                        </label>
-                        @error('is_service_payable')
-                        <p class="help-block ">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="form-group service-price" style="@if(!(old('is_service_payable') && old('is_service_payable') == 'on')
- && !auth()->user()->is_service_payable) display: none @else @endif">
-                        <label for="">
-                            Стоимость услуг за час
-                        </label>
-                        <input type="number" class="form-control input-default"
-                               placeholder="Введите сумму"
-                               name="service_price"
-                               value="{{ old('service_price') ?: auth()->user()->service_price }}"
-                        >
-                        @error('service_price')
-                        <p class="help-block ">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    @if(!SessionRoleService::isStudent() && !SessionRoleService::isMentor() && !SessionRoleService::isConsultant())
+                        <div class="form-group service-price">
+                            <label for="service_price"> Стоимость услуг за час</label>
+                            <input id="service_price" type="number" class="form-control input-default"
+                                   placeholder="Введите сумму"
+                                   name="service_price"
+                                   value="{{ old('service_price') ?: $userInformation->service_price }}">
+                            @error('service_price')
+                            <p class="help-block ">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    @endif
+
                     <button class="btn-default small-btn w-100" type="submit">
                         Сохранить
                     </button>
                 </form>
                 <div class="about-right">
-
                     @include('client.components.aboutMeSidebar')
                     @include('client.components.cabinetSidebar')
                 </div>
@@ -78,5 +58,4 @@
         </div>
     </section>
     @include('client.components.sectionWriteToUs', ['gray'  => true])
-
 @endsection

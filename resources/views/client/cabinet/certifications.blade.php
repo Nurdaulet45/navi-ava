@@ -26,7 +26,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         @error('file_name')
-        alertWarningModal("{{$message}}")
+            alertWarningModal("{{$message}}")
         @enderror
     </script>
 @endsection

@@ -13,13 +13,11 @@
     <meta property="og:see_also" content="{{env('APP_URL')}}"/>
 
 
-    <meta itemprop="name" content="DREAMSKILLS"/>
-    <meta itemprop="description" content="DREAMSKILLS"/>
-    <meta itemprop="image" content="{{env('APP_URL') . '/images/logo.svg'}}"/>
+    <meta itemprop="name" content=""/>
+    <meta itemprop="description" content=""/>
+    <meta itemprop="image" content="{{env('APP_URL') . '/images/logo.png'}}"/>
 
-{{--    <link rel="shortcut icon" type="image/svg" href="/images/logo.svg">--}}
-
-<!-- CSRF Token -->
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', env('APP_NAME'))</title>
@@ -41,42 +39,39 @@
     <link rel="stylesheet" href="{{asset('css/catalog.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/cabinet.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/blog.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/banner.css?v=5')}}">
     @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
 <body class="wrap d-flex flex-column min-vh-100">
-    <div class="loader">
-        @include('client.components.loader')
-    </div>
-    <div class="flex-fill">
-        @include('client.components.header')
-        @yield('content')
-        @include('client.components.modalLogin')
-        @include('client.components.modalResetPassword')
-        @include('client.components.modalRegister')
-    </div>
-    @include('client.components.footer')
+@include('client.components.bannerMain')
 
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.js?v=9')}}"></script>
-    <script src="{{asset('/admin_asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/script.js?v=5')}}"></script>
+<div class="loader">
+    @include('client.components.loader')
+</div>
+<div class="flex-fill">
+    @include('client.components.header')
+    @yield('content')
+    @include('client.components.modalLogin')
+    @include('client.components.modalResetPassword')
+    @include('client.components.modalRegister')
+</div>
+@include('client.components.footer')
 
-    <script>
-        @if(session('success'))
-        alertModal("{{session('success')}}")
-        @endif
-        @error('invalid_link')
-        alertWarningModal("{{$message}}")
-        @enderror
-    </script>
-{{--    <script src="{{asset('js/maskinput.js') }}"></script>--}}
-{{--    <script>--}}
-{{--        $('#register-phone').mask("+7 (999) 999 99 99");--}}
-{{--    </script>--}}
-        <script>
-            $('#register-phone').mask("+7 (999) 999 99 99");
-        </script>
-    @yield('custom_js')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.js?v=9')}}"></script>
+<script src="{{asset('/admin_asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('js/script.js?v=5')}}"></script>
+
+<script>
+    @if(session('success'))
+    alertModal("{{session('success')}}")
+    @endif
+    @error('invalid_link')
+    alertWarningModal("{{$message}}")
+    @enderror
+</script>
+@yield('custom_js')
+
 </body>
 </html>

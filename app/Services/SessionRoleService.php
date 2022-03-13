@@ -7,19 +7,35 @@ use Illuminate\Support\Facades\Session;
 
 class SessionRoleService
 {
-
-    public static function textByRole($mentorText, $consultantText, $studentText = '', $defaultText = 'не определен')
+    public static function textByRole($mentorText, $consultantText , $studentText, $defaultText = 'не определен')
     {
         if (self::isMentor()) {
+            return $mentorText;
+        }
+        if (self::isPaidMentor()) {
             return $mentorText;
         }
         if (self::isConsultant()) {
             return $consultantText;
         }
+        if (self::isPaidConsultant()) {
+            return $consultantText;
+        }
         if (self::isStudent()) {
-            return $studentText ?: $defaultText;
+            return $studentText;
         }
         return $defaultText;
+    }
+
+    public static function textUserRoleStatus($userStatus): string
+    {
+        if (self::isMentor() || self::isPaidMentor()) {
+            return $userStatus ? 'Принимаю учеников' : 'Не принимаю учеников';
+        }
+        if (self::isConsultant() || self::isPaidConsultant()) {
+            return $userStatus ? 'Консультирую' : 'Не консультирую';
+        }
+        return $userStatus ? 'Готов к обучению' : 'Не готов к обучению';
     }
 
     public static function isMentor(): bool
@@ -37,16 +53,32 @@ class SessionRoleService
         return Session::get('role') == Role::STUDENT_NAME;
     }
 
+    public static function isPaidConsultant(): bool
+    {
+        return Session::get('role') == Role::PAID_CONSULTANT_NAME;
+    }
+
+    public static function isPaidMentor(): bool
+    {
+        return Session::get('role') == Role::PAID_MENTOR_NAME;
+    }
+
     public static function getSessionRoleName(): string
     {
         if (self::isStudent()) {
-            return 'Студент';
+            return 'Ученик';
         }
         if (self::isConsultant()) {
             return 'Консультант';
         }
         if (self::isMentor()) {
             return 'Наставник';
+        }
+        if (self::isPaidMentor()) {
+            return 'Платный наставник';
+        }
+        if (self::isPaidConsultant()) {
+            return 'Платный консультант';
         }
         return 'Не определен';
     }
@@ -55,21 +87,22 @@ class SessionRoleService
     {
         return mb_strtolower(self::roleName($role)) == mb_strtolower(self::getSessionRoleName());
     }
+
     public static function roleName($role): string
     {
         switch ($role) {
-            case Role::MENTOR_NAME : {
+            case Role::MENTOR_NAME:
                 return 'Наставник';
-            }
-            case Role::CONSULTANT_NAME : {
+            case Role::PAID_MENTOR_NAME:
+                return 'Платный наставник';
+            case Role::CONSULTANT_NAME :
                 return 'Консультант';
-            }
-            case Role::STUDENT_NAME : {
-                return 'Студент';
-            }
-            default: {
+            case Role::PAID_CONSULTANT_NAME:
+                return 'Платный консультант';
+            case Role::STUDENT_NAME:
+                return 'Ученик';
+            default:
                 return 'Не определен';
-            }
         }
     }
 }

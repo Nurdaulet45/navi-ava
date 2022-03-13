@@ -34,7 +34,6 @@ function testFunction(e, url){
 }
 
 $(function () {
-
     $("#registerForm").submit(function (e) {
         e.preventDefault();
 
@@ -46,7 +45,7 @@ $(function () {
         let password_confirmation = $('#register-password_confirmation').val();
         let confirm_site_rules = $("input[name=confirm_site_rules]").is(':checked');
         let confirm_privacy_policy = $("input[name=confirm_privacy_policy]").is(':checked');
-        let user_type = $("input[name=register-user_type]:checked").val();
+        let user_type = $("#register-user_type").val();
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
         clearInvalidFeedback()
@@ -172,8 +171,8 @@ $(function () {
         let _token = $('meta[name="csrf-token"]').attr('content');
         $(".loader").addClass("loading");
         clearInvalidFeedback()
-        console.log('password', password)
-        console.log('password_confirm', password_confirm)
+        // console.log('password', password)
+        // console.log('password_confirm', password_confirm)
 
         $.ajax({
             url: $(this).attr('action'),
@@ -198,7 +197,7 @@ $(function () {
             error: function (err) {
                 $(".loader").removeClass("loading");
                 let response_text = JSON.parse(err.responseText);
-                console.log('response_text.errors', response_text.errors)
+                // console.log('response_text.errors', response_text.errors)
                 if (response_text.errors && typeof response_text.errors == 'object') {
                     Object.entries(response_text.errors).forEach(([key, value]) => {
                         console.log('#error-editP-' + key)
@@ -426,9 +425,9 @@ function openResetPassword(e) {
 
 function openRegister(e) {
     $('.modal').modal('hide')
+    // $('.prev-register').css('display', 'block')
+    $('.only-register').css('display', 'block')
 
-    $('.prev-register').css('display', 'block')
-    $('.only-register').css('display', 'none')
     setTimeout(() => {
         $('#registerPopup').modal('show');
     }, 500)
@@ -590,6 +589,62 @@ function deleteInputFile(el, num) {
     parent.find('.input_file_' + num + '_uploaded .text').text('')
 }
 
+
+
+$('.select').each(function () {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 250; // длительность анимации
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.children('option:disabled').text()
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 1; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+            .attr('data-value', selectOption.eq(i).val())
+            .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function () {
+        if (!$(this).hasClass('on')) {
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function () {
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text($(this).find('span').text());
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+        }
+    });
+});
 
 
 

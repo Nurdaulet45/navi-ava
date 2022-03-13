@@ -11,7 +11,7 @@ class AboutMeRequest extends FormRequest
     {
         $rules = [];
         if ($this->input('phone')) {
-            $rules['phone'] = 'min:18|max:18|unique:users,phone,' . auth()->user()->id;
+            $rules['phone'] = 'unique:users,phone,' . auth()->user()->id;
         }
         return $rules;
     }

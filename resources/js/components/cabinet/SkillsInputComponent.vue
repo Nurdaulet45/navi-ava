@@ -21,7 +21,7 @@
                     </svg>
                 </label>
                 <input type="text" hidden :id="index" name="skills[]" :value="skill_item">
-        </div>
+            </div>
         </div>
     </div>
 </template>

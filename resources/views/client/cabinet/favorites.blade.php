@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
+                                            <a href="" class="btn-default-shadow small-btn">
                                                 Связаться
                                             </a>
                                             <button class="btn-white-green w-auto">
@@ -245,7 +245,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
+                                            <a href="" class="btn-default-shadow small-btn">
                                                 Связаться
                                             </a>
                                             <div class="btn-white-green w-auto">
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
+                                            <a href="" class="btn-default-shadow small-btn">
                                                 Связаться
                                             </a>
                                             <div class="btn-white-green w-auto">
@@ -503,7 +503,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
+                                            <a href="" class="btn-default-shadow small-btn">
                                                 Связаться
                                             </a>
                                             <div class="btn-white-green w-auto">
@@ -629,7 +629,7 @@
                                     </div>
                                     <div class="actions">
                                         <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
+                                            <a href="" class="btn-default-shadow small-btn">
                                                 Связаться
                                             </a>
                                             <div class="btn-white-green w-auto">

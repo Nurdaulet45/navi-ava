@@ -14,7 +14,8 @@
             </div>
             <div class="modal-body">
                 <div class="prev-register">
-                    <form action="{{ route('mentor') }}" >
+{{--                    {{ route('mentor') }}--}}
+                    <form action="#" >
 
                     <div class="nav nav-tabs register-tabs">
                         <input type="radio" class="stv-radio-tab register-tab" name="search-user_type" value="mentor"

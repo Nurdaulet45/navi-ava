@@ -8,23 +8,27 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', [MainController::class, 'index'])->name('index');
-Route::get('/catalog', function() {
-    return view('client.catalog');
-})->name('catalog');
+
+Route::get('/catalog',[MainController::class, 'catalog'])->name('catalog');
+Route::get('/mentor/{id}',[MainController::class, 'mentor'])->name('mentor');
+
 Route::get('/catalog-free', function() {
     return view('client.catalog-free');
 })->name('catalog-free');
-Route::get('/mentor', function() {
-    return view('client.mentor');
-})->name('mentor');
-Route::get('/mentor-free', function() {
-    return view('client.mentor-free');
-})->name('mentor');
+
+//Route::get('/mentor', function() {
+//    return view('client.mentor');
+//})->name('mentor');
+
+//Route::get('/mentor-free', function() {
+//    return view('client.mentor-free');
+//})->name('mentor');
+
 Route::get('/blog', function() {
     return view('client.blog');
 })->name('blog');
+
 Route::get('/blog-post', function() {
     return view('client.blog-post');
 })->name('blog-post');
@@ -44,14 +48,12 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
     Route::get('/specialization', [UserController::class, 'specialization'])->name('.specialization');
     Route::post('/specialization', [UserController::class, 'saveSpecialization'])->name('.saveSpecialization');
 
-
     Route::get('/mentoring', [UserController::class, 'mentoring'])->name('.mentoring');
     Route::post('/mentoring', [UserController::class, 'saveMentoring'])->name('.saveMentoring');
     Route::get('/reviews', [UserController::class, 'reviews'])->name('.reviews');
     Route::get('/favorites', [UserController::class, 'favorites'])->name('.favorites');
     Route::get('/certifications', [UserController::class, 'certifications'])->name('.certifications');
     Route::post('/certifications', [UserController::class, 'saveCertifications'])->name('.saveCertifications');
-
 
     Route::get('/change-mail', [UserController::class, 'changeMail'])->name('.changeMail');
     Route::post('/change-mail', [UserController::class, 'saveChangeMail'])->name('.saveChangeMail');
@@ -60,9 +62,9 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
     Route::get('/setting-notification', [UserController::class, 'settingNotification'])->name('.settingNotification');
     Route::post('/setting-notification', [UserController::class, 'saveSettingNotification'])->name('.saveSettingNotification');
 
+    Route::get('/account-activate', [UserController::class, 'accountActivate'])->name('.accountActivate');
     Route::get('/', [UserController::class, 'cabinet']);
 });
-
 
 
 Route::get('/about-service', function() {
@@ -73,7 +75,6 @@ Route::get('/contacts', function() {
     return view('client.contacts');
 })->name('contacts');
 Route::prefix('support')->name('support')->group(function () {
-
     Route::get('/', [SupportController::class, 'index']);
     Route::post('/question', [SupportController::class, 'storeQuestion'])->name('.storeQuestion');
 });
@@ -90,7 +91,7 @@ Route::get('/service-rules', function() {
 
 Route::prefix('ajax')->group(function () {
     Route::post('login', [AuthController::class, 'loginAjax'])->name('login.ajax');
-    Route::post('check-email', [AuthController::class, 'checkEmailAjax'])->name('check_email.ajax');
+//    Route::post('check-email', [AuthController::class, 'checkEmailAjax'])->name('check_email.ajax');
     Route::post('reset-password-email', [AuthController::class, 'resetPasswordSendEmail'])->name('reset_password.ajax');
     Route::post('register', [AuthController::class, 'registerAjax'])->name('register.ajax');
 });

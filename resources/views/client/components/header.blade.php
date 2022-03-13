@@ -70,12 +70,12 @@
                             <img src="{{ asset('images/kz-icon.png') }}" alt="kk">
                             KZ
                         </a>
-{{--                        <div class="line"></div>--}}
-{{--                        <a href="#"--}}
-{{--                           class="dropdown-item-custom">--}}
-{{--                            <img src="{{ asset('images/en-icon.png') }}" alt="kk">--}}
-{{--                            EN--}}
-{{--                        </a>--}}
+                        {{--                        <div class="line"></div>--}}
+                        {{--                        <a href="#"--}}
+                        {{--                           class="dropdown-item-custom">--}}
+                        {{--                            <img src="{{ asset('images/en-icon.png') }}" alt="kk">--}}
+                        {{--                            EN--}}
+                        {{--                        </a>--}}
                     </div>
                 </div>
             </div>
@@ -103,20 +103,23 @@
                     </div>
                 </div>
 
+
                 @auth
                     <div class="dropdown-menu dropdown-user">
                     <span class="dropdown-body">
                         <span class="user-info">
                             <span class="image @if(auth()->user()->avatar) b-none @endif">
-                                <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
-                                     alt="user-icon">
+                                <img
+                                    src="{{ auth()->user()->avatarImage  }}"
+                                    width="36" height="36"
+                                    alt="avatar">
                             </span>
                             <span class="info">
                                 <span class="name">
                                    {{auth()->user()->firstNameAndLetterLastNameCustom}}
                                 </span>
                                 <span class="level">
-                                    {{ \App\Services\SessionRoleService::getSessionRoleName() }}
+                                    {{ SessionRoleService::getSessionRoleName() }}
                                 </span>
                             </span>
                         </span>
@@ -136,7 +139,7 @@
                                         d="M12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4ZM6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8ZM8 18C6.34315 18 5 19.3431 5 21C5 21.5523 4.55228 22 4 22C3.44772 22 3 21.5523 3 21C3 18.2386 5.23858 16 8 16H16C18.7614 16 21 18.2386 21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 19.3431 17.6569 18 16 18H8Z"
                                         fill="#707378"/>
                                 </svg>
-                                Личные данные
+                                Мой кабинет
                             </a>
                             <a href="{{ route('cabinet.specialization') }}"
                                class="dropdown-item-custom @if(request()->routeIs('cabinet.specialization')) active @endif ">
@@ -148,7 +151,7 @@
                                 </svg>
                                 Специализация
                             </a>
-                            @if(!\App\Services\SessionRoleService::isStudent())
+                            @if(SessionRoleService::isStudent())
                                 <a href="{{ route('cabinet.certifications') }}"
                                    class="dropdown-item-custom @if(request()->routeIs('cabinet.certifications')) active @endif ">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -182,7 +185,6 @@
                             </a>
                             <a onclick="javascript:void(0)"
                                class="dropdown-item-custom">
-
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -204,9 +206,7 @@
                             <form action="{{route('logout')}}" method="POST">
                                 @csrf
                                 @method('POST')
-
                                 <button class="dropdown-item-custom p-0" type="submit">
-
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -220,57 +220,44 @@
                                 </button>
                             </form>
                             @foreach(auth()->user()->getRoleNames() as $role)
-                                @if(in_array($role, \App\Models\Role::DEFAULT_ROLES))
+                                @if(in_array($role, Role::DEFAULT_ROLES))
                                     <div class="line"></div>
-                                    @if(\App\Services\SessionRoleService::isSessionHasRole($role))
-                                    <span class="user-info active-user">
-                                         <span class="image @if(auth()->user()->avatar) b-none @endif">
-                                            <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
-                                                 alt="user-icon">
-                                        </span>
-                                        <span class="info">
-                                            <span class="name">
-                                               Вы вошли как {{  mb_strtolower(\App\Services\SessionRoleService::roleName($role)) }}
+                                    @if(SessionRoleService::isSessionHasRole($role))
+                                        <span class="user-info active-user">
+                                             <span class="image @if(auth()->user()->avatar) b-none @endif">
+                                                <img src="{{ asset(auth()->user()->avatarImage) }}" width="36"
+                                                     height="36"
+                                                     alt="user-icon">
                                             </span>
-                                            <span class="level">
-                                           {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                            <span class="info">
+                                                <span class="name">
+                                                   Вы вошли как {{  mb_strtolower(SessionRoleService::roleName($role)) }}
+                                                </span>
+                                                <span class="level">
+                                               {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                                </span>
                                             </span>
                                         </span>
-                                    </span>
                                     @else
-                                        <a class="user-info" href="{{ route('cabinet.sessionLoginAs', ['role' => $role]) }}">
-                                         <span class="image @if(auth()->user()->avatar) b-none @endif">
-                                            <img src="{{ asset(auth()->user()->avatarImage) }}" width="36" height="36"
-                                                 alt="user-icon">
-                                        </span>
-                                        <span class="info">
-                                            <span class="name">
-                                                    Войти как {{  mb_strtolower(\App\Services\SessionRoleService::roleName($role)) }}
+                                        <a class="user-info"
+                                           href="{{ route('cabinet.sessionLoginAs', ['role' => $role]) }}">
+                                             <span class="image @if(auth()->user()->avatar) b-none @endif">
+                                                <img src="{{ asset(auth()->user()->avatarImage) }}" width="36"
+                                                     height="36"
+                                                     alt="user-icon">
                                             </span>
-
-                                            <span class="level">
-                                           {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                            <span class="info">
+                                                <span class="name">
+                                                        Войти как {{  mb_strtolower(SessionRoleService::roleName($role)) }}
+                                                </span>
+                                                <span class="level">
+                                               {{ auth()->user()->firstNameAndLetterLastNameCustom }}
+                                                </span>
                                             </span>
-                                        </span>
-                                    </a>
+                                        </a>
                                     @endif
                                 @endif
                             @endforeach
-
-                            {{--                        <div class="line"></div>--}}
-                            {{--                        <span class="user-info">--}}
-                            {{--                            <span class="image">--}}
-                            {{--                                <img src="{{ asset('images/user-icon.png') }}" width="36" height="36" alt="user-icon">--}}
-                            {{--                            </span>--}}
-                            {{--                            <span class="info">--}}
-                            {{--                                <span class="name">--}}
-                            {{--                                    Анастасия М--}}
-                            {{--                                </span>--}}
-                            {{--                                <span class="level">--}}
-                            {{--                                    Наставник--}}
-                            {{--                                </span>--}}
-                            {{--                            </span>--}}
-                            {{--                        </span>--}}
                         </div>
                     </div>
                 @else

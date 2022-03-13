@@ -13,34 +13,32 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="prev-register">
-
-                    <div class="nav nav-tabs register-tabs">
-                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="mentor"
-                               id="tab_mentor"/>
-                        <label for="tab_mentor">Наставник</label>
-                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="student"
-                               id="tab_student" checked/>
-                        <label for="tab_student">Ученик</label>
-                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="consultant"
-                               id="tab_consultant"/>
-                        <label for="tab_consultant">Консультант</label>
-                    </div>
-                    <form id="prevRegisterForm" class="modal-form"  action="{{ route('check_email.ajax') }}">
-                        @csrf
-                        <div class="form-input-block">
-                            <input id="register-email" name="email"
-                                   class="modal-form-input input-default w-100" type="text"
-                                   required
-                                   placeholder="Email">
-                            <span class="invalid-feedback" role="alert" id="error-register-email"></span>
-                        </div>
-
-                        <button type="submit" class="btn-default-shadow medium-btn w-100">
-                            Далее
-                        </button>
-                    </form>
-                </div>
+                {{--                <div class="prev-register">--}}
+                {{--                    <div class="nav nav-tabs register-tabs">--}}
+                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="mentor"--}}
+                {{--                               id="tab_mentor"/>--}}
+                {{--                        <label for="tab_mentor">Наставник</label>--}}
+                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="student"--}}
+                {{--                               id="tab_student" checked/>--}}
+                {{--                        <label for="tab_student">Ученик</label>--}}
+                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="consultant"--}}
+                {{--                               id="tab_consultant"/>--}}
+                {{--                        <label for="tab_consultant">Консультант</label>--}}
+                {{--                    </div>--}}
+                {{--                    <form id="prevRegisterForm" class="modal-form"  action="{{ route('check_email.ajax') }}">--}}
+                {{--                        @csrf--}}
+                {{--                        <div class="form-input-block">--}}
+                {{--                            <input id="register-email" name="email"--}}
+                {{--                                   class="modal-form-input input-default w-100" type="text"--}}
+                {{--                                   required--}}
+                {{--                                   placeholder="Email">--}}
+                {{--                            <span class="invalid-feedback" role="alert" id="error-register-email"></span>--}}
+                {{--                        </div>--}}
+                {{--                        <button type="submit" class="btn-default-shadow medium-btn w-100">--}}
+                {{--                            Далее--}}
+                {{--                        </button>--}}
+                {{--                    </form>--}}
+                {{--                </div>--}}
                 <div class="only-register">
                     <form id="registerForm" class="modal-form" action="{{ route('register.ajax') }}">
                         @csrf
@@ -57,24 +55,43 @@
                             <span class="invalid-feedback" role="alert" id="error-register-last_name"></span>
                         </div>
                         <div class="form-input-block">
-                            <input id="register-phone" name="phone"
+                            <input id="register-email" name="email"
                                    class="modal-form-input input-default w-100" type="text"
+                                   required
+                                   placeholder="Email">
+                            <span class="invalid-feedback" role="alert" id="error-register-email"></span>
+                        </div>
+                        <div class="form-input-block">
+                            <input id="register-phone" name="phone"
+                                   class="modal-form-input input-default w-100" type="number"
                                    placeholder="Телефон" required>
                             <span class="invalid-feedback" role="alert" id="error-register-phone"></span>
                         </div>
                         <div class="form-input-block">
+                            <select id="register-user_type" class="select modal-form-input input-default" name="user_type" required>
+                                <option disabled>Выбрать</option>
+                                <option value="student">Ученик</option>
+                                <option value="mentor">Наставник</option>
+                                <option value="paid_mentor">Платный наставник</option>
+                                <option value="consultant">Консультант</option>
+                                <option value="paid_consultant">Платный консультант</option>
+                            </select>
+                            <span class="invalid-feedback" role="alert" id="error-register-user_type"></span>
+                        </div>
+                        <div class="form-input-block">
                             <input id="register-password" name="password"
-                                   class="modal-form-input input-default w-100" type="text"
+                                   class="modal-form-input input-default w-100" type="password"
                                    placeholder="Пароль" required>
                             <span class="invalid-feedback" role="alert" id="error-register-password"></span>
                         </div>
                         <div class="form-input-block">
                             <input id="register-password_confirmation" name="password_confirmation"
-                                   class="modal-form-input input-default w-100" type="text"
+                                   class="modal-form-input input-default w-100" type="password"
                                    placeholder="Повторите пароль" required>
-                            <span class="invalid-feedback" role="alert" id="error-register-password_confirmation"></span>
+                            <span class="invalid-feedback" role="alert"
+                                  id="error-register-password_confirmation"></span>
                         </div>
-                        <span class="invalid-feedback" role="alert" id="error-register-user_type"></span>
+                        <span class="invalid-feedback" role="alert" id="error-register-password"></span>
                         <button type="submit" class="btn-default-shadow medium-btn w-100 btn-register">
                             Зарегистрироваться
                         </button>
@@ -91,7 +108,8 @@
                         <span class="invalid-feedback mb-3" role="alert" id="error-register-confirm_site_rules"></span>
                         <div class="modal-desc-block register-checkbox">
                             <div class="checkbox">
-                                <input class="default-checkbox-input" type="checkbox" id="register-confirm_privacy_policy"
+                                <input class="default-checkbox-input" type="checkbox"
+                                       id="register-confirm_privacy_policy"
                                        name="confirm_privacy_policy">
                                 <label for="register-confirm_privacy_policy">
                                     Нажимая на кнопку «Зарегистрироваться»,я соглашаюсь c Пользовательским соглашением и

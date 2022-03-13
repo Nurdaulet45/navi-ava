@@ -3,11 +3,9 @@
         <loader v-if="loader"/>
         <button class="btn btn-default btn-add-certification medium-btn" @click.prevent="addCertification()" v-if="!is_add_certification">
             Добавить документ
-
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 4C12.5523 4 13 4.44772 13 5L13 11L19 11C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19L11 13L5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z" fill="white"/>
             </svg>
-
         </button>
         <div class="about-me-form about-me-form-certifications">
             <template v-if="new_certifications.length && is_add_certification">
@@ -161,8 +159,7 @@ import Loader from "../Loader";
 import ValidationError from "../../shared/components/ValidationError";
 import validationError from "../../shared/mixins/validationError";
 export default {
-    props: [
-    ],
+    props: [],
     mixins: [ validationError ],
     components: {
         Loader,
@@ -180,7 +177,7 @@ export default {
     methods: {
         deleteCertificate(certificate,new_certification_index) {
             if (certificate.id) {
-                axios.delete(`api/cabinet/certifications/${certificate.id}`).then(res => {
+                axios.delete(`/api/cabinet/certifications/${certificate.id}`).then(res => {
                     this.getCertifications()
                 }).catch(err => {
                     console.log('res', err)
@@ -234,7 +231,7 @@ export default {
                 data.append(`certifications[${index}][description]`, item.description)
                 data.append(`certifications[${index}][image]`, item.image)
             })
-            axios.post('api/cabinet/certifications', data, {
+            axios.post('/api/cabinet/certifications', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -242,7 +239,6 @@ export default {
                 this.getCertifications()
                 this.new_certifications = [];
                 this.is_add_certification = false;
-
             }).catch(err => {
                 this.errors = err.response.data.errors
                 alertWarningModal(err.response.data.message)
@@ -250,7 +246,7 @@ export default {
         },
         getCertifications() {
             this.loader = true
-            axios.get('api/cabinet/certifications').then(res => {
+            axios.get('/api/cabinet/certifications').then(res => {
                 this.loader = false
                 this.certifications = res.data.data
             }).catch(err => {
@@ -266,8 +262,6 @@ export default {
     created() {
         this.getCertifications()
     },
-
-
 }
 </script>
 <style>

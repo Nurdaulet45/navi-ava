@@ -13,10 +13,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/assets/sass/header.scss', 'public/css')
-    .sass('resources/assets/sass/main.scss', 'public/css')
-    .sass('resources/assets/sass/catalog.scss', 'public/css')
-    .sass('resources/assets/sass/cabinet.scss', 'public/css')
-    .sass('resources/assets/sass/blog.scss', 'public/css')
-    .sass('resources/assets/sass/default.scss', 'public/css');;
+    // .sass('resources/sass/app.scss', 'public/css')
+    // .sass('resources/assets/sass/header.scss', 'public/css')
+    // .sass('resources/assets/sass/main.scss', 'public/css')
+    // .sass('resources/assets/sass/catalog.scss', 'public/css')
+    // .sass('resources/assets/sass/cabinet.scss', 'public/css')
+    // .sass('resources/assets/sass/blog.scss', 'public/css')
+    // .sass('resources/assets/sass/default.scss', 'public/css');

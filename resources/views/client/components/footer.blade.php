@@ -56,9 +56,9 @@
                         Ученики
                     </a>
                 </div>
-                <div class="title title-ad">
+                <a href="{{ route('contacts') }}" class="title title-ad">
                     Рекламодателям
-                </div>
+                </a>
             </div>
             <div class="footer-block block-about">
                 <div class="menu-items">

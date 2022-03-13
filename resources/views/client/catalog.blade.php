@@ -5,10 +5,8 @@
         @slot('parent')@endslot
         @slot('active') Каталог консультантов @endslot
     @endcomponent
-
     <section class="s-catalog">
         <div class="container">
-
             <div class="wrapper">
                 <div class="filters">
                     <div class="accordion-block filters__filter">
@@ -248,7 +246,7 @@
                 </div>
                 <div class="search-result">
                     <div class="search-result__header">
-                        <p>Найдено 267</p>
+                        <p>Найдено {{ $count }}</p>
                         <div class="search-result__header__sorting">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -266,653 +264,255 @@
                         </div>
                     </div>
                     <div class="search-result__item-cards">
-                        <div>
-                            <div class="mentor-info-card" onclick="testFunction(event, '{{route('mentor')}}') ">
-                                <div class="left">
-                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
-                                         alt="user icon">
-                                    <div class="rate">
-                                        4.5
-                                    </div>
-                                    <div class="review">
-                                        15 отзывов
-                                    </div>
-                                    <div class="stars">
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
+                        {{--                        <div>--}}
+                        {{--                            <div class="mentor-info-card" onclick="testFunction(event, '{{route('mentor')}}') ">--}}
+                        {{--                                <div class="left">--}}
+                        {{--                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"--}}
+                        {{--                                         alt="user icon">--}}
+                        {{--                                    <div class="rate">--}}
+                        {{--                                        4.5--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="review">--}}
+                        {{--                                        15 отзывов--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="stars">--}}
+                        {{--                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"--}}
+                        {{--                                             xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                            <path--}}
+                        {{--                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"--}}
+                        {{--                                                fill="#E0C01A"/>--}}
+                        {{--                                        </svg>--}}
 
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
+                        {{--                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"--}}
+                        {{--                                             xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                            <path--}}
+                        {{--                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"--}}
+                        {{--                                                fill="#E0C01A"/>--}}
+                        {{--                                        </svg>--}}
 
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
+                        {{--                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"--}}
+                        {{--                                             xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                            <path--}}
+                        {{--                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"--}}
+                        {{--                                                fill="#E0C01A"/>--}}
+                        {{--                                        </svg>--}}
 
 
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
+                        {{--                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"--}}
+                        {{--                                             xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                            <path--}}
+                        {{--                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"--}}
+                        {{--                                                fill="#E0C01A"/>--}}
+                        {{--                                        </svg>--}}
 
-                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
-                                                fill="#C5C4C3"/>
-                                        </svg>
-                                    </div>
+                        {{--                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"--}}
+                        {{--                                             xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                            <path--}}
+                        {{--                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"--}}
+                        {{--                                                fill="#C5C4C3"/>--}}
+                        {{--                                        </svg>--}}
+                        {{--                                    </div>--}}
 
-                                </div>
-                                <div class="right">
-                                    <div class="mentor-block-user-name">
-                                        <p class="name">
-                                            Артём М,<span> Artyom-S</span>
-                                        </p>
-                                        <div class="status">
-                                            Свободен
-                                        </div>
-                                    </div>
-                                    <div class="work">
-                                        Разработчик - Яндекса
-                                    </div>
-                                    <div class="city">
-                                        Москва, Россия
-                                    </div>
-                                    <div class="work-info">
-                                        <div class="activity">
-                                            <p class="medium-small-text gray-text">
-                                                Сфера деятельности:
-                                            </p>
-                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>
-                                        </div>
-                                        <div class="skills">
-                                            <p class="medium-small-text gray-text">
-                                                Ключевые слова / навыки:
-                                            </p>
-                                            <div class="skill-items">
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    React
-                                                </div>
-                                                <div class="skill-item">
-                                                    Redux
-                                                </div>
-                                                <div class="skill-item">
-                                                    Node JS
-                                                </div>
-                                                <div class="skill-item">
-                                                    UX
-                                                </div>
-                                                <div class="skill-item">
-                                                    Интерфейсы
-                                                </div>
-                                                <div class="skill-item">
-                                                    ...
-                                                </div>
+                        {{--                                </div>--}}
+                        {{--                                <div class="right">--}}
+                        {{--                                    <div class="mentor-block-user-name">--}}
+                        {{--                                        <p class="name">--}}
+                        {{--                                            Артём М,<span> Artyom-S</span>--}}
+                        {{--                                        </p>--}}
+                        {{--                                        <div class="status">--}}
+                        {{--                                            Свободен--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="work">--}}
+                        {{--                                        Разработчик - Яндекса--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="city">--}}
+                        {{--                                        Москва, Россия--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="work-info">--}}
+                        {{--                                        <div class="activity">--}}
+                        {{--                                            <p class="medium-small-text gray-text">--}}
+                        {{--                                                Сфера деятельности:--}}
+                        {{--                                            </p>--}}
+                        {{--                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>--}}
+                        {{--                                        </div>--}}
+                        {{--                                        <div class="skills">--}}
+                        {{--                                            <p class="medium-small-text gray-text">--}}
+                        {{--                                                Ключевые слова / навыки:--}}
+                        {{--                                            </p>--}}
+                        {{--                                            <div class="skill-items">--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    Java Script--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    Java Script--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    React--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    Redux--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    Node JS--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    UX--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    Интерфейсы--}}
+                        {{--                                                </div>--}}
+                        {{--                                                <div class="skill-item">--}}
+                        {{--                                                    ...--}}
+                        {{--                                                </div>--}}
 
+                        {{--                                            </div>--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="actions">--}}
+                        {{--                                        <div class="buttons">--}}
+                        {{--                                            <button class="btn-default-shadow small-btn contact">--}}
+                        {{--                                                Связаться--}}
+                        {{--                                            </button>--}}
+                        {{--                                            <button class="btn-white-green w-auto favorites">--}}
+                        {{--                                                Добавить в избранное--}}
+                        {{--                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"--}}
+                        {{--                                                     xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                                    <path--}}
+                        {{--                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"--}}
+                        {{--                                                        fill="#1DC0BD"/>--}}
+                        {{--                                                </svg>--}}
+
+                        {{--                                            </button>--}}
+                        {{--                                        </div>--}}
+                        {{--                                        <div class="price">--}}
+                        {{--                                            3000 ₽ / час--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        @if($mentors)
+                            @foreach($mentors as $mentor)
+                                <a href="{{ route('mentor',['id'=>$mentor->id]) }}">
+                                    <div class="mentor-info-card">
+                                        <div class="left">
+                                            <img src="{{ asset($mentor->user->avatarImage) }}" width="92px"
+                                                 data-widget="92px"
+                                                 alt="user icon">
+                                            <div class="rate">
+                                                4.5
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="buttons">
-                                            <button class="btn-default-shadow small-btn contact">
-                                                Связаться
-                                            </button>
-                                            <button class="btn-white-green w-auto favorites">
-                                                Добавить в избранное
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                            <div class="review">
+                                                15 отзывов
+                                            </div>
+                                            <div class="stars">
+                                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
-                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
-                                                        fill="#1DC0BD"/>
+                                                        d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
+                                                        fill="#E0C01A"/>
                                                 </svg>
 
-                                            </button>
-                                        </div>
-                                        <div class="price">
-                                            3000 ₽ / час
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{ route('mentor') }}">
-                            <div class="mentor-info-card">
-                                <div class="left">
-                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
-                                         alt="user icon">
-                                    <div class="rate">
-                                        4.5
-                                    </div>
-                                    <div class="review">
-                                        15 отзывов
-                                    </div>
-                                    <div class="stars">
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
-                                                fill="#C5C4C3"/>
-                                        </svg>
-                                    </div>
-
-                                </div>
-                                <div class="right">
-                                    <div class="mentor-block-user-name">
-                                        <p class="name">
-                                            Артём М,<span> Artyom-S</span>
-                                        </p>
-                                        <div class="status">
-                                            Свободен
-                                        </div>
-                                    </div>
-                                    <div class="work">
-                                        Разработчик - Яндекса
-                                    </div>
-                                    <div class="city">
-                                        Москва, Россия
-                                    </div>
-                                    <div class="work-info">
-                                        <div class="activity">
-                                            <p class="medium-small-text gray-text">
-                                                Сфера деятельности:
-                                            </p>
-                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>
-                                        </div>
-                                        <div class="skills">
-                                            <p class="medium-small-text gray-text">
-                                                Ключевые слова / навыки:
-                                            </p>
-                                            <div class="skill-items">
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    React
-                                                </div>
-                                                <div class="skill-item">
-                                                    Redux
-                                                </div>
-                                                <div class="skill-item">
-                                                    Node JS
-                                                </div>
-                                                <div class="skill-item">
-                                                    UX
-                                                </div>
-                                                <div class="skill-item">
-                                                    Интерфейсы
-                                                </div>
-                                                <div class="skill-item">
-                                                    ...
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
-                                                Связаться
-                                            </a>
-                                            <div class="btn-white-green w-auto">
-                                                Добавить в избранное
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
-                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
-                                                        fill="#1DC0BD"/>
+                                                        d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
+                                                        fill="#E0C01A"/>
                                                 </svg>
 
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            3000 ₽ / час
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ route('mentor') }}">
-                            <div class="mentor-info-card">
-                                <div class="left">
-                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
-                                         alt="user icon">
-                                    <div class="rate">
-                                        4.5
-                                    </div>
-                                    <div class="review">
-                                        15 отзывов
-                                    </div>
-                                    <div class="stars">
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
-                                                fill="#C5C4C3"/>
-                                        </svg>
-                                    </div>
-
-                                </div>
-                                <div class="right">
-                                    <div class="mentor-block-user-name">
-                                        <p class="name">
-                                            Артём М,<span> Artyom-S</span>
-                                        </p>
-                                        <div class="status">
-                                            Свободен
-                                        </div>
-                                    </div>
-                                    <div class="work">
-                                        Разработчик - Яндекса
-                                    </div>
-                                    <div class="city">
-                                        Москва, Россия
-                                    </div>
-                                    <div class="work-info">
-                                        <div class="activity">
-                                            <p class="medium-small-text gray-text">
-                                                Сфера деятельности:
-                                            </p>
-                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>
-                                        </div>
-                                        <div class="skills">
-                                            <p class="medium-small-text gray-text">
-                                                Ключевые слова / навыки:
-                                            </p>
-                                            <div class="skill-items">
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    React
-                                                </div>
-                                                <div class="skill-item">
-                                                    Redux
-                                                </div>
-                                                <div class="skill-item">
-                                                    Node JS
-                                                </div>
-                                                <div class="skill-item">
-                                                    UX
-                                                </div>
-                                                <div class="skill-item">
-                                                    Интерфейсы
-                                                </div>
-                                                <div class="skill-item">
-                                                    ...
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
-                                                Связаться
-                                            </a>
-                                            <div class="btn-white-green w-auto">
-                                                Добавить в избранное
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
-                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
-                                                        fill="#1DC0BD"/>
+                                                        d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
+                                                        fill="#E0C01A"/>
                                                 </svg>
 
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            3000 ₽ / час
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ route('mentor') }}">
-                            <div class="catalog-ad-card">
-                                <h4>Рекламное объявление</h4>
-                                <a>Получите чек-лист по профессиям</a>
-                            </div>
-                        </a>
-                        <a href="{{ route('mentor') }}">
-                            <div class="mentor-info-card">
-                                <div class="left">
-                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
-                                         alt="user icon">
-                                    <div class="rate">
-                                        4.5
-                                    </div>
-                                    <div class="review">
-                                        15 отзывов
-                                    </div>
-                                    <div class="stars">
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
 
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
-                                                fill="#C5C4C3"/>
-                                        </svg>
-                                    </div>
-
-                                </div>
-                                <div class="right">
-                                    <div class="mentor-block-user-name">
-                                        <p class="name">
-                                            Артём М,<span> Artyom-S</span>
-                                        </p>
-                                        <div class="status">
-                                            Свободен
-                                        </div>
-                                    </div>
-                                    <div class="work">
-                                        Разработчик - Яндекса
-                                    </div>
-                                    <div class="city">
-                                        Москва, Россия
-                                    </div>
-                                    <div class="work-info">
-                                        <div class="activity">
-                                            <p class="medium-small-text gray-text">
-                                                Сфера деятельности:
-                                            </p>
-                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>
-                                        </div>
-                                        <div class="skills">
-                                            <p class="medium-small-text gray-text">
-                                                Ключевые слова / навыки:
-                                            </p>
-                                            <div class="skill-items">
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    React
-                                                </div>
-                                                <div class="skill-item">
-                                                    Redux
-                                                </div>
-                                                <div class="skill-item">
-                                                    Node JS
-                                                </div>
-                                                <div class="skill-item">
-                                                    UX
-                                                </div>
-                                                <div class="skill-item">
-                                                    Интерфейсы
-                                                </div>
-                                                <div class="skill-item">
-                                                    ...
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
-                                                Связаться
-                                            </a>
-                                            <div class="btn-white-green w-auto">
-                                                Добавить в избранное
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
-                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
-                                                        fill="#1DC0BD"/>
+                                                        d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
+                                                        fill="#E0C01A"/>
                                                 </svg>
 
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            3000 ₽ / час
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ route('mentor') }}">
-                            <div class="mentor-info-card">
-                                <div class="left">
-                                    <img src="{{ asset('images/user-icon.png') }}" width="92px" data-widget="92px"
-                                         alt="user icon">
-                                    <div class="rate">
-                                        4.5
-                                    </div>
-                                    <div class="review">
-                                        15 отзывов
-                                    </div>
-                                    <div class="stars">
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-
-                                        <svg width="15" height="13" viewBox="0 0 15 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.5 0L9.18386 4.83688H14.6329L10.2245 7.82624L11.9084 12.6631L7.5 9.67376L3.09161 12.6631L4.77547 7.82624L0.367076 4.83688H5.81614L7.5 0Z"
-                                                fill="#E0C01A"/>
-                                        </svg>
-
-                                        <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
-                                                fill="#C5C4C3"/>
-                                        </svg>
-                                    </div>
-
-                                </div>
-                                <div class="right">
-                                    <div class="mentor-block-user-name">
-                                        <p class="name">
-                                            Артём М,<span> Artyom-S</span>
-                                        </p>
-                                        <div class="status">
-                                            Свободен
-                                        </div>
-                                    </div>
-                                    <div class="work">
-                                        Разработчик - Яндекса
-                                    </div>
-                                    <div class="city">
-                                        Москва, Россия
-                                    </div>
-                                    <div class="work-info">
-                                        <div class="activity">
-                                            <p class="medium-small-text gray-text">
-                                                Сфера деятельности:
-                                            </p>
-                                            <p class="medium-small-text dark-charcoal-text">Менеджмент и управление</p>
-                                        </div>
-                                        <div class="skills">
-                                            <p class="medium-small-text gray-text">
-                                                Ключевые слова / навыки:
-                                            </p>
-                                            <div class="skill-items">
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    Java Script
-                                                </div>
-                                                <div class="skill-item">
-                                                    React
-                                                </div>
-                                                <div class="skill-item">
-                                                    Redux
-                                                </div>
-                                                <div class="skill-item">
-                                                    Node JS
-                                                </div>
-                                                <div class="skill-item">
-                                                    UX
-                                                </div>
-                                                <div class="skill-item">
-                                                    Интерфейсы
-                                                </div>
-                                                <div class="skill-item">
-                                                    ...
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="buttons">
-                                            <a href="{{ route('mentor') }}" class="btn-default-shadow small-btn">
-                                                Связаться
-                                            </a>
-                                            <div class="btn-white-green w-auto">
-                                                Добавить в избранное
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
-                                                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
-                                                        fill="#1DC0BD"/>
+                                                        d="M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z"
+                                                        fill="#C5C4C3"/>
                                                 </svg>
-
                                             </div>
                                         </div>
-                                        <div class="price">
-                                            3000 ₽ / час
+                                        <div class="right">
+                                            <div class="mentor-block-user-name">
+                                                <p class="name">
+                                                    {{ $mentor->user->firstNameAndLetterLastNameCustom }}
+                                                    ,<span> {{ $mentor->user->login }}</span>
+                                                </p>
+                                                <div class="status">
+                                                    Свободен
+                                                </div>
+                                            </div>
+                                            <div class="work">
+                                                {{ $mentor->specialization_text ?: '' }}
+                                            </div>
+                                            <div class="city">
+                                                {{ $mentor->user->countryAddressCustom }}
+                                            </div>
+                                            <div class="work-info">
+                                                <div class="activity">
+                                                    <p class="medium-small-text gray-text">
+                                                        Сфера деятельности:
+                                                    </p>
+                                                    <p class="medium-small-text dark-charcoal-text">
+                                                        {{ $mentor->specializationName() }}
+                                                    </p>
+                                                </div>
+                                                <div class="skills">
+                                                    <p class="medium-small-text gray-text">
+                                                        Ключевые слова / навыки:
+                                                    </p>
+                                                    <div class="skill-items">
+                                                        @foreach(json_decode($mentor->skills) as $skill)
+                                                            <div class="skill-item">
+                                                                {{ $skill }}
+                                                            </div>
+                                                        @endforeach
+                                                        {{--                                                        <div class="skill-item">--}}
+                                                        {{--                                                            ...--}}
+                                                        {{--                                                        </div>--}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <div class="buttons">
+                                                    <a href="{{ route('mentor',['id'=>$mentor->id]) }}"
+                                                       class="btn-default-shadow small-btn">
+                                                        Связаться
+                                                    </a>
+                                                    <div class="btn-white-green w-auto">
+                                                        Добавить в избранное
+                                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
+                                                                fill="#1DC0BD"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+                                                    3000 ₽ / час
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
+                                </a>
+                            @endforeach
+                        @endif
+
                     </div>
+
                     <button class="btn-white-green large-btn w-100 btn-load-more">
                         Показать еще
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -921,6 +521,7 @@
                                 fill="#1DC0BD"/>
                         </svg>
                     </button>
+
                     <div class="pagination">
                         <div class="prev">
 

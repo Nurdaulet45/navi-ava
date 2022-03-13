@@ -19,6 +19,7 @@ class CreateSupportQuestionsTable extends Migration
             $table->string('phone')->nullable();
             $table->text('text');
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->char('user_role_name',50)->nullable();
             $table->timestamps();
         });
     }

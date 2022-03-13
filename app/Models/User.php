@@ -19,12 +19,12 @@ class User extends Authenticatable
 
     const LANGUAGES = ['ru', 'kk', 'en'];
     const DEFAULT_LANG = 'ru';
-    const DEFAULT_ROLES = ['consultant', 'mentor', 'student'];
+    const DEFAULT_ROLES = ['consultant', 'mentor', 'student', 'paid_consultant', 'paid_mentor'];
     const DEFAULT_GENDER = 'male';
     const DEFAULT_ROLE = 'male';
     const IMAGE_PATH = 'images/users/';
-    const DEFAULT_FEMALE_IMAGE = '/images/user-review-female.png';
-    const DEFAULT_MALE_IMAGE = '/images/user-review-male.png';
+    const DEFAULT_FEMALE_IMAGE = '/images/user-images/avatar-female.svg';
+    const DEFAULT_MALE_IMAGE = '/images/user-images/avatar-male.svg';
 
     /**
      * The attributes that are mass assignable.
@@ -33,6 +33,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'first_name',
+        'login',
         'last_name',
         'phone',
         'email',
@@ -59,12 +60,65 @@ class User extends Authenticatable
             ->selectRaw('users.*,countries.name as country_name');
     }
 
+    public function roleInformation(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(UserRoleInformation::class, 'user_id', 'id')->where('role_name', $this->default_role);
+    }
+
+    public function roleCertificatesProcent(): int
+    {
+        $certificatesCount = $this->hasMany(UserCertificate::class, 'user_id', 'id')->where('role_name', $this->default_role)->count();
+        return intval((100 * (($certificatesCount >= 1) ? 1 : $certificatesCount)) / (1));
+    }
+
+    public function roleSpecializationsProcent(): int
+    {
+        $specializationsItems = $this->hasOne(UserRoleInformation::class, 'user_id', 'id')
+            ->select(['skills', 'specialization_id', 'specialization_text'])
+            ->where('role_name', $this->default_role)
+            ->first()->toArray();
+
+        $specializationsNotNullCount = count(array_filter($specializationsItems, function ($value) {
+            return ($value != null && $value != "[]");
+        }));
+
+        return intval((100 * $specializationsNotNullCount) / (count($specializationsItems)));
+    }
+
+    public function roleAboutProcent(): int
+    {
+        $aboutItems = $this->hasOne(UserRoleInformation::class, 'user_id', 'id')
+            ->select(['about_me', 'skills_description'])
+            ->where('role_name', $this->default_role)
+            ->first()->toArray();
+
+        $userAboutItems = $this->query()->select(['country_id', 'address'])->first()->toArray();
+
+        $aboutItemsArray = array_merge($aboutItems, $userAboutItems);
+
+        $aboutNotNullCount = count(array_filter($aboutItemsArray, function ($value) {
+            return ($value != null);
+        }));
+
+        return intval((100 * $aboutNotNullCount) / (count($aboutItemsArray)));
+    }
+
+    public function roleFullInformationProcent()
+    {
+        return intval(($this->roleCertificatesProcent() + $this->roleSpecializationsProcent() + $this->roleAboutProcent()) / (3));
+    }
+
     public function getFirstNameAndLetterLastNameCustomAttribute()
     {
-        return $this->first_name ? $this->first_name . ($this->last_name ? ' ' . substr($this->last_name, 0, 1) : '') : __('site.Not filled');
+        return $this->first_name ? $this->first_name . ($this->last_name ? ' ' . mb_substr($this->last_name, 0, 1) : '') : __('site.Not filled');
     }
 
     public function getCountryAddressCustomAttribute()
+    {
+        return $this->address ? $this->address . ($this->country_id ? ', ' . $this->hasOne(Country::class, 'id', 'country_id')->pluck('name')->first() : '') : __('site.Not filled');
+    }
+
+    public function getCountryAddress()
     {
         return $this->address ? $this->address . ($this->country_name ? ', ' . $this->country_name : '') : __('site.Not filled');
     }
@@ -74,13 +128,19 @@ class User extends Authenticatable
         return $this->birthday ? Carbon::parse($this->birthday)->diff(Carbon::now())->y : '';
     }
 
+    public function getLoginCustomAttribute()
+    {
+        return $this->login ?: '';
+    }
+
     public function getSpecializationTextCustomAttribute()
     {
         return $this->specialization_text ? Str::ucfirst($this->specialization_text) : __('site.Not filled');
     }
+
     public function getAvatarImageAttribute()
     {
-        return $this->avatar ? 'storage/' .User::IMAGE_PATH . $this->avatar : 'images/user-icon.png';
+        return $this->avatar ? Storage::url(self::IMAGE_PATH . $this->avatar) : self::DEFAULT_MALE_IMAGE;
     }
 
     protected $casts = [

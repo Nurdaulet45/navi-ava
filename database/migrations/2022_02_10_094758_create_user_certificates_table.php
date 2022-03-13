@@ -18,7 +18,9 @@ class CreateUserCertificatesTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('image');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->tinyInteger('role_id')->nullable();
+            $table->char('role_name', 50)->nullable();
             $table->timestamps();
         });
     }

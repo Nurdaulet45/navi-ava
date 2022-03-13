@@ -47,10 +47,14 @@
         </div>
         @if(isset($title))
             <div class="breadcrumb-body">
-
-            <h2 class="breadcrumb-title">
-                {{$title}}
-            </h2>
+                <h2 class="breadcrumb-title">
+                    {{$title}}
+                </h2>
+                @if(!UserRoleInformation::checkUserAccountActivated())
+                <a href="{{ route('cabinet.accountActivate') }}" class="breadcrumb-btn">
+                    Активировать аккаунт
+                </a>
+                @endif
             </div>
         @endif
     </div>

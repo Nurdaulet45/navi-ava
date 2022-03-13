@@ -7,10 +7,12 @@ use App\Http\Requests\Api\User\ReplyReviewSaveRequest;
 use App\Http\Requests\Api\User\UserCertificationSaveRequest;
 use App\Http\Resources\Api\User\UserCertificationsResource;
 use App\Http\Resources\User\UserReviewsResource;
+use App\Models\Role;
 use App\Models\UserCertificate;
 use App\Models\UserReview;
 use App\Services\FileService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -71,17 +73,22 @@ class UserController extends Controller
     public function getCertifications()
     {
         $user = auth()->user();
-        $reviews = UserCertificate::userBy($user->id)
+        $userRoleInformation = $user->roleInformation()->first();
+
+        $reviews = UserCertificate::userBy($user->id, $userRoleInformation->role_name)
             ->orderByDesc('created_at')
             ->get();
+
         return UserCertificationsResource::collection($reviews);
     }
 
     public function saveCertifications(UserCertificationSaveRequest $request)
     {
         $user = auth()->user();
-        foreach ($request->certifications as $key => $certificate) {
+        $userRoleName = Session::get('role');
+        $userRoleId = Role::query()->where(['name' => $userRoleName])->pluck('id')->first();
 
+        foreach ($request->certifications as $key => $certificate) {
             if ($certificate['id'] && $certificate['id'] != 'null') {
                 $originCertificate = UserCertificate::find($certificate['id']);
                 if (!empty($originCertificate)) {
@@ -89,7 +96,6 @@ class UserController extends Controller
                     $originCertificate->description = $certificate['description'];
                     if ($request->hasFile('certifications.' . $key . '.image')) {
                         $originCertificate->image = FileService::saveFile($request->file('certifications.' . $key . '.image'), UserCertificate::IMAGE_PATH);
-
                     }
                     $originCertificate->save();
                 }
@@ -98,6 +104,8 @@ class UserController extends Controller
                 $originCertificate->name = $certificate['name'];
                 $originCertificate->description = $certificate['description'];
                 $originCertificate->user_id = $user->id;
+                $originCertificate->role_id = (int)$userRoleId;
+                $originCertificate->role_name = $userRoleName;
                 $originCertificate->image = FileService::saveFile($request->file('certifications.' . $key . '.image'), UserCertificate::IMAGE_PATH);
                 $originCertificate->save();
             }
@@ -105,13 +113,14 @@ class UserController extends Controller
         return response()->json(['status' => true]);
     }
 
+
     public function deleteCertifications($id)
     {
         $user = auth()->user();
-        $certification = UserCertificate::userBy($user->id)->findOrFail($id);
+        $userRoleInformation = $user->roleInformation()->first();
+        $certification = UserCertificate::userBy($user->id, $userRoleInformation->role_name)->findOrFail($id);
         FileService::deleteFile($certification->image, UserCertificate::IMAGE_PATH);
         $certification->delete();
         return response()->json(['success' => true]);
-
     }
 }

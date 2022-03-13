@@ -10,7 +10,9 @@ use App\Http\Requests\Auth\ResetPasswordUpdateRequest;
 use App\Mail\ResetPassword;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserRoleInformation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -20,56 +22,9 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function registerAjax(RegisterRequest $request)
-    {
-//        dd(in_array($request->user_type, Role::DEFAULT_ROLES), $request->user_type);
-
-        $rand =
-
-        $user = User::create([
-            'email' => $request->email,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password)
-        ]);
-
-        $user->syncRoles([$request->user_type ?: Role::DEFAULT_ROLE]);
-        $user->default_role = $request->user_type ?: Role::DEFAULT_ROLE;
-        $user->save();
-
-        Auth::login($user);
-
-        return response()->json(['data' => [
-            'success' => true
-        ]]);
-    }
-
-    public function loginAjax(LoginRequest $request)
-    {
-        $user = User::where('email', $request->email_or_phone)->orWhere('phone', $request->email_or_phone)->withTrashed()->firstOr(function () {
-            throw ValidationException::withMessages([
-                'email_or_phone' => [__('Email или номер телефона не найден')]
-            ]);
-        });
-
-
-        if (!Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'password' => [__('site.Login or password is incorrect')]
-            ]);
-        }
-        Auth::login($user);
-//        if(!empty( $user->default_role)) {
-//            $user->roles()->first();
-//        }
-        return response()->json(['data' => [
-            'success' => true,
-            'is_trashed' => false
-        ]]);
-
-    }
-
+    /**
+     * @throws ValidationException
+     */
     public function checkEmailAjax(CheckEmailRequest $request)
     {
         if (User::emailBy($request->email)->exists()) {
@@ -80,6 +35,87 @@ class AuthController extends Controller
         return response()->json(['data' => [
             'success' => true
         ]]);
+    }
+
+    /**
+     * @throws ValidationException
+     * @throws \Exception
+     */
+    public function registerAjax(RegisterRequest $request)
+    {
+        if (User::emailBy($request->email)->exists()) {
+            throw ValidationException::withMessages([
+                'email' => ['Пользователь с таким email уже существует.']
+            ]);
+        }
+        DB::beginTransaction();
+
+        do {
+            $generatedUserLogin = random_int(10000000, 99999999);
+        } while (
+            User::query()->where('login', $generatedUserLogin)->exists()
+        );
+
+        $user = User::create([
+            'login' => $generatedUserLogin,
+            'email' => $request->email,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password)
+        ]);
+
+        $user->syncRoles(Role::DEFAULT_ROLES);
+        $user->default_role = $request->user_type ?: Role::DEFAULT_ROLE;
+        $user->save();
+
+        $roles = Role::query()
+            ->whereNotIn('id', [1])
+            ->orderBy('id')
+            ->pluck('name', 'id');
+
+        foreach ($roles as $roleId => $roleName) {
+            UserRoleInformation::create([
+                'user_id' => $user->id,
+                'login' => $generatedUserLogin,
+                'role_id' => $roleId,
+                'role_name' => $roleName,
+                'is_activated' => ($roleName == $request->user_type) ? 1 : 0
+            ]);
+        }
+        DB::commit();
+
+        Auth::login($user);
+
+        $userController = new UserController;
+        $userController->sendVerifyEmail();
+
+        return response()->json(['data' => ['success' => true]]);
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function loginAjax(LoginRequest $request)
+    {
+        $user = User::where('email', $request->email_or_phone)->orWhere('phone', $request->email_or_phone)->orWhere('login', $request->email_or_phone)->withTrashed()->firstOr(function () {
+            throw ValidationException::withMessages([
+                'email_or_phone' => [__('Email, логин или номер телефона не найден')]
+            ]);
+        });
+
+        if (!Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'password' => [__('site.Login or password is incorrect')]
+            ]);
+        }
+        Auth::login($user);
+
+        return response()->json(['data' => [
+            'success' => true,
+            'is_trashed' => false
+        ]]);
+
     }
 
     public function resetPassword($token)
