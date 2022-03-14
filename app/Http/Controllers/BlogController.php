@@ -9,12 +9,12 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $post = Post::paginate($request->input('per_page', 8));
+        $post = Post::query()->paginate($request->input('per_page', 8));
         return view('client.blog-post', compact('post'));
     }
     public function show()
     {
-        $post = Post::first();
+        $post = Post::query()->first();
         return view('client.blog-post', compact('post'));
     }
 }

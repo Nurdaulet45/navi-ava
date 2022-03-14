@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
     <section class="s-mentor-head">
         <img src="{{ asset('/images/bg-mentor-page-head.png') }}" alt="mentor-page-head" width="100%" height="100%">
@@ -11,7 +11,7 @@
                         <img src="{{ asset('images/mentor-image.png') }}" width="100%" height="auto" alt="Mentor">
                     </div>
                     <button class="btn-default small-btn w-100">
-                        Связаться с настаником
+                        Начать диалог
                     </button>
                     <div class="btn-white-green medium-btn w-100">
                         Добавить в избранное

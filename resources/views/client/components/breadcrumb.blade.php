@@ -1,6 +1,7 @@
-<section class="s-breadcrumb @if(isset($gray) && $gray) bg-gray @else bg-white @endif @if(isset($classes)) {{$classes}} @endif"
-         @if(isset($style)) style="{{ $style}}" @endif
-         id="breadcrumbs">
+<section
+    class="s-breadcrumb @if(isset($gray) && $gray) bg-gray @else bg-white @endif @if(isset($classes)) {{$classes}} @endif"
+    @if(isset($style)) style="{{ $style}}" @endif
+    id="breadcrumbs">
     <div class="container">
         <div class="breadcrumb-items">
             @if(isset($parent))
@@ -50,11 +51,13 @@
                 <h2 class="breadcrumb-title">
                     {{$title}}
                 </h2>
-                @if(!UserRoleInformation::checkUserAccountActivated())
-                <a href="{{ route('cabinet.accountActivate') }}" class="breadcrumb-btn">
-                    Активировать аккаунт
-                </a>
-                @endif
+                @auth
+                    @if(!UserRoleInformation::checkUserAccountActivated())
+                        <a href="{{ route('cabinet.accountActivate') }}" class="breadcrumb-btn">
+                            Активировать аккаунт
+                        </a>
+                    @endif
+                @endauth
             </div>
         @endif
     </div>

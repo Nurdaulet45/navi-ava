@@ -9,33 +9,27 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
-
-Route::get('/catalog',[MainController::class, 'catalog'])->name('catalog');
-Route::get('/mentor/{id}',[MainController::class, 'mentor'])->name('mentor');
-
-Route::get('/catalog-free', function() {
-    return view('client.catalog-free');
-})->name('catalog-free');
-
-//Route::get('/mentor', function() {
-//    return view('client.mentor');
-//})->name('mentor');
-
-//Route::get('/mentor-free', function() {
-//    return view('client.mentor-free');
-//})->name('mentor');
-
-Route::get('/blog', function() {
-    return view('client.blog');
-})->name('blog');
-
-Route::get('/blog-post', function() {
-    return view('client.blog-post');
-})->name('blog-post');
 Route::get('/blog-post', [BlogController::class, 'show'])->name('blog-post');
 
-Route::get('/login', fn() => redirect()->route('index'))->name('login');
-Route::get('/register', fn() => redirect()->route('index'))->name('register');
+Route::group(['prefix' => 'mentors', 'as' => 'mentors.'], function () {
+    Route::get('/', [MainController::class, 'mentors'])->name('index');
+    Route::get('/mentor/{id}', [MainController::class, 'mentor'])->name('mentor');
+});
+
+Route::group(['prefix' => 'consultants', 'as' => 'consultants.'], function () {
+    Route::get('/', [MainController::class, 'consultants'])->name('index');
+    Route::get('/consultant/{id}', [MainController::class, 'consultant'])->name('consultant');
+});
+
+Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
+    Route::get('/', [MainController::class, 'students'])->name('index');
+    Route::get('/consultant/{id}', [MainController::class, 'student'])->name('students');
+});
+
+Route::view('/catalog-free', 'client.catalog-free')->name('catalog-free');
+Route::view('/blog', 'client.blog')->name('blog');
+Route::view('/login', 'client.index')->name('login');
+Route::view('/register', 'client.index')->name('register');
 
 Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(function () {
     Route::get('/session-login-as', [UserController::class, 'sessionLoginAs'])->name('.sessionLoginAs');
@@ -67,25 +61,26 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
 });
 
 
-Route::get('/about-service', function() {
+Route::get('/about-service', function () {
     return view('client.about-service');
 })->name('aboutService');
 
-Route::get('/contacts', function() {
+Route::get('/contacts', function () {
     return view('client.contacts');
 })->name('contacts');
+
 Route::prefix('support')->name('support')->group(function () {
     Route::get('/', [SupportController::class, 'index']);
     Route::post('/question', [SupportController::class, 'storeQuestion'])->name('.storeQuestion');
 });
 
-Route::get('/privacy-policy', function() {
+Route::get('/privacy-policy', function () {
     return view('client.privacy-policy');
 })->name('privacyPolicy');
-Route::get('/terms-use', function() {
+Route::get('/terms-use', function () {
     return view('client.terms-use');
 })->name('termsUse');
-Route::get('/service-rules', function() {
+Route::get('/service-rules', function () {
     return view('client.service-rules');
 })->name('serviceRules');
 
@@ -99,10 +94,8 @@ Route::prefix('password')->group(function () {
     Route::get('reset/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
     Route::post('reset', [AuthController::class, 'resetPasswordUpdate'])->name('password.update');
 });
+
 Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
-
 Route::get('lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
-
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::get('download-file', [DownloadController::class, 'downloadFile'])->name('downloadFile');

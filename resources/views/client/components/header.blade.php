@@ -93,13 +93,13 @@
                     <div class="dropdown-content dropdown-notification-content">
                         <a href="#"
                            class="dropdown-item-custom">
-                            Скида до 20%
+                            У вас 3 непрочитанных сообщений
                         </a>
-                        <div class="line"></div>
-                        <a href="#"
-                           class="dropdown-item-custom {{ app()->getLocale() == 'kk' ?  'active' : '' }}">
-                            Найден 250 подходящих менторов
-                        </a>
+{{--                        <div class="line"></div>--}}
+{{--                        <a href="#"--}}
+{{--                           class="dropdown-item-custom {{ app()->getLocale() == 'kk' ?  'active' : '' }}">--}}
+{{--                            Найден 250 подходящих менторов--}}
+{{--                        </a>--}}
                     </div>
                 </div>
 
@@ -274,13 +274,13 @@
         <div class="header-body">
             <div class="start">
                 <div class="menu-items">
-                    <a href="{{ route('catalog') }}" class="menu-item">
+                    <a href="{{ route('mentors.index') }}" class="menu-item @if(request()->routeIs('mentors.*')) menu-item-active @endif">
                         Наставники
                     </a>
-                    <a href="{{ route('catalog') }}" class="menu-item">
+                    <a href="{{ route('consultants.index') }}" class="menu-item @if(request()->routeIs('consultants.*')) menu-item-active @endif">
                         Консультанты
                     </a>
-                    <a href="{{ route('catalog-free') }}" class="menu-item">
+                    <a href="{{ route('students.index') }}" class="menu-item @if(request()->routeIs('students.*')) menu-item-active @endif">
                         Ученики
                     </a>
                 </div>

@@ -1,10 +1,10 @@
 @extends('layouts/app')
 @section('content')
     @component('client.components.breadcrumb', ['gray' => true])
-        @slot('title')  {{SessionRoleService::textByRole('Наставничество','Консультирование','Обучение','Тип услуги не определен')}} @endslot
+        @slot('title')  {{SessionRoleService::textByRole('Статус','Статус','Статус','Тип услуги не определен')}} @endslot
         @slot('parent')@endslot
         @slot('cabinet')@endslot
-        @slot('active')  {{SessionRoleService::textByRole('Наставничество','Консультирование','Обучение','Тип услуги не определено')}} @endslot
+        @slot('active')  {{SessionRoleService::textByRole('Статус','Статус','Обучение','Тип услуги не определено')}} @endslot
     @endcomponent
     <section class="s-about-me-page">
         <div class="container">

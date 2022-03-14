@@ -3,14 +3,17 @@
         <div class="title">
             Остались вопросы?
         </div>
-        @if(request()->is('support'))
-            <a href="#breadcrumbs" class="btn-default-shadow medium-btn btn-scroll-smooth">
-                Напишите нам
-            </a>
+
+        <div class="support-button-block">
+            @if(request()->is('support'))
+                <a href="#breadcrumbs" class="btn-default-shadow medium-btn btn-scroll-smooth">
+                    <span>Здесь </span> &nbsp; вы найдете больше информации
+                </a>
             @else
-            <a href="{{ route('support') }}" class="btn-default-shadow medium-btn">
-                Напишите нам
-            </a>
+                <a href="{{ route('support') }}" class="btn-default-shadow medium-btn">
+                    <span>Здесь </span> &nbsp; вы найдете больше информации
+                </a>
             @endif
+        </div>
     </div>
 </section>

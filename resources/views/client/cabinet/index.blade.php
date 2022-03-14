@@ -147,7 +147,7 @@
 
                     <div class="profile-menu-items__menu-item bg-profile-card-calendar">
                         <div
-                            class="title">{{ SessionRoleService::textByRole('Наставничество','Консультирование' ,'Обучение') }} </div>
+                            class="title">{{ SessionRoleService::textByRole('Статус','Статус' ,'Статус') }} </div>
                         <a href="{{ route('cabinet.mentoring') }}">Перейти</a>
                     </div>
 

@@ -1,9 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
     @component('client.components.breadcrumb')
-        @slot('title') Каталог консультантов @endslot
+        @slot('title') Каталог учеников @endslot
         @slot('parent')@endslot
-        @slot('active') Каталог консультантов @endslot
+        @slot('active') Каталог учеников @endslot
     @endcomponent
     <section class="s-catalog">
         <div class="container">
@@ -85,71 +85,58 @@
                         <div class="panel">
                             <input class="search-input" value="" placeholder="Город"/>
                             <div class="filters__filter-items">
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
+                                @php
+                                    $cities = [
+                                        'almaty'=>'Алматы',
+                                        'nur-sultan' => 'Нур-султан (Астана)',
+                                        'shymkent' => 'Шымкент',
+                                        'aktobe' => 'Актобе (Актюбинск)',
+                                        'karaganda' => 'Караганда',
+                                        'taraz' => 'Тараз (Жамбыл)',
+                                        'pavlodar' => 'Павлодар',
+                                        'atyrau' => 'Атырау',
+                                        'oskemen' => 'Усть-Каменогорск (Оскемен)',
+                                        'semei' => 'Семей (Семипалатинск)',
+                                        'oral' => 'Уральск',
+                                        'kyzylorda' => 'Кызылорда',
+                                        'kostanai' => 'Костанай',
+                                        'petropavlsk' => 'Петропавловск',
+                                        'aktau' => 'Актау',
+                                        'temirtau' => 'Темиртау',
+                                        'turkistan' => 'Туркестан',
+                                        'koshetau' => 'Кокшетау',
+                                        'taldikorgan' => 'Талдыкорган',
+                                        'ekibastuz' => 'Экибастуз',
+                                        'rudnyi' => 'Рудный',
+                                        'zhanaozen' => 'Жанаозен',
+                                        'zhezkazgan' => 'Жезказган',
+                                        'balkash' => 'Балхаш',
+                                        'kentau' => 'Кентау',
+                                        'kaskelen' => 'Каскелен',
+                                        'satpaev' => 'Сатпаев',
+                                        'kulsary' => 'Кульсары',
+                                        'ridder' => 'Риддер',
+                                        'stepnogorsk' => 'Степногорск',
+                                        'kapshagai' => 'Капшагай',
+                                        'zharkent' => 'Жаркент',
+                                        'talgar' => 'Талгар',
+                                        'ayagoz' => 'Аягоз',
+                                        'baikonur' => 'Байконур',
+                                        'shu' => 'Чу (Шу)',
+                                    ];
+                                @endphp
+
+                                @foreach($cities as $key => $city)
+                                    <div class="checkbox">
+                                        <label class="filter-input-checkbox-label" for="almaty">
                                         <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Алматы </span>
+                                            <input type="checkbox" value="{{ $city }}" name="{{ $key }}"
+                                                   id="{{ $key }}" checked="checked">
+                                            <span class="filter-input-checkbox-text">{{ $city }}</span>
                                         </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Актау </span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Шымкент</span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Дербент</span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Краснодар</span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">Волгоград</span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label class="filter-input-checkbox-label" for="almaty">
-                                        <span class="filter-input-checkbox unchecked">
-                                            <input type="checkbox" value="almaty" name="almaty"
-                                                   id="almaty" checked="checked">
-                                            <span class="filter-input-checkbox-text">
-                                                Москва
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -394,7 +381,7 @@
                         {{--                        </div>--}}
                         @if($mentors)
                             @foreach($mentors as $mentor)
-                                <a href="{{ route('mentor',['id'=>$mentor->id]) }}">
+                                <a href="{{ route('mentors.mentor',['id'=>$mentor->id]) }}">
                                     <div class="mentor-info-card">
                                         <div class="left">
                                             <img src="{{ asset($mentor->user->avatarImage) }}" width="92px"
@@ -487,9 +474,9 @@
                                             </div>
                                             <div class="actions">
                                                 <div class="buttons">
-                                                    <a href="{{ route('mentor',['id'=>$mentor->id]) }}"
+                                                    <a href="{{ route('mentors.mentor',['id'=>$mentor->id]) }}"
                                                        class="btn-default-shadow small-btn">
-                                                        Связаться
+                                                        Начать диалог
                                                     </a>
                                                     <div class="btn-white-green w-auto">
                                                         Добавить в избранное

@@ -46,13 +46,13 @@
             <div class="footer-block block-level">
                 <div class="menu-items">
                     <div class="title">Navi-Ava</div>
-                    <a class="menu-item" href="{{ route('catalog') }}">
+                    <a class="menu-item" href="{{ route('mentors.index') }}">
                         Наставники
                     </a>
-                    <a class="menu-item" href="{{ route('catalog') }}">
+                    <a class="menu-item" href="{{ route('consultants.index') }}">
                         Консультанты
                     </a>
-                    <a class="menu-item" href="{{ route('catalog') }}">
+                    <a class="menu-item" href="{{ route('students.index') }}">
                         Ученики
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                     </a>
                     <a href="{{ route('blog') }}"
                        class="menu-item @if(request()->routeIs('blog')) active @endif ">
-                        Новости и акции
+                        Новости и статьи
                     </a>
                     <a>
                     <a href="{{ request()->routeIs('index') ? '#s-reviews' : route('index', '#s-reviews')   }}"

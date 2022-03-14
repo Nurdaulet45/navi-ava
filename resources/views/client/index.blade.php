@@ -7,9 +7,9 @@
         <div class="container">
             <h2>Стань наставником – начни расти <br><span>Хочешь научится сам – научи другого</span></h2>
             <div class="buttons">
-                <button class="btn-default medium-btn">Наставники</button>
-                <button class="btn-default medium-btn">Консультанты</button>
-                <button class="btn-default medium-btn">Ученики</button>
+                <a href="{{ route('mentors.index') }}" class="btn-default medium-btn">Наставники</a>
+                <a href="{{ route('consultants.index') }}" class="btn-default medium-btn">Консультанты</a>
+                <a href="{{ route('students.index') }}" class="btn-default medium-btn">Ученики</a>
                 {{--                <button class="btn-white-blue large-btn">Найти наставника</button>--}}
                 {{--                <button class=" btn-default medium-btn">Найти ученика-менти</button>--}}
                 {{--                <button class="btn-default medium-btn">Найти консультанта</button>--}}

@@ -372,6 +372,11 @@ header.header {
     margin-right: 44px
 }
 
+
+.header-body .menu-items .menu-item.menu-item-active {
+    color: #1dc0bd
+}
+
 .header-body .menu-items .menu-item:hover {
     color: #1dc0bd
 }
@@ -456,6 +461,10 @@ footer.footer .footer-body .footer-block .title {
 
 footer.footer .footer-body .footer-block .title-ad {
     margin-top: 49px
+}
+
+footer.footer .footer-body .footer-block .title-ad:hover {
+    color: #1dc0bd
 }
 
 footer.footer .footer-body .footer-block .menu-items {

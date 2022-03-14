@@ -433,6 +433,14 @@
     padding: 28px
 }
 
+.certificate-card .right {
+    width: 24%;
+}
+
+.certificate-card .right img {
+    width: 100%;
+}
+
 .mentor-block-certificates .certificate-card .left {
     margin-right: 10px
 }
