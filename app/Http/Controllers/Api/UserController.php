@@ -38,8 +38,11 @@ class UserController extends Controller
     public function getReviewedReviews()
     {
         $user = auth()->user();
-        $reviews = UserReview::reviewerBy($user->id)
-            ->with('user', 'reviewer', 'reply.reviewer')
+        $userInformation = $user->roleInformation()->first();
+
+        $reviews = UserReview::query()->where(['user_id' => $userInformation->id])
+//            user
+            ->with( 'reviewer', 'reply.reviewer')
             ->orderByDesc('created_at')
             ->whereNull('parent_id')
             ->paginate(UserReview::PAGINATION_PER_PAGE);
@@ -50,7 +53,9 @@ class UserController extends Controller
     public function getAboutMeReviews()
     {
         $user = auth()->user();
-        $reviews = UserReview::userBy($user->id)
+        $userInformation = $user->roleInformation()->first();
+
+        $reviews = UserReview::query()->where(['reviewer_id' => $userInformation->id])
             ->with('reply.reviewer', 'reviewer')
             ->orderByDesc('created_at')
             ->whereNull('parent_id')

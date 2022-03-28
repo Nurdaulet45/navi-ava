@@ -10,9 +10,6 @@
                 <a href="{{ route('mentors.index') }}" class="btn-default medium-btn">Наставники</a>
                 <a href="{{ route('consultants.index') }}" class="btn-default medium-btn">Консультанты</a>
                 <a href="{{ route('students.index') }}" class="btn-default medium-btn">Ученики</a>
-                {{--                <button class="btn-white-blue large-btn">Найти наставника</button>--}}
-                {{--                <button class=" btn-default medium-btn">Найти ученика-менти</button>--}}
-                {{--                <button class="btn-default medium-btn">Найти консультанта</button>--}}
             </div>
         </div>
     </section>
@@ -49,7 +46,7 @@
                     <div class="info">
                         <p class="name">«Марк Цукерберг»</p>
                         <div class="small-text">
-                            Марк Цукерберг. ниже текст: Сейчас настало время тотального обмена информацией между
+                            Сейчас настало время тотального обмена информацией между
                             конкретными людьми. Человек не может усовершенствоваться, если не помогает
                             усовершенствоваться другим.
                         </div>
@@ -60,7 +57,7 @@
                     <img src="{{ asset('images/child-mentor3.png') }}" width="420" height="377" alt="Mentor">
                     <div class="info">
                         <p class="name">«Илон Маск»</p>
-                        Илон Маск. ниже текст: Первый шаг- определить , что это возможно, сама возможность обязательно
+                        Первый шаг- определить , что это возможно, сама возможность обязательно
                         появится, даже если все шансы против вас , вы все равно должны это делать.
                     </div>
                 </div>
@@ -949,72 +946,144 @@
                 Как же это работает?
             </div>
             <div class="default-tabs">
-                <div class="default-tabs__default-tab default-tabs__active">
+                <div data-action="0" class="default-tabs__default-tab default-tabs__active">
                     Наставникам
                 </div>
-                <div class="default-tabs__default-tab">
+                <div data-action="1" class="default-tabs__default-tab">
                     Консультантам
                 </div>
-                <div class="default-tabs__default-tab">
+                <div data-action="2" class="default-tabs__default-tab">
                     Ученикам
                 </div>
-
             </div>
             @auth
                 <div class="work-steps">
-                    <div class="step-item step-1">
-                        <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
-                        <p>{{\App\Services\SessionRoleService::textByRole('Выберите ученика','Выберите ученика','Выберите наставника/консультанта')}}</p>
+                    <div class="work-step work-step__active">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите ученика</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь, познакомьтесь с учеником</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Обучайте, общайтесь, развивайте</p>
+                        </div>
                     </div>
-                    <div class="rb-arrow">
-                        <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                    <div class="work-step">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите ученика</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь, познакомьтесь с учеником</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Консультируйте, общайтесь, развивайте</p>
+                        </div>
                     </div>
-                    <div class="step-item step-2">
-                        <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
-                        <p>
-                        {{\App\Services\SessionRoleService::textByRole(
-                                                 'Спишитесь, познакомьтесь с учеником',
-                                                 'Спишитесь, познакомьтесь с учеником',
-                                                 'Спишитесь с наставником/консультантом')}}</p>
-                    </div>
-                    <div class="rt-arrow">
-                        <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
-                    </div>
-                    <div class="step-item step-3">
-                        <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
-                        <p>
-                            {{\App\Services\SessionRoleService::textByRole(
-                                                    'Обучайте, общайтесь, развивайте',
-                                                    'Консультируйте, общайтесь, развивайте',
-                                                    'Консультируйтесь, общайтесь, развивайтесь')
-                                                    }}
-                        </p>
+                    <div class="work-step">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите наставника/консультанта</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь с наставником/консультантом</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                        </div>
                     </div>
                 </div>
             @else
                 <div class="work-steps">
-                    <div class="step-item step-1">
-                        <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
-                        <p>Выберите наставника</p>
+                    <div class="work-step work-step__active">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите ученика</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь, познакомьтесь с учеником</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                        </div>
                     </div>
-                    <div class="rb-arrow">
-                        <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                    <div class="work-step">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите ученика</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь, познакомьтесь с учеником</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                        </div>
                     </div>
-                    <div class="step-item step-2">
-                        <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
-                        <p>Спишитесь, познакомьтесь с учеником</p>
-                    </div>
-                    <div class="rt-arrow">
-                        <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
+                    <div class="work-step">
+                        <div class="step-item step-1">
+                            <img src="{{ asset('images/step-1.svg') }}" width="150" height="150" alt="Step">
+                            <p>Выберите наставника/консультанта</p>
+                        </div>
+                        <div class="rb-arrow">
+                            <img src="{{ asset('images/step-rb-arrow.svg') }}" width="212" height="87" alt="Arrow">
+                        </div>
+                        <div class="step-item step-2">
+                            <img src="{{ asset('images/step-2.svg') }}" width="150" height="150" alt="Step">
+                            <p>Спишитесь с наставником/консультантом</p>
+                        </div>
+                        <div class="rt-arrow">
+                            <img src="{{ asset('images/step-rt-arrow.svg') }}" width="213" height="85" alt="Arrow">
 
-                    </div>
-                    <div class="step-item step-3">
-                        <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
-                        <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                        </div>
+                        <div class="step-item step-3">
+                            <img src="{{ asset('images/step-3.svg') }}" width="150" height="150" alt="Step">
+                            <p>Консультируйтесь, общайтесь, развивайтесь</p>
+                        </div>
                     </div>
                 </div>
             @endif
-
             <div class="buttons">
                 <a href="{{ route('aboutService') }}" class="btn-default medium-large-btn">
                     О сервисе
@@ -1073,7 +1142,7 @@
                             </button>
                         </div>
                         <ul>
-                            <li>Зарабатывай на своих знаниях. </li>
+                            <li>Зарабатывай на своих знаниях.</li>
                             <li>Продвигай возможности с помощью специальных инструментов.</li>
                             <li>Расширяй возможности с помощью специальных инструментов.</li>
                         </ul>
@@ -1095,7 +1164,7 @@
                         </div>
                         <ul>
                             <li>Знания ещё никогда не были так доступны каждому человеку.</li>
-                            <li>Выбирай любую профессию, отрасль, о которой давно мечтал. </li>
+                            <li>Выбирай любую профессию, отрасль, о которой давно мечтал.</li>
                             <li>Гибкие фильтры, которые помогают подобрать то, что нужно именно тебе.</li>
                         </ul>
                     </div>
@@ -1496,87 +1565,42 @@
             </div>
         </div>
     </section>
-    <style>
-        /*.swiper {*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*}*/
-
-        /*.swiper-slide {*/
-        /*    text-align: center;*/
-        /*    font-size: 18px;*/
-        /*    background: #fff;*/
-
-        /*    !* Center slide text vertically *!*/
-        /*    display: -webkit-box;*/
-        /*    display: -ms-flexbox;*/
-        /*    display: -webkit-flex;*/
-        /*    display: flex;*/
-        /*    -webkit-box-pack: center;*/
-        /*    -ms-flex-pack: center;*/
-        /*    -webkit-justify-content: center;*/
-        /*    justify-content: center;*/
-        /*    -webkit-box-align: center;*/
-        /*    -ms-flex-align: center;*/
-        /*    -webkit-align-items: center;*/
-        /*    align-items: center;*/
-        /*}*/
-
-        /*.swiper-slide img {*/
-        /*    display: block;*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*    object-fit: cover;*/
-        /*}*/
-    </style>
     @include('client.components.sectionWriteToUs')
     @include('client.components.modalWhoLooking')
-
 @endsection
 @section('custom_js')
-
     <script src="{{ asset('js/swiper.min.js') }}"></script>
     <script>
-        // var swiper = new Swiper(".mySwiper", {
-        //     slidesPerView: 3,
-        //     spaceBetween: 30,
-        //     slidesPerGroup: 3,
-        //     loop: true,
-        //     loopFillGroupWithBlank: true,
-        //     pagination: {
-        //         el: ".swiper-pagination",
-        //         clickable: true,
-        //     },
-        //     navigation: {
-        //         nextEl: ".swiper-button-next",
-        //         prevEl: ".swiper-button-prev",
-        //     },
-        // });
-        var swiper = new Swiper(".mySwiper", {
+        const swiper = new Swiper(".mySwiper", {
             slidesPerView: 3,
             spaceBetween: 30,
             freeMode: true,
-            // pagination: {
-            //     el: ".swiper-pagination",
-            //     clickable: true,
-            // },
             navigation: {
                 nextEl: ".mySwiper-next",
                 prevEl: ".mySwiper-prev",
             },
         });
-        var swiper2 = new Swiper(".mySwiper2", {
+        const swiper2 = new Swiper(".mySwiper2", {
             slidesPerView: 3,
             spaceBetween: 30,
             freeMode: true,
-            // pagination: {
-            //     el: ".swiper-pagination",
-            //     clickable: true,
-            // },
             navigation: {
                 nextEl: ".mySwiper2-next",
                 prevEl: ".mySwiper2-prev",
             },
+        });
+
+        $(".default-tabs").on("click", ".default-tabs__default-tab", function () {
+            const tabs = $(".default-tabs .default-tabs__default-tab"),
+                content = $(".work-steps .work-step");
+
+            tabs.removeClass("default-tabs__active");
+            content.removeClass("work-step__active");
+
+            $(this).addClass("default-tabs__active");
+            content.eq($(this).attr('data-action')).addClass("work-step__active");
+
+            return false;
         });
     </script>
 @endsection

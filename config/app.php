@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -234,6 +234,6 @@ return [
         'Role' => App\Models\Role::class,
         'User' => App\Models\User::class,
         'UserRoleInformation' => App\Models\UserRoleInformation::class,
+        'Carbon' => Carbon\Carbon::class,
     ],
-
 ];

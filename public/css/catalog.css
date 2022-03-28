@@ -82,6 +82,7 @@
     padding: unset
 }
 
+
 .s-catalog .wrapper .filters__filter-items::-webkit-scrollbar {
     cursor: pointer;
     width: 5px
@@ -131,7 +132,7 @@
     align-items: center;
     -webkit-appearance: none;
     color: #fff;
-    content: " ✔";
+    content: "✔";
     display: flex;
     font-size: 16px;
     justify-content: center;
@@ -200,17 +201,108 @@
 }
 
 .s-catalog .wrapper .search-result__header__sorting {
-    display: flex
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.s-catalog .wrapper .search-result__header__sorting svg {
-    margin-right: 8px
+.search-items-format {
+    cursor: pointer;
+    transition: 0.3s all;
 }
 
-.s-catalog .wrapper .search-result__item-cards {
+.search-items-format svg {
+    fill: #D6FFFE;
+}
+
+.search-items-format svg:hover {
+    transition: 0.3s all;
+    fill: #1DC0BD;
+}
+
+.search-items-format__active svg {
+    fill: #1DC0BD;
+}
+
+.search-result__item-cards {
     display: flex;
     flex-direction: column;
     margin-top: 36px
+}
+
+.search-result-item-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 36px;
+    width: 100%;
+}
+
+.search-result-item-cards > a {
+    width: 100%;
+}
+
+.search-result-item-cards.search-result-item-cards__row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-result-item-cards.search-result-item-cards__row .mentor-info-card {
+    width: 49%;
+    padding: 17px;
+}
+
+.search-result-item-cards.search-result-item-cards__row .right {
+    flex: 1;
+    /*width: 65%;*/
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.search-result-item-cards.search-result-item-cards__row .right .mentor-block-user-name {
+    margin-bottom: 0;
+}
+
+.search-result-item-cards.search-result-item-cards__row .mentor-block-user-name {
+    flex-wrap: wrap;
+}
+
+.search-result-item-cards.search-result-item-cards__row .work-info {
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.search-result-item-cards.search-result-item-cards__row .skills,
+.search-result-item-cards.search-result-item-cards__row .activity {
+    width: 100% !important;
+}
+
+.search-result-item-cards.search-result-item-cards__row .actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column-reverse;
+    flex: 1 1 auto;
+}
+
+.search-result-item-cards.search-result-item-cards__row .buttons {
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-result-item-cards.search-result-item-cards__row .buttons > * {
+    width: 100% !important;
+}
+
+.search-result-item-cards.search-result-item-cards__row .buttons button {
+    margin-right: 0 !important;
+}
+
+.search-result-item-cards.search-result-item-cards__row .actions .price {
+    margin: 0 auto 0 0;
 }
 
 .s-catalog .wrapper .search-result .btn-load-more {
@@ -366,6 +458,46 @@
     text-transform: uppercase
 }
 
+.online {
+    color: #0cbd82;
+    font-family: Helvetica-400;
+    font-size: 12px;
+    letter-spacing: .03em;
+    line-height: 1.5;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.online span {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background: #0CBD82;
+}
+
+.offline {
+    color: #E40904;
+    font-family: Helvetica-400;
+    font-size: 12px;
+    letter-spacing: .03em;
+    line-height: 1.5;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.offline span {
+    min-width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background: #E40904;
+}
+
 /*.mentor-block-user-name .status:before {*/
 /*    background-color: #0cbd82;*/
 /*    border-radius: 100%;*/
@@ -477,7 +609,6 @@
 }
 
 .mentor-reviews .review-items {
-    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center
@@ -490,4 +621,113 @@
     line-height: 1.5;
     margin-top: 45px;
     width: 235px
+}
+
+.input-checkbox {
+    display: none;
+}
+
+.input-checkbox ~ label {
+    cursor: pointer;
+
+    font-family: Helvetica-400;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #65676e;
+}
+
+.input-checkbox:checked ~ label {
+    color: #1dc0bd;
+    font-family: Helvetica-500;
+}
+
+.filters__filter-item {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+input#search_input::placeholder {
+    font-family: Helvetic-400;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 155%;
+
+    color: #A9AEB2;
+}
+
+/* filter checkbox */
+.filter-input-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.filter-input-checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+
+    font-family: Helvetica-400;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #A5B0B6;
+    cursor: pointer;
+}
+
+.filter-input-checkbox + label::before {
+    content: '';
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-left: 3px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.filter-input-checkbox:checked + label {
+    color: #3D474D;
+}
+
+.filter-input-checkbox:checked + label::before {
+    border-color: #1DC0BD;
+    background-color: #1DC0BD;
+    background-image: url("/images/background-checkbox.svg");
+}
+
+
+/* стили при наведении курсора на checkbox */
+.custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+    border-color: #b3d7ff;
+}
+
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.custom-checkbox:not(:disabled):active + label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+
+/* стили для чекбокса, находящегося в фокусе */
+.custom-checkbox:focus + label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.custom-checkbox:focus:not(:checked) + label::before {
+    border-color: #80bdff;
+}
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+.custom-checkbox:disabled + label::before {
+    background-color: #e9ecef;
 }

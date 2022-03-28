@@ -1,7 +1,6 @@
 <template>
     <div class="">
         <Loader v-if="loader"/>
-
         <div class="category-tabs">
             <div class="category-tab-item"
                  @click.prevent="setTab('all_reviews')"
@@ -406,7 +405,6 @@ export default {
             rate = parseInt(rate)
             return rate > 0 && rate <= 5 ? 5 - rate : 0
         },
-
         replyReview(id) {
             this.reply_review.review_id = id
             this.reply_review.text = null
@@ -421,7 +419,7 @@ export default {
                     review_id: this.reply_review.review_id,
                     text: this.reply_review.text
                 }
-                axios.post('api/cabinet/reviews/reply', data).then(res => {
+                axios.post('/api/cabinet/reviews/reply', data).then(res => {
                     let replyReview = res.data.data
                     if (this.tab == 'about_me_reviews') {
                         this.about_me_reviews.data.forEach(item => {
@@ -437,8 +435,6 @@ export default {
                         })
                     }
                     // this.clearReplyReview()
-
-
                 }).catch(err => {
                     alertModal(err.response.data)
                 })
@@ -455,7 +451,7 @@ export default {
             let params = {
                 page: this.all_reviews.meta.current_page ? this.all_reviews.meta.current_page + 1 : 1
             }
-            axios.get('api/cabinet/reviews', {params: params}).then(res => {
+            axios.get('/api/cabinet/reviews', {params: params}).then(res => {
                 this.loader = false
                 if (!this.all_reviews.data.length) {
                     this.all_reviews = res.data
@@ -478,7 +474,7 @@ export default {
             let params = {
                 page: this.reviewed_reviews.meta.current_page ? this.reviewed_reviews.meta.current_page + 1 : 1
             }
-            axios.get('api/cabinet/reviewed-reviews', {params: params}).then(res => {
+            axios.get('/api/cabinet/reviewed-reviews', {params: params}).then(res => {
                 this.loader = false
                 if (!this.reviewed_reviews.data.length) {
                     this.reviewed_reviews = res.data
@@ -500,7 +496,7 @@ export default {
             let params = {
                 page: this.about_me_reviews.meta.current_page ? this.about_me_reviews.meta.current_page + 1 : 1
             }
-            axios.get('api/cabinet/about-me-reviews', {params: params}).then(res => {
+            axios.get('/api/cabinet/about-me-reviews', {params: params}).then(res => {
                 this.loader = false
                 console.log(this.about_me_reviews.data.length, 'this.about_me_reviews.data.length')
                 if (!this.about_me_reviews.data.length) {
@@ -531,7 +527,6 @@ export default {
             }
         },
     }
-
 }
 </script>
 <style>

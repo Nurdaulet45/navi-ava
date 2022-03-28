@@ -113,6 +113,11 @@ class User extends Authenticatable
         return $this->first_name ? $this->first_name . ($this->last_name ? ' ' . mb_substr($this->last_name, 0, 1) : '') : __('site.Not filled');
     }
 
+    public function getLastNameAndFirstName()
+    {
+        return "$this->last_name $this->first_name";
+    }
+
     public function getCountryAddressCustomAttribute()
     {
         return $this->address ? $this->address . ($this->country_id ? ', ' . $this->hasOne(Country::class, 'id', 'country_id')->pluck('name')->first() : '') : __('site.Not filled');

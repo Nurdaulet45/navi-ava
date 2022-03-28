@@ -78,11 +78,11 @@
                                 <p>Отзывы</p>
                             </div>
                             <div class="mentor-statistic-item">
-                                <div class="count">{{ $userInformation->views_contact }}</div>
+                                <div class="count">{{ $userInformation->visitedSum() }}</div>
                                 <p>Открыл контактов</p>
                             </div>
                             <div class="mentor-statistic-item">
-                                <div class="count">2</div>
+                                <div class="count">{{ $userInformation->visitedWeekSum() }}</div>
                                 <p>Просмотров за неделю</p>
                             </div>
                         </div>

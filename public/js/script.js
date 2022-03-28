@@ -16,19 +16,18 @@ function alertWarningModal(text = '') {
         showConfirmButton: true,
     })
 }
+
 function clearInvalidFeedback() {
     $(".invalid-feedback").css("display", 'none');
     $(".invalid-feedback").text("");
 }
-function testFunction(e, url){
-    if($(e.target).hasClass('favorites')) {
-        // add to favorite
-        // window.location.href = url
-    }else if($(e.target).hasClass('contact')) {
-        // window.location contacts начать диалог
+
+function testFunction(e, url) {
+    if ($(e.target).hasClass('favorites')) {
+
+    } else if ($(e.target).hasClass('contact')) {
         window.location.href = url
-    } else{
-        // window.location contacts начать диалог
+    } else {
         window.location.href = url
     }
 }
@@ -355,7 +354,7 @@ $(function () {
         });
     });
 
-    $( "#profile_is_service_payable" ).change(function() {
+    $("#profile_is_service_payable").change(function () {
         if ($('#profile_is_service_payable').is(':checked')) {
             $('.service-price').css('display', 'block')
         } else {
@@ -373,15 +372,11 @@ function previewImage(previewAttrId) {
         } else {
             let reader = new FileReader();
             reader.onload = (e) => {
-
                 $(`#${previewAttrId}`).attr('src', e.target.result);
             }
             reader.readAsDataURL(event.target.files[0]);
         }
-    } else {
-
     }
-
 }
 
 $('#burger-btn').click(function (event) {
@@ -393,13 +388,6 @@ function burgerMenu() {
     $('body').toggleClass('active');
     $('.overflow').toggleClass('active');
 }
-
-
-// var swiper = new Swiper(".mySwiper", {
-//     slidesPerView: 'auto',
-//     spaceBetween: 30,
-//     centeredSlides: true,
-// });
 
 function openLogin(e) {
     $('.modal').modal('hide');
@@ -459,7 +447,6 @@ function nextRegisterForm(e) {
     $('.prev-register').css('display', 'none')
     $('.only-register').css('transition', '0.3s eye')
     $('.only-register').css('display', 'block')
-
 }
 
 function openEditUser(e) {
@@ -474,13 +461,18 @@ function openUploadImage(e) {
     $('#container-uploadimage').addClass('show');
 }
 
-
 let accordions = document.getElementsByClassName("accordion");
+
+for (let i = 0; i < accordions.length; i++) {
+    accordions[i].classList.add('active');
+    let panel = accordions[i].nextElementSibling;
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    panel.style.borderBottomColor = "#949494";
+}
 
 for (let i = 0; i < accordions.length; i++) {
     accordions[i].addEventListener("click", function () {
         this.classList.toggle("active");
-
         let panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             panel.style.maxHeight = null;
@@ -506,11 +498,6 @@ function change_file_input(el, number) {
 
     if (!re.exec(file_n)) {
         parent.find('.input-file' + number + ' p').text('Выбран неверный формат файла ').css('color', '#981323')
-
-        // setTimeout(function () {
-        //     parent.find('.input-file p').text('Файлды тіркеу (20 мб дейін) ').css('color', '#B0B0B0')
-        //     $(el).val('')
-        // }, 2000)
     } else {
         parent.find('.input-file' + number + ' p').text('Файл выбран ').css('color', '#4AAF30')
         parent.find('.input-file' + number).css('border-color', '#4AAF30')
@@ -530,18 +517,11 @@ function upload_image_file(el) {
     let parent = $(el).closest('form')
 
     if (!re.exec(file_n)) {
-
         parent.find('.input-file p').text('Неправильный формат изображения ').css('color', '#981323')
-
-        // setTimeout(function () {
-        //     parent.find('.input-file p').text('Файлды тіркеу (20 мб дейін) ').css('color', '#B0B0B0')
-        //     $(el).val('')
-        // }, 2000)
     } else {
         parent.find('.input-file p').text('Файл выбран ').css('color', '#4AAF30')
     }
 }
-
 
 
 function change_file_input(el, number) {
@@ -563,15 +543,11 @@ function change_file_input(el, number) {
             parent.find('.input_file_' + number + ' span.text').text('Файл жүктеу ').css('color', '#EA474A')
             parent.find('.input_file_' + number).css('border-color', '#EA474A')
         }
-
         // setTimeout(function () {
         //     parent.find('.input-file p').text('Файлды тіркеу (20 мб дейін) ').css('color', '#B0B0B0')
         //     $(el).val('')
         // }, 2000)EA474A
     } else {
-        // parent.find('.input_file_' + number ).text(file_n).css('color', '#4AAF30')
-        // parent.find('.input_file_' + number).css('border-color', '#4AAF30')
-
         parent.find('.input_file_' + number).css('display', 'none')
         parent.find('.input_file_' + number + '_uploaded').css('display', 'block')
         parent.find('.input_file_' + number + '_uploaded span.text').text(file_n)
@@ -588,7 +564,6 @@ function deleteInputFile(el, num) {
     parent.find('.input_file_' + num + '_uploaded').css('display', 'none')
     parent.find('.input_file_' + num + '_uploaded .text').text('')
 }
-
 
 
 $('.select').each(function () {
@@ -647,4 +622,164 @@ $('.select').each(function () {
 });
 
 
+function renderHtmlDeleteFavouriteButton(mentorInformationId, favouriteId) {
+    return `
+            <div id="favorite-btn-${mentorInformationId}"
+                 class="btn-white-green w-auto"
+                 onclick="deleteToFavorite(${favouriteId},${mentorInformationId})">
+                Убрать из избранного &nbsp;
+                <svg width="17" height="16" viewBox="0 0 17 16">
+                    <path
+                        d="M8.4987 3.01843C6.92815 1.61126 4.51287 1.66231 3.00361 3.17157C1.44151 4.73367 1.44151 7.26633 3.00361 8.8284L7.5559 13.3807C8.07657 13.9014 8.92083 13.9014 9.4415 13.3807L13.9938 8.8284C15.5559 7.26633 15.5559 4.73367 13.9938 3.17157C12.4845 1.66231 10.0692 1.61126 8.4987 3.01843ZM7.71763 4.11438L8.0273 4.42403C8.28763 4.68437 8.70977 4.68437 8.9701 4.42403L9.27977 4.11438C10.3212 3.07299 12.0096 3.07299 13.051 4.11438C14.0924 5.15578 14.0924 6.8442 13.051 7.8856L8.4987 12.4379L3.94641 7.8856C2.90502 6.8442 2.90502 5.15578 3.94641 4.11438C4.98781 3.07299 6.67625 3.07299 7.71763 4.11438Z"
+                        fill="#1DC0BD"/>
+                    <path
+                        d="M7.71763 4.11438L8.0273 4.42403C8.28763 4.68437 8.70977 4.68437 8.9701 4.42403L9.27977 4.11438C10.3212 3.07299 12.0096 3.07299 13.051 4.11438C14.0924 5.15578 14.0924 6.8442 13.051 7.8856L8.4987 12.4379L3.94641 7.8856C2.90502 6.8442 2.90502 5.15578 3.94641 4.11438C4.98781 3.07299 6.67625 3.07299 7.71763 4.11438Z"
+                        fill="#1DC0BD"/>
+                </svg>
+            </div>
+            `;
+}
+
+function renderHtmlSaveFavouriteButton(mentorInformationId) {
+    return `
+           <div id="favorite-btn-${mentorInformationId}"
+                 class="btn-white-green w-auto"
+                 onclick="saveToFavorite(${mentorInformationId})">
+                Добавить в избранное &nbsp;
+                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8.49968 3.01843C6.92913 1.61126 4.51384 1.66231 3.00458 3.17157C1.44248 4.73367 1.44248 7.26633 3.00458 8.8284L7.55688 13.3807C8.07754 13.9014 8.92181 13.9014 9.44248 13.3807L13.9947 8.8284C15.5569 7.26633 15.5569 4.73367 13.9947 3.17157C12.4855 1.66231 10.0702 1.61126 8.49968 3.01843ZM7.71861 4.11438L8.02828 4.42403C8.28861 4.68437 8.71074 4.68437 8.97108 4.42403L9.28074 4.11438C10.3221 3.07299 12.0105 3.07299 13.0519 4.11438C14.0933 5.15578 14.0933 6.8442 13.0519 7.8856L8.49968 12.4379L3.94739 7.8856C2.906 6.8442 2.906 5.15578 3.94739 4.11438C4.98879 3.07299 6.67723 3.07299 7.71861 4.11438Z"
+                        fill="#1DC0BD"/>
+                </svg>
+            </div>
+            `;
+}
+
+function saveToFavorite(mentorInformationId) {
+    let _token = $('meta[name="csrf-token"]').attr('content')
+
+    $(".loader").addClass("loading")
+    $.ajax({
+        url: "/cabinet/favorite/save",
+        method: "POST",
+        data: {
+            '_token': _token,
+            mentorInformationId: mentorInformationId,
+        },
+        success: function (responce) {
+            $(".loader").removeClass("loading")
+            if (responce.status) {
+                alertModal('Вы успешно добавили в избранный!')
+                $('#favorite-btn-' + mentorInformationId).replaceWith(renderHtmlDeleteFavouriteButton(mentorInformationId, responce.userFavoriteId));
+                clickDesibledButton()
+            }
+        },
+        error: function (error) {
+            $(".loader").removeClass("loading")
+        }
+    });
+}
+
+function deleteToFavorite(userFavoriteId, mentorInformationId) {
+    let _token = $('meta[name="csrf-token"]').attr('content')
+
+    $(".loader").addClass("loading")
+    $.ajax({
+        url: "/cabinet/favorite/delete",
+        method: "POST",
+        data: {
+            '_token': _token,
+            userFavoriteId: userFavoriteId,
+        },
+        dataType: 'json',
+        success: function (responce) {
+            $(".loader").removeClass("loading")
+            if (responce.status) {
+                alertModal('Вы успешно удалили в избранный!')
+                $('#favorite-btn-' + mentorInformationId).replaceWith(renderHtmlSaveFavouriteButton(mentorInformationId));
+                clickDesibledButton()
+            }
+        },
+        error: function (error) {
+            $(".loader").removeClass("loading")
+        }
+    });
+}
+
+(function ($) {
+    $(() => {
+        $('.btn-white-green').on('click', (event) => {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+        });
+    });
+})(jQuery);
+
+function clickDesibledButton() {
+    (function ($) {
+        $(() => {
+            $('.btn-white-green').on('click', (event) => {
+                event.stopImmediatePropagation();
+                event.preventDefault();
+            });
+        });
+    })(jQuery);
+}
+
+
+$(".result-star-rating").rating({
+    showClear: false,
+    showCaption: false,
+    size: 'xs',
+    mouseEnabled: false,
+    displayOnly: true
+});
+
+$(".star-rating").rating({
+    showClear: false,
+    size: 'md',
+    clearCaption: 0,
+    defaultCaption: '',
+    starCaptions: function (val) {
+        return val;
+    },
+    starTitles: false,
+    showCaptionAsTitle: false,
+    starCaptionClasses: function (val) {
+        if (val === 0) {
+            return 'caption-badge caption-secondary';
+        } else if (val < 3) {
+            return 'caption-badge caption-danger';
+        } else {
+            return 'caption-badge caption-success';
+        }
+    }
+});
+
+
+function openAddReviewPopup() {
+    $('#addReviewPopup').modal('show');
+}
+
+function openAnswerReviewPopup(reviewId) {
+    $('#answerReviewPopup').modal('show');
+    $('#review-id').val(reviewId)
+}
+
+function openUpdateReviewPopup(reviewId) {
+    $('#updateReviewPopup').modal('show');
+    $('#update-review-id').val(reviewId)
+
+    $('#update-star-text').val($('#review-item-' + reviewId).find('.review-text').text())
+    $('#update-star-rating').val($('#review-item-' + reviewId).find('.result-star-rating').val())
+}
+
+function openUpdateParentReviewPopup(reviewId) {
+    $('#updateParentReviewPopup').modal('show');
+    $('#update-parent-review-id').val(reviewId)
+
+    $('#update-parent-star-text').val($('#review-item-parent-' + reviewId).find('.review-text').text())
+    $('#update-parent-star-rating').val($('#review-item-parent-' + reviewId).find('.result-star-rating').val())
+}
 

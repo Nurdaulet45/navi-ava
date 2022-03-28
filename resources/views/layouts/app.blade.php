@@ -12,22 +12,22 @@
     <meta property="og:site_name" content="{{ env('APP_NAME') }}"/>
     <meta property="og:see_also" content="{{env('APP_URL')}}"/>
 
-
     <meta itemprop="name" content=""/>
     <meta itemprop="description" content=""/>
     <meta itemprop="image" content="{{env('APP_URL') . '/images/logo.png'}}"/>
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', env('APP_NAME'))</title>
-    <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
+    {{--    <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">--}}
 
-    <!-- Fonts -->
+    @yield('custom_css')
+
+    <link rel="stylesheet" href="{{ asset('css/star-rating.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}"/>
+
     <link rel="stylesheet" href="{{asset('css/fonts.css?v=5')}}">
-
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-
     <link rel="stylesheet" href="{{asset('css/default.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/header.css?v=5')}}">
@@ -40,7 +40,6 @@
     <link rel="stylesheet" href="{{asset('css/cabinet.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/blog.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/banner.css?v=5')}}">
-    @yield('custom_css')
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
 <body class="wrap d-flex flex-column min-vh-100">
@@ -55,13 +54,25 @@
     @include('client.components.modalLogin')
     @include('client.components.modalResetPassword')
     @include('client.components.modalRegister')
+
+    @auth
+        @include('client.components.modalAddReview')
+        @include('client.components.modalAnswerReview')
+        @include('client.components.modalUpdateReview')
+        @include('client.components.modalUpdateParentReview')
+    @endauth
 </div>
 @include('client.components.footer')
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.js?v=9')}}"></script>
 <script src="{{asset('/admin_asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('js/script.js?v=5')}}"></script>
+
+<script src="{{ asset('/js/star-rating.min.js') }}"></script>
+<script src="{{ asset('/js/theme.js') }}"></script>
+<script src="{{ asset('/js/LANG.js') }}"></script>
+
+<script src="{{asset('js/script.js?v=5.1')}}"></script>
 
 <script>
     @if(session('success'))
@@ -71,6 +82,7 @@
     alertWarningModal("{{$message}}")
     @enderror
 </script>
+
 @yield('custom_js')
 
 </body>

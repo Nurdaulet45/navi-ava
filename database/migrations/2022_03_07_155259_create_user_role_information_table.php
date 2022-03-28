@@ -28,6 +28,7 @@ class CreateUserRoleInformationTable extends Migration
             $table->integer('service_price')->default(0);
             $table->boolean('is_activated')->default(false);
             $table->softDeletes();
+            $table->timestamp('last_seen')->nullable();
             $table->timestamps();
         });
     }

@@ -98,8 +98,8 @@ class PostsSeeder extends Seeder
                 С добрыми пожеланиями , команда  NAVI-AVA!
             </div>',
         ];
-        for ($i=0;$i<5; $i++) {
 
+        for ($i = 0; $i < 5; $i++) {
             Post::create($data);
         }
     }

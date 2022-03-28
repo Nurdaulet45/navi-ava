@@ -150,20 +150,25 @@ section .head {
     width: 220px
 }
 
-.s-does-work .work-steps {
+.s-does-work .work-step {
     display: flex;
     flex-direction: row;
     padding-bottom: 100px;
-    padding-top: 100px
+    padding-top: 100px;
+    display: none;
 }
 
-.s-does-work .work-steps .step-item {
+.s-does-work .work-step.work-step__active {
+    display: flex;
+}
+
+.s-does-work .work-step .step-item {
     align-items: center;
     display: flex;
     flex-direction: column
 }
 
-.s-does-work .work-steps .step-item p {
+.s-does-work .work-step .step-item p {
     color: #333;
     font-family: Helvetica-400;
     font-size: 20px;
@@ -172,31 +177,31 @@ section .head {
     text-align: center
 }
 
-.s-does-work .work-steps .rb-arrow, .s-does-work .work-steps .rt-arrow {
+.s-does-work .work-step .rb-arrow, .s-does-work .work-step .rt-arrow {
     height: auto;
     max-width: 212px;
     width: 100%
 }
 
-.s-does-work .work-steps .rb-arrow img, .s-does-work .work-steps .rt-arrow img {
+.s-does-work .work-step .rb-arrow img, .s-does-work .work-step .rt-arrow img {
     height: auto;
     width: 100%
 }
 
-.s-does-work .work-steps .rb-arrow {
+.s-does-work .work-step .rb-arrow {
     margin-left: 50px;
     margin-top: 70px
 }
 
-.s-does-work .work-steps .step-2 {
+.s-does-work .work-step .step-2 {
     margin-top: 80px
 }
 
-.s-does-work .work-steps .rt-arrow {
+.s-does-work .work-step .rt-arrow {
     margin-top: 41px
 }
 
-.s-does-work .work-steps .step-5 {
+.s-does-work .work-step .step-5 {
     margin-top: 5px
 }
 
@@ -628,8 +633,17 @@ section .head {
 }
 
 .review-item {
+    width: 100%;
     display: flex;
     flex-direction: column
+}
+
+.review-item-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .review-item .head {
@@ -839,7 +853,10 @@ section .head {
 }
 
 .mentor-info-card .right {
-    width: 100%
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
 .mentor-info-card .right .work-info {
@@ -850,12 +867,18 @@ section .head {
 }
 
 .mentor-info-card .right .work-info .skills {
-    width: 60%
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .mentor-info-card .right .work-info .activity {
     margin-right: 20px;
-    width: 37%
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .mentor-info-card .right .actions {

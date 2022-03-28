@@ -23,7 +23,7 @@ Route::group(['prefix' => 'consultants', 'as' => 'consultants.'], function () {
 
 Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
     Route::get('/', [MainController::class, 'students'])->name('index');
-    Route::get('/consultant/{id}', [MainController::class, 'student'])->name('students');
+    Route::get('/consultant/{id}', [MainController::class, 'student'])->name('student');
 });
 
 Route::view('/catalog-free', 'client.catalog-free')->name('catalog-free');
@@ -45,7 +45,13 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
     Route::get('/mentoring', [UserController::class, 'mentoring'])->name('.mentoring');
     Route::post('/mentoring', [UserController::class, 'saveMentoring'])->name('.saveMentoring');
     Route::get('/reviews', [UserController::class, 'reviews'])->name('.reviews');
+    Route::post('/reviews/save', [UserController::class, 'saveReviews'])->name('.reviews.save');
+    Route::post('/reviews/update', [UserController::class, 'updateReviews'])->name('.reviews.update');
+    Route::post('/reviews/answer/save', [UserController::class, 'saveAnswerReviews'])->name('.reviews.answer.save');
+
     Route::get('/favorites', [UserController::class, 'favorites'])->name('.favorites');
+    Route::post('/favorite/save', [UserController::class, 'saveFavorite'])->name('.favorite.save');
+    Route::post('/favorite/delete', [UserController::class, 'deleteFavorite'])->name('.favorite.delete');
     Route::get('/certifications', [UserController::class, 'certifications'])->name('.certifications');
     Route::post('/certifications', [UserController::class, 'saveCertifications'])->name('.saveCertifications');
 
@@ -96,6 +102,6 @@ Route::prefix('password')->group(function () {
 });
 
 Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
-Route::get('lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('download-file', [DownloadController::class, 'downloadFile'])->name('downloadFile');
+Route::get('/lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/download-file', [DownloadController::class, 'downloadFile'])->name('downloadFile');

@@ -70,12 +70,6 @@
                             <img src="{{ asset('images/kz-icon.png') }}" alt="kk">
                             KZ
                         </a>
-                        {{--                        <div class="line"></div>--}}
-                        {{--                        <a href="#"--}}
-                        {{--                           class="dropdown-item-custom">--}}
-                        {{--                            <img src="{{ asset('images/en-icon.png') }}" alt="kk">--}}
-                        {{--                            EN--}}
-                        {{--                        </a>--}}
                     </div>
                 </div>
             </div>
@@ -96,10 +90,6 @@
                             У вас 3 непрочитанных сообщений
                         </a>
 {{--                        <div class="line"></div>--}}
-{{--                        <a href="#"--}}
-{{--                           class="dropdown-item-custom {{ app()->getLocale() == 'kk' ?  'active' : '' }}">--}}
-{{--                            Найден 250 подходящих менторов--}}
-{{--                        </a>--}}
                     </div>
                 </div>
 
@@ -116,10 +106,10 @@
                             </span>
                             <span class="info">
                                 <span class="name">
-                                   {{auth()->user()->firstNameAndLetterLastNameCustom}}
+                                   {{ auth()->user()->firstNameAndLetterLastNameCustom }}
                                 </span>
                                 <span class="level">
-                                    {{ SessionRoleService::getSessionRoleName() }}
+                                    {{ \App\Services\SessionRoleService::getSessionRoleName() }}
                                 </span>
                             </span>
                         </span>

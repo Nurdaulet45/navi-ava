@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('commands')->group(function() {
@@ -14,7 +15,7 @@ Route::prefix('commands')->group(function() {
 });
 
 Route::get('/', function () {
-    $user = \App\Models\User::first();
+    $user = User::first();
     $user->getRoleNames();
 
     return view('welcome');

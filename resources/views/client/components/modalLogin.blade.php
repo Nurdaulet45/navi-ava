@@ -2,7 +2,6 @@
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content inner-modal">
             <div class="modal-header">
-
                 <h2 class="welcome-text">
                     Добро пожаловать
                     <br>
@@ -20,7 +19,6 @@
             <div class="modal-body">
                 <form id="loginForm" class="modal-form" action="{{ route('login.ajax') }}">
                     @csrf
-
                     <div class="form-input-block">
                         <input id="login-email_or_phone" name="email_or_phone"
                                class="modal-form-input input-default w-100" type="text"
@@ -34,7 +32,7 @@
                     </div>
                     <div class="modal-desc-block">
                         <div class="checkbox">
-                            <input class="default-checkbox-input" type="checkbox" id="color-1" name="remember">
+                            <input class="default-checkbox-input" type="checkbox" id="color-1" name="remember" value="1">
                             <label for="color-1">Запомнить на этом компьютере</label>
                         </div>
                         <a onclick="openResetPasswordLink(this)" class="desc-info-link">Забыли пароль?</a>

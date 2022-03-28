@@ -13,6 +13,8 @@ use App\Models\Country;
 use App\Models\Role;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\UserFavorite;
+use App\Models\UserReview;
 use App\Models\UserRoleInformation;
 use App\Services\AcceptByUserRole;
 use App\Services\FileService;
@@ -46,7 +48,7 @@ class UserController extends Controller
     public function accountActivate()
     {
         $userInformation = UserRoleInformation::query()
-            ->where(['user_id'=>auth()->user()->id, 'role_name'=>auth()->user()->default_role])
+            ->where(['user_id' => auth()->user()->id, 'role_name' => auth()->user()->default_role])
             ->first();
         $userInformation->is_activated = 1;
         $userInformation->save();
@@ -115,8 +117,8 @@ class UserController extends Controller
         }
         $user->profile_header_image = null;
         $user->save();
-        return redirect()->back()->withSuccess('Обложка успешно удален');
 
+        return redirect()->back()->withSuccess('Обложка успешно удален');
     }
 
     public function sendVerifyEmail()
@@ -218,7 +220,6 @@ class UserController extends Controller
 
     public function saveMentoring(MentoringSaveRequest $request)
     {
-//        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         $user = auth()->user();
         $userInformation = $user->roleInformation()->first();
 
@@ -235,32 +236,137 @@ class UserController extends Controller
     public function reviews()
     {
         $user = auth()->user();
-        $user->full_name = $user->firstNameAndLetterLastNameCustom;
+        $userInformation = $user->roleInformation()->first();
+
+        $bothMeReviews = UserReview::query()
+            ->whereNull('parent_id')
+            ->where(['reviewer_id' => $userInformation->id])
+            ->with('userRoleInformation', 'parentReviews', 'checkParentReview')
+            ->orderByDesc('id')
+            ->get();
+
+        $myReviews = UserReview::query()
+            ->whereNull('parent_id')
+            ->where(['user_id' => $userInformation->id])
+            ->with('userRoleInformation', 'parentReviews', 'checkParentReview')
+            ->orderByDesc('id')
+            ->get();
 
 //        $user->avatar = $user->avatar
 //            ? Storage::url(User::IMAGE_PATH . $user->avatar)
 //            : ($user->gender ? User::DEFAULT_MALE_IMAGE : User::DEFAULT_FEMALE_IMAGE);
 
+        return view('client.cabinet.reviews', compact(['user','userInformation','bothMeReviews','myReviews']));
+    }
 
-        return view('client.cabinet.reviews', compact('user'));
+    public function saveReviews(Request $request)
+    {
+        $mentorInformation = UserRoleInformation::query()->findOrFail($request->input('mentorInformationId'));
+
+        $userInformation = auth()->user()->roleInformation()->first();
+
+        $userReview = UserReview::query()->create([
+            'user_id' => $userInformation->id,
+            'user_role_name' => $userInformation->role_name,
+            'reviewer_id' => $mentorInformation->id,
+            'text' => $request->textComment,
+            'rate' => $request->ratingStarValue,
+            'chance' => 0
+        ]);
+        if ($userReview) {
+            return response(['status' => true]);
+        }
+        return response(['status' => false]);
+    }
+
+    public function updateReviews(Request $request)
+    {
+        $userReview = UserReview::query()->findOrFail($request->input('reviewId'));
+
+        $userReview->text = $request->textComment;
+        $userReview->rate = $request->ratingStarValue;
+        $userReview->update();
+
+        if ($userReview) {
+            return response(['status' => true]);
+        }
+        return response(['status' => false]);
+    }
+
+    public function saveAnswerReviews(Request $request)
+    {
+        $mentorInformation = UserRoleInformation::query()
+            ->findOrFail($request->input('mentorInformationId'));
+
+        $review = UserReview::query()
+            ->findOrFail($request->input('reviewId'));
+
+        $userInformation = auth()->user()->roleInformation()->first();
+
+        $userReview = UserReview::query()->create([
+            'user_id' => $userInformation->id,
+            'user_role_name' => $userInformation->role_name,
+            'reviewer_id' => $mentorInformation->id,
+            'text' => $request->textComment,
+            'rate' => $request->ratingStarValue,
+            'parent_id' => $review->id,
+            'chance' => 0
+        ]);
+        if ($userReview) {
+            return response(['status' => true]);
+        }
+        return response(['status' => false]);
     }
 
     public function favorites()
     {
-        return view('client.cabinet.favorites');
+        $favorites = UserFavorite::query()
+                ->select(['user_role_information.id as mentor_id', 'user_role_information.*', 'user_favorites.*'])
+            ->join('user_role_information', function ($join) {
+                $join->on('user_role_information.user_id', '=', 'user_favorites.favorite_user_id')
+                    ->on('user_role_information.role_name', '=', 'user_favorites.favorite_user_role_name');
+            })
+            ->where(['user_favorites.user_id' => auth()->user()->id, 'user_favorites.user_role_name' => auth()->user()->default_role])
+            ->orderByDesc('user_favorites.id')
+            ->with(['user'])
+            ->paginate(10);
+
+        return view('client.cabinet.favorites', compact(['favorites']));
+    }
+
+    public function saveFavorite(Request $request)
+    {
+        $mentorInformation = UserRoleInformation::query()->findOrFail($request->mentorInformationId);
+        $userFavorite = UserFavorite::query()->create([
+            'user_id' => auth()->user()->id,
+            'user_role_name' => auth()->user()->default_role,
+            'favorite_user_id' => $mentorInformation->user_id,
+            'favorite_user_role_name' => $mentorInformation->role_name,
+        ]);
+        if ($userFavorite) {
+            return response(['status' => true, 'userFavoriteId' => $userFavorite->id]);
+        }
+        return response(['status' => false]);
+    }
+
+    public function deleteFavorite(Request $request)
+    {
+        $userFavorite = UserFavorite::query()->findOrFail($request->userFavoriteId);
+        if ($userFavorite->delete()) {
+            return response(['status' => true]);
+        }
+        return response(['status' => false]);
     }
 
     public function certifications()
     {
         $user = auth()->user();
-//        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         return view('client.cabinet.certifications', compact(['user']));
     }
 
     public function saveCertifications()
     {
         $user = auth()->user();
-//        AcceptByUserRole::isDeniedAndRedirectHasRole(Role::STUDENT_NAME, 'cabinet');
         return redirect()->back()->withSuccess('Успешно изменен', compact(['user']));
     }
 

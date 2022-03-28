@@ -5961,7 +5961,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['auth_user'],
@@ -6015,7 +6014,7 @@ __webpack_require__.r(__webpack_exports__);
           review_id: this.reply_review.review_id,
           text: this.reply_review.text
         };
-        axios.post('api/cabinet/reviews/reply', data).then(function (res) {
+        axios.post('/api/cabinet/reviews/reply', data).then(function (res) {
           var replyReview = res.data.data;
 
           if (_this.tab == 'about_me_reviews') {
@@ -6050,7 +6049,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         page: this.all_reviews.meta.current_page ? this.all_reviews.meta.current_page + 1 : 1
       };
-      axios.get('api/cabinet/reviews', {
+      axios.get('/api/cabinet/reviews', {
         params: params
       }).then(function (res) {
         _this2.loader = false;
@@ -6079,7 +6078,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         page: this.reviewed_reviews.meta.current_page ? this.reviewed_reviews.meta.current_page + 1 : 1
       };
-      axios.get('api/cabinet/reviewed-reviews', {
+      axios.get('/api/cabinet/reviewed-reviews', {
         params: params
       }).then(function (res) {
         _this3.loader = false;
@@ -6107,7 +6106,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         page: this.about_me_reviews.meta.current_page ? this.about_me_reviews.meta.current_page + 1 : 1
       };
-      axios.get('api/cabinet/about-me-reviews', {
+      axios.get('/api/cabinet/about-me-reviews', {
         params: params
       }).then(function (res) {
         _this4.loader = false;
@@ -11375,7 +11374,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fa {\r\n    margin-left: -12px;\r\n    margin-right: 8px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fa {\n    margin-left: -12px;\n    margin-right: 8px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -83,7 +83,7 @@ class SessionRoleService
         return 'Не определен';
     }
 
-    public static function isSessionHasRole($role)
+    public static function isSessionHasRole($role): bool
     {
         return mb_strtolower(self::roleName($role)) == mb_strtolower(self::getSessionRoleName());
     }

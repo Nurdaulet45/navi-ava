@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
@@ -22,7 +23,9 @@ class UsersSeeder extends Seeder
         $address = [
             'Москва', 'Алматы', 'Шымкент', 'Астана'
         ];
-        \App\Models\User::factory(10)->create()->each(function ($user) use($roles, $address, $specializations) {
+        User::factory(10)
+            ->create()
+            ->each(function ($user) use($roles, $address, $specializations) {
             $roleNumber = rand(0, count($roles));
             $user->assignRole($roles[$roleNumber]);
             $user->address = $address[$roleNumber];

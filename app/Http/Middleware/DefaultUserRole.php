@@ -32,7 +32,7 @@ class DefaultUserRole
         return $next($request);
     }
 
-    private function isSessionRoleNotExistOrNotValidated()
+    private function isSessionRoleNotExistOrNotValidated(): bool
     {
         return empty(Session::get('role')) || !in_array(Session::get('role'), Role::DEFAULT_ROLES);
     }

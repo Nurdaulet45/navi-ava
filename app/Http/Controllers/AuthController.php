@@ -12,10 +12,12 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRoleInformation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Illuminate\Validation\ValidationException;
@@ -41,7 +43,7 @@ class AuthController extends Controller
      * @throws ValidationException
      * @throws \Exception
      */
-    public function registerAjax(RegisterRequest $request)
+    public function registerAjax(RegisterRequest $request): \Illuminate\Http\JsonResponse
     {
         if (User::emailBy($request->email)->exists()) {
             throw ValidationException::withMessages([
@@ -56,7 +58,7 @@ class AuthController extends Controller
             User::query()->where('login', $generatedUserLogin)->exists()
         );
 
-        $user = User::create([
+        $user = User::query()->create([
             'login' => $generatedUserLogin,
             'email' => $request->email,
             'first_name' => $request->first_name,
@@ -66,8 +68,9 @@ class AuthController extends Controller
         ]);
 
         $user->syncRoles(Role::DEFAULT_ROLES);
-        $user->default_role = $request->user_type ?: Role::DEFAULT_ROLE;
-        $user->save();
+        $user->default_role = $request->input('user_type');
+        Session::put('role', $request->input('user_type'));
+        $user->update();
 
         $roles = Role::query()
             ->whereNotIn('id', [1])
@@ -75,7 +78,7 @@ class AuthController extends Controller
             ->pluck('name', 'id');
 
         foreach ($roles as $roleId => $roleName) {
-            UserRoleInformation::create([
+            UserRoleInformation::query()->create([
                 'user_id' => $user->id,
                 'login' => $generatedUserLogin,
                 'role_id' => $roleId,
@@ -85,7 +88,7 @@ class AuthController extends Controller
         }
         DB::commit();
 
-        Auth::login($user);
+        Auth::login($user, 1);
 
         $userController = new UserController;
         $userController->sendVerifyEmail();
@@ -96,26 +99,26 @@ class AuthController extends Controller
     /**
      * @throws ValidationException
      */
-    public function loginAjax(LoginRequest $request)
+    public function loginAjax(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
-        $user = User::where('email', $request->email_or_phone)->orWhere('phone', $request->email_or_phone)->orWhere('login', $request->email_or_phone)->withTrashed()->firstOr(function () {
-            throw ValidationException::withMessages([
-                'email_or_phone' => [__('Email, логин или номер телефона не найден')]
-            ]);
-        });
+        $user = User::where('email', $request->email_or_phone)->orWhere('phone', $request->email_or_phone)
+            ->orWhere('login', $request->email_or_phone)->withTrashed()->firstOr(function () {
+                throw ValidationException::withMessages([
+                    'email_or_phone' => [__('Email, логин или номер телефона не найден')]
+                ]);
+            });
 
         if (!Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'password' => [__('site.Login or password is incorrect')]
             ]);
         }
-        Auth::login($user);
+        Auth::login($user, $request->get('remember'));
 
         return response()->json(['data' => [
             'success' => true,
             'is_trashed' => false
         ]]);
-
     }
 
     public function resetPassword($token)
@@ -178,6 +181,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+
         return redirect()->route('index');
     }
 }

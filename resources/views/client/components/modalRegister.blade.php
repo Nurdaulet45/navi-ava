@@ -13,32 +13,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{--                <div class="prev-register">--}}
-                {{--                    <div class="nav nav-tabs register-tabs">--}}
-                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="mentor"--}}
-                {{--                               id="tab_mentor"/>--}}
-                {{--                        <label for="tab_mentor">Наставник</label>--}}
-                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="student"--}}
-                {{--                               id="tab_student" checked/>--}}
-                {{--                        <label for="tab_student">Ученик</label>--}}
-                {{--                        <input type="radio" class="stv-radio-tab register-tab" name="register-user_type" value="consultant"--}}
-                {{--                               id="tab_consultant"/>--}}
-                {{--                        <label for="tab_consultant">Консультант</label>--}}
-                {{--                    </div>--}}
-                {{--                    <form id="prevRegisterForm" class="modal-form"  action="{{ route('check_email.ajax') }}">--}}
-                {{--                        @csrf--}}
-                {{--                        <div class="form-input-block">--}}
-                {{--                            <input id="register-email" name="email"--}}
-                {{--                                   class="modal-form-input input-default w-100" type="text"--}}
-                {{--                                   required--}}
-                {{--                                   placeholder="Email">--}}
-                {{--                            <span class="invalid-feedback" role="alert" id="error-register-email"></span>--}}
-                {{--                        </div>--}}
-                {{--                        <button type="submit" class="btn-default-shadow medium-btn w-100">--}}
-                {{--                            Далее--}}
-                {{--                        </button>--}}
-                {{--                    </form>--}}
-                {{--                </div>--}}
                 <div class="only-register">
                     <form id="registerForm" class="modal-form" action="{{ route('register.ajax') }}">
                         @csrf

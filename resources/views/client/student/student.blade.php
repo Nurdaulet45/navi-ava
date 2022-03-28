@@ -73,14 +73,14 @@
                         <div class="mentor-block-user-name">
                             <div class="user-info">
                                 <p class="name">
-                                    {{ $mentor->user->firstNameAndLetterLastNameCustom }}
-                                    <span>, {{ $mentor->user->login }}</span>
+                                    {{ $student->user->firstNameAndLetterLastNameCustom }}
+                                    <span>, {{ $student->user->login }}</span>
                                 </p>
                                 <p class="work">
-                                    {{ $mentor->specialization_text ?: '' }}
+                                    {{ $student->specialization_text ?: '' }}
                                 </p>
                                 <p class="city">
-                                    {{ $mentor->user->countryAddressCustom }}
+                                    {{ $student->user->countryAddressCustom }}
                                 </p>
                             </div>
                             <div class="status-price-block">
@@ -93,26 +93,26 @@
                             </div>
                         </div>
 
-                        @if($mentor->specializationName())
+                        @if($student->specializationName())
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     Сфера деятельности
                                 </div>
                                 <div class="info-description">
-                                    {{ $mentor->specializationName() }}
+                                    {{ $student->specializationName() }}
                                 </div>
                             </div>
                         @endif
 
-                        @empty(!json_decode($mentor->skills))
+                        @empty(!json_decode($student->skills))
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     Ключевые слова / навыки
                                 </div>
                                 <div class="skill-items">
-                                    @foreach(json_decode($mentor->skills) as $skill)
+                                    @foreach(json_decode($student->skills) as $skill)
                                         <div class="skill-item">
                                             {{ $skill }}
                                         </div>
@@ -121,7 +121,7 @@
                             </div>
                         @endempty
 
-                        @if($mentor->skills_description)
+                        @if($student->skills_description)
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
@@ -129,21 +129,21 @@
                                 </div>
                                 <div class="info-description">
                                     <ol>
-                                        <li>{{ $mentor->skills_description }}</li>
+                                        <li>{{ $student->skills_description }}</li>
                                         {{-- <li>QA и тестирование - общие вопросы, выбор направления для обучения и развития.</li>--}}
                                     </ol>
                                 </div>
                             </div>
                         @endif
 
-                        @if($mentor->about_me)
+                        @if($student->about_me)
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     О себе
                                 </div>
                                 <div class="info-description">
-                                    {{ $mentor->about_me }}
+                                    {{ $student->about_me }}
                                 </div>
                             </div>
                         @endif
@@ -154,7 +154,7 @@
                                 Дипломы, сертификаты и курсы
                             </div>
                             <div class="mentor-block-certificates">
-                                @foreach($mentor->certifications($mentor->user_id,$mentor->role_name) as $certificate)
+                                @foreach($student->certifications($student->user_id,$student->role_name) as $certificate)
                                     <div class="certificate-card">
                                         <div class="left">
                                             <div class="info-title">
