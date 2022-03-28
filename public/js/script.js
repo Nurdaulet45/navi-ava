@@ -461,7 +461,7 @@ function openUploadImage(e) {
     $('#container-uploadimage').addClass('show');
 }
 
-let accordions = document.getElementsByClassName("accordion");
+let accordions = document.getElementsByClassName("accordion-filter");
 
 for (let i = 0; i < accordions.length; i++) {
     accordions[i].classList.add('active');

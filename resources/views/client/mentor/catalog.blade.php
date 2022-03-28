@@ -10,7 +10,7 @@
             <div class="wrapper">
                 <form action="{{ route('mentors.index') }}" method="GET" class="filters">
                     <div class="accordion-block filters__filter">
-                        <div class="accordion filters__filter-title">
+                        <div class="accordion accordion-filter filters__filter-title">
                             Формат
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@
                     </div>
                     @if($specializations)
                         <div class="accordion-block  filters__filter">
-                            <div class="accordion filters__filter-title">
+                            <div class="accordion accordion-filter filters__filter-title">
                                 Сфера деятельности
                                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +62,7 @@
                         </div>
                     @endif
                     <div class="accordion-block filters__filter">
-                        <div class="accordion filters__filter-title">
+                        <div class="accordion accordion-filter filters__filter-title">
                             Укажите город
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="accordion-block filters__filter">
-                        <div class="accordion filters__filter-title">
+                        <div class="accordion accordion-filter filters__filter-title">
                             Показывать
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="accordion-block filters__filter">
-                        <div class="accordion filters__filter-title">
+                        <div class="accordion accordion-filter filters__filter-title">
                             Активность наставника
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="accordion-block filters__filter">
-                        <div class="accordion filters__filter-title">
+                        <div class="accordion accordion-filter filters__filter-title">
                             Отзывы
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">

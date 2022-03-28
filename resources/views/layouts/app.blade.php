@@ -72,7 +72,7 @@
 <script src="{{ asset('/js/theme.js') }}"></script>
 <script src="{{ asset('/js/LANG.js') }}"></script>
 
-<script src="{{asset('js/script.js?v=5.2')}}"></script>
+<script src="{{asset('js/script.js?v=5.3')}}"></script>
 
 <script>
     @if(session('success'))
