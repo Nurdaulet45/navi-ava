@@ -28,18 +28,18 @@
 
     <link rel="stylesheet" href="{{asset('css/fonts.css?v=5')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/default.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/default.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/modal.css?v=5.1')}}">
 
-    <link rel="stylesheet" href="{{asset('css/style.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/catalog.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/blog.css?v=5')}}">
-    <link rel="stylesheet" href="{{asset('css/banner.css?v=5')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/loader.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/cabinet.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/blog.css?v=5.1')}}">
+    <link rel="stylesheet" href="{{asset('css/banner.css?v=5.1')}}">
     <link rel="stylesheet" href="{{asset('/admin_asset/plugins/sweetalert2/sweetalert2.css?v=9')}}">
 </head>
 <body class="wrap d-flex flex-column min-vh-100">
@@ -72,7 +72,7 @@
 <script src="{{ asset('/js/theme.js') }}"></script>
 <script src="{{ asset('/js/LANG.js') }}"></script>
 
-<script src="{{asset('js/script.js?v=5.1')}}"></script>
+<script src="{{asset('js/script.js?v=5.2')}}"></script>
 
 <script>
     @if(session('success'))
