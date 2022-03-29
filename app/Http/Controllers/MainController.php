@@ -27,9 +27,12 @@ class MainController extends Controller
     {
         if (empty($request->all())) {
             $mentors = UserRoleInformation::query()
-                ->select(['user_role_information.*', DB::raw('AVG(user_reviews.rate) as rate, COUNT(user_reviews.reviewer_id) as count')])
-                ->join('user_reviews', 'user_reviews.reviewer_id', '=', 'user_role_information.id')
-                ->whereNull('user_reviews.parent_id')
+                ->select(['user_role_information.*'])
+                ->leftJoin('user_reviews', function ($leftJoin) {
+                    $leftJoin->on('user_reviews.reviewer_id', '=', 'user_role_information.id')
+                        ->select([DB::raw('AVG(user_reviews.rate) as rate, COUNT(user_reviews.reviewer_id) as count')])
+                        ->whereNull('user_reviews.parent_id');
+                })
                 ->whereIn('role_name', ['paid_mentor', 'mentor'])->where('is_activated', 1)
                 ->whereNotIn('role_name', ['student', 'consultant', 'paid_consultant'])
                 ->with(['user'])
@@ -106,7 +109,7 @@ class MainController extends Controller
             }
         }
 
-        return view('client.mentor.mentor', compact(['mentor', 'reviews', 'myReview','userInformation']));
+        return view('client.mentor.mentor', compact(['mentor', 'reviews', 'myReview', 'userInformation']));
     }
 
     public function consultants()

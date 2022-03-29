@@ -147,19 +147,36 @@
                         <div class="panel">
                             <div class="filters__filter-items">
                                 <div class="filters__filter-item">
-                                    Все
+                                    <input type="checkbox" class="filter-input-checkbox"
+                                           name=""
+                                           value="">
+                                    <label for="">Все</label>
+                                </div>
+
+                                <div class="filters__filter-item">
+                                    <input type="checkbox" class="filter-input-checkbox"
+                                           name=""
+                                           value="">
+                                    <label for=""> От 1</label>
+                                </div>
+
+                                <div class="filters__filter-item">
+                                    <input type="checkbox" class="filter-input-checkbox"
+                                           name=""
+                                           value="">
+                                    <label for="">От 5</label>
                                 </div>
                                 <div class="filters__filter-item">
-                                    От 1
+                                    <input type="checkbox" class="filter-input-checkbox"
+                                           name=""
+                                           value="">
+                                    <label for="">От 10</label>
                                 </div>
                                 <div class="filters__filter-item">
-                                    От 5
-                                </div>
-                                <div class="filters__filter-item">
-                                    От 20
-                                </div>
-                                <div class="filters__filter-item">
-                                    От 50
+                                    <input type="checkbox" class="filter-input-checkbox"
+                                           name=""
+                                           value="">
+                                    <label for="">От 50</label>
                                 </div>
                             </div>
                         </div>
