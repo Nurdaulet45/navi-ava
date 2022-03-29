@@ -23,44 +23,113 @@ class MainController extends Controller
         return view('client.index');
     }
 
+    /*
+     SELECT *
+    FROM `user_role_information`
+    LEFT JOIN user_reviews
+    ON user_reviews.reviewer_id = user_role_information.id
+    WHERE is_activated = 1 AND role_name NOT IN ('student','consultant','paid_consultant')
+    GROUP BY user_reviews.reviewer_id;
+     */
+
+    /*
+     SELECT *, COUNT(user_reviews.reviewer_id) as count
+    FROM `user_role_information`
+    LEFT JOIN user_reviews
+    ON user_reviews.reviewer_id = user_role_information.id
+    WHERE is_activated = 1 AND role_name NOT IN ('student','consultant','paid_consultant') AND (SELECT COUNT(user_reviews.reviewer_id) as count2
+    FROM `user_role_information`
+    LEFT JOIN user_reviews
+    ON user_reviews.reviewer_id = user_role_information.id
+    WHERE is_activated = 1 AND role_name NOT IN ('student','consultant','paid_consultant')) IN (0, 2)
+    GROUP BY user_reviews.reviewer_id;
+    */
+
+
     public function mentors(Request $request)
     {
         if (empty($request->all())) {
             $mentors = UserRoleInformation::query()
-                ->select(['user_role_information.*'])
+                ->when('user_reviews', function ($query) {
+                    $query->select(['user_role_information.*', DB::raw('AVG(user_reviews.rate) as rate, COUNT(user_reviews.reviewer_id) as count')]);
+                })
                 ->leftJoin('user_reviews', function ($leftJoin) {
                     $leftJoin->on('user_reviews.reviewer_id', '=', 'user_role_information.id')
-                        ->select([DB::raw('AVG(user_reviews.rate) as rate, COUNT(user_reviews.reviewer_id) as count')])
                         ->whereNull('user_reviews.parent_id');
                 })
                 ->whereIn('role_name', ['paid_mentor', 'mentor'])->where('is_activated', 1)
                 ->whereNotIn('role_name', ['student', 'consultant', 'paid_consultant'])
                 ->with(['user'])
+                ->groupBy('reviewer_id')
                 ->orderByDesc('rate')
                 ->paginate(10);
         } else {
             $freeMentor = $request->input('free');
             $paidMentor = $request->input('paid');
+            $withReviews = $request->input('withReviews');
 
             $typeMentorsArray = array_filter([$freeMentor, $paidMentor]);
             $specializationsArray = (!empty($request->input('specialization_ids'))) ? array_keys($request->input('specialization_ids')) : null;
             $citiesArray = (!empty($request->input('cities'))) ? implode(' ', $request->input('cities')) : null;
+            $reviewParameter = (!empty($request->input('reviewParameters'))) ? array_keys($request->input('reviewParameters')) : null;
+            $onlineParameters = (!empty($request->input('onlineParameters'))) ? $request->input('onlineParameters') : null;
+
+
+            if ($onlineParameters){
+                $onlineParameters = array_map(function ($element) {
+                    if ($element == 'online') {
+                        return Carbon::now()->subMinutes();
+                    } elseif ($element == '5 days') {
+                        return Carbon::now()->subDays(5);
+                    } elseif ($element == '10 days') {
+                        return Carbon::now()->subDays(10);
+                    } elseif ($element == '20 days') {
+                        return Carbon::now()->subDays(20);
+                    } elseif ($element == '30 days') {
+                        return Carbon::now()->subDays(30);
+                    }
+                }, $onlineParameters);
+            }
+
 
             $mentors = UserRoleInformation::query()
-                ->select(['users.address', 'user_role_information.*'])
+                ->when('user_reviews', function ($query) {
+                    $query->select(['users.address', 'user_role_information.*', DB::raw('AVG(user_reviews.rate) as rate, COUNT(user_reviews.reviewer_id) as count')]);
+                })
                 ->join('users', 'users.id', '=', 'user_role_information.user_id')
+                ->leftJoin('user_reviews', function ($leftJoin) {
+                    $leftJoin->on('user_reviews.reviewer_id', '=', 'user_role_information.id')
+                        ->whereNull('user_reviews.parent_id');
+                })
                 ->when($typeMentorsArray, function ($query, $typeMentorsArray) {
                     $query->whereIn('role_name', $typeMentorsArray);
+                })
+                ->when($onlineParameters, function ($query, $onlineParameters) {
+                    foreach ($onlineParameters as $key => $onlineParameter) {
+                        if ($key == 0) {
+                            $query->where('last_seen', '>=', $onlineParameter);
+                        } else {
+                            $query->orWhere('last_seen', '>=', $onlineParameter);
+                        }
+                    }
                 })
                 ->when($specializationsArray, function ($query, $specializationsArray) {
                     $query->whereIn('specialization_id', $specializationsArray);
                 })
+                ->when($reviewParameter, function ($query, $reviewParameter) {
+                    $query->having('count', '>=', $reviewParameter);
+                })
                 ->when($citiesArray, function ($query, $citiesArray) {
                     $query->where('address', 'like', "%$citiesArray%");
+                })
+                ->when($withReviews, function ($query) {
+                    $query->whereNotNull('rate');
                 })
                 ->where('is_activated', 1)
                 ->whereNotIn('role_name', ['student', 'consultant', 'paid_consultant'])
                 ->with(['user'])
+                ->groupBy('reviewer_id')
+                ->orderByDesc('rate')
                 ->paginate(10);
         }
 

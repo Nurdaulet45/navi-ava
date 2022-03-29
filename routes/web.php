@@ -103,5 +103,5 @@ Route::prefix('password')->group(function () {
 
 Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::get('/lang/switch', [MainController::class, 'langSwitch'])->name('lang.switch');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/download-file', [DownloadController::class, 'downloadFile'])->name('downloadFile');

@@ -99,7 +99,10 @@
                         <div class="panel">
                             <div class="filters__filter-items">
                                 <div class="filters__filter-item">
-                                    Только с отзывами
+                                    <input type="checkbox" class="filter-input-checkbox" id="withReviews"
+                                           name="withReviews"
+                                           value="1" @if(isset(request()->withReviews)) checked @endif>
+                                    <label for="withReviews">Только с отзывами</label>
                                 </div>
                             </div>
                         </div>
@@ -116,21 +119,19 @@
                         </div>
                         <div class="panel">
                             <div class="filters__filter-items">
-                                <div class="filters__filter-item">
-                                    Онлайн
-                                </div>
-                                <div class="filters__filter-item">
-                                    Заходил до 5 дн. назад
-                                </div>
-                                <div class="filters__filter-item">
-                                    Заходил до 10 дн. назад
-                                </div>
-                                <div class="filters__filter-item">
-                                    Заходил до 20 дн. назад
-                                </div>
-                                <div class="filters__filter-item">
-                                    Заходил до 30 дн. назад
-                                </div>
+                                @php
+                                    $onlineParameters = ['online'=>'Онлайн','5 days' => 'Заходил до 5 дн. назад',
+                                 '10 days' => 'Заходил до 10 дн. назад','20 days' => 'Заходил до 20 дн. назад', '30 days' => 'Заходил до 30 дн. назад'];
+                                @endphp
+                                @foreach($onlineParameters as $key => $onlineParameter)
+                                    <div class="filters__filter-item">
+                                        <input value="{{ $key }}" class="input-checkbox"
+                                               name="onlineParameters[{{ $key }}]" id="{{ $key }}"
+                                               type="checkbox"
+                                               @if(isset(request()->onlineParameters[$key])) checked @endif>
+                                        <label for="{{ $key }}">{{ $onlineParameter }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -146,38 +147,18 @@
                         </div>
                         <div class="panel">
                             <div class="filters__filter-items">
-                                <div class="filters__filter-item">
-                                    <input type="checkbox" class="filter-input-checkbox"
-                                           name=""
-                                           value="">
-                                    <label for="">Все</label>
-                                </div>
-
-                                <div class="filters__filter-item">
-                                    <input type="checkbox" class="filter-input-checkbox"
-                                           name=""
-                                           value="">
-                                    <label for=""> От 1</label>
-                                </div>
-
-                                <div class="filters__filter-item">
-                                    <input type="checkbox" class="filter-input-checkbox"
-                                           name=""
-                                           value="">
-                                    <label for="">От 5</label>
-                                </div>
-                                <div class="filters__filter-item">
-                                    <input type="checkbox" class="filter-input-checkbox"
-                                           name=""
-                                           value="">
-                                    <label for="">От 10</label>
-                                </div>
-                                <div class="filters__filter-item">
-                                    <input type="checkbox" class="filter-input-checkbox"
-                                           name=""
-                                           value="">
-                                    <label for="">От 50</label>
-                                </div>
+                                @php
+                                    $reviewParameters = ['0' =>'Все','1' => 'От 1', '5' => 'От 5','10' => 'От 10', '50' => 'От 50'];
+                                @endphp
+                                @foreach($reviewParameters as $key  => $reviewParameter)
+                                    <div class="filters__filter-item">
+                                        <input type="checkbox" class="filter-input-checkbox" id="{{ $key }}"
+                                               name="reviewParameters[{{$key}}]"
+                                               value="{{ $key }}"
+                                               @if(isset(request()->reviewParameters[$key])) checked @endif>
+                                        <label for="{{$key}}">{{ $reviewParameter }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -185,14 +166,15 @@
                     <button type="submit" class="btn-default-shadow small-btn w-100">
                         Показать
                     </button>
-                    <div class="clear-filter">
+
+                    <a href="{{ route('mentors.index') }}" class="clear-filter">
                         Сбросить фильтры
                         <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M1.02827 0.528512C1.28862 0.268165 1.71073 0.268165 1.97108 0.528512L5.49967 4.05712L9.02827 0.528512C9.28861 0.268165 9.71074 0.268165 9.97108 0.528512C10.2314 0.788865 10.2314 1.21097 9.97108 1.47133L6.44247 4.99992L9.97108 8.52852C10.2314 8.78885 10.2314 9.21099 9.97108 9.47132C9.71074 9.73165 9.28861 9.73165 9.02827 9.47132L5.49967 5.94272L1.97108 9.47132C1.71073 9.73165 1.28862 9.73165 1.02827 9.47132C0.767921 9.21099 0.767921 8.78885 1.02827 8.52852L4.55687 4.99992L1.02827 1.47133C0.767921 1.21097 0.767921 0.788865 1.02827 0.528512Z"
                                 fill="#E40904"/>
                         </svg>
-                    </div>
+                    </a>
                 </form>
                 <div class="search-result">
                     <div class="search-result__header">
