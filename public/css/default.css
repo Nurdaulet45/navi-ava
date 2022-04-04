@@ -796,7 +796,7 @@ a:hover {
 }
 
 .review-write-textarea::-webkit-scrollbar-button {
-    height: 12px
+    height: 1px
 }
 
 .review-write-textarea::-webkit-scrollbar-thumb {

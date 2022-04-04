@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
+use App\Events\NewMessage;
 use App\Http\Requests\User\AboutMeRequest;
 use App\Http\Requests\User\ChangeMailRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
@@ -10,6 +12,7 @@ use App\Http\Requests\User\SessionLoginAsRequest;
 use App\Http\Requests\User\SpecializationSaveRequest;
 use App\Mail\EmailVerify;
 use App\Models\Country;
+use App\Models\Message;
 use App\Models\Role;
 use App\Models\Specialization;
 use App\Models\User;
@@ -20,6 +23,9 @@ use App\Services\AcceptByUserRole;
 use App\Services\FileService;
 use App\Services\SessionRoleService;
 use Dflydev\DotAccessData\Data;
+use Faker\Factory;
+use Faker\Generator;
+use Faker\Provider\kk_KZ\Text;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -256,7 +262,7 @@ class UserController extends Controller
 //            ? Storage::url(User::IMAGE_PATH . $user->avatar)
 //            : ($user->gender ? User::DEFAULT_MALE_IMAGE : User::DEFAULT_FEMALE_IMAGE);
 
-        return view('client.cabinet.reviews', compact(['user','userInformation','bothMeReviews','myReviews']));
+        return view('client.cabinet.reviews', compact(['user', 'userInformation', 'bothMeReviews', 'myReviews']));
     }
 
     public function saveReviews(Request $request)
@@ -321,7 +327,7 @@ class UserController extends Controller
     public function favorites()
     {
         $favorites = UserFavorite::query()
-                ->select(['user_role_information.id as mentor_id', 'user_role_information.*', 'user_favorites.*'])
+            ->select(['user_role_information.id as mentor_id', 'user_role_information.*', 'user_favorites.*'])
             ->join('user_role_information', function ($join) {
                 $join->on('user_role_information.user_id', '=', 'user_favorites.favorite_user_id')
                     ->on('user_role_information.role_name', '=', 'user_favorites.favorite_user_role_name');
@@ -370,4 +376,88 @@ class UserController extends Controller
         return redirect()->back()->withSuccess('Успешно изменен', compact(['user']));
     }
 
+    public function chats()
+    {
+        $user = auth()->user();
+
+//        $faker = Factory::create('kk_KZ');
+//        for ($i = 1; $i <= 10; $i++) {
+//            Message::query()->create([
+//                'from' => rand(1, 2),
+//                'to' => rand(2, 1),
+//                'message' => substr($faker->realText(60), 0, -1)
+//            ]);
+//        }
+
+        return view('client.cabinet.chats', compact(['user']));
+    }
+
+    public function contacts(): \Illuminate\Http\JsonResponse
+    {
+        $contacts = User::query()
+            ->where('id', '!=', auth()->id())
+            ->get();
+
+        $unreadIds = Message::query()
+            ->select(DB::raw('`from` as sender_id, count(`from`) as messages_count'))
+            ->where('to', auth()->id())
+            ->where('read', false)
+            ->groupBy('from')
+            ->get();
+
+        $contacts = $contacts->map(function ($contact) use ($unreadIds) {
+            $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
+
+            $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+
+            return $contact;
+        });
+
+        return response()->json($contacts);
+    }
+
+    public function getMessageFor($id): \Illuminate\Http\JsonResponse
+    {
+        Message::query()
+            ->where('from', auth()->id())
+            ->update(['read' => true]);
+
+        $messages = Message::query()
+            ->where(function ($query) use ($id) {
+                $query->where('from', auth()->id());
+                $query->where('to', $id);
+            })->orWhere(function ($query) use ($id) {
+                $query->where('from', $id);
+                $query->where('to', auth()->id());
+            })->get();
+
+        return response()->json($messages);
+    }
+
+
+    public function sendMessage(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to' => $request->contactId,
+            'message' => $request->text
+        ]);
+
+        broadcast(new NewMessage($message));
+
+        return response()->json($message);
+
+//        $user = auth()->user();
+//        $userInformation = $user->roleInformation()->first();
+
+//        $message = $user->messages()->create([
+//            'from' => auth()->id(),
+//            'to' => $request->contactId,
+//            'message' => $request->text
+//        ]);
+
+//        broadcast(new MessageSent($message->load('user')))->toOthers();
+//
+//        return response()->json($message);
+    }
 }

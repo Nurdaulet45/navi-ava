@@ -48,7 +48,7 @@
 <div class="loader">
     @include('client.components.loader')
 </div>
-<div class="flex-fill">
+<div class="flex-fill" id="app">
     @include('client.components.header')
     @yield('content')
     @include('client.components.modalLogin')

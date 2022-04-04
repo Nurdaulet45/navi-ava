@@ -66,7 +66,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div
                                                 class="review-text medium-small-text dark-charcoal-text">{!! $myReview->text !!}</div>
                                             @auth
@@ -87,7 +86,6 @@
                                                     @endif
                                                 </div>
                                             @endauth
-
                                             @if($myReview->parentReviews->count() > 0)
                                                 <div class="review-item-parents">
                                                     @foreach($myReview->parentReviews as $parentReview)
@@ -135,7 +133,6 @@
                                                     @endforeach
                                                 </div>
                                             @endif
-
                                             <div class="line"></div>
                                         </div>
                                     @endforeach

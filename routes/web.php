@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\WebsocketDemoEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DownloadController;
@@ -8,7 +9,13 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [MainController::class, 'index'])->name('index');
+//Route::get('/', [MainController::class, 'index'])->name('index');
+
+Route::get('/', function (){
+//    broadcast(new WebsocketDemoEvent('some data'));
+    return view('client.index');
+})->name('index');
+
 Route::get('/blog-post', [BlogController::class, 'show'])->name('blog-post');
 
 Route::group(['prefix' => 'mentors', 'as' => 'mentors.'], function () {
@@ -54,6 +61,11 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
     Route::post('/favorite/delete', [UserController::class, 'deleteFavorite'])->name('.favorite.delete');
     Route::get('/certifications', [UserController::class, 'certifications'])->name('.certifications');
     Route::post('/certifications', [UserController::class, 'saveCertifications'])->name('.saveCertifications');
+
+    Route::get('/chats', [UserController::class, 'chats'])->name('.chats');
+    Route::get('/chats/contacts', [UserController::class, 'contacts'])->name('.contacts');
+    Route::get('/chats/conversation/{id}', [UserController::class, 'getMessageFor'])->name('.getMessageFor');
+    Route::post('/chats/conversation/send', [UserController::class, 'sendMessage'])->name('.sendMessage');
 
     Route::get('/change-mail', [UserController::class, 'changeMail'])->name('.changeMail');
     Route::post('/change-mail', [UserController::class, 'saveChangeMail'])->name('.saveChangeMail');

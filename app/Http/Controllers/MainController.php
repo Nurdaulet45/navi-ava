@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\WebsocketDemoEvent;
 use App\Models\City;
 use App\Models\Specialization;
 use App\Models\User;
@@ -20,6 +21,7 @@ class MainController extends Controller
 {
     public function index()
     {
+        broadcast(new WebsocketDemoEvent('somedata'));
         return view('client.index');
     }
 
@@ -90,7 +92,6 @@ class MainController extends Controller
                     }
                 }, $onlineParameters);
             }
-
 
             $mentors = UserRoleInformation::query()
                 ->when('user_reviews', function ($query) {

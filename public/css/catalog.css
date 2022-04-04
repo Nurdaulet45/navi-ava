@@ -95,7 +95,7 @@
 }
 
 .s-catalog .wrapper .filters__filter-items::-webkit-scrollbar-button {
-    height: 12px
+    height: 1px
 }
 
 .s-catalog .wrapper .filters__filter-items::-webkit-scrollbar-thumb {

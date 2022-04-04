@@ -143,9 +143,14 @@ class User extends Authenticatable
         return $this->specialization_text ? Str::ucfirst($this->specialization_text) : __('site.Not filled');
     }
 
-    public function getAvatarImageAttribute()
+    public function getAvatarImageAttribute(): string
     {
         return $this->avatar ? Storage::url(self::IMAGE_PATH . $this->avatar) : self::DEFAULT_MALE_IMAGE;
+    }
+
+    public function messages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 
     protected $casts = [

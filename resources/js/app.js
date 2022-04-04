@@ -5,14 +5,14 @@
  */
 
 require('./bootstrap');
-
-
+import VueChatScroll from 'vue-chat-scroll'
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+// Vue.component('chats', require('./components/ChatsComponents.vue').default);
+Vue.use(VueChatScroll)
+Vue.component('chat-app', require('./components/chat/ChatApp.vue').default);
 Vue.component('cabinet-skills-input-component', require('./components/cabinet/SkillsInputComponent').default);
 Vue.component('cabinet-reviews-component', require('./components/cabinet/ReviewsComponent').default);
 Vue.component('cabinet-certifications-component', require('./components/cabinet/CertificationsComponent').default);
@@ -25,3 +25,5 @@ Vue.component('cabinet-certifications-component', require('./components/cabinet/
 const app = new Vue({
     el: '#app',
 });
+
+

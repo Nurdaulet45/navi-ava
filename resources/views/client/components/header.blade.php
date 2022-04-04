@@ -89,7 +89,7 @@
                            class="dropdown-item-custom">
                             У вас 3 непрочитанных сообщений
                         </a>
-{{--                        <div class="line"></div>--}}
+                        {{--                        <div class="line"></div>--}}
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
                                 Отзывы
                             </a>
                             <a href="{{ route('cabinet.favorites') }}"
-                               class="dropdown-item-custom @if(request()->routeIs('cabinet.favorites')) active @endif ">
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.favorites')) active @endif">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -173,8 +173,8 @@
                                 </svg>
                                 Избранное
                             </a>
-                            <a onclick="javascript:void(0)"
-                               class="dropdown-item-custom">
+                            <a href="{{ route('cabinet.chats') }}"
+                               class="dropdown-item-custom @if(request()->routeIs('cabinet.chats')) active @endif ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -264,13 +264,16 @@
         <div class="header-body">
             <div class="start">
                 <div class="menu-items">
-                    <a href="{{ route('mentors.index') }}" class="menu-item @if(request()->routeIs('mentors.*')) menu-item-active @endif">
+                    <a href="{{ route('mentors.index') }}"
+                       class="menu-item @if(request()->routeIs('mentors.*')) menu-item-active @endif">
                         Наставники
                     </a>
-                    <a href="{{ route('consultants.index') }}" class="menu-item @if(request()->routeIs('consultants.*')) menu-item-active @endif">
+                    <a href="{{ route('consultants.index') }}"
+                       class="menu-item @if(request()->routeIs('consultants.*')) menu-item-active @endif">
                         Консультанты
                     </a>
-                    <a href="{{ route('students.index') }}" class="menu-item @if(request()->routeIs('students.*')) menu-item-active @endif">
+                    <a href="{{ route('students.index') }}"
+                       class="menu-item @if(request()->routeIs('students.*')) menu-item-active @endif">
                         Ученики
                     </a>
                 </div>
