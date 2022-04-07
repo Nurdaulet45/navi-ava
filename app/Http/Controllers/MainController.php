@@ -170,12 +170,17 @@ class MainController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        $userInformation = auth()->user()->roleInformation()->first();
+        $myReview = false;
+        $userInformation = null;
 
-        $myReview = 0;
-        foreach ($reviews->toArray() as $review) {
-            if ($review['user_id'] == $userInformation->id) {
-                $myReview++;
+        if (auth()->check()){
+            $userInformation = auth()->user()->roleInformation()->first();
+
+            $myReview = 0;
+            foreach ($reviews->toArray() as $review) {
+                if ($review['user_id'] == $userInformation->id) {
+                    $myReview++;
+                }
             }
         }
 

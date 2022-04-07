@@ -30,15 +30,15 @@ class UserReview extends Model
         return $this->hasMany(self::class, 'parent_id', 'id')->orderByDesc('id');
     }
 
-    public function checkParentReview(): ?\Illuminate\Database\Eloquent\Relations\HasOne
+    public function checkParentReview()
     {
-        if (auth()->check()){
-            $userInformation = auth()->user()->roleInformation()->first() ;
 
-            return $this->hasOne(self::class, 'parent_id', 'id')
-                ->where(['user_id' => ($userInformation->id)]);
-        }
-        return null;
+        $userInformation = (auth()->check()) ? auth()->user()->roleInformation()->first() : null;
+
+        return $this->hasOne(self::class, 'parent_id', 'id')
+            ->when($userInformation, function ($query, $userInformation) {
+                $query->where(['user_id' => $userInformation->id]);
+            });
     }
 
     public function reviewer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
