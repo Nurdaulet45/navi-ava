@@ -32,7 +32,7 @@ class UserReview extends Model
 
     public function checkParentReview(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        $userInformation = auth()->user()->roleInformation()->first();
+        $userInformation = auth()->user()->roleInformation()->first() ?? null;
 
         return $this->hasOne(self::class, 'parent_id', 'id')
             ->where(['user_id' => $userInformation->id]);
