@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::prefix('commands')->group(function () {
     Route::get('optimize-clear', function () {
@@ -15,9 +17,13 @@ Route::prefix('commands')->group(function () {
 });
 
 //Route::group(['prefix' => 'commands', 'middleware' => 'auth'], function () {
-    Route::get('sockets/serve', function () {
-        \Illuminate\Support\Facades\Artisan::call('websockets:serve');
-    });
+Route::get('sockets/serve', function () {
+    try {
+        Artisan::call('websockets:serve');
+    } catch (Exception $e) {
+        Response::make($e->getMessage(), 500);
+    }
+});
 //});
 
 Route::get('/', function () {
