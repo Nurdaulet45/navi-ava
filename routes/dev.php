@@ -18,11 +18,8 @@ Route::prefix('commands')->group(function () {
 
 //Route::group(['prefix' => 'commands', 'middleware' => 'auth'], function () {
 Route::get('sockets/serve', function () {
-    try {
-        Artisan::call('websockets:serve');
-    } catch (Exception $e) {
-        Response::make($e->getMessage(), 500);
-    }
+    Artisan::call('websockets:serve');
+    dd('ok');
 });
 //});
 
