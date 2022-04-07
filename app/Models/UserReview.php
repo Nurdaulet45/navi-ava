@@ -35,7 +35,7 @@ class UserReview extends Model
         $userInformation = auth()->user()->roleInformation()->first() ?? null;
 
         return $this->hasOne(self::class, 'parent_id', 'id')
-            ->where(['user_id' => $userInformation->id]);
+            ->where(['user_id' => ($userInformation->id) ?? null]);
     }
 
     public function reviewer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
