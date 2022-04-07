@@ -14,11 +14,11 @@ Route::prefix('commands')->group(function () {
     });
 });
 
-Route::group(['prefix' => 'commands', 'middleware' => 'auth'], function () {
+//Route::group(['prefix' => 'commands', 'middleware' => 'auth'], function () {
     Route::get('sockets/serve', function () {
         \Illuminate\Support\Facades\Artisan::call('websockets:serve');
     });
-});
+//});
 
 Route::get('/', function () {
     $user = User::first();
