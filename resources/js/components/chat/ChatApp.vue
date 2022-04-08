@@ -1,19 +1,31 @@
 <template>
     <div class="chat-app">
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
-        <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+
+        <loader v-show="loader" object="#ffff" color1="#ffffff" color2="#fff" size="4" speed="2" bg="#343a40"
+                objectbg="#999793"
+                opacity="53" name="dots"></loader>
+
+        <Conversation :user="user" :information="information" :contact="selectedContact"
+                      :messages="messages"
+                      @new="saveNewMessage"/>
     </div>
 </template>
 
 <script>
 import ContactsList from "./ContactsList";
 import Conversation from "./Conversation";
+import {loader} from "vue-ui-preloader";
 
 export default {
     name: "ChatApp",
-    components: {ContactsList, Conversation},
+    components: {ContactsList, Conversation, loader},
     props: {
         user: {
+            type: Object,
+            required: true
+        },
+        information: {
             type: Object,
             required: true
         }
@@ -24,17 +36,17 @@ export default {
             activeFriend: '',
             messages: [],
             contacts: [],
+            loader: false,
+            // mal: null
         }
     },
     computed: {
         channel() {
-            return window.Echo.private(`messages.${this.user.id}`);
+            return window.Echo.private(`messages.${this.information.id}`);
         }
     },
     mounted() {
-        this.channel.here((users) => {
-            console.log('online users', users)
-        }).listen('NewMessage', (event) => {
+        this.channel.listen('NewMessage', (event) => {
             this.handleIncoming(event.message);
         })
 
@@ -47,21 +59,41 @@ export default {
     },
     methods: {
         startConversationWith(contact) {
+            this.loader = true;
             this.updateUnreadCount(contact, true)
+
+            // axios.get('/cabinet/chats/contact/' + contact)
+            //     .then((response) => {
+            //         this.mal = response.data;
+            //     }).catch((error) => {
+            //     console.log(error);
+            // })
+            //
+            // axios.get(`/cabinet/chats/conversation/${contact}`)
+            //     .then((response) => {
+            //         this.messages = response.data;
+            //         this.selectedContact = this.mal;
+            //         this.loader = false;
+            //     }).catch((error) => {
+            //     console.log(error);
+            //     this.loader = false;
+            // })
 
             axios.get(`/cabinet/chats/conversation/${contact.id}`)
                 .then((response) => {
                     this.messages = response.data;
                     this.selectedContact = contact;
+                    this.loader = false;
                 }).catch((error) => {
                 console.log(error);
+                this.loader = false;
             })
         },
         saveNewMessage(message) {
             this.messages.push(message);
         },
         handleIncoming(message) {
-            if (this.selectedContact && message.from == this.selectedContact.id) {
+            if (this.selectedContact && message.from === this.selectedContact.id) {
                 this.saveNewMessage(message)
                 return;
             }
@@ -82,8 +114,7 @@ export default {
 
                 return single;
             })
-        }
-
+        },
     }
 }
 </script>

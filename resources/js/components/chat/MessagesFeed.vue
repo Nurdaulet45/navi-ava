@@ -3,18 +3,21 @@
         <div v-for="message in messages"
              :class="`message-list ${message.to === contact.id ? 'sent' : 'received'}`" :key="message.id">
             <div class="avatar">
-                <img class="avatar-image" :src="avatarImage(contact)" :alt="contact.login">
+                <img class="avatar-image" :src="avatarImage(contact.user)" :alt="contact.login">
             </div>
             <div class="contact">
-                <p class="name">{{ contact.last_name }}</p>
+                <p class="name"> {{ (message.to === contact.id) ? userName(user) : userName(contact.user) }} </p>
                 <p class="text">{{ message.message }}</p>
-                <div class="time">{{ messageTimeFormat(message.created_at) }}</div>
+                <div class="time">{{ messageTime(message) }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import moment from 'moment'
+import 'moment-timezone';
+
 export default {
     name: "MessagesFeed",
     props: {
@@ -24,7 +27,15 @@ export default {
         messages: {
             type: Array,
             required: true
-        }
+        },
+        user: {
+            type: Object,
+            required: true
+        },
+        information: {
+            type: Object,
+            required: true
+        },
     },
     data() {
         return {
@@ -36,8 +47,12 @@ export default {
         avatarImage(contact) {
             return (contact.avatar) ? contact.avatar : (contact.gender) ? this.maleAvatar : this.femaleAvatar;
         },
-        messageTimeFormat(dateTime) {
-            return dateTime.substr(11, 5)
+        messageTime(contact){
+            let momentData = moment(contact.updated_at);
+            return momentData.hours() + ':' + momentData.minutes();
+        },
+        userName(data) {
+            return data.last_name + ' ' + data.first_name;
         }
     }
 }

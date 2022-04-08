@@ -40,7 +40,7 @@ return [
                 'useTLS' => true,
                 'host' => env('APP_URL'),
                 'port' => 6001,
-                'scheme' => 'https'
+                'scheme' => 'http',
             ],
         ],
 

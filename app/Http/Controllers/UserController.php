@@ -379,6 +379,7 @@ class UserController extends Controller
     public function chats()
     {
         $user = auth()->user();
+        $userRoleInformation = $user->roleInformation()->first();
 
 //        $faker = Factory::create('kk_KZ');
 //        for ($i = 1; $i <= 10; $i++) {
@@ -389,46 +390,98 @@ class UserController extends Controller
 //            ]);
 //        }
 
-        return view('client.cabinet.chats', compact(['user']));
+        return view('client.cabinet.chats', compact(['user', 'userRoleInformation']));
     }
 
     public function contacts(): \Illuminate\Http\JsonResponse
     {
-        $contacts = User::query()
-            ->where('id', '!=', auth()->id())
+        $user = auth()->user();
+        $userRoleInformation = $user->roleInformation()->first();
+
+        $contactsIds = Message::query()
+            ->where(['from' => $userRoleInformation->id])
+            ->orWhere('to', $userRoleInformation->id)
+            ->groupBy('to')
+            ->orderByDesc('id')
+            ->pluck('from')
+            ->toArray();
+
+        $contactsIds2 = Message::query()
+            ->where(['from' => $userRoleInformation->id])
+            ->orWhere('to', $userRoleInformation->id)
+            ->groupBy('to')
+            ->orderByDesc('id')
+            ->pluck('to')
+            ->toArray();
+
+        $ids = array_merge($contactsIds, $contactsIds2);
+
+        $contacts = UserRoleInformation::query()
+            ->whereIn('id', $ids)
+            ->where('id', '!=', $userRoleInformation->id)
+            ->orderByDesc('id')
+            ->with('user','lastMyMessage','lastMessage')
             ->get();
 
         $unreadIds = Message::query()
             ->select(DB::raw('`from` as sender_id, count(`from`) as messages_count'))
-            ->where('to', auth()->id())
+            ->where('to', $userRoleInformation->id)
             ->where('read', false)
             ->groupBy('from')
             ->get();
 
         $contacts = $contacts->map(function ($contact) use ($unreadIds) {
             $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
-
             $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
-
             return $contact;
         });
+
+//        $contacts = User::query()
+//            ->where('id', '!=', auth()->id())
+//            ->get();
+//
+//        $unreadIds = Message::query()
+//            ->select(DB::raw('`from` as sender_id, count(`from`) as messages_count'))
+//            ->where('to', $user->id)
+//            ->where('read', false)
+//            ->groupBy('from')
+//            ->get();
+//
+//        $contacts = $contacts->map(function ($contact) use ($unreadIds) {
+//            $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
+//            $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+//            return $contact;
+//        });
 
         return response()->json($contacts);
     }
 
+    public function contact($id): \Illuminate\Http\JsonResponse
+    {
+        $contact = UserRoleInformation::query()
+            ->where('id', $id)
+            ->with('user','lastMyMessage','lastMessage')
+            ->firstOrFail();
+
+        return response()->json($contact);
+    }
+
     public function getMessageFor($id): \Illuminate\Http\JsonResponse
     {
+        $user = auth()->user();
+        $userRoleInformation = $user->roleInformation()->first();
+
         Message::query()
-            ->where('from', auth()->id())
+            ->where('from', $userRoleInformation->id)
             ->update(['read' => true]);
 
         $messages = Message::query()
-            ->where(function ($query) use ($id) {
-                $query->where('from', auth()->id());
+            ->where(function ($query) use ($userRoleInformation, $id) {
+                $query->where('from', $userRoleInformation->id);
                 $query->where('to', $id);
-            })->orWhere(function ($query) use ($id) {
+            })->orWhere(function ($query) use ($userRoleInformation, $id) {
                 $query->where('from', $id);
-                $query->where('to', auth()->id());
+                $query->where('to', $userRoleInformation->id);
             })->get();
 
         return response()->json($messages);
@@ -437,8 +490,11 @@ class UserController extends Controller
 
     public function sendMessage(Request $request): \Illuminate\Http\JsonResponse
     {
+        $user = auth()->user();
+        $userRoleInformation = $user->roleInformation()->first();
+
         $message = Message::create([
-            'from' => auth()->id(),
+            'from' => $userRoleInformation->id,
             'to' => $request->contactId,
             'message' => $request->text
         ]);

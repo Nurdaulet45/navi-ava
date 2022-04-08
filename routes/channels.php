@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Broadcast;
 //});
 
 Broadcast::channel('messages.{id}', function ($user, $id) {
-    return $user->id === (int)$id;
+    $roleInformation = $user->roleInformation()->first();
+    return $roleInformation->id === (int)$id;
 });

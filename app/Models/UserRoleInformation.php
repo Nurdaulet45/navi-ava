@@ -40,6 +40,18 @@ class UserRoleInformation extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function lastMyMessage(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Message::class, 'from', 'id')
+            ->orderByDesc('id');
+    }
+
+    public function lastMessage(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Message::class, 'to', 'id')
+            ->orderByDesc('id');
+    }
+
     public function specializationName()
     {
         return $this->hasOne(Specialization::class, 'id', 'specialization_id')->pluck('name')->first();

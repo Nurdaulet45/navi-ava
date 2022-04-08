@@ -64,6 +64,7 @@ Route::prefix('cabinet')->middleware('auth:web')->name('cabinet')->group(functio
 
     Route::get('/chats', [UserController::class, 'chats'])->name('.chats');
     Route::get('/chats/contacts', [UserController::class, 'contacts'])->name('.contacts');
+    Route::get('/chats/contact/{id}', [UserController::class, 'contact'])->name('.contact');
     Route::get('/chats/conversation/{id}', [UserController::class, 'getMessageFor'])->name('.getMessageFor');
     Route::post('/chats/conversation/send', [UserController::class, 'sendMessage'])->name('.sendMessage');
 

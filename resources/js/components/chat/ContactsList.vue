@@ -1,29 +1,47 @@
 <template>
     <div class="contacts-list">
         <div class="contacts-search">
-            <input class="contacts-search-input" type="text" placeholder="Поиск контактов, сообщений">
+            <input v-model="text" class="contacts-search-input" type="text" placeholder="Поиск контактов, сообщений">
         </div>
         <ul>
             <li class="user-list" v-for="contact in sortedContacts" :key="contact.id"
                 @click="selectContact(contact)"
                 :class="{ 'selected' : contact === selected }">
                 <div class="avatar">
-                    <img class="avatar-image" :src="avatarImage(contact)" :alt="contact.login">
+                    <img class="avatar-image" :src="avatarImage(contact.user)" :alt="contact.login">
                 </div>
                 <div class="contact">
-                    <p class="name">{{ contact.last_name }} {{ contact.first_name }} </p>
-                    <p class="email">{{ (onlineFriends.find(onlineFriend => onlineFriend.id === friend.id)) ? 'Онлайн' : 'Оффлайн' }}</p>
+                    <p class="name">{{ contact.user.last_name }} {{ contact.user.first_name }} </p>
+                    <p class="email">{{ contactMessage(contact) }}</p>
                 </div>
                 <div class="contact-info">
-                    <span class="time">12:24</span>
+                    <span class="time">{{ messageTime(contact) }}</span>
                     <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
                 </div>
             </li>
+
+<!--            <li class="user-list"-->
+<!--                @click="selectContact(2)">-->
+<!--                <div class="avatar">-->
+<!--                    <img class="avatar-image" >-->
+<!--                </div>-->
+<!--                <div class="contact">-->
+<!--                    <p class="name">sdvcsdvsdvsdvsd </p>-->
+<!--                    <p class="email">dvsdvsdvsdvsd</p>-->
+<!--                </div>-->
+<!--                <div class="contact-info">-->
+<!--                    <span class="time">sdvsdvsdv</span>-->
+<!--                    <span class="unread" >sdvsdvsdvsdvsd</span>-->
+<!--                </div>-->
+<!--            </li>-->
         </ul>
     </div>
 </template>
 
 <script>
+import moment from 'moment'
+import 'moment-timezone';
+
 export default {
     name: "ContactsList",
     props:
@@ -34,6 +52,8 @@ export default {
             selected: this.contacts.length ? this.contacts[0] : null,
             maleAvatar: '/images/user-images/avatar-male.svg',
             femaleAvatar: '/images/user-images/avatar-female.svg',
+            text: null,
+            loader: false
         }
     },
     methods: {
@@ -43,16 +63,40 @@ export default {
         selectContact(contact) {
             this.selected = contact;
             this.$emit('selected', contact)
+        },
+        changeFilter(event){
+             this.text = event.target.value
+        },
+        messageTime(contact){
+            let momentData = moment(contact.updated_at);
+            return momentData.hours() + ':' + momentData.minutes();
+        },
+        contactMessage(contact){
+            if (contact.last_message) {
+                return contact.last_message.message;
+            }
+            return contact.last_my_message.message;
         }
     },
     computed: {
         sortedContacts() {
-            return _.sortBy(this.contacts, [(contact) => {
-                if (contact == this.selected) {
+            let sorted = _.sortBy(this.contacts, [(contact) => {
+                if (contact === this.selected) {
                     return Infinity;
                 }
                 return contact.unread;
             }]).reverse()
+
+            if (this.text) {
+             sorted = sorted.filter((s) => {
+                 if(s.user.last_name.search(this.text) !== -1){
+                     return s;
+                 } else if (s.user.first_name.search(this.text) !== -1){
+                     return s;
+                 }
+             });
+            }
+            return sorted;
         }
     }
 }
@@ -103,8 +147,35 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    height: 91%;
+    overflow: auto;
 }
 
+.contacts-list ul::-webkit-scrollbar {
+    cursor: pointer;
+    width: 5px
+}
+
+.contacts-list ul::-webkit-scrollbar-track {
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px #d6fffe;
+    cursor: pointer
+}
+
+.contacts-list ul::-webkit-scrollbar-button {
+    height: 1px
+}
+
+.contacts-list ul::-webkit-scrollbar-thumb {
+    background: #1dc0bd;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+.contacts-list ul::-webkit-scrollbar-thumb:hover {
+    background: #1dc0bd;
+    cursor: pointer
+}
 
 .user-list {
     display: flex;

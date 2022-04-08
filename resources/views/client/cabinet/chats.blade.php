@@ -10,7 +10,7 @@
     <section class="s-about-me-page">
         <div class="container">
             <div id="app" class="about-me">
-                <chat-app :user="{{ $user }}"></chat-app>
+                <chat-app :user="{{ $user }}" :information="{{ $userRoleInformation }}"></chat-app>
             </div>
         </div>
     </section>

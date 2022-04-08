@@ -20,4 +20,9 @@ class Message extends Model
     {
         return $this->hasOne(User::class, 'id', 'from');
     }
+
+    public function toContactInformation(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(UserRoleInformation::class, 'id', 'to');
+    }
 }

@@ -26,6 +26,10 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "vue-chat-scroll": "^1.4.0"
+        "moment": "^2.29.2",
+        "moment-timezone": "^0.5.34",
+        "vue-chat-scroll": "^1.4.0",
+        "vue-moment": "^4.1.0",
+        "vue-ui-preloader": "^1.2.1"
     }
 }
