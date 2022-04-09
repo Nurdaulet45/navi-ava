@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/breadcrumb.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/default.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/fonts.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/loader.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css?v=6')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css?v=6')}}">
+    <title>Pusher Test</title>
 </head>
-<body class="wrap d-flex flex-column min-vh-100">
-<div class="loader">
-    @include('client.components.loader')
+<body>
+<h1>Pusher Test</h1>
+<p>
+    Publish an event to channel <code>my-channel</code>
+    with event name <code>my-event</code>; it will appear below:
+</p>
+<div id="app">
+    <ul>
+        <li v-for="message in messages">
+            {{ message }}
+        </li>
+    </ul>
 </div>
-<div class="flex-fill">
-    @include('client.components.header')
-    {{--    @if($errors->any())--}}
-    {{--        @dd($errors->all())--}}
-    {{--     @foreach($errors->all() as $error)--}}
-    {{--        <li>{{$error}}</li>--}}
-    {{--    @endforeach--}}
-    {{--    @endif--}}
-    @yield('content')
-    @include('client.components.modalLogin')
-    @include('client.components.modalResetPassword')
-    @include('client.components.modalRegister')
-</div>
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('a0b7df058b68f5e72541', {
+        cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('chat-event', function(data) {
+        app.messages.push(JSON.stringify(data));
+    });
+
+    // Vue application
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World',
+            messages: [],
+        },
+    });
+</script>
 </body>
-</html>

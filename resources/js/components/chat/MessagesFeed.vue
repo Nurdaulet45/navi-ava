@@ -1,6 +1,6 @@
 <template>
-    <div class="feed" v-if="contact" v-chat-scroll="{always: false, smooth: true}">
-        <div v-for="message in messages"
+    <ul class="feed chat" v-if="contact" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}">
+        <li v-for="message in messages"
              :class="`message-list ${message.to === contact.id ? 'sent' : 'received'}`" :key="message.id">
             <div class="avatar">
                 <img class="avatar-image" :src="avatarImage(contact.user)" :alt="contact.login">
@@ -10,8 +10,8 @@
                 <p class="text">{{ message.message }}</p>
                 <div class="time">{{ messageTime(message) }}</div>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
         },
         messageTime(contact){
             let momentData = moment(contact.updated_at);
-            return momentData.hours() + ':' + momentData.minutes();
+            return momentData.format('HH') + ':' + momentData.format('mm');
         },
         userName(data) {
             return data.last_name + ' ' + data.first_name;
@@ -97,6 +97,7 @@ export default {
 }
 
 .message-list {
+    list-style-type: none;
     width: 54%;
     margin-bottom: 15px;
     display: flex;

@@ -472,7 +472,7 @@ class UserController extends Controller
         $userRoleInformation = $user->roleInformation()->first();
 
         Message::query()
-            ->where('from', $userRoleInformation->id)
+            ->where('to', $userRoleInformation->id)
             ->update(['read' => true]);
 
         $messages = Message::query()
@@ -482,7 +482,9 @@ class UserController extends Controller
             })->orWhere(function ($query) use ($userRoleInformation, $id) {
                 $query->where('from', $id);
                 $query->where('to', $userRoleInformation->id);
-            })->get();
+            })
+            ->with('fromContact')
+            ->get();
 
         return response()->json($messages);
     }

@@ -12,6 +12,7 @@ import VueChatScroll from 'vue-chat-scroll'
 
 // Vue.component('chats', require('./components/ChatsComponents.vue').default);
 Vue.use(VueChatScroll)
+
 Vue.component('chat-app', require('./components/chat/ChatApp.vue').default);
 Vue.component('cabinet-skills-input-component', require('./components/cabinet/SkillsInputComponent').default);
 Vue.component('cabinet-reviews-component', require('./components/cabinet/ReviewsComponent').default);

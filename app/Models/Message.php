@@ -18,7 +18,7 @@ class Message extends Model
 
     public function fromContact(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(User::class, 'id', 'from');
+        return $this->hasOne(UserRoleInformation::class, 'id', 'from');
     }
 
     public function toContactInformation(): \Illuminate\Database\Eloquent\Relations\HasOne

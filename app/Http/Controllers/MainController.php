@@ -21,7 +21,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        broadcast(new WebsocketDemoEvent('somedata'));
         return view('client.index');
     }
 

@@ -12,9 +12,13 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/', function (){
-//    broadcast(new WebsocketDemoEvent('some data'));
     return view('client.index');
 })->name('index');
+
+//Route::get('/', function (){
+//    event(new \App\Events\ChatEvent('hello world'));
+//    return view('welcome');
+//})->name('index');
 
 Route::get('/blog-post', [BlogController::class, 'show'])->name('blog-post');
 

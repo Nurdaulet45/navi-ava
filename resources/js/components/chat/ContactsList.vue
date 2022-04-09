@@ -20,20 +20,20 @@
                 </div>
             </li>
 
-<!--            <li class="user-list"-->
-<!--                @click="selectContact(2)">-->
-<!--                <div class="avatar">-->
-<!--                    <img class="avatar-image" >-->
-<!--                </div>-->
-<!--                <div class="contact">-->
-<!--                    <p class="name">sdvcsdvsdvsdvsd </p>-->
-<!--                    <p class="email">dvsdvsdvsdvsd</p>-->
-<!--                </div>-->
-<!--                <div class="contact-info">-->
-<!--                    <span class="time">sdvsdvsdv</span>-->
-<!--                    <span class="unread" >sdvsdvsdvsdvsd</span>-->
-<!--                </div>-->
-<!--            </li>-->
+            <!--            <li class="user-list"-->
+            <!--                @click="selectContact(2)">-->
+            <!--                <div class="avatar">-->
+            <!--                    <img class="avatar-image" >-->
+            <!--                </div>-->
+            <!--                <div class="contact">-->
+            <!--                    <p class="name">sdvcsdvsdvsdvsd </p>-->
+            <!--                    <p class="email">dvsdvsdvsdvsd</p>-->
+            <!--                </div>-->
+            <!--                <div class="contact-info">-->
+            <!--                    <span class="time">sdvsdvsdv</span>-->
+            <!--                    <span class="unread" >sdvsdvsdvsdvsd</span>-->
+            <!--                </div>-->
+            <!--            </li>-->
         </ul>
     </div>
 </template>
@@ -64,18 +64,21 @@ export default {
             this.selected = contact;
             this.$emit('selected', contact)
         },
-        changeFilter(event){
-             this.text = event.target.value
+        changeFilter(event) {
+            this.text = event.target.value
         },
-        messageTime(contact){
+        messageTime(contact) {
             let momentData = moment(contact.updated_at);
-            return momentData.hours() + ':' + momentData.minutes();
+            return momentData.format('HH') + ':' + momentData.format('mm');
         },
-        contactMessage(contact){
-            if (contact.last_message) {
-                return contact.last_message.message;
+        contactMessage(contact) {
+            if (contact.last_message && contact.last_my_message) {
+                if (contact.last_message.id > contact.last_my_message.message.id) {
+                    return contact.last_message.message;
+                }
+                return contact.last_my_message.message;
             }
-            return contact.last_my_message.message;
+            return (contact.last_message.message || contact.last_my_message.message);
         }
     },
     computed: {
@@ -88,13 +91,13 @@ export default {
             }]).reverse()
 
             if (this.text) {
-             sorted = sorted.filter((s) => {
-                 if(s.user.last_name.search(this.text) !== -1){
-                     return s;
-                 } else if (s.user.first_name.search(this.text) !== -1){
-                     return s;
-                 }
-             });
+                sorted = sorted.filter((s) => {
+                    if (s.user.last_name.search(this.text) !== -1) {
+                        return s;
+                    } else if (s.user.first_name.search(this.text) !== -1) {
+                        return s;
+                    }
+                });
             }
             return sorted;
         }

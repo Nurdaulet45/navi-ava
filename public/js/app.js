@@ -6429,14 +6429,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     messageTime: function messageTime(contact) {
       var momentData = moment__WEBPACK_IMPORTED_MODULE_0___default()(contact.updated_at);
-      return momentData.hours() + ':' + momentData.minutes();
+      return momentData.format('HH') + ':' + momentData.format('mm');
     },
     contactMessage: function contactMessage(contact) {
-      if (contact.last_message) {
-        return contact.last_message.message;
+      if (contact.last_message && contact.last_my_message) {
+        if (contact.last_message.id > contact.last_my_message.message.id) {
+          return contact.last_message.message;
+        }
+
+        return contact.last_my_message.message;
       }
 
-      return contact.last_my_message.message;
+      return contact.last_message.message || contact.last_my_message.message;
     }
   },
   computed: {
@@ -6721,7 +6725,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     messageTime: function messageTime(contact) {
       var momentData = moment__WEBPACK_IMPORTED_MODULE_0___default()(contact.updated_at);
-      return momentData.hours() + ':' + momentData.minutes();
+      return momentData.format('HH') + ':' + momentData.format('mm');
     },
     userName: function userName(data) {
       return data.last_name + ' ' + data.first_name;
@@ -6850,19 +6854,19 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "e3e75de44414c55bd838",
-  cluster: "eu",
-  forceTLS: true
+  key: "a0b7df058b68f5e72541",
+  cluster: "ap1",
+  // wsHost: window.location.hostname,
+  // wsPort: 6001,
+  forceTLS: true,
+  // true
+  disableStats: true
 }); // wsHost: window.location.hostname,
 // wsPort: 6001,
 // wssPort: 6001,
 // encrypted: false,
 // disableStats: true,
 // enabledTransports: ['ws', 'wss'],
-// window.Echo.channel('DemoChannel')
-//     .listen('WebsocketDemoEvent', (e) => {
-//         console.log(e)
-//     })
 
 /***/ }),
 
@@ -12224,7 +12228,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.feed[data-v-26736974] {\n    padding: 15px;\n    flex: 1;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.feed[data-v-26736974]::-webkit-scrollbar {\n    cursor: pointer;\n    width: 5px\n}\n.feed[data-v-26736974]::-webkit-scrollbar-track {\n    border-radius: 50%;\n    box-shadow: inset 0 0 5px #d6fffe;\n    cursor: pointer\n}\n.feed[data-v-26736974]::-webkit-scrollbar-button {\n    height: 1px\n}\n.feed[data-v-26736974]::-webkit-scrollbar-thumb {\n    background: #1dc0bd;\n    border-radius: 5px;\n    cursor: pointer\n}\n.feed[data-v-26736974]::-webkit-scrollbar-thumb:hover {\n    background: #1dc0bd;\n    cursor: pointer\n}\n.message-list[data-v-26736974] {\n    width: 54%;\n    margin-bottom: 15px;\n    display: flex;\n    gap: 10px;\n}\n.message-list.received[data-v-26736974] {\n    margin-right: auto;\n}\n.message-list.sent[data-v-26736974] {\n    justify-content: flex-end;\n    margin-left: auto;\n}\n.avatar-image[data-v-26736974] {\n    width: 44px;\n}\n.contact[data-v-26736974] {\n    position: relative;\n}\n.name[data-v-26736974] {\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #A5A7B0;\n}\n.text[data-v-26736974] {\n    display: flex;\n    align-items: flex-start;\n    justify-content: flex-start;\n    background: #F1F4FF;\n    padding: 12px 45px 12px 12px;\n    border-radius: 50px;\n\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #333333;\n    position: relative;\n    word-break: break-word;\n}\n.message-list.received .text[data-v-26736974] {\n    border-radius: 0 20px 20px 20px;\n}\n.message-list.sent .text[data-v-26736974] {\n    background: #567AFF;\n    border-radius: 20px 0 20px 20px;\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #FFFFFF;\n}\n.time[data-v-26736974] {\n    position: absolute;\n    bottom: 8px;\n    right: 8px;\n\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 12px;\n    line-height: 129.4%;\n\n    color: #90949A;\n}\n.message-list.sent .time[data-v-26736974] {\n    color: #FFFFFF;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.feed[data-v-26736974] {\n    padding: 15px;\n    flex: 1;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.feed[data-v-26736974]::-webkit-scrollbar {\n    cursor: pointer;\n    width: 5px\n}\n.feed[data-v-26736974]::-webkit-scrollbar-track {\n    border-radius: 50%;\n    box-shadow: inset 0 0 5px #d6fffe;\n    cursor: pointer\n}\n.feed[data-v-26736974]::-webkit-scrollbar-button {\n    height: 1px\n}\n.feed[data-v-26736974]::-webkit-scrollbar-thumb {\n    background: #1dc0bd;\n    border-radius: 5px;\n    cursor: pointer\n}\n.feed[data-v-26736974]::-webkit-scrollbar-thumb:hover {\n    background: #1dc0bd;\n    cursor: pointer\n}\n.message-list[data-v-26736974] {\n    list-style-type: none;\n    width: 54%;\n    margin-bottom: 15px;\n    display: flex;\n    gap: 10px;\n}\n.message-list.received[data-v-26736974] {\n    margin-right: auto;\n}\n.message-list.sent[data-v-26736974] {\n    justify-content: flex-end;\n    margin-left: auto;\n}\n.avatar-image[data-v-26736974] {\n    width: 44px;\n}\n.contact[data-v-26736974] {\n    position: relative;\n}\n.name[data-v-26736974] {\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #A5A7B0;\n}\n.text[data-v-26736974] {\n    display: flex;\n    align-items: flex-start;\n    justify-content: flex-start;\n    background: #F1F4FF;\n    padding: 12px 45px 12px 12px;\n    border-radius: 50px;\n\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #333333;\n    position: relative;\n    word-break: break-word;\n}\n.message-list.received .text[data-v-26736974] {\n    border-radius: 0 20px 20px 20px;\n}\n.message-list.sent .text[data-v-26736974] {\n    background: #567AFF;\n    border-radius: 20px 0 20px 20px;\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 14px;\n    line-height: 155%;\n\n    color: #FFFFFF;\n}\n.time[data-v-26736974] {\n    position: absolute;\n    bottom: 8px;\n    right: 8px;\n\n    font-family: 'Helvetica-400';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 12px;\n    line-height: 129.4%;\n\n    color: #90949A;\n}\n.message-list.sent .time[data-v-26736974] {\n    color: #FFFFFF;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -63618,21 +63622,21 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _vm.contact
     ? _c(
-        "div",
+        "ul",
         {
           directives: [
             {
               name: "chat-scroll",
               rawName: "v-chat-scroll",
-              value: { always: false, smooth: true },
-              expression: "{always: false, smooth: true}",
+              value: { always: false, smooth: true, scrollonremoved: true },
+              expression: "{always: false, smooth: true, scrollonremoved:true}",
             },
           ],
-          staticClass: "feed",
+          staticClass: "feed chat",
         },
         _vm._l(_vm.messages, function (message) {
           return _c(
-            "div",
+            "li",
             {
               key: message.id,
               class:
