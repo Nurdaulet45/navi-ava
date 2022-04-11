@@ -16,10 +16,10 @@
                     </button>
 
                     @auth
-                        @if($mentor->favorite($mentor->user_id,$mentor->role_name))
-                            <div id="favorite-btn-{{$mentor->id}}"
+                        @if($item->favorite($item->user_id,$item->role_name))
+                            <div id="favorite-btn-{{$item->id}}"
                                  class="btn-white-green medium-btn w-100"
-                                 onclick="deleteToFavorite({{$mentor->favorite($mentor->user_id,$mentor->role_name)}},{{$mentor->id}})">
+                                 onclick="deleteToFavorite({{$item->favorite($item->user_id,$item->role_name)}},{{$item->id}})">
                                 Убрать из избранного &nbsp
                                 <svg width="17" height="16" viewBox="0 0 17 16">
                                     <path
@@ -31,9 +31,9 @@
                                 </svg>
                             </div>
                         @else
-                            <div id="favorite-btn-{{$mentor->id}}"
+                            <div id="favorite-btn-{{$item->id}}"
                                  class="btn-white-green medium-btn w-100"
-                                 onclick="saveToFavorite({{$mentor->id}})">
+                                 onclick="saveToFavorite({{$item->id}})">
                                 Добавить в избранное &nbsp
                                 <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
                         @endif
                     @endauth
                     @guest
-                        <div id="favorite-btn-{{$mentor->id}}"
+                        <div id="favorite-btn-{{$item->id}}"
                              class="btn-white-green medium-btn w-100"
                              onclick="openLogin()">
                             Добавить в избранное &nbsp
@@ -75,14 +75,14 @@
                         <div class="mentor-block-user-name">
                             <div class="user-info">
                                 <p class="name">
-                                    {{ $mentor->user->firstNameAndLetterLastNameCustom }}
-                                    <span>, {{ $mentor->user->login }}</span>
+                                    {{ $item->user->firstNameAndLetterLastNameCustom }}
+                                    <span>, {{ $item->user->login }}</span>
                                 </p>
                                 <p class="work">
-                                    {{ $mentor->specialization_text ?: '' }}
+                                    {{ $item->specialization_text ?: '' }}
                                 </p>
                                 <p class="city">
-                                    {{ $mentor->user->countryAddressCustom }}
+                                    {{ $item->user->countryAddressCustom }}
                                 </p>
                             </div>
                             <div class="status-price-block">
@@ -90,31 +90,31 @@
                                     Свободен
                                 </div>
                                 <div class="price">
-                                    {{ $mentor->service_price }} ₽ / час
+                                    {{ $item->service_price }} ₽ / час
                                 </div>
                             </div>
                         </div>
 
-                        @if($mentor->specializationName())
+                        @if($item->specializationName())
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     Сфера деятельности
                                 </div>
                                 <div class="info-description">
-                                    {{ $mentor->specializationName() }}
+                                    {{ $item->specializationName() }}
                                 </div>
                             </div>
                         @endif
 
-                        @empty(!json_decode($mentor->skills))
+                        @empty(!json_decode($item->skills))
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     Ключевые слова / навыки
                                 </div>
                                 <div class="skill-items">
-                                    @foreach(json_decode($mentor->skills) as $skill)
+                                    @foreach(json_decode($item->skills) as $skill)
                                         <div class="skill-item">
                                             {{ $skill }}
                                         </div>
@@ -123,7 +123,7 @@
                             </div>
                         @endempty
 
-                        @if($mentor->skills_description)
+                        @if($item->skills_description)
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
@@ -131,20 +131,20 @@
                                 </div>
                                 <div class="info-description">
                                     <ol>
-                                        <li>{{ $mentor->skills_description }}</li>
+                                        <li>{{ $item->skills_description }}</li>
                                     </ol>
                                 </div>
                             </div>
                         @endif
 
-                        @if($mentor->about_me)
+                        @if($item->about_me)
                             <div class="line"></div>
                             <div class="mentor-block-info">
                                 <div class="info-title">
                                     О себе
                                 </div>
                                 <div class="info-description">
-                                    {{ $mentor->about_me }}
+                                    {{ $item->about_me }}
                                 </div>
                             </div>
                         @endif
@@ -155,7 +155,7 @@
                                 Дипломы, сертификаты и курсы
                             </div>
                             <div class="mentor-block-certificates">
-                                @foreach($mentor->certifications($mentor->user_id,$mentor->role_name) as $certificate)
+                                @foreach($item->certifications($item->user_id,$item->role_name) as $certificate)
                                     <div class="certificate-card">
                                         <div class="left">
                                             <div class="info-title">
@@ -182,7 +182,7 @@
                                 </div>
 
                                 @auth
-                                    @if($myReview == 0 && !$mentor->checkMyProfileCard($mentor->id))
+                                    @if($myReview == 0 && !$item->checkMyProfileCard($item->id))
                                         <div class="write" onclick="openAddReviewPopup()">
                                             Написать отзыв
                                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -196,7 +196,6 @@
                                 @endauth
                             </div>
                             <div class="review-items">
-                                {{--   review-write-answer--}}
                                 @foreach($reviews as $review)
                                     <div class="review-item" id="review-item-{{$review->id}}">
                                         <div class="head">
@@ -348,7 +347,7 @@
             event.preventDefault();
 
             let _token = $('meta[name="csrf-token"]').attr('content')
-            let mentorInformationId = {{ $mentor->id }};
+            let itemInformationId = {{ $item->id }};
             let textComment = $(this).find('.review-write-textarea').val();
             let ratingStarValue = $(this).find('.star-rating').val();
 
@@ -359,7 +358,7 @@
                 method: "POST",
                 data: {
                     '_token': _token,
-                    mentorInformationId: mentorInformationId,
+                    itemInformationId: itemInformationId,
                     textComment: textComment,
                     ratingStarValue: ratingStarValue,
                 },
@@ -386,7 +385,7 @@
             event.preventDefault();
 
             let _token = $('meta[name="csrf-token"]').attr('content')
-            let mentorInformationId = {{ $mentor->id }};
+            let itemInformationId = {{ $item->id }};
             let textComment = $(this).find('.review-write-textarea').val();
             let ratingStarValue = $(this).find('.star-rating').val();
             let reviewId = $(this).find('#review-id').val();
@@ -398,7 +397,7 @@
                 method: "POST",
                 data: {
                     '_token': _token,
-                    mentorInformationId: mentorInformationId,
+                    itemInformationId: itemInformationId,
                     textComment: textComment,
                     ratingStarValue: ratingStarValue,
                     reviewId: reviewId,

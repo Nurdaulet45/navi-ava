@@ -1171,3 +1171,18 @@ section .head {
     all: unset;
     text-decoration-line: underline;
 }
+
+.search-result-not-results {
+    text-align: center;
+    width: 100%;
+}
+
+.search-result-not-results h4 {
+    font-family: 'Exo2-700';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 115%;
+
+    color: #333333;
+}

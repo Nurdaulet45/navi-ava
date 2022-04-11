@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="center">
-                <form>
-                    <input type="text" placeholder="Поиск по сайту" class="search-input">
+                <form action="{{ route('search') }}" method="GET">
+                    <input name="search" type="text" placeholder="Поиск по сайту" class="search-input" value="{{ request()->input('search') }}">
                 </form>
 
                 <div class="dropdown-menu dropdown-lang">

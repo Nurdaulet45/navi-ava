@@ -267,7 +267,7 @@ class UserController extends Controller
 
     public function saveReviews(Request $request)
     {
-        $mentorInformation = UserRoleInformation::query()->findOrFail($request->input('mentorInformationId'));
+        $mentorInformation = UserRoleInformation::query()->findOrFail($request->input('itemInformationId'));
 
         $userInformation = auth()->user()->roleInformation()->first();
 
@@ -302,7 +302,7 @@ class UserController extends Controller
     public function saveAnswerReviews(Request $request)
     {
         $mentorInformation = UserRoleInformation::query()
-            ->findOrFail($request->input('mentorInformationId'));
+            ->findOrFail($request->input('itemInformationId'));
 
         $review = UserReview::query()
             ->findOrFail($request->input('reviewId'));
@@ -342,7 +342,7 @@ class UserController extends Controller
 
     public function saveFavorite(Request $request)
     {
-        $mentorInformation = UserRoleInformation::query()->findOrFail($request->mentorInformationId);
+        $mentorInformation = UserRoleInformation::query()->findOrFail($request->itemInformationId);
         $userFavorite = UserFavorite::query()->create([
             'user_id' => auth()->user()->id,
             'user_role_name' => auth()->user()->default_role,
@@ -501,7 +501,7 @@ class UserController extends Controller
             'message' => $request->text
         ]);
 
-        broadcast(new NewMessage($message));
+        broadcast(new NewMessage($message->load('fromContact')))->toOthers();
 
         return response()->json($message);
 

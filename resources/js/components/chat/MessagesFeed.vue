@@ -36,6 +36,7 @@ export default {
             type: Object,
             required: true
         },
+        // activeUser: Boolean
     },
     data() {
         return {

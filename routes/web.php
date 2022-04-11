@@ -11,30 +11,27 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('/', function (){
+Route::get('/', function () {
     return view('client.index');
 })->name('index');
 
-//Route::get('/', function (){
-//    event(new \App\Events\ChatEvent('hello world'));
-//    return view('welcome');
-//})->name('index');
-
 Route::get('/blog-post', [BlogController::class, 'show'])->name('blog-post');
 
-Route::group(['prefix' => 'mentors', 'as' => 'mentors.'], function () {
+Route::group(['prefix' => 'catalog/mentor', 'as' => 'mentors.'], function () {
     Route::get('/', [MainController::class, 'mentors'])->name('index');
     Route::get('/mentor/{id}', [MainController::class, 'mentor'])->name('mentor');
 });
 
-Route::group(['prefix' => 'consultants', 'as' => 'consultants.'], function () {
+Route::get('/search', [MainController::class, 'search'])->name('search');
+
+Route::group(['prefix' => 'catalog/consultants', 'as' => 'consultants.'], function () {
     Route::get('/', [MainController::class, 'consultants'])->name('index');
     Route::get('/consultant/{id}', [MainController::class, 'consultant'])->name('consultant');
 });
 
-Route::group(['prefix' => 'students', 'as' => 'students.'], function () {
+Route::group(['prefix' => 'catalog/students', 'as' => 'students.'], function () {
     Route::get('/', [MainController::class, 'students'])->name('index');
-    Route::get('/consultant/{id}', [MainController::class, 'student'])->name('student');
+    Route::get('/student/{id}', [MainController::class, 'student'])->name('student');
 });
 
 Route::view('/catalog-free', 'client.catalog-free')->name('catalog-free');

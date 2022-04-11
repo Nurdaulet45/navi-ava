@@ -8,15 +8,15 @@
                 </div>
                 <div class="contact">
                     <p class="name">{{ userName(contact.user) }}</p>
-                    <p class="email">Online</p>
+                    <p :class="`status ${contactStatus(contact) ? 'online' : 'offline'}`">{{ contactStatus(contact) ? 'Онлайн' : 'Не в сети' }}</p>
                 </div>
             </div>
             <div class="conversation-user-information">
                 <div class="user-information">{{ userRoleName(contact) }} -
                     {{ userName(contact.user) }}
                 </div>
-<!--           @click="showModal = true"     -->
-                <button  class="user-information-btn">Показать контакты</button>
+                <!--           @click="showModal = true"     -->
+                <button class="user-information-btn">Показать контакты</button>
                 <modal v-if="showModal" @close="showModal = false"></modal>
             </div>
         </div>
@@ -36,6 +36,10 @@
             </div>
         </div>
 
+        <loader v-show="loader" object="#ffff" color1="#ffffff" color2="#fff" size="4" speed="2" bg="#343a40"
+                objectbg="#999793"
+                opacity="53" name="dots"></loader>
+
         <MessagesFeed :user="user" :information="information" :contact="contact" :messages="messages"/>
 
         <MessageComposer @send="sendMessage"/>
@@ -46,10 +50,11 @@
 import MessagesFeed from './MessagesFeed';
 import MessageComposer from './MessageComposer';
 import modal from './Modal';
+import {loader} from "vue-ui-preloader";
 
 export default {
     name: "ContactsList",
-    components: {MessagesFeed, MessageComposer, modal},
+    components: {MessagesFeed, MessageComposer, modal,loader},
     props: {
         contact: {
             type: Object,
@@ -67,6 +72,8 @@ export default {
             type: Object,
             required: true
         },
+        onlineContacts: Array,
+        loader: Boolean
     },
     data() {
         return {
@@ -102,7 +109,6 @@ export default {
             if (!this.contact) {
                 return;
             }
-
             axios.post('/cabinet/chats/conversation/send', {
                 contactId: this.contact.id,
                 text: text
@@ -112,14 +118,18 @@ export default {
                 console.log(error)
             })
         },
+        contactStatus(contact) {
+            return this.onlineContacts.find(onlineContact => onlineContact.id === contact.id)
+        },
     },
-    mounted() {
-
-    }
 }
 </script>
 
-<style scoped lang="css">
+<style lang="css">
+
+#overlay-dots {
+    position: absolute!important;
+}
 
 .conversation {
     flex: 1;
@@ -132,6 +142,8 @@ export default {
     box-sizing: border-box;
 
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
 }
 
 .conversation-user {
@@ -199,7 +211,7 @@ export default {
     color: #333333;
 }
 
-.contact .email {
+.contact .status.online {
     font-family: 'Helvetica-400';
     font-style: normal;
     font-weight: 400;
@@ -207,6 +219,12 @@ export default {
     line-height: 14px;
 
     color: #0CBD82;
+    text-transform: initial!important;
+}
+
+.contact .status.offline {
+    color: #FF4B55;
+    text-transform: initial!important;
 }
 
 .search-chats {

@@ -2,12 +2,8 @@
     <div class="chat-app">
         <ContactsList :contacts="contacts" @selected="startConversationWith"/>
 
-        <loader v-show="loader" object="#ffff" color1="#ffffff" color2="#fff" size="4" speed="2" bg="#343a40"
-                objectbg="#999793"
-                opacity="53" name="dots"></loader>
-
         <Conversation :user="user" :information="information" :contact="selectedContact"
-                      :messages="messages"
+                      :messages="messages" :onlineContacts="onlineContacts" :loader="loader"
                       @new="saveNewMessage"/>
     </div>
 </template>
@@ -15,11 +11,10 @@
 <script>
 import ContactsList from "./ContactsList";
 import Conversation from "./Conversation";
-import {loader} from "vue-ui-preloader";
 
 export default {
     name: "ChatApp",
-    components: {ContactsList, Conversation, loader},
+    components: {ContactsList, Conversation},
     props: {
         user: {
             type: Object,
@@ -34,30 +29,59 @@ export default {
         return {
             selectedContact: null,
             activeFriend: '',
+            onlineContacts: [],
             messages: [],
+            message: '',
             contacts: [],
             loader: false,
             // mal: null
         }
     },
     computed: {
-        channel() {
+        channelPresence() {
+            return window.Echo.join('presence-users');
+        },
+        channelPrivate() {
             return window.Echo.private(`messages.${this.information.id}`);
-        }
+        },
+    },
+    updated() {
+        this.getContacts();
     },
     mounted() {
-        this.channel.listen('NewMessage', (event) => {
-            this.handleIncoming(event.message);
-        })
+        this.getContacts();
 
-        axios.get('/cabinet/chats/contacts')
-            .then((response) => {
-                this.contacts = response.data;
-            }).catch((error) => {
-            console.log(error);
-        })
+        this.channelPrivate
+            .listen('NewMessage', (event) => {
+                this.handleIncoming(event.message);
+            })
+
+        this.channelPresence
+            .here(users => {
+                // Онлайн пользователь
+                console.log('online users: ', users)
+                this.onlineContacts = users;
+            })
+            .joining(user => {
+                // Подключился пользователь
+                console.log('joining user: ', user)
+                this.onlineContacts.push(user)
+            })
+            .leaving(user => {
+                // Отключился пользователь
+                console.log('leaving user: ', user)
+                this.onlineContacts.splice(this.onlineContacts.indexOf(user), 1)
+            })
     },
     methods: {
+        getContacts() {
+            axios.get('/cabinet/chats/contacts')
+                .then((response) => {
+                    this.contacts = response.data;
+                }).catch((error) => {
+                console.log(error);
+            })
+        },
         startConversationWith(contact) {
             this.loader = true;
             this.updateUnreadCount(contact, true)
@@ -84,10 +108,11 @@ export default {
                     this.messages = response.data;
                     this.selectedContact = contact;
                     this.loader = false;
-                }).catch((error) => {
-                console.log(error);
-                this.loader = false;
-            })
+                })
+                .catch((error) => {
+                    console.log(error);
+                    this.loader = false;
+                })
         },
         saveNewMessage(message) {
             this.messages.push(message);
@@ -97,7 +122,6 @@ export default {
                 this.saveNewMessage(message)
                 return;
             }
-
             this.updateUnreadCount(message.from_contact, false)
         },
         updateUnreadCount(contact, reset) {
@@ -105,12 +129,7 @@ export default {
                 if (single.id !== contact.id) {
                     return single
                 }
-
-                if (reset) {
-                    single.unread = 0;
-                } else {
-                    single.unread += 1;
-                }
+                (reset) ? single.unread = 0 : single.unread += 1;
 
                 return single;
             })

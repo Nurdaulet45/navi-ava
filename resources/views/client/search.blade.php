@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
     @component('client.components.breadcrumb')
-        @slot('title') {{ $pageTitle }} @endslot
+        @slot('title') Поиск по сайту @endslot
         @slot('parent')@endslot
-        @slot('active') {{ $pageTitle }} @endslot
+        @slot('active') Поиск по сайту @endslot
     @endcomponent
     <section class="s-catalog">
         <div class="container">
             <div class="wrapper">
-                <form action="{{ route($pageFilterRoute) }}" method="GET" class="filters">
+                <form action="{{ route('search') }}" method="GET" class="filters">
+                    <input type="hidden" name="search" value="{{ request()->input('search') }}">
                     <div class="accordion-block filters__filter">
                         <div class="accordion accordion-filter filters__filter-title">
                             Формат
@@ -167,7 +168,7 @@
                         Показать
                     </button>
 
-                    <a href="{{ route($pageFilterRoute) }}" class="clear-filter">
+                    <a href="{{ route('search') }}" class="clear-filter">
                         Сбросить фильтры
                         <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -309,8 +310,8 @@
                         @endif
                     </div>
 
-
                     {{ $items->withQueryString()->links() }}
+
                 </div>
             </div>
         </div>
@@ -343,9 +344,5 @@
             }
             return false;
         });
-
-        //     $(".buttonClass').click(function(){
-        //     window.location.href = "http://stackoverflow.com";
-        // });
     </script>
 @endsection

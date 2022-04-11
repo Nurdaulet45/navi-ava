@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 class SessionRoleService
 {
-    public static function textByRole($mentorText, $consultantText , $studentText, $defaultText = 'не определен')
+    public static function textByRole($mentorText, $consultantText, $studentText, $defaultText = 'не определен')
     {
         if (self::isMentor()) {
             return $mentorText;
@@ -103,6 +103,18 @@ class SessionRoleService
                 return 'Ученик';
             default:
                 return 'Не определен';
+        }
+    }
+
+    public static function roleNameRoute($roleName): string
+    {
+        switch ($roleName) {
+            case ($roleName == 'mentor' || $roleName == 'paid_mentor'):
+                return 'mentors.mentor';
+            case ($roleName == 'consultant' || $roleName == 'paid_consultant'):
+                return 'consultants.consultant';
+            default:
+                return 'students.student';
         }
     }
 }

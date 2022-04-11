@@ -2,6 +2,9 @@
 
 namespace App\Events;
 
+use App\Models\Message;
+use App\Models\User;
+use App\Models\UserRoleInformation;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,20 +17,26 @@ class ChatEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
 
-    public function __construct($message)
+    public $user;
+
+    public function __construct(User $user)
     {
-        $this->message = $message;
+        $this->user = $user;
     }
 
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
     public function broadcastOn()
     {
-        return ['my-channel'];
-    }
-
-    public function broadcastAs()
-    {
-        return 'chat-event';
+        return new PresenceChannel('presence-users');
     }
 }

@@ -21,3 +21,8 @@ Broadcast::channel('messages.{id}', function ($user, $id) {
     $roleInformation = $user->roleInformation()->first();
     return $roleInformation->id === (int)$id;
 });
+
+Broadcast::channel('presence-users', function ($user) {
+//    return $user->roleInformation()->first();
+    return $user;
+});

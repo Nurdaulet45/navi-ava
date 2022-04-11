@@ -11,7 +11,7 @@
                     <img class="avatar-image" :src="avatarImage(contact.user)" :alt="contact.login">
                 </div>
                 <div class="contact">
-                    <p class="name">{{ contact.user.last_name }} {{ contact.user.first_name }} </p>
+                    <p class="name">{{ userName(contact.user) }} </p>
                     <p class="email">{{ contactMessage(contact) }}</p>
                 </div>
                 <div class="contact-info">
@@ -19,21 +19,6 @@
                     <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
                 </div>
             </li>
-
-            <!--            <li class="user-list"-->
-            <!--                @click="selectContact(2)">-->
-            <!--                <div class="avatar">-->
-            <!--                    <img class="avatar-image" >-->
-            <!--                </div>-->
-            <!--                <div class="contact">-->
-            <!--                    <p class="name">sdvcsdvsdvsdvsd </p>-->
-            <!--                    <p class="email">dvsdvsdvsdvsd</p>-->
-            <!--                </div>-->
-            <!--                <div class="contact-info">-->
-            <!--                    <span class="time">sdvsdvsdv</span>-->
-            <!--                    <span class="unread" >sdvsdvsdvsdvsd</span>-->
-            <!--                </div>-->
-            <!--            </li>-->
         </ul>
     </div>
 </template>
@@ -57,6 +42,9 @@ export default {
         }
     },
     methods: {
+        userName(data) {
+            return data.last_name + ' ' + data.first_name;
+        },
         avatarImage(contact) {
             return (contact.avatar) ? contact.avatar : (contact.gender) ? this.maleAvatar : this.femaleAvatar;
         },
@@ -73,13 +61,13 @@ export default {
         },
         contactMessage(contact) {
             if (contact.last_message && contact.last_my_message) {
-                if (contact.last_message.id > contact.last_my_message.message.id) {
+                if (contact.last_message.id > contact.last_my_message.id) {
                     return contact.last_message.message;
                 }
                 return contact.last_my_message.message;
             }
             return (contact.last_message.message || contact.last_my_message.message);
-        }
+        },
     },
     computed: {
         sortedContacts() {
